@@ -22,7 +22,7 @@
 
 4. `site/` と `manuscripts/` の変更を同じコミットで push する。
 
-`main` または `master` への push で3冊が同時に公開されます。最初の公開前に、リポジトリの **Settings → Pages → Build and deployment** で **GitHub Actions** を選択してください。
+`main` への push で3冊が同時に公開されます。最初の公開前に、リポジトリの **Settings → Pages → Build and deployment** で **GitHub Actions** を選択してください。
 
 各ページが使用する Source Han Serif フォントも、`site/fonts/` に共有で配置されます。
 
