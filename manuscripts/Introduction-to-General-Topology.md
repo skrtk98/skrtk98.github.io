@@ -26,6 +26,14 @@ Theorem. **選択公理と同値な命題**
     2. **Zorn の補題**<br>順序集合に対して, 任意の全順序部分集合が有界ならば極大元が存在する.
     3. **Tukey の補題**<br>有限性を満たす空でない任意の集合族は包含関係に関する極大元を持つ.
 
+Proof.
+:   選択公理から整列可能定理は, 選択関数で未選択部分から元を一つずつ取り出す超限再帰により得られる.
+    整列可能定理を用いると, 鎖の上界を順に付け加える再帰から Zorn の補題が従う.
+    逆に Zorn の補題を, 各 $`S\in\Sigma`$ で高々一つの値を取る部分選択関数の包含順序に適用する.
+    極大な部分選択関数の定義域が $`\Sigma`$ 全体でなければ値を一つ追加できるので, 極大性に反する.
+    よって選択関数が得られる.
+    Tukey の補題は有限性を満たす部分族の包含順序に Zorn の補題を適用して得られ, 同じ部分選択関数の族は有限性を満たすので Tukey の補題からも選択公理が従う.
+
 ### 順序集合のイデアルとフィルター
 
 Definition. **イデアル**
@@ -44,7 +52,7 @@ Definition. **フィルター**
     ```
     特に, 上方に閉じているフィルター基を **フィルター** (*filter*) という.
 
-特に, $`(P,\leq)`$ における **極大フィルター** (maximal filter) あるいは **超フィルター** (*ultrafilter*) とは, $`(P,\leq)`$ のフィルター $`M\subsetneq P`$ であって, $`(P,\leq)`$ の任意のフィルター $`F`$ が $`F\subseteq M`$ であれば $`M=F`$ となるときいう.
+特に, $`(P,\leq)`$ における **極大フィルター** (maximal filter) あるいは **超フィルター** (*ultrafilter*) とは, $`(P,\leq)`$ の真のフィルター $`M\subsetneq P`$ であって, 任意のフィルター $`F`$ に対し $`M\subseteq F\subsetneq P`$ ならば $`M=F`$ となるものをいう.
 
 Proposition. **イデアル基の生成するイデアル**
 :   半順序集合 $`(P,\leq)`$ のイデアル基 $`I`$ に対して, $`P`$ の部分集合 $`\overline{I}`$ を
@@ -264,7 +272,7 @@ Proposition. **同程度連続な写像列の各点収束は連続写像をな�
     $`d_X(x,x_0)\leq\delta`$ となる $`x`$ を固定する.
     $`f_n(x)\to f(x)` および $`f_n(x_0)\to f(x_0)` であるから, ある $`n`$ が存在して
     ```math
-    d_Y(f(x),f_n(x))\leq\varepsilon/3,qquad
+    d_Y(f(x),f_n(x))\leq\varepsilon/3,\qquad
     d_Y(f_n(x_0),f(x_0))\leq\varepsilon/3
     ```
     となる.
@@ -293,7 +301,7 @@ Proposition. **収束列は Cauchy 列**
     収束の定義から, $`n\geq N`$ ならば $`d(p_n,p)\leq\varepsilon/2`$ となる $`N`$ が存在する.
     $`m,n\geq N`$ に対して三角不等式から
     ```math
-    d(p_m,p_n)\leq d(p_m,p)+d(p,p_n)leq\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon
+    d(p_m,p_n)\leq d(p_m,p)+d(p,p_n)\leq\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon
     ```
     となる.
     したがって $`(p_n)`$ は Cauchy 列である.
@@ -301,8 +309,8 @@ Proposition. **収束列は Cauchy 列**
 距離空間 $`(X,d)`$ の任意の Cauchy 列 $`(p_n)`$ が収束点列になるとき, $`(X,d)`$ は **完備** (*complete*) といい, 完備な距離空間を **完備距離空間** (*complete metric space*) という.
 
 Definition. **完備化**
-:   距離空間 $`(X,d_X)`$ に対して, 完備距離空間 $`\overline{(X,d_X)}=(\overline{X},\overline{d_X})`$ と連続写像 $`\iota:(X,d_X)\to\overline{(X,d_X)}`$ が次の条件を満たすとする.
-    - $`\iota`$ により距離空間 $`(X,d_X)`$ は完備距離空間 $`\overline{(X,d_X)}`$ の稠密部分空間となる.
+:   距離空間 $`(X,d_X)`$ に対して, 完備距離空間 $`\overline{(X,d_X)}=(\overline{X},\overline{d_X})`$ と等長埋め込み $`\iota:(X,d_X)\to\overline{(X,d_X)}`$ が次の条件を満たすとする.
+    - $`\iota(X)`$ は完備距離空間 $`\overline{(X,d_X)}`$ で稠密である.
     - 任意の完備距離空間 $`(Y,d_Y)`$ と任意の一様連続写像 $`r:(X,d_X)\to(Y,d_Y)`$ に対して, 一様連続写像 $`\overline{r}:\overline{(X,d_X)}\to(Y,d_Y)`$ が一意的に存在して $`r=\overline{r}\circ\iota`$ が成り立つ.
 
     このとき, 組 $`(\overline{(X,d_X)},\iota)`$ を距離空間 $`(X,d_X)`$ の **完備化** (*completion*) という.
@@ -316,7 +324,15 @@ Theorem. **完備化の一意性**
     $`g\circ f` と恒等写像は $`\iota(X)`$ 上で一致するから, 普遍性の一意性により $`g\circ f=\mathrm{id}_C`$ である.
     同様に $`f\circ g=\mathrm{id}_{C'}`$ である.
     したがって $`f`$ は一様同型である.
-    距離を保つことは, 稠密部分集合 $`\iota(X)`$ 上で距離を保つことと連続性から従う.
+    任意の $`c,d\in C`$ に対して $`\iota(X)`$ の列 $`\iota(x_n)\to c`$, $`\iota(y_n)\to d`$ を取る.
+    $`f\circ\iota=\iota'`$ と距離関数の連続性から
+    ```math
+    d_{C'}(f(c),f(d))
+    =\lim_n d_{C'}(\iota'(x_n),\iota'(y_n))
+    =\lim_n d_X(x_n,y_n)
+    =d_C(c,d)
+    ```
+    となるので, $`f`$ は等長写像である.
     一意性も普遍性の一意性から従う.
 
 距離空間 $`(X,d)`$ の Cauchy 列全体を $`C`$ とすると, $`C`$ 上の二項関係 $`\sim`$ を
@@ -493,7 +509,7 @@ Definition. **近傍系の強弱**
     ```math
     \forall B\in\mathcal{b}(x),\exists B'\in\mathcal{B}(x)\text{ s.t. }B'\subseteq B
     ```
-    であるとき, $`\mathcal{B}`$ は $`\mathcal{b}`$ より **強い** (*strong*) といい, $`\mathcal{b}`$ は $`\mathcal{B}`$ より **弱い** (*week*) という.
+    であるとき, $`\mathcal{B}`$ は $`\mathcal{b}`$ より **強い** (*strong*) といい, $`\mathcal{b}`$ は $`\mathcal{B}`$ より **弱い** (*weak*) という.
 
 Proposition. **近傍基の定める近傍**
 :   集合 $`X`$ 上の近傍基 $`\mathcal{B}`$ に対して, 写像 $`\mathcal{U}:X\to2^{2^X}`$ を $`x\in X`$ に対して $`\mathcal{U}(x)`$ をフィルター基 $`\mathcal{B}(x)`$ の生成するフィルターとすると, $`\mathcal{U}`$ は $`X`$ 上の近傍系となる. $`\mathcal{U}`$ を $`\mathcal{B}`$ の生成する近傍系という.
@@ -580,14 +596,15 @@ Definition. **開基の強弱**
     ```math
     \forall G\in\mathbf{B}_1,\exists H\in\mathbf{B}_2\text{ s.t. }H\subseteq G
     ```
-    を満たすとき, $`\mathbf{B}_2`$ は $`\mathbf{B}_1`$ より **強い** (*strong*) といい, $`\mathbf{B}_1`$ は $`\mathbf{B}_2`$ より **弱い** (*week*) という.
+    を満たすとき, $`\mathbf{B}_2`$ は $`\mathbf{B}_1`$ より **強い** (*strong*) といい, $`\mathbf{B}_1`$ は $`\mathbf{B}_2`$ より **弱い** (*weak*) という.
 
 Proposition. **部分集合族から開基の生成**
 :   集合 $`X`$ の部分集合族 $`\mathbf{S}`$ に対して, 
     ```math
-    \mathbf{B}\coloneqq\left\{\bigcap_{i=0}^{N}S_i\mathrel{}\middle|\mathrel{}S_0,S_1,\ldots,S_N\subseteq\mathbf{S},N=0,1,2,\ldots\right\}
+    \mathbf{B}\coloneqq\left\{\bigcap_{i=1}^{N}S_i\mathrel{}\middle|\mathrel{}S_i\in\mathbf{S}\ (1\leq i\leq N),\ N\in\mathbf{Z}_{\geq0}\right\},
+    \qquad \bigcap_{i=1}^{0}S_i\coloneqq X
     ```
-    は $`X`$ 上の開基となる. 特に, $`\mathbf{S}`$ が開基であれば $`\mathbf{B}=\mathbf{S}`$ となる.
+    は $`X`$ 上の開基となる. 特に, $`\mathbf{S}`$ が開基であれば $`\mathbf{B}`$ と $`\mathbf{S}`$ の生成する開集合系は一致する.
     $`\mathbf{B}`$ を $`\mathbf{S}`$ の生成する開基という.
 
 <u>proof.</u>
@@ -624,11 +641,20 @@ Proposition.
     よって $`\mathbf{O}\subseteq\mathbf{O}'`$ であり, $`\mathbf{O}`$ は最も弱い.
 
 Proposition. **近傍基の定める開基**
-:   集合 $`X`$ 上の近傍基 $`\mathcal{B}`$ に対して, $`X`$ の部分集合族 $`\beta`$ を
+:   集合 $`X`$ 上の近傍基 $`\mathcal{B}`$ とその生成する近傍系 $`\mathcal{U}`$ に対して, $`X`$ の部分集合族 $`\beta`$ を
     ```math
-    \beta\coloneqq\{B\in2^X\mid\forall x\in B,B\in\mathcal{B}(x)\}
+    \beta\coloneqq\{B\subseteq X\mid\forall x\in B,B\in\mathcal{U}(x)\}
     ```
     とすると, $`\beta`$ は $`X`$ 上の開基であり, $`\beta`$ の生成する位相と $`\mathcal{B}`$ の生成する位相は一致する.
+
+Proof.
+:   $`x\in X`$ と $`U\in\mathcal{U}(x)`$ を取る.
+    近傍系の公理より $`V\in\mathcal{U}(x)`$ であって, 各 $`y\in V`$ に対し $`U\in\mathcal{U}(y)`$ を満たすものがある.
+    $`G\coloneqq\{y\in X\mid U\in\mathcal{U}(y)\}`$ とおくと $`V\subseteq G`$ であるから $`G\in\mathcal{U}(x)`$ である.
+    また $`y\in G`$ に対して同じ公理を $`U\in\mathcal{U}(y)`$ に適用すると, ある $`W\in\mathcal{U}(y)`$ が $`W\subseteq G`$ を満たす.
+    よって $`G\in\mathcal{U}(y)`$ であり, $`G\in\beta`$ である.
+    したがって $`\beta`$ は各点で近傍基となり, 開基の公理を満たす.
+    さらに上の構成は $`\mathcal{U}(x)`$ の任意の元を含む $`\beta`$ の元を与えるので, $`\beta`$ の生成する近傍系は $`\mathcal{U}`$ と一致する.
 
 Proposition. **開基の定める近傍基**
 :   集合 $`X`$ 上の開基 $`\beta`$ に対して, 写像 $`\mathcal{B}:X\to2^{2^X}`$ を
@@ -636,6 +662,14 @@ Proposition. **開基の定める近傍基**
     \mathcal{B}(x)\coloneqq\{B\in\beta\mid x\in B\},\quad x\in X
     ```
     とすると, $`\mathcal{B}`$ は $`X`$ 上の近傍基であり, $`\beta`$ の生成する位相と $`\mathcal{B}`$ の生成する位相は一致する.
+
+Proof.
+:   開基が $`X`$ を被覆するので $`\mathcal{B}(x)`$ は空でない.
+    $`B_1,B_2\in\mathcal{B}(x)`$ に対して, 開基の交叉条件から $`x`$ を含み $`B_1\cap B_2`$ に含まれる基の元が存在する.
+    よって各 $`\mathcal{B}(x)`$ はフィルター基である.
+    さらに $`B\in\mathcal{B}(x)`$ とすると, $`B`$ は開集合なので各 $`y\in B`$ に対して $`B\in\mathcal{B}(y)`$ である.
+    これが近傍基の二条件を与える.
+    したがってこの近傍基から得る開集合は, ちょうど $`\beta`$ の元の合併である.
 
 位相空間 $`X`$ と台集合 $`X_0`$ 上の開集合系 $`\mathbf{O}`$ に対して, $`\mathbf{O}`$ の生成する近傍系が $`X`$ の近傍系 $`\mathcal{N}_X`$ と一致するとき $`\mathbf{O}`$ を位相空間 $`X`$ の開集合系という.
 位相空間 $`X`$ の開集合系き $`\mathbf{O}`$ に対して, $`G\in\mathbf{O}`$ を **位相空間 $`X`$ の開集合** (*open set on a $`X`$*) といい, $`F^\complement=X_0\setminus F\in\mathbf{O}`$ となる $`F`$ を **位相空間 $`X`$ の閉集合** (*closed set on a $`X`$*) という.
@@ -687,6 +721,18 @@ Theorem. **開核作用素の定める位相構造**
     ```
     とすると, $`\mathcal{N}`$ は $`X`$ 上の近傍系となる. $`\mathcal{N}`$ を $`i`$ の生成する近傍系といい, 位相空間 $`(X,\mathcal{N})`$ を $`i`$ の生成する位相空間という.
 
+Proof.
+:   まず $`i`$ は単調である.
+    実際, $`A\subseteq B`$ なら $`A=A\cap B`$ であるから
+    $`i(A)=i(A)\cap i(B)\subseteq i(B)`$ となる.
+    $`i(X)=X`$ より $`X\in\mathcal{N}(x)`$ である.
+    $`U,V\in\mathcal{N}(x)`$ なら $`x\in i(U)\cap i(V)=i(U\cap V)`$ であり, $`U\cap V\in\mathcal{N}(x)`$ である.
+    $`U\in\mathcal{N}(x)`$ と $`U\subseteq V`$ なら単調性から $`x\in i(V)`$ となる.
+    また $`x\in i(U)`$ なら $`i(U)\subseteq U`$ より $`x\in U`$ である.
+    最後に $`U\in\mathcal{N}(x)`$ とすると, 冪等性から $`i(U)\in\mathcal{N}(x)`$ である.
+    各 $`y\in i(U)`$ について $`i(U)\subseteq U`$ だから $`U\in\mathcal{N}(y)`$ となる.
+    以上で近傍系の局所性の公理も満たされる.
+
 Definition. **閉包作用素**
 :   **集合 $`X`$ 上の閉包作用素** (*closure operator on a set $`X`$*) とは, 写像 $`c:2^X\to2^X`$ であって次の条件を満たすときいう:
     - $`c(\emptyset)=\emptyset`$.
@@ -731,6 +777,18 @@ Theorem. **位相構造の定める開核作用素**
     ```
     とすると, $`(-)^\circ`$ は $`X`$ 上の開核作用素となり, $`(-)^\circ`$ の定める近傍系は $`\mathcal{N}`$ と一致する. $`(-)^\circ`$ を位相空間 $`(X,\mathcal{N})`$ の定める開核作用素という.
 
+Proof.
+:   $`X\in\mathcal{N}(x)`$ が任意の $`x`$ に対して成り立つので $`X^\circ=X`$ である.
+    $`x\in A^\circ`$ なら $`A\in\mathcal{N}(x)`$ であり, 近傍系の第一公理から $`x\in A`$ である.
+    よって $`A^\circ\subseteq A`$ である.
+    $`x\in A^\circ`$ とする.
+    近傍系の局所性の公理から, $`V\in\mathcal{N}(x)`$ であって各 $`y\in V`$ に対して $`A\in\mathcal{N}(y)`$ を満たすものがある.
+    このとき $`V\subseteq A^\circ`$ だから $`A^\circ\in\mathcal{N}(x)`$ であり, $`x\in(A^\circ)^\circ`$ である.
+    逆の包含は $`A^\circ\subseteq A`$ と単調性から従うので, 開核は冪等である.
+    また $`A\cap B\in\mathcal{N}(x)`$ はフィルターの公理により $`A,B\in\mathcal{N}(x)`$ と同値である.
+    よって $`(A\cap B)^\circ=A^\circ\cap B^\circ`$ である.
+    $`i(A)=A^\circ`$ として定める近傍系は, 定義から $`A\in\mathcal{N}(x)`$ と $`x\in i(A)`$ が同値であるため, 元の $`\mathcal{N}`$ に一致する.
+
 位相空間 $`X`$ に対して, 点 $`x\in X`$ が部分集合 $`A\subseteq X`$ の **内点** (*interior point*) であるとは, $`x\in A^\circ`$ であるときいう.
 他方, 点 $`x`$ が $`A^\complement=X\setminus A`$ の内点であるとき, 点 $`x`$ を $`A`$ の **外点** (*exterior point*) という.
 さらに, 点 $`x`$ が $`A`$ の内点でないかつ外点でないとき, 点 $`x`$ を $`A`$ の **境界点** (*boundary point*) という.
@@ -741,6 +799,23 @@ Theorem. **位相構造の定める閉包作用素**
     \overline{A}\coloneqq\{x\in X\mid\forall U\in\mathcal{N}(x),U\cap A\neq\emptyset\}
     ```
     とすると, $`\overline{(-)}`$ は $`X`$ 上の閉包作用素となり, $`\overline{(-)}`$ の定める近傍系は $`\mathcal{N}`$ と一致する. $`\overline{(-)}`$ を位相空間 $`(X,\mathcal{N})`$ の定める閉包作用素という.
+
+Proof.
+:   空集合はどの近傍とも交わらないから $`\overline{\emptyset}=\emptyset`$ である.
+    $`x\in A`$ なら任意の $`x`$ の近傍は $`x`$ を含むので $`A`$ と交わる.
+    よって $`A\subseteq\overline{A}`$ である.
+    $`x\notin\overline{A}`$ なら, $`A`$ と交わらない近傍 $`U\in\mathcal{N}(x)`$ がある.
+    局所性により $`V\in\mathcal{N}(x)`$ であって各 $`y\in V`$ に対して $`U\in\mathcal{N}(y)`$ を満たすものを取れる.
+    このとき $`V\cap\overline{A}=\emptyset`$ である.
+    実際, $`y\in V`$ なら $`U`$ は $`y`$ の近傍で $`U\cap A=\emptyset`$ なので $`y\notin\overline{A}`$ である.
+    したがって $`x\notin\overline{\overline{A}}`$ であり, 膨張性と合わせて冪等性が従う.
+    $`x\notin\overline{A}`$ かつ $`x\notin\overline{B}`$ なら, それぞれ $`A,B`$ と交わらない $`x`$ の近傍 $`U,V`$ がある.
+    $`U\cap V`$ は $`A\cup B`$ と交わらない近傍であるから, 対偶により
+    $`\overline{A\cup B}\subseteq\overline{A}\cup\overline{B}`$ を得る.
+    逆の包含は単調性から従うので, 有限和保存性が成り立つ.
+    最後に, 閉包作用素から得る開核は $`i(U)=X\setminus\overline{X\setminus U}`$ である.
+    $`x\in i(U)`$ は $`X\setminus U`$ と交わらない $`x`$ の近傍が存在することと同値であり, これは上方閉性により $`U\in\mathcal{N}(x)`$ と同値である.
+    したがって再構成される近傍系は $`\mathcal{N}`$ に一致する.
 
 位相空間 $`X`$ に対して, 点 $`x\in X`$ が部分集合 $`A\subseteq X`$ の **触点** (*adherent point*) であるとは, $`x\in\overline{A}`$ であるときいう.
 他方, 点 $`x`$ が $`A\setminus\{x\}`$ の触点であるとき, 点 $`x`$ を $`A`$ の **集積点** (*accumulation point*) という.
@@ -754,6 +829,18 @@ Proposition.
     - $`\overline{A}=A^\circ\sqcup\partial{A}`$,
     - $`\partial{A}=\overline{A}\cap\overline{A^\complement}`$,
     - $`\overline{A\cap B}\subseteq\overline{A}\cap\overline{B}`$ であり, $`\partial{A}\cap\partial{B}=\emptyset`$ であれば等号が成り立つ.
+
+Proof.
+:   境界の定義から $`\partial A=\overline A\setminus A^\circ`$ である.
+    $`A^\circ\subseteq\overline A`$ であるから, 第一式が従う.
+    また $`x\in\partial A`$ であることは, $`x`$ の任意の近傍が $`A`$ と $`A^\complement`$ の双方と交わることと同値である.
+    これは第二式に等しい.
+    単調性から $`\overline{A\cap B}\subseteq\overline A\cap\overline B`$ である.
+    逆に $`x\in\overline A\cap\overline B`$ とし $`\partial A\cap\partial B=\emptyset`$ を仮定する.
+    $`x`$ は $`A`$ と $`B`$ の双方の閉包に属するから, それぞれの内点または境界点である.
+    境界点の場合には他方の境界点ではないので他方の内点である.
+    したがって任意の $`x`$ の近傍を必要なら他方の内部に含まれる近傍と交叉させれば, $`A\cap B`$ と交わる近傍を得る.
+    よって $`x\in\overline{A\cap B}`$ であり, 等号が成り立つ.
 
 ### 距離の誘導する位相
 
@@ -827,23 +914,35 @@ Definition. **部分ネット**
 - **狭義単調性**: 任意の非負整数 $`m,n`$ に対して $`m<n`$ ならば $`s(m)<s(n)`$.
 - **共終性**: 任意の非負整数 $`n`$ に対して $`n\leq s(m)`$ を満たす非負整数 $`m`$ が存在する.
 
-Definition. **eventually in, frequentlly in**
+Definition. **eventually in, frequently in**
 :   集合 $`X`$ のネット $`(x_\lambda)_{\lambda\in\Lambda}`$ と部分集合 $`A\subseteq X`$ に対して,
     - **$`(x_\lambda)_{\lambda\in\Lambda}`$ is eventually in $`A`$** $`\mathrel{\overset{\text{def}}{\iff}}`$ $`\exists\lambda_0\in\Lambda\text{ s.t. }\forall\lambda\in\Lambda,\lambda_0\leq\lambda\Rightarrow x_\lambda\in A`$.
-    - **$`(x_\lambda)_{\lambda\in\Lambda}`$ is frequentlly in $`A`$** $`\mathrel{\overset{\text{def}}{\iff}}`$ $`\forall\lambda\in\Lambda,\exists\lambda_0\in\Lambda\text{ s.t. }\lambda\leq\lambda_0\land x_\lambda\in A`$.
+    - **$`(x_\lambda)_{\lambda\in\Lambda}`$ is frequently in $`A`$** $`\mathrel{\overset{\text{def}}{\iff}}`$ $`\forall\lambda\in\Lambda,\exists\lambda_0\in\Lambda\text{ s.t. }\lambda\leq\lambda_0\land x_{\lambda_0}\in A`$.
 
-定義より明らかに, $`(x_\lambda)_{\lambda\in\Lambda}`$ is eventually in $`A`$ $`\Rightarrow`$ $`(x_\lambda)_{\lambda\in\Lambda}`$ is frequentlly in $`A`$ である.
+定義より明らかに, $`(x_\lambda)_{\lambda\in\Lambda}`$ is eventually in $`A`$ $`\Rightarrow`$ $`(x_\lambda)_{\lambda\in\Lambda}`$ is frequently in $`A`$ である.
 
 Proposition.
-:   $`(x_\lambda)_{\lambda\in\Lambda}`$ is eventually in $`A`$ $`\iff`$ $`(x_\lambda)_{\lambda\in\Lambda}`$ is not frequentlly in $`X\setminus A`$
+:   $`(x_\lambda)_{\lambda\in\Lambda}`$ is eventually in $`A`$ $`\iff`$ $`(x_\lambda)_{\lambda\in\Lambda}`$ is not frequently in $`X\setminus A`$
+
+Proof.
+:   ある添字以後すべての項が $`A`$ に属することは, その添字以後に $`X\setminus A`$ の項が存在しないことと同値である.
+    これは「$`X\setminus A`$ に頻繁に属する」の否定そのものである.
 
 Definition. **普遍ネット**
-:   集合 $`X`$ のネット $`(x_\lambda)_{\lambda\in\Lambda}`$ が **普遍ネット** (*universal net*) あるいは **超ネット** (*ultranet*) であるとは, 任意の $`A\subseteq X`$ に対して次ののいずれかの条件が成り立つときいう:
+:   集合 $`X`$ のネット $`(x_\lambda)_{\lambda\in\Lambda}`$ が **普遍ネット** (*universal net*) あるいは **超ネット** (*ultranet*) であるとは, 任意の $`A\subseteq X`$ に対して次のいずれかの条件が成り立つときいう:
     - $`(x_\lambda)_{\lambda\in\Lambda}`$ is eventually in $`A`$
     - $`(x_\lambda)_{\lambda\in\Lambda}`$ is eventually in $`X\setminus A`$
 
 Theorem. **普遍部分ネットの存在**
 :   任意のネットに対して普遍ネットであるような部分ネットが存在する.
+
+Proof.
+:   ネットの尾部集合全体が生成するフィルターを $`\mathcal F`$ とする.
+    超フィルター補題により $`\mathcal F`$ を細分する超フィルター $`\mathcal M`$ が存在する.
+    フィルター基からネットを作る標準構成を $`\mathcal M`$ に適用すると, 得られるネットは元のネットの部分ネットとなる.
+    超フィルターの補集合による特徴づけから, 任意の部分集合 $`A`$ について $`A\in\mathcal M`$ または $`A^\complement\in\mathcal M`$ が成り立つ.
+    これは対応するネットが $`A`$ または $`A^\complement`$ に最終的に属することを意味する.
+    よってこの部分ネットは普遍ネットである.
 
 Definition. **ネットの収束**
 :   位相空間 $`X`$ と $`X`$ のネット $`(x_\lambda)_{\lambda\in\Lambda}`$ と 点 $`x\in X`$ に対して, 条件
@@ -864,15 +963,36 @@ Theorem. **堆積点の特徴づけ**
     1. $`x`$ は $`(x_n)`$ の堆積点である.
     2. $`(x_n)`$ の部分ネットで $`x`$ に収束するものが存在する.
 
+Proof.
+:   (2) から (1) は, 部分ネットの共終性により明らかである.
+    逆に (1) を仮定する.
+    添字集合を, $`x`$ の近傍 $`U`$ と添字 $`\lambda`$ の組であって $`x_\lambda\in U`$ を満たすもの全体とする.
+    近傍の縮小と元の添字集合の有向性を併せた順序を入れると, 堆積点の条件によりこれは有向集合となる.
+    第二成分への射影は元の添字集合への単調共終写像であり, その合成ネットは任意の近傍 $`U`$ に最終的に属する.
+    よって得られる部分ネットは $`x`$ に収束する.
+
 Theorem.
 :   位相空間 $`X`$ と部分集合 $`A\subseteq X`$ と 点 $`x\in X`$ に対して, 以下同値:
     1. $`x\in\overline{A}`$.
     2. $`x`$ に収束する $`A`$ のネットが存在する.
 
+Proof.
+:   $`x\in\overline A`$ なら, $`x`$ の近傍 $`U`$ ごとに一点 $`a_U\in U\cap A`$ を選ぶ.
+    近傍を逆包含で順序づければ有向集合となり, ネット $`U\mapsto a_U`$ は $`A`$ 内にあって $`x`$ に収束する.
+    逆に $`A`$ 内のネットが $`x`$ に収束すれば, 任意の $`x`$ の近傍はそのネットのある項を含むので $`A`$ と交わる.
+    よって $`x\in\overline A`$ である.
+
 Theorem.
 :   位相空間 $`X,Y`$ と写像 $`f:X\to Y`$ と 点 $`x\in X`$ に対して, 以下同値:
     1. $`f`$ は $`x`$ で連続である.
     2. $`x`$ に収束する任意のネット $`(x_\lambda)_{\lambda\in\Lambda}`$ に対して, ネット $`(f(x_\lambda))_{\lambda\in\Lambda}`$ は $`f(x)`$ へ収束する.
+
+Proof.
+:   $`f`$ が $`x`$ で連続なら, $`f(x)`$ の任意の近傍 $`V`$ の逆像は $`x`$ の近傍である.
+    $`x_\lambda\to x`$ なら, その逆像に最終的に属するので $`f(x_\lambda)`$ は $`V`$ に最終的に属する.
+    逆に (2) で $`f`$ が連続でないと仮定すると, ある $`f(x)`$ の近傍 $`V`$ について $`f^{-1}(V)`$ は $`x`$ の近傍でない.
+    各 $`x`$ の近傍 $`U`$ から $`U\setminus f^{-1}(V)`$ の一点を選ぶネットは $`x`$ に収束するが, その像は $`V`$ に入らない.
+    これは (2) に矛盾する.
 
 ### 位相空間上のフィルター
 
@@ -895,35 +1015,79 @@ Proposition.
     1. $`\mathcal{F}`$ と $`\mathcal{G}`$ は両立している.
     2. $`\mathcal{F}`$ と $`\mathcal{G}`$ は共通の細分を持つ.
 
+Proof.
+:   (1) を仮定する.
+    $`\{F\cap G\mid F\in\mathcal{F},G\in\mathcal{G}\}`$ は空集合を含まないフィルター基である.
+    その生成するフィルターは $`\mathcal{F}`$ と $`\mathcal{G}`$ の共通細分となる.
+    逆に共通細分 $`\mathcal{H}`$ があるなら, 任意の $`F\in\mathcal{F}`$ と $`G\in\mathcal{G}`$ はともに $`\mathcal{H}`$ に属する.
+    したがって $`F\cap G\in\mathcal{H}`$ であり, フィルターの真性から $`F\cap G\neq\emptyset`$ である.
+
 Definition.
 :   両立している $`X`$ 上のフィルター $`\mathcal{F},\mathcal{G}`$ の **交わり** (*meet*) とは, $`X`$ 上のフィルター $`\mathcal{F}\wedge\mathcal{G}`$ であって, 次で定まる.
     ```math
-    \mathcal{F}\wedge\mathcal{G}\coloneqq\{F\cap G\mid F\in\mathcal{F},G\in\mathcal{G}\}
+    \mathcal{F}\wedge\mathcal{G}\coloneqq\{H\subseteq X\mid \exists F\in\mathcal{F},\exists G\in\mathcal{G},F\cap G\subseteq H\}
     ```
-    定義より明らかに, $`\mathcal{F}\wedge\mathcal{G}`$ は $`\mathcal{F}`$ と $`\mathcal{G}`$ の細分であって, 細分関係により最大のものである.
+    これは $`\mathcal{F}`$ と $`\mathcal{G}`$ の共通細分のうち, 包含関係で最小のものである.
 
 Proposition. **有限交叉族の生成するフィルター基**
 :   集合 $`X`$ と有限交叉性を持つ $`X`$ の部分集合族 $`\mathcal{F}`$ に対して, $`X`$ の部分集合族 $`\mathcal{F}^\ast`$ を
     ```math
     \mathcal{F}^\ast\coloneqq\left\{\bigcap_{i=1}^{n}F_i\mathrel{}\middle|\mathrel{}F_i\in\mathcal{F}(i=1,2,\ldots,n),n\in\mathbf{Z}_{\geq1}\right\}
     ```
-    とすると, $`\mathcal{F}^\ast`$ は $`\mathcal{F}`$ の細分であって, 細分関係により最大のフィルター基となる.
+    とすると, $`\mathcal{F}^\ast`$ は $`\mathcal{F}`$ を含み有限交叉に閉じた最小のフィルター基となる.
 
-有限交叉性を持つ $`X`$ の部分集合族 $`\mathcal{F}`$ の生成するフィルター基 $`\mathcal{F}^\ast`$ に対して, $`\mathcal{F}^\ast`$ の生成するフィルターを $`\langle\mathcal{F}\rangle`$ と表し, これを $`\mathcal{F}`$ の生成するフィルターと呼ぶ. 定義より明らかに $`\langle\mathcal{F}\rangle`$ は $`\mathcal{F}`$ の細分であって, 細分関係により最大のフィルターとなる. 特に, 空でない部分集合 $`A\subseteq X`$ のみからなる集合族 $`\{A\}`$ の生成するフィルター $`\langle\{A\}\rangle`$ を $`A`$ が生成する単項フィルターという.
+Proof.
+:   $`\mathcal{F}`$ の元は $`n=1`$ として $`\mathcal{F}^\ast`$ に属する.
+    また有限個の有限交叉の交わりは, 指標を併せれば再び $`\mathcal{F}^\ast`$ の元である.
+    有限交叉性によりその元は空でないので, $`\mathcal{F}^\ast`$ はフィルター基である.
+    さらに $`\mathcal{F}`$ を含み有限交叉に閉じた任意の集合族は, 有限回の交わりを取ることで $`\mathcal{F}^\ast`$ のすべての元を含む.
+    したがって最小性が従う.
+
+有限交叉性を持つ $`X`$ の部分集合族 $`\mathcal{F}`$ の生成するフィルター基 $`\mathcal{F}^\ast`$ に対して, $`\mathcal{F}^\ast`$ の生成するフィルターを $`\langle\mathcal{F}\rangle`$ と表し, これを $`\mathcal{F}`$ の生成するフィルターと呼ぶ. すなわち
+```math
+\langle\mathcal{F}\rangle
+ =\{H\subseteq X\mid\exists F\in\mathcal{F}^\ast, F\subseteq H\}.
+```
+これは $`\mathcal{F}`$ を含むフィルターのうち包含関係で最小のものである. 特に, 空でない部分集合 $`A\subseteq X`$ のみからなる集合族 $`\{A\}`$ の生成するフィルター $`\langle\{A\}\rangle`$ を $`A`$ が生成する単項フィルターという.
 
 Theorem. **超フィルターの存在**
-:   集合 $`X`$ の部分集合 $`A`$ に対して, $`A`$ を含むような $`X`$ 上の超フィルターが存在する.
+:   集合 $`X`$ の空でない部分集合 $`A`$ に対して, $`A`$ を含むような $`X`$ 上の超フィルターが存在する.
+
+Proof.
+:   $`A`$ を含む真のフィルター全体を包含関係で順序づける.
+    空でない $`A`$ が生成する単項フィルターはこの集合に属するから, この順序集合は空でない.
+    鎖 $`\{\mathcal{F}_i\}_{i\in I}`$ の和集合はフィルターの公理を満たし, 空集合を含まない.
+    実際, 有限個の要素は鎖の比較可能性によって一つの $`\mathcal{F}_i`$ に同時に属する.
+    よって Zorn の補題により極大元 $`\mathcal{M}`$ が存在する.
+    この $`\mathcal{M}`$ は $`A`$ を含む超フィルターである.
 
 Proposition. **超フィルターの特徴づけ**
 :   集合 $`X`$ 上のフィルター $`\mathcal{M}`$ に対して, 以下同値.
     1. $`\mathcal{M}`$ は超フィルターである.
     2. 任意の $`A\in2^X`$ に対して, 各 $`M\in\mathcal{M}`$ で $`A\cap M\neq\emptyset`$ であれば $`A\in\mathcal{M}`$ である.
-    3. 任意の $`A\in\mathcal{M}`$ に対して, $`B\subseteq A`$ は $`B\in\mathcal{M}`$ である.
+    3. 任意の $`A,B\subseteq X`$ に対して, $`A\cup B\in\mathcal{M}`$ ならば $`A\in\mathcal{M}`$ または $`B\in\mathcal{M}`$ である.
     4. 任意の $`A\in2^X`$ に対して, $`A\in\mathcal{M}`$ あるいは $`A^\complement\in\mathcal{M}`$ である.
+
+Proof.
+:   (1)$`\Rightarrow`$(2) を示す.
+    $`A`$ が各 $`M\in\mathcal{M}`$ と交わるなら, $`\mathcal{M}\cup\{A\}`$ は有限交叉性を持つ.
+    これが生成するフィルターは $`\mathcal{M}`$ の細分であるから, 極大性より $`A\in\mathcal{M}`$ である.
+    (2)$`\Rightarrow`$(3) とする.
+    $`A\cup B\in\mathcal{M}`$ で $`A\notin\mathcal{M}`$ なら, (2) の対偶からある $`M\in\mathcal{M}`$ が $`A\cap M=\emptyset`$ を満たす.
+    このとき $`(A\cup B)\cap M\in\mathcal{M}`$ かつ $`(A\cup B)\cap M\subseteq B`$ だから $`B\in\mathcal{M}`$ である.
+    (3)$`\Rightarrow`$(4) は $`X=A\cup A^\complement\in\mathcal{M}`$ を (3) に適用すればよい.
+    (4)$`\Rightarrow`$(1) とする.
+    $`\mathcal{M}`$ の真の細分 $`\mathcal{G}`$ があると仮定し, $`A\in\mathcal{G}\setminus\mathcal{M}`$ を取る.
+    (4) より $`A^\complement\in\mathcal{M}\subseteq\mathcal{G}`$ となり, $`\emptyset=A\cap A^\complement\in\mathcal{G}`$ は矛盾である.
+    したがって $`\mathcal{M}`$ は超フィルターである.
 
 Definition. **フィルターの制限と拡張**
 :   集合 $`X`$ と空でない部分集合 $`A\subseteq X`$ に対して, 次がそれぞれ成り立つ.
-    - $`X`$ 上のフィルター $`\mathcal{F}`$ が $`A\in\mathcal{F}`$ であれば集合族 $`\mathcal{F}|_A\coloneqq\{F\cap A\mid F\in\mathcal{F}\}`$ は $`A`$ 上のフィルターである. $`\mathcal{F}|_A`$ を $`\mathcal{F}`$ の $`A`$ への制限と呼ぶ.
+    - $`X`$ 上のフィルター $`\mathcal{F}`$ が $`A\in\mathcal{F}`$ であれば
+      ```math
+      \mathcal{F}|_A\coloneqq\{B\subseteq A\mid\exists F\in\mathcal{F},F\cap A\subseteq B\}
+      ```
+      は $`A`$ 上のフィルターである. $`\mathcal{F}|_A`$ を $`\mathcal{F}`$ の $`A`$ への制限と呼ぶ.
     - $`A`$ 上のフィルター $`\mathcal{G}`$ に対して集合族 $`\hat{\mathcal{G}}\coloneqq\{F\in2^X\mid\exists G\in\mathcal{G}\text{ s.t. }G\subseteq F\}`$ は $`X`$ 上のフィルターである. $`\hat{\mathcal{G}}`$ を $`\mathcal{G}`$ の $`X`$ への拡張と呼ぶ.
 
     さらに, 対応 $`\mathcal{F}\mapsto\mathcal{F}|_A`$, $`\mathcal{G}\mapsto\hat{\mathcal{G}}`$ はそれぞれ $`A`$ を含む $`X`$ 上のフィルター全体と $`A`$ 上のフィルター全体の写像となり, 制限と拡張は互いに逆写像となる.
@@ -931,11 +1095,19 @@ Definition. **フィルターの制限と拡張**
 以後, この対応により $`A`$ を含む $`X`$ 上のフィルターと $`A`$ 上のフィルターを同一視する.
 
 Proposition. **フィルターの像**
-:   集合 $`X`$ 上のフィルター $`\mathcal{M}`$ と写像 $`f:X\to Y`$ に対して, $`\mathcal{F}`$ の $`f`$ による像
+:   集合 $`X`$ 上のフィルター $`\mathcal{F}`$ と写像 $`f:X\to Y`$ に対して, $`\mathcal{F}`$ の $`f`$ による像
     ```math
     f[\mathcal{F}]\coloneqq\{G\in2^Y\mid f^{-1}(G)\in\mathcal{F}\}
     ```
     は $`Y`$ 上のフィルターである. 特に $`\mathcal{F}`$ が超フィルターであれば $`f[\mathcal{F}]`$ も超フィルターである.
+
+Proof.
+:   逆像は全体集合と有限交叉を保ち, 包含関係を保つ.
+    したがって表示した集合族はフィルターの三公理を満たし, 空集合を含まない.
+    $`\mathcal{F}`$ が超フィルターであり $`B\subseteq Y`$ を取る.
+    $`f^{-1}(B)`$ とその補集合 $`f^{-1}(B^\complement)`$ のいずれか一方は $`\mathcal{F}`$ に属する.
+    よって $`B`$ または $`B^\complement`$ が $`f[\mathcal{F}]`$ に属する.
+    超フィルターの特徴づけから $`f[\mathcal{F}]`$ は超フィルターである.
 
 Definition. **フィルターの収束**
 :   位相空間 $`X`$ と $`X`$ 上のフィルター $`\mathcal{F}`$ と 点 $`x\in X`$ に対して, $`\mathcal{F}`$ が $`x`$ の近傍系 $`\mathcal{N}_X(x)`$ の細分となるとき, $`x`$ を **フィルター $`\mathcal{F}`$ の極限点** (*limit point of a filter $`\mathcal{F}`$*) といい, 極限の存在するフィルターは**収束する** (*converge*) といい, 収束しないフィルターは**発散する** (*diverge*) という.
@@ -943,25 +1115,51 @@ Definition. **フィルターの収束**
 Definition. **フィルターの堆積**
 :   位相空間 $`X`$ と $`X`$ 上のフィルター $`\mathcal{F}`$ と 点 $`x\in X`$ に対して, $`\mathcal{F}`$ が $`x`$ の近傍系 $`\mathcal{N}_X(x)`$ と両立するとき, $`x`$ を **フィルター $`\mathcal{F}`$ の堆積点** (*cluster point of a filter $`\mathcal{F}`$*) という.
 
-フィルター基 $`\mathcal{F}`$ に対して, $`\mathcal{F}`$ の極限点(resp. 堆積点)を $`\mathcal{F}`$ の生成するフィルターの極限点(resp. 堆積点)とする.
+フィルター基 $`\mathcal{F}`$ に対して, $`\mathcal{F}`$ の極限点（それぞれ堆積点）を $`\mathcal{F}`$ の生成するフィルターの極限点（それぞれ堆積点）とする.
 
 Theorem. **堆積点の特徴づけ**
 :   位相空間 $`X`$ と $`X`$ 上のフィルター $`\mathcal{F}`$ と 点 $`x\in X`$ に対して, 以下同値:
     1. $`x`$ は $`\mathcal{F}`$ の堆積点である.
     2. $`\mathcal{F}`$ の細分で $`x`$ に収束するものが存在する.
 
+Proof.
+:   (1) を仮定する.
+    $`\mathcal{F}`$ と $`\mathcal{N}_X(x)`$ の交わりはフィルターであり, 両者の共通細分である.
+    これは $`\mathcal{F}`$ の細分であって $`\mathcal{N}_X(x)`$ の細分でもあるから, $`x`$ に収束する.
+    逆に $`\mathcal{G}`$ が $`\mathcal{F}`$ の細分で $`x`$ に収束するとする.
+    任意の $`F\in\mathcal{F}`$ と $`U\in\mathcal{N}_X(x)`$ はともに $`\mathcal{G}`$ に属するため, $`F\cap U\neq\emptyset`$ である.
+    よって $`\mathcal{F}`$ と $`\mathcal{N}_X(x)`$ は両立し, $`x`$ は堆積点である.
+
 Theorem.
 :   位相空間 $`X`$ と部分集合 $`A\subseteq X`$ と 点 $`x\in X`$ に対して, 以下同値:
     1. $`x\in\overline{A}`$.
     2. $`x`$ に収束する $`A`$ 上のフィルターが存在する.
 
+Proof.
+:   $`x\in\overline{A}`$ は, 任意の $`x`$ の近傍が $`A`$ と交わることと同値である.
+    これは単項フィルター $`\langle\{A\}\rangle`$ と $`\mathcal{N}_X(x)`$ の両立と同値である.
+    前定理より, $`\langle\{A\}\rangle`$ の細分で $`x`$ に収束するフィルターが存在することと同値である.
+    このフィルターは $`A`$ を含むから, 制限により $`A`$ 上の収束フィルターを与える.
+    逆向きは, $`A`$ 上のフィルターを $`X`$ 上へ拡張して前定理を逆向きに適用すれば従う.
+
 Theorem.
 :   位相空間 $`X`$ に対して, $`X`$ 上のフィルター $`\mathcal{F}`$ の堆積点全体は $`\bigcap_{F\in\mathcal{F}}\overline{F}`$ と一致する.
+
+Proof.
+:   $`x`$ が $`\mathcal{F}`$ の堆積点であることは, 任意の $`F\in\mathcal{F}`$ と任意の $`x`$ の近傍が交わることと同値である.
+    これは任意の $`F\in\mathcal{F}`$ に対して $`x\in\overline{F}`$ と同値であり, 結論が従う.
 
 Theorem.
 :   位相空間 $`X,Y`$ と写像 $`f:X\to Y`$ と 点 $`x\in X`$ に対して, 以下同値:
     1. $`f`$ は $`x`$ で連続である.
     2. $`x`$ に収束する $`X`$ 上の任意のフィルター $`\mathcal{F}`$ に対して, $`\mathcal{F}`$ の $`f`$ による像 $`f[\mathcal{F}]`$ は $`f(x)`$ へ収束する.
+
+Proof.
+:   (1) は $`f^{-1}(V)\in\mathcal{N}_X(x)`$ が任意の $`V\in\mathcal{N}_Y(f(x))`$ に対して成り立つことと同値である.
+    $`\mathcal{F}`$ が $`x`$ に収束すれば $`f^{-1}(V)\in\mathcal{F}`$ となり, 定義から $`V\in f[\mathcal{F}]`$ である.
+    よって (2) が従う.
+    逆に (2) で $`\mathcal{F}=\mathcal{N}_X(x)`$ と置けば, $`f[\mathcal{N}_X(x)]`$ は $`f(x)`$ に収束する.
+    これは上の近傍による連続性の条件そのものである.
 
 ### フィルターとネットの相互変換
 
@@ -977,6 +1175,13 @@ Proposition. **ネットの生成するフィルター基**
 
     $`\mathcal{F}`$ をネット $`p=(p_\lambda)_{\lambda\in\Lambda}`$ の生成するフィルター基といい, $`\varphi(p)`$ と表す.
 
+Proof.
+:   各 $`F_\lambda`$ は $`p_\lambda`$ を含むので空でない.
+    $`\lambda,\mu\in\Lambda`$ に対して両者の上界 $`\nu`$ を取れば $`F_\nu\subseteq F_\lambda\cap F_\mu`$ である.
+    よって $`\mathcal{F}`$ はフィルター基である.
+    $`p`$ が $`x`$ に収束することは, 任意の $`x`$ の近傍 $`U` に対してある $`\lambda`$ が存在し $`F_\lambda\subseteq U`$ となることと同値である.
+    これは, $`U` が $`\mathcal{F}`$ の生成するフィルターに属することと同値である.
+
 Proposition. **フィルター基の生成するネット**
 :   位相空間 $`X`$ と $`X`$ 上のフィルター基 $`\mathcal{F}`$ に対して,
     ```math
@@ -989,23 +1194,48 @@ Proposition. **フィルター基の生成するネット**
 
     $`(p_{(a,A)})`$ をフィルター基 $`\mathcal{F}`$ の生成するネットといい, $`\psi(\mathcal{F})`$ と表す.
 
+Proof.
+:   二つの添字 $`(a,A),(b,B)`$ に対して, フィルター基の条件から $`C\in\mathcal{F}`$ かつ $`C\subseteq A\cap B`$ を取れる.
+    $`c\in C`$ を選べば $`(c,C)`$ は両者の上界であり, $`\Lambda`$ は有向集合である.
+    $`\mathcal{F}`$ が $`x`$ に収束し, $`U` を $`x`$ の近傍とする.
+    ある $`A\in\mathcal{F}`$ が $`A\subseteq U`$ を満たすので, $`(a,A)`$ より後の添字 $`(b,B)`$ では $`B\subseteq A`$ かつ $`p_{(b,B)}=b\in U`$ となる.
+    よってネットは $`x`$ に収束する.
+    逆にネットが $`x`$ に収束し, $`U`$ を $`x`$ の近傍とする.
+    ある $`(a,A)`$ より後のすべての項が $`U`$ に属する.
+    任意の $`b\in A`$ に対し $`(b,A)`$ は $`(a,A)`$ より後であるから $`b\in U`$ である.
+    よって $`A\subseteq U`$ であり, $`\mathcal{F}`$ は $`x`$ に収束する.
+
 Proposition. **ネットとフィルター基の合成**
 :   集合 $`X`$ のネット $`p=(p_\lambda)_{\lambda\in\Lambda}`$ に対して, $`(\psi\circ\varphi)(p)`$ は $`p`$ の部分ネットとなる.
 
+Proof.
+:   $`\varphi(p)`$ の要素は尾部集合 $`F_\lambda`$ である.
+    厳密には添字を $`(p_j,F_\lambda,j)`$ ($`j\geq\lambda`$) に持ち上げる.
+    二つのこのような添字には, もとの有向性によって両方の $`j`$ と $`\lambda`$ より後の共通上界を取れる.
+    この持ち上げた有向集合は $`(\psi\circ\varphi)(p)`$ の添字集合への共終な写像を持ち, $`j`$ への射影は $`\Lambda`$ への単調共終写像である.
+    対応する値は常に $`p_j`$ なので, $`(\psi\circ\varphi)(p)`$ は共終な再添字付けを除いて $`p`$ の部分ネットである.
+
 Proposition. **フィルター基とネットの合成**
 :   集合 $`X`$ 上のフィルター基 $`\mathcal{F}`$ に対して, $`\mathcal{F}=(\varphi\circ\psi)(\mathcal{F})`$ となる.
+
+Proof.
+:   $`A\in\mathcal{F}`$ と $`a\in A`$ を取る.
+    ネット $`\psi(\mathcal{F})`$ における添字 $`(a,A)`$ の尾部の値全体は $`A`$ に一致する.
+    実際, それより後の添字 $`(b,B)`$ では $`B\subseteq A`$ なので $`b\in A`$ である.
+    逆に任意の $`b\in A`$ に対して $`(b,A)`$ は $`(a,A)`$ より後にあり, その値は $`b`$ である.
+    よって得られる尾部集合全体はちょうど $`\mathcal{F}`$ である.
 
 ### 特別な部分集合
 
 Definition.
 :   位相空間 $`X`$ の部分集合 $`A\in2^X`$ の集積点全体を $`A^d`$ とし, これを $`A`$ の**導来集合** (*derived set*) という.
-    $`A\subseteq A^d`$ な $`A`$ を **自己稠密集合** (*dense-in-itself set*) といい, 特に $`A=A^d`$ な $`A`$ を **完全集合** (*prefect set*) という.
+    $`A\subseteq A^d`$ な $`A`$ を **自己稠密集合** (*dense-in-itself set*) といい, 特に $`A=A^d`$ な $`A`$ を **完全集合** (*perfect set*) という.
 
 Definition. **正則開集合**
 :   位相空間 $`X`$ に対して, 開集合 $`G`$ が $`\overline{G}^\circ=G`$ を満たすとき, $`G`$ を **正則開集合** (*regular open set*) という.
 
 Definition. **稠密と疎**
-:   位相空間 $`X`$ に対して, 部分集合 $`S\in2^X`$ が $`X=\overline{S}`$ を満たすとき $`S`$ は $`X`$ において **稠密** (*dence*) であるという.
+:   位相空間 $`X`$ に対して, 部分集合 $`S\in2^X`$ が $`X=\overline{S}`$ を満たすとき $`S`$ は $`X`$ において **稠密** (*dense*) であるという.
     他方, 部分集合 $`S\in2^X`$ が $`\overline{S}^\circ=\emptyset`$ を満たすとき, $`S`$ は $`X`$ における **疎集合** (*nowhere dense set*) という.
 
 Definition. **痩集合**
@@ -1070,7 +1300,7 @@ Definition. **誘導位相**
 Proposition. **誘導位相の構成**
 :   集合 $`X`$ と位相空間の列 $`(Y_\lambda\mid\lambda\in\Lambda)`$ と写像列 $`f=(f_\lambda:X\to Y_\lambda\mid\lambda\in\Lambda)`$ に対して, $`X`$ の部分集合族
     ```math
-    \bigcup_{\lambda\in\Lambda}\{f_\lambda^{-1}(G_\lambda)\mid G_\lambda\in\mathbf{O}_{X_\lambda}\}
+    \bigcup_{\lambda\in\Lambda}\{f_\lambda^{-1}(G_\lambda)\mid G_\lambda\in\mathbf{O}_{Y_\lambda}\}
     ```
     から生成される開集合系は $`f`$ による誘導位相による開集合系と一致する.
 
@@ -1148,7 +1378,7 @@ Definition. **乗法的性質**
     特に $`P`$ が如何なる基数 $`\kappa`$ に対しても $`\kappa`$-乗法的であるとき単に乗法的であるという. また, $`\aleph_0`$-乗法的な位相的性質を **可算乗法的** (*countable multiplicative*) であるといい, 有限基数 $`\kappa`$ について $`\kappa`$-乗法的な位相的性質を **有限乗法的** (*finite multiplicative*) であるという.
 
 Definition. **除法的性質**
-:   位相的性質 $`P`$ が **除法的** (*divisibility*) であるとは, $`P`$ を満たすような任意の位相空間 $`X`$ に対して, 任意の集合 $`Y`$ と任意の全射写像 $`f:Y\to X`$ による商空間 $`X/f`$ も $`P`$ を満たすときいう.
+:   位相的性質 $`P`$ が **除法的** (*divisible*) であるとは, $`P`$ を満たす任意の位相空間 $`X`$ と任意の全射写像 $`f:X\to Y`$ に対して, $`f`$ による商空間 $`Y`$ も $`P`$ を満たすときいう.
 
 ---
 
@@ -1193,7 +1423,7 @@ Definition. **$`\mathbf{T}_1`$ 空間**
 $`\mathbf{T}_1`$ 空間は古典的には **Fréchet 空間** (*Fréchet space*) または **到達可能空間** (*accessible space*) と呼ばれることがある。ただし現代では "Fréchet space" が関数解析における Fréchet–Urysohn 性を指す場合も多いため, 本書では $`\mathbf{T}_1`$ 空間を主名称とする.
 
 Definition. **前正則空間**
-:   位相空間 $`X`$ が **前正則** (*preregular*) であるとは, $`X`$ の任意の異なる 2 点が近傍で分離されるときいう.
+:   位相空間 $`X`$ が **前正則** (*preregular*) であるとは, $`X`$ の任意の位相的に識別可能な 2 点が近傍で分離されるときいう.
 
 Definition. **Hausdorff 空間**
 :   位相空間 $`X`$ が **Hausdorff 空間** (*Hausdorff space*) であるとは, $`X`$ の任意の異なる 2 点が近傍で分離されるときいう.
@@ -1225,6 +1455,16 @@ Theorem. **遺伝的正規性の特徴づけ**
 
 遺伝的正規空間は古典的には **全部分正規空間** (*completely normal space*) と呼ばれる.
 
+Proof.
+:   (1) を仮定し, 分離された部分集合 $`A,B\subseteq X`$ をとる.
+    部分空間 $`A\cup B`$ では $`A,B`$ は互いに素な閉集合であるから, 正規性によりこの部分空間内で近傍分離できる.
+    部分空間の開集合を $`X`$ の開集合へ持ち上げれば, $`A,B`$ は $`X`$ でも近傍分離される.
+    逆に (2) を仮定する.
+    任意の部分空間 $`S\subseteq X`$ の互いに素な閉集合 $`C,D`$ をとると, $`\overline C\cap D=C\cap\overline D=\emptyset`$ である.
+    よって $`C,D`$ は $`X`$ で分離され, (2) により $`X`$ 内で近傍分離される.
+    その近傍を $`S`$ と交わらせれば $`S`$ における $`C,D`$ の近傍分離となる.
+    従ってすべての部分空間が正規である.
+
 Definition. **完全正規**
 :   位相空間 $`X`$ が **完全正規** (*perfectly normal*) であるとは, 任意の閉集合 $`F,E`$ に対して, $`F\cap E=\emptyset`$ ならば $`F,E`$ は函数でちょうど分離されるときいう.
 
@@ -1233,12 +1473,30 @@ Theorem. **完全正規 (perfectly normal)**
     1. $`X`$ は完全正規である.
     2. $`X`$ は正規であり, 任意の閉集合が $`G_\delta`$ 集合となる.
 
+Proof.
+:   (1) なら函数による分離は近傍による分離を与えるので $`X`$ は正規である.
+    閉集合 $`F`$ を空集合と函数でちょうど分離する関数を $`f:X\to[0,1]`$ とすると, $`F=f^{-1}(0)`$ である.
+    よって
+    ```math
+    F=\bigcap_{n\geq1}f^{-1}([0,1/n))
+    ```
+    であり, $`F`$ は $`G_\delta`$ である.
+    逆に (2) を仮定する.
+    $`F=\bigcap_nG_n`$ と書き, 正規性を各対 $`F,X\setminus G_n`$ に適用して, $`F`$ 上で $`0`$, $`X\setminus G_n`$ 上で $`1`$ を取る連続関数 $`u_n:X\to[0,1]`$ を取る.
+    級数 $`u=\sum_{n\geq1}2^{-n}u_n`$ は一様収束して連続であり, $`u^{-1}(0)=F`$ となる.
+    この零集合表示と通常の Urysohn の補題を組み合わせれば, 任意の互いに素な閉集合を函数でちょうど分離できる.
+
 ### Kolmogorov 商
 
 2 点 $`x,y`$ が位相的に識別可能でないとき $`x\sim y`$ として定めたとき, この関係 $`\sim`$ を**位相的不可識別性** (*topological indistinguishability*) と呼ぶ.
 
 Proposition.
-:   位相的不可識別性はの同値関係である.
+:   位相的不可識別性は同値関係である.
+
+Proof.
+:   任意の点の近傍系は自分自身と一致するから反射的である.
+    近傍系の一致は対称的であり, また $`\mathcal{N}(x)=\mathcal{N}(y)`$ と $`\mathcal{N}(y)=\mathcal{N}(z)`$ なら $`\mathcal{N}(x)=\mathcal{N}(z)`$ なので推移的である.
+    よって位相的不可識別性は同値関係である.
 
 Definition. **Kolmogorov 商**
 :   位相空間 $`X`$ に対して, 位相的不可識別性 $`\sim`$ による商空間 $`X/\sim`$ を $`X`$ の **Kolmogorov 商** (*Kolmogorov quotient*) といい, $`\operatorname{KQ}X`$ と表す.
@@ -1312,6 +1570,12 @@ Proposition.
     1. $`X`$ は弱 Urysohn 性を持つ.
     2. $`X`$ の Kolmogorov 商 は Urysohn 空間である.
 
+Proof.
+:   Kolmogorov 商では, 異なる二点はちょうど元の空間で識別可能な二点に対応する.
+    商での閉近傍による分離を商写像で引き戻せば, 元の空間での閉近傍による分離を得る.
+    逆に元の空間で識別可能な二点を閉近傍で分離できれば, 同値類で飽和した近傍を用いる標準的な飽和化によりその分離は商へ降下する.
+    したがって二つの条件は同値である.
+
 ### 名前付き $`\mathbf{T}_0`$-分離空間
 
 Definition. **Vietoris 空間**
@@ -1343,7 +1607,7 @@ Definition. **$`\mathbf{T}_5`$ 空間**
 Definition. **$`\mathbf{T}_6`$ 空間**
 :   完全正規かつ $`\mathbf{T}_1`$ な位相空間を $`\mathbf{T}_6`$ 空間という.
 
-古典的には **完全正規 Hausdorf** (*perfectly normal Hausdorff space*) とも呼ばれる.
+古典的には **完全正規 Hausdorff** (*perfectly normal Hausdorff space*) とも呼ばれる.
 
 ### 古典的分離公理との対応
 
@@ -1388,7 +1652,7 @@ Definition. **$`\mathbf{T}_6`$ 空間**
 Definition. **連結空間**
 :   位相空間 $`X`$ が **不連結** (*disconnected*) であるとは, 次を満たす開集合 $`G,H`$ が存在する時言う:
     ```math
-    A\cup B=X,\quad A\cap B=\emptyset,\quad A\neq\emptyset,\quad B\neq\emptyset
+    G\cup H=X,\quad G\cap H=\emptyset,\quad G\neq\emptyset,\quad H\neq\emptyset
     ```
     位相空間が不連結でないとき **連結** (*connected*) であるといい, 連結な位相空間を **連結空間** (*connected space*) という.
 
@@ -1436,7 +1700,7 @@ Theorem.
     各ファイバー $`f^{-1}(\{y\})`$ は連結であるから, $`A`$ と $`B`$ の両方に交わることはない.
     したがって
     ```math
-    f^{-1}(f(A))=A,qquad f^{-1}(f(B))=B
+    f^{-1}(f(A))=A,\qquad f^{-1}(f(B))=B
     ```
     である.
     $`f`$ は商写像であるから, $`f(A)`$ と $`f(B)`$ は $`Y`$ の開かつ閉な集合である.
@@ -1518,8 +1782,8 @@ Definition. **道**
 :   位相空間 $`X`$ の点 $`a,b\in X`$ に対して, **$`a`$ から $`b`$ への道** (*path from $`a`$ to $`b`$*) とは, $`f(0)=a`$ かつ $`f(1)=b`$ を満たすような連続写像 $`f\colon[0,1]\toX`$ のことである.
     このとき, $`a`$ をこの道の始点, $`b`$ をこの道の終点という.
 
-Definition. **弧状連結**
-:   位相空間が **弧状連結** (*pathwise connected*) であるとは, 任意の 2 点の間に道が存在するときいう. 弧状連結な位相空間を **弧状連結空間** (*pointwise connected space*) という.
+Definition. **道連結**
+:   位相空間が **道連結** (*path-connected*) であるとは, 任意の 2 点の間に道が存在するときいう. 道連結な位相空間を **道連結空間** (*path-connected space*) という.
     特に, 弧状連結空間であって任意の 2 点の間に道として埋め込みであるようなものが存在するとき, **弧連結** (*arcwise connected*) であるといい, そのような位相空間を **弧連結空間** (*arcwise connected space*) という.
 
 Theorem. **道の性質**
@@ -1549,7 +1813,7 @@ Theorem. **道の性質**
     定義より $`(f\ast g)(0)=f(0)=a`$ と $`(f\ast g)(1)=g(1)=c`$ である.
 
 Theorem.
-:   弧状連結なら連結である.
+:   道連結なら連結である.
 
 <u>proof.</u>
 :   弧状連結空間 $`X`$ が不連結であると仮定し, 互いに交わらない空でない開集合 $`U,V`$ で $`X=U\cup V`$ となるものをとる.
@@ -1600,6 +1864,15 @@ Definition. **既約成分**
 Theorem. **既約成分の性質**
 :   位相空間 $`X`$ の点 $`x\in X`$ の既約成分を $`I`$ は, 点 $`x`$ を含む $`X`$ の既約集合のうち極大のものであり, かつ閉集合である.
 
+Proof.
+:   $`x`$ を含む既約集合すべての合併を $`I_x`$ とおく.
+    それらはすべて $`x`$ を含むので, 任意の二つの空でない相対開集合が交わるという既約性の特徴づけから $`I_x`$ は既約である.
+    定義より $`x`$ を含む任意の既約集合は $`I_x`$ に含まれるから, $`I_x`$ は極大であり既約成分に等しい.
+    既約集合の閉包は既約である.
+    実際, 閉包内の二つの空でない開集合はそれぞれ元の既約集合と交わり, 既約性から両者も交わる.
+    したがって $`\overline{I_x}`$ は $`x`$ を含む既約集合であり, 極大性から $`\overline{I_x}\subseteq I_x`$ である.
+    逆の包含と合わせて $`I_x=\overline{I_x}`$ となるので, 既約成分は閉集合である.
+
 ---
 
 ## 可算性
@@ -1631,7 +1904,7 @@ Definition. **第一可算空間**
     第一可算であるための条件を **第一可算公理** (*first axiom of countability*) という.
 
 Definition. **第二可算空間**
-:   位相空間 $`X`$ が **第一可算** (*second-countable*) であるとは, $`X`$ の位相的荷重が高々可算であるときいう.
+:   位相空間 $`X`$ が **第二可算** (*second-countable*) であるとは, $`X`$ の位相的荷重が高々可算であるときいう.
     第二可算な位相空間を **第二可算空間** (*second-countable space*) という.
     第二可算であるための条件を **第二可算公理** (*second axiom of countability*) という.
 
@@ -1722,7 +1995,7 @@ Definition. **星型集合**
     特に, $`A`$ が 1 点 $`x\in X`$ のみからなる集合のときは, $`\mathbf{U}(x)`$ と表す.
     また正整数 $`n`$ に対して,
     ```math
-    \mathbf{U}^n\coloneqq\left\{\bigcup_{i=1}^{n}U_i\mathrel{}\middle|\mathrel{}U_i\in\mathcal{U},U_i\cap U_{i+1}\neq\emptyset\right\},\quad \mathbf{U}^0=2^X
+    \mathbf{U}^n\coloneqq\left\{\bigcup_{i=1}^{n}U_i\mathrel{}\middle|\mathrel{}U_i\in\mathbf{U},U_i\cap U_{i+1}\neq\emptyset\right\},\quad \mathbf{U}^0=2^X
     ```
     とする.
 
@@ -1762,8 +2035,14 @@ Proposition.
 
 Proposition.
 :   集合 $`X`$ の被覆 $`\mathbf{U},\mathbf{V}`$ と $`A,B\in2^X`$ に対して次がそれぞれ成り立つ.
-    1. 正整数 $`m`$ に対して, $`A\cap\mathbf{U}^m(B)\neq\emptyset\iff\mathbf{U}^m\cap B\neq\emptyset`$.
+    1. 正整数 $`m`$ に対して, $`A\cap\mathbf{U}^m(B)\neq\emptyset\iff\mathbf{U}^m(A)\cap B\neq\emptyset`$.
     2. 正整数 $`m,n`$ に対して, $`\mathbf{U}^{m+n}(A)=\mathbf{U}^m(\mathbf{U}^n(A))`$.
+
+Proof.
+:   (1) は, $`\mathbf{U}`$ の元の鎖を逆順にしても隣接する集合の交わりが保たれることから従う.
+    実際, $`A`$ の点と $`B`$ の点を結ぶ長さ $`m`$ の鎖があることは, 同じ鎖を逆向きに読んで $`B`$ の点と $`A`$ の点を結ぶことと同値である.
+    (2) の左辺の鎖を最初の $`n`$ 個と残りの $`m`$ 個に分けると, 中間の星を経由して右辺の元となる.
+    逆に右辺の二つの鎖を接続すれば長さ $`m+n`$ の鎖となる.
 
 Definition. **重心細分と星型細分**
 :   集合 $`X`$ の被覆 $`\mathbf{U},\mathbf{V}`$ に対して,
@@ -1781,8 +2060,19 @@ Definition. **重心細分と星型細分**
 Proposition.
 :   集合 $`X`$ の被覆 $`\mathbf{U}`$ と $`A\in2^X`$ に対して, $`\mathbf{U}^2(A)=\mathbf{U}^\varDelta(A)`$ かつ $`\mathbf{U}^3(A)=\mathbf{U}^\ast(A)`$ が成り立つ.
 
+Proof.
+:   $`x\in\mathbf U(A)`$ であることは, $`A`$ と交わる $`U\in\mathbf U`$ が $`x`$ を含むことと同値である.
+    したがって二段の鎖は, ある点 $`x`$ を中心とする $`\mathbf U(x)`$ に入ることと同値であり, 前半の等式を得る.
+    同様に三段の鎖は, $`A`$ と交わる一つの $`U\in\mathbf U`$ の星 $`\mathbf U(U)`$ に入ることと同値である.
+    これは後半の等式である.
+
 Proposition.
 :   集合 $`X`$ の被覆 $`\mathbf{U}`$ に対して, $`\mathbf{U}\leq\mathbf{U}^\varDelta\leq\mathbf{U}^\ast\leq(\mathbf{U}^\varDelta)^\varDelta=\{\mathbf{U}^2(x)\mid x\in X\}`$ が成り立つ.
+
+Proof.
+:   $`x\in U`$ ならば $`U\subseteq\mathbf U(x)`$ であるから, 最初の細分関係が従う.
+    また $`\mathbf U(x)`$ は $`x`$ を含む任意の $`U`$ の星に含まれるので, 第二の関係が従う.
+    最後の関係と等式は, 前の命題を $`A=\{x\}`$ に適用して得られる.
 
 Proposition.
 :   位相空間 $`X`$ の開被覆 $`\mathbf{U}`$ と部分集合 $`A\in2^X`$ に対して, $`\overline{A}\subseteq\mathbf{U}(A)`$ となる.
@@ -1872,7 +2162,16 @@ Proposition. **Hausdorff 空間のコンパクト部分集合**
     よって $`X\setminus K`$ は開集合であり, $`K`$ は閉集合である.
 
 Theorem. **Heine–Borel の被覆定理の類似**
-:   コンパクト距離空間 $`K`$ 上の複素数値写像の集合 $`S`$ に対して, $`S`$ が一様ノルムによりコンパクトであることと, $`S`$ が閉集合かつ各点毎に有界かつ同程度連続であることは同値である.
+:   コンパクト距離空間 $`K`$ 上の連続複素数値写像の集合 $`S\subseteq C(K,\mathbb{C})`$ に対して, $`S`$ が一様ノルムによりコンパクトであることと, $`S`$ が閉集合かつ各点ごとに有界かつ同程度連続であることは同値である.
+
+Proof.
+:   $`S`$ が一様ノルムでコンパクトなら, 評価写像 $`f\mapsto f(x)`$ の連続性から各点有界であり, 有限個の一様ノルム球で被覆することで同程度連続性も従う.
+    逆に $`S`$ が各点有界かつ同程度連続であるとする.
+    任意の $`\varepsilon>0`$ に対し, 同程度連続性と $`K`$ のコンパクト性から有限集合 $`E\subseteq K`$ を選び, 各 $`x\in K`$ がある $`e\in E`$ に対して $`|f(x)-f(e)|<\varepsilon/3`$ をすべての $`f\in S`$ について満たすようにできる.
+    評価値の集合 $`\{(f(e))_{e\in E}\mid f\in S\}`$ は有限次元空間で有界なので全有界である.
+    その有限 $`\varepsilon/3`$-近似を上の不等式と合わせると, $`S`$ は一様ノルムで全有界となる.
+    $`C(K,\mathbb C)`$ は一様ノルムで完備であり, $`S`$ は閉集合だから完備でもある.
+    よって $`S`$ はコンパクトである.
 
 Theorem. **Dini の定理**
 :   コンパクト空間 $`X`$ に対して, 連続写像の列 $`(f_n:X\to\mathbb{R})_{n=1,2,\ldots}`$ が
@@ -1881,13 +2180,27 @@ Theorem. **Dini の定理**
 
     を満たすとき, $`(f_n)`$ は $`f`$ に一様収束する.
 
+Proof.
+:   各 $`x\in X`$ で $`f_n(x)\uparrow f(x)`$ であるから, $`f-f_n\geq0`$ である.
+    $`\varepsilon>0`$ に対し
+    ```math
+    U_n\coloneqq\{x\in X\mid f(x)-f_n(x)<\varepsilon\}
+    ```
+    とおく.
+    各 $`U_n`$ は開集合であり, 点ごとの収束から $`(U_n)_{n\geq1}`$ は $`X`$ の開被覆となる.
+    単調性より $`U_n\subseteq U_{n+1}`$ である.
+    コンパクト性から有限部分被覆が存在し, その添字の最大値を $`N`$ とすれば $`U_N=X`$ となる.
+    よって任意の $`x\in X`$ に対して $`0\leq f(x)-f_N(x)<\varepsilon`$ であり, 単調性からすべての $`n\geq N`$ について同じ不等式が成り立つ.
+    したがって $`f_n`$ は $`f`$ に一様収束する.
+
 Theorem. **Tychonoff の定理**
-:   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ に対して, 以下同値.
+:   すべて空でない位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ に対して, 以下同値.
     1. 各 $`X_\lambda`$ はコンパクト空間である.
     2. 積空間 $`\prod_{\lambda\in\Lambda}X_\lambda`$ はコンパクト空間である.
 
 <u>proof.</u>
-:   $`(2)\Rightarrow(1)` は射影 $`\pi_\lambda:\prod_\mu X_\mu\to X_\lambda`$ が連続全射であることから従う.
+:   選択公理により, 非空な因子の族の積は非空であり, 各射影 $`\pi_\lambda:\prod_\mu X_\mu\to X_\lambda`$ は連続全射である.
+    よって $`(2)\Rightarrow(1)` はコンパクト性の連続全射像による保存から従う.
     $`(1)\Rightarrow(2)` を示す.
     積空間上の超フィルター $`\mathcal{U}`$ をとる.
     各射影による像 $`(\pi_\lambda)_*\mathcal{U}`$ は $`X_\lambda`$ 上の超フィルターである.
@@ -1996,10 +2309,21 @@ Definition. **可算コンパクト空間**
 :   位相空間 $`X`$ が **可算コンパクト性を持つ** (*Countably compactness*) とは, $`X`$ の任意の可算開被覆が有限な部分被覆を持つときいう. 可算コンパクト性を持つ位相空間を **可算コンパクト空間** (*Countably compact space*) という.
 
 Theorem. **可算コンパクト性と同値な命題**
-:   位相空間 $`X`$ に対して以下同値.
+:   $`\mathbf{T}_1`$ 位相空間 $`X`$ に対して以下同値.
     1. $`X`$ は可算コンパクト空間である.
     2. $`X`$ の有限交叉性をもつ可算部分集合族 $`\mathbf{F}`$ に対して $`\bigcap_{F\in\mathbf{F}}\overline{F}\neq\emptyset`$ となる.
     3. $`X`$ のすべての可算無限集合は集積点を持つ.
+
+Proof.
+:   (1)$`\Rightarrow`$(2) はコンパクト性の場合と同様に, 閉包の補集合から得られる可算開被覆へ可算コンパクト性を適用すれば従う.
+    (2)$`\Rightarrow`$(3) とする.
+    可算無限集合を相異なる点列 $`\{a_n\mid n\in\mathbb N}`$ として列挙し, 尾部 $`F_n=\{a_k\mid k\geq n\}`$ を考える.
+    この族は有限交叉性を持つので, ある $`x\in\bigcap_n\overline{F_n}`$ が存在する.
+    $`T_1` 性により, $`x`$ が列の項なら一点集合 $`\{x\}`$ を近傍から除ける.
+    したがって任意の $`x`$ の近傍は $`x`$ と異なる $`a_n`$ を含み, $`x`$ は集積点である.
+    (3)$`\Rightarrow`$(1) は, 有限部分被覆を持たない可算開被覆 $`(U_n)`$ があれば, 増大被覆 $`V_n=U_0\cup\cdots\cup U_n`$ の各補集合から点 $`x_n\notin V_n`$ を選ぶことで示す.
+    $`\{x_n\mid n\in\mathbb N}`$ は無限であり, その集積点はある $`U_N`$ に属する.
+    しかし $`n\geq N`$ なら $`x_n\notin V_n\supseteq U_N`$ であるから, $`U_N`$ はこの集合の集積点を持てず矛盾する.
 
 Proposition. **可算コンパクト性の連続全射像による保存**
 :   可算コンパクト空間 $`X`$ と位相空間 $`Y`$ に対して, 全射連続写像 $`f:X\to Y`$ が存在すれば, $`Y`$ も可算コンパクト空間となる.
@@ -2073,6 +2397,14 @@ Theorem.
     2. $`X`$ は弱可算コンパクト空間である.
     3. $`X`$ は点列コンパクト空間である.
 
+Proof.
+:   (1)$`\Rightarrow`$(2) は直前の命題による.
+    (2)$`\Rightarrow`$(3) は, 点列が有限個の値しか取らなければ定値部分列を持ち, そうでなければその値の集合の集積点に収束する部分列を距離球を半径 $`1/n`$ として順に選ぶことで従う.
+    (3)$`\Rightarrow`$(1) では, まず $`X`$ が全有界であることを示す.
+    そうでなければ, ある $`\varepsilon>0`$ に対して互いの距離が $`\varepsilon`$ 以上である点列を帰納的に作れ, これは収束部分列を持たない.
+    また Cauchy 列は収束部分列を持ち, Cauchy 性から列全体がその極限に収束するので $`X`$ は完備である.
+    完備かつ全有界な距離空間はコンパクトであるから結論を得る.
+
 ### パラコンパクト空間
 
 Definition. **パラコンパクト空間**
@@ -2093,7 +2425,7 @@ Proposition. **擬コンパクト性の連続全射像による保存**
     よって $`g(Y)` は有界であり, $`Y`$ は擬コンパクトである.
 
 Proposition. **正規擬コンパクト性の閉部分空間への遺伝**
-:   正規擬コンパクト空間 $`X`$ の閉部分空間 $`F`$ も正規擬コンパクト空間となる.
+:   $`\mathbf{T}_1` 正規かつ擬コンパクトな空間 $`X`$ の閉部分空間 $`F`$ も $`\mathbf{T}_1` 正規かつ擬コンパクトとなる.
 
 <u>proof.</u>
 :   閉部分空間は正規性を遺伝する.
@@ -2153,12 +2485,16 @@ corollary. **点列コンパクト性定理 (Bolzano–Weierstrass の定理と�
 
 <u>proof.</u>
 :   有界閉集合 $`A`$ はあるコンパクト閉球の閉部分集合であるからコンパクトであり, 従って点列コンパクトである.
-    逆に $`A`$ が点列コンパクトなら, 距離空間では点列コンパクト性から可算コンパクト性が従い, 第二可算性からコンパクト性が従う.
+    逆に $`A`$ が点列コンパクトなら, $`x\in\overline A`$ に対して $`x`$ へ収束する $`A`$ 内の点列を取れる.
+    この列は $`A`$ 内で収束する部分列を持ち, 距離空間での極限の一意性からその極限は $`x`$ である.
+    よって $`x\in A`$ であり, $`A`$ は閉集合である.
+    また $`A`$ が有界でないなら, $`\lVert x_n\rVert>n`$ を満たす点列を選べるが, これは収束部分列を持たないので矛盾する.
+    よって $`A`$ は有界閉集合である.
     コンパクトな距離空間の部分集合は閉かつ有界であるので, $`A`$ は有界閉集合である.
 
 ### メタコンパクト空間
 
-Definition. **メタコンパクト空間**
+Definition. **直交コンパクト空間**
 :   位相空間 $`X`$ が **メタコンパクト性を持つ** (*metacompactness*) とは, $`X`$ の任意の開被覆が点有限な開細分を持つときいう. メタコンパクト性を持つ位相空間を **メタコンパクト空間** (*metacompact space*) という.
 
 Definition. **可算メタコンパクト空間**
@@ -2189,7 +2525,7 @@ Definition. **近縁系**
 ```math
 (X,\mathbf{E})
 ```
-を **一様空間** (*uniform spaca*) といい, $`X`$ をその **台集合** (*underlying set*) という.
+を **一様空間** (*uniform space*) といい, $`X`$ をその **台集合** (*underlying set*) という.
 一様空間 $`X`$ における台集合を $`X_0`$ と表し, 近縁系を $`\mathbf{E}_X`$ と表す.
 
 Definition. **近縁基**
@@ -2202,14 +2538,28 @@ Definition. **近縁基**
 Proposition. **近縁基の定める近縁系**
 :   集合 $`X`$ 上の近縁基を $`X\times X`$ 上のフィルター基として生成されるフィルター は $`X`$ の近縁系となる. これを **近縁基の定める近縁系** という.
 
+Proof.
+:   生成フィルターの各元は近縁基の元を含むので, 対角集合を含む.
+    $`U`$ が生成フィルターに属すれば, ある基の元 $`B\subseteq U`$ がある.
+    基の逆関係に関する条件から $`C\subseteq B^{-1}\subseteq U^{-1}`$ となる基の元 $`C`$ があり, $`U^{-1}`$ は生成フィルターに属する.
+    同様に $`D\circ D\subseteq B\subseteq U`$ となる基の元 $`D`$ がある.
+    よって近縁系のすべての公理が成り立つ.
+
 Definition. **近縁準基**
 :   **集合 $`X`$ 上の近縁準基** (*entourage subbasis on a set $`X`$*) とは, $`X`$ 上の二項関係の族 $`\mathbf{E}`$ であって次の条件を満たすときいう:
     - $`\mathbf{E}`$ は $`X\times X`$ の有限交叉性をもつ部分集合族である.
+    - 任意の $`U\in\mathbf{E}`$ に対して $`\Delta(X)\subseteq U`$.
     - 任意の $`U\in\mathbf{E}`$ に対して $`V\subseteq U^{-1}`$ を満たす $`V\in\mathbf{E}`$ が存在する.
     - 任意の $`U\in\mathbf{E}`$ に対して $`V\circ V\subseteq U`$ を満たす $`V\in\mathbf{E}`$ が存在する.
 
 Proposition. **近縁準基の定める近縁基**
 :   集合 $`X`$ 上の近縁準基を $`X\times X`$ の有限交叉性をもつ部分集合族として生成されるフィルター は $`X`$ の近縁基となる. これを **近縁準基の定める近縁基** という.
+
+Proof.
+:   有限交叉性により有限交叉全体はフィルター基をなす.
+    各有限交叉に含まれる近縁準基の元について, 逆関係の条件と合成の平方根条件を有限回適用し, それらの共通部分を取る.
+    得られる有限交叉は, 元の有限交叉の逆関係に含まれ, その自己合成も元の有限交叉に含まれる.
+    対角集合を含むことも同様に従うので, 前命題の意味で近縁基となる.
 
 Proposition.
 :   距離空間 $`X`$ において, $`X`$ 上の二項関係の族 $`\mathbf{E}`$ を
@@ -2218,12 +2568,28 @@ Proposition.
     ```
     とすると, $`\mathbf{E}`$ は $`X`$ 上の近縁基となる. このとき, $`\mathbf{E}`$ により距離空間 $`X`$ を適宜一様空間とみなす.
 
+Proof.
+:   対角上では距離が $`0`$ であるから, 各元は対角集合を含む.
+    逆関係に移しても距離の対称性により同じ集合である.
+    $`0<s<r/2`$ とすれば, 三角不等式から
+    ```math
+    d^{-1}([0,s))\circ d^{-1}([0,s))\subseteq d^{-1}([0,r))
+    ```
+    となる.
+    また二つの半径に対して小さい方を取れば有限交叉条件も満たされる.
+
 Theorem. **近縁系の定める位相**
 :   一様空間 $`X`$ に対して, 写像 $`\mathcal{U}:X\to2^{2^X}`$ を
     ```math
-    \mathcal{U}(x)\coloneqq\{\mathbf{U}(x)\mid\mathbf{U}\in\Phi\},\quad x\in X
+    \mathcal{U}(x)\coloneqq\{U[x]\mid U\in\mathbf{E}_X\},\quad x\in X
     ```
     とすると, $`\mathcal{U}`$ は $`X`$ 上の近傍基となる. このとき, $`\mathcal{U}`$ により定める位相を $`(X,\Phi)`$ における **一様位相** (*uniform topology*) という.
+
+Proof.
+:   任意の近縁 $`U`$ は対角集合を含むので $`x\in U[x]`$ である.
+    近縁系のフィルター性から, 二つの球近傍の交叉にはその二つの近縁の交叉による球近傍が含まれる.
+    $`V\circ V\subseteq U`$ を満たす近縁 $`V`$ を取ると, $`y\in V[x]` に対して $`V[y]\subseteq U[x]`$ である.
+    よって球近傍は近傍基の局所性の条件も満たす.
 
 ### 写像の一様連続性
 
@@ -2287,6 +2653,15 @@ Proposition. **分離性の特徴づけ**
     2. $`X`$ の一様位相は Hausdorff である.
     3. 一様収束するフィルターの極限は高々一つである.
 
+Proof.
+:   (1) を仮定し $`x\neq y`$ とする.
+    ある近縁 $`U`$ は $`(x,y)`$ を含まない.
+    $`V\circ V\subseteq U`$ となる対称近縁 $`V`$ に対して $`V[x]` と $`V[y]` は交わらないので, 一様位相は Hausdorff である.
+    Hausdorff 空間では収束フィルターの極限は高々一つだから (2)$`\Rightarrow`$(3) が従う.
+    逆に $`x\neq y`$ がすべての近縁に属するなら, 球近傍の記述から $`x` と $`y`$ の近傍フィルターは一致する.
+    この共通の近傍フィルターは $`x` と $`y`$ の双方へ収束する.
+    (3) に反するので (3)$`\Rightarrow`$(1) である.
+
 Definition. **Cauchy フィルター**
 :   一様空間 $`X`$ 上のフィルター $`\mathcal{F}`$ が **Cauchy** (*Cauchy*) であるとは, 任意の近縁 $`U\in\mathbf{E}_X`$ に対して
     ```math
@@ -2315,6 +2690,11 @@ Proposition. **距離空間の場合**
 :   距離空間 $`(X,d)`$ に距離の定める一様構造を入れる.
     このとき, フィルター $`\mathcal{F}`$ が一様空間として Cauchy であることと, 任意の $`\varepsilon>0`$ に対して直径が $`\varepsilon`$ 未満の集合が $`\mathcal{F}`$ に属することは同値である.
 
+Proof.
+:   距離一様構造の近縁は $`\{(x,y)\mid d(x,y)<\varepsilon\}`$ を基として持つ.
+    $`A\times A`$ がこの近縁に含まれることは, 任意の $`a,b\in A`$ に対して $`d(a,b)<\varepsilon`$、すなわち $`A`$ の直径が $`\varepsilon`$ 未満であることと同値である.
+    よって二つの Cauchy 条件は一致する.
+
 Definition. **完備一様空間**
 :   一様空間 $`X`$ が **完備** (*complete*) であるとは, $`X`$ 上の任意の Cauchy フィルターが収束するときいう.
     完備な一様空間を **完備一様空間** (*complete uniform space*) という.
@@ -2322,6 +2702,15 @@ Definition. **完備一様空間**
 Theorem. **距離による完備性との整合性**
 :   距離空間 $`(X,d)`$ に距離の定める一様構造を入れる.
     このとき, 一様空間としての完備性と距離空間としての完備性は同値である.
+
+Proof.
+:   距離 Cauchy 列が生成する尾部フィルターは, 前命題により Cauchy フィルターである.
+    一様完備性からこのフィルターが収束すれば, 元の列も同じ点へ収束する.
+    逆に距離空間として完備とする.
+    Cauchy フィルターから直径が $`2^{-n}`$ 未満となる集合を順に選び, その中から点 $`x_n`$ を取る.
+    この列は距離 Cauchy 列であるからある $`x\in X`$ に収束する.
+    フィルターの Cauchy 条件とこの収束を用いると, フィルターの各近傍は $`x`$ の任意の近傍を含む.
+    よって元のフィルターも $`x`$ に収束し, 一様空間として完備である.
 
 ### 一様完備化
 
@@ -2396,12 +2785,23 @@ Definition. **一様被覆系**
 Proposition. **一様被覆系の準基から基の生成**
 :   $`X`$ 上の一様被覆系の準基 $`\Phi`$ に対して, $`\Psi`$ を
     ```math
-    \Psi\coloneqq\left\{\bigwedge_{i=0}^{n}\mathcal{G}_i\mathrel{}\middle|\mathrel{}\mathcal{G}_0,\ldots,\mathcal{G}_n\in\Psi,(n=0,1,2,\ldots)\right\}
+    \Psi\coloneqq\left\{\bigwedge_{i=0}^{n}\mathcal{G}_i\mathrel{}\middle|\mathrel{}\mathcal{G}_0,\ldots,\mathcal{G}_n\in\Phi,(n=0,1,2,\ldots)\right\}
     ```
     とすると, $`\Psi`$ は $`X`$ 上の一様被覆系の基となる.
 
+Proof.
+:   有限個の有限交わりの交わりは再び $`\Phi`$ の元の有限交わりであるから, $`\Psi`$ は細分関係でフィルター基となる.
+    各 $`\mathcal G_i`$ の重心細分を $`\mathcal H_i\in\Phi`$ として取り, その有限交わりを取れば $`\bigwedge_i\mathcal G_i`$ の重心細分となる.
+    よって $`\Psi`$ は一様被覆系の基である.
+
 Proposition. **一様被覆系の基から系の生成**
 :   $`X`$ 上の一様被覆系の基 $`\Phi`$ を細分関係による上方閉包をとったものを $`\Psi`$ とすると, $`\Psi`$ は $`X`$ 上の一様被覆系となる.
+
+Proof.
+:   上方閉包は定義により上方閉である.
+    $`\Phi`$ がフィルター基であることから, $`\Psi`$ は細分関係で有限交わりに閉じている.
+    また $`\Phi`$ の重心細分条件はより粗い被覆を許しても保たれる.
+    よって $`\Psi`$ は一様被覆系である.
 
 Proposition. **近縁系の定める一様被覆系**
 :   集合 $`X`$ 上の近縁系 $`\mathbf{E}`$ に対して, $`X`$ 上の被覆の族 $`\Phi`$ を
@@ -2410,20 +2810,41 @@ Proposition. **近縁系の定める一様被覆系**
     ```
     とすると, $`\Phi`$ は $`X`$ 上の一様被覆系となる. $`\Phi`$ を $`\mathbf{E}`$ の定める一様被覆系という.
 
+Proof.
+:   近縁 $`U`$ ごとの球被覆 $`\{U[x]\mid x\in X\}`$ は被覆である.
+    近縁系の有限交叉性は, これらの被覆の共通細分を与える.
+    $`V\circ V\subseteq U`$ を満たす近縁 $`V`$ を取ると, $`V`$ の球被覆は $`U`$ の球被覆の重心細分となる.
+    したがって表示した上方閉包は一様被覆系の公理を満たす.
+
 以後, 一様空間 $`X`$ の近縁系 $`\mathbf{E}_X`$ の定める一様被覆系を $`\Phi_X`$ とする.
 
 Proposition. **一様被覆系の定める近縁系**
-:   集合 $`X`$ 上の被覆の族 $`\Phi`$ に対して, $`X`$ 上の二項関係の族 $`\mathbf{E}`$ を
+:   集合 $`X`$ 上の一様被覆系 $`\Phi`$ に対して, $`X`$ 上の二項関係の族 $`\mathbf{E}`$ を
     ```math
     \mathbf{E}\coloneqq\left\{U\mathrel{}\middle|\mathrel{}\exists\mathbf{U}\in\Phi\text{ s.t. }\bigcup_{S\in\mathbf{U}}S\times S\subseteq U\right\}
     ```
     とすると, $`\mathbf{E}`$ は $`X`$ 上の近縁系となる. $`\mathbf{E}`$ を $`\Phi`$ の定める近縁系という.
 
+Proof.
+:   各被覆の集合 $`\bigcup_{S\in\mathbf U}S\times S`$ は対角集合を含む.
+    被覆の共通細分はこの関係の有限交叉に対応し, 上方閉性は近縁系の上方閉性を与える.
+    被覆の重心細分条件は逆関係と合成の平方根条件を与える.
+    よって $`\mathbf E`$ は近縁系である.
+
 Proposition.
 :   集合 $`X`$ 上の近縁系 $`\mathbf{E}`$ の生成する一様被覆系 $`\Phi`$ に対して, $`\Phi`$ の生成する近縁系は $`\mathbf{E}`$ と一致する.
 
+Proof.
+:   近縁 $`U`$ の球被覆から作る関係は $`U`$ の適当な縮小を含み, 一方で $`U`$ に含まれる.
+    近縁の平方根条件を用いて両方向の包含を得るので, 二つの近縁系は一致する.
+
 Proposition.
-:   集合 $`X`$ 上の被覆の族 $`\Phi`$ の生成する近縁系 $`\mathbf{E}`$ に対して, $`\mathbf{E}`$ の生成する一様被覆系は $`\Phi`$ と一致する.
+:   集合 $`X`$ 上の一様被覆系 $`\Phi`$ の生成する近縁系 $`\mathbf{E}`$ に対して, $`\mathbf{E}`$ の生成する一様被覆系は $`\Phi`$ と一致する.
+
+Proof.
+:   各 $`\mathbf U\in\Phi`$ から作る関係の球被覆は $`\mathbf U`$ を細分する.
+    逆に, 近縁系の定義に現れる関係はある $`\mathbf U\in\Phi`$ から作られる関係を含むので, その球被覆は $`\mathbf U`$ より粗い.
+    上方閉性により両者は同じ一様被覆系を生成する.
 
 Proposition. **一様被覆系の定める位相**
 :   集合 $`X`$ 上の一様被覆系 $`\Phi`$ に対して, 写像 $`\mathcal{N}:X\to2^{2^X}`$ を
@@ -2432,10 +2853,19 @@ Proposition. **一様被覆系の定める位相**
     ```
     とすると, $`\mathcal{N}`$ は $`X`$ 上の近傍基となる. 特に, 一様被覆系 $`\Phi`$ の定める近縁系の定める位相構造と $`\mathcal{N}`$ による位相構造は一致する.
 
+Proof.
+:   被覆性により $`x\in\mathbf U(x)`$ である.
+    共通細分は有限交叉に含まれる星を与え, 重心細分は近傍基の局所性の条件を与える.
+    近縁系から得る球近傍と被覆の星近傍は上の相互変換で互いに細分し合うので, 生成される位相は一致する.
+
 Proposition. **一様連続性の一様被覆による特徴づけ**
 :   一様空間 $`X,Y`$ と 写像 $`f:X\to Y`$ に対して, 以下同値である.
     1. $`f`$ は一様連続である.
     2. 任意の $`\mathbf{V}\in\Phi_Y`$ に対して $`f^{-1}(\mathbf{V})\in\Phi_X`$ となる.
+
+Proof.
+:   一様連続性は, 近縁球被覆の逆像がある近縁球被覆で細分されることと同値である.
+    近縁系と一様被覆系の相互変換を用いると, これは任意の一様被覆の逆像が一様被覆となる条件 (2) に等しい.
 
 ### 写像列の収束
 
@@ -2444,10 +2874,19 @@ Proposition. **各点収束**
     1. $`(f_\lambda)_{\lambda\in\Lambda}`$ は $`f`$ へ収束する.
     2. 各 $`c\in S`$ に対して, $`X`$ 上のネット $`(f_\lambda(c))_{\lambda\in\Lambda}`$ は $`X`$ の点 $`f(c)`$ に収束する.
 
+Proof.
+:   関数空間 $`X^S`$ には積位相を入れる.
+    各評価写像 $`\operatorname{ev}_c:X^S\to X`$ は連続なので, (1) から (2) が従う.
+    逆に積位相の $`f`$ における近傍基は, 有限個の点 $`c_1,\ldots,c_n\in S`$ と各 $`f(c_i)`$ の近傍を指定して得られる.
+    (2) により各座標条件は十分後のすべての $`f_\lambda`$ が満たす.
+    有向性により有限個の添字の共通上界を取れば, それらの座標条件を同時に満たす.
+    よって $`f_\lambda`$ は $`f`$ に収束する.
+
 Definition. **一様収束**
 :   一様空間 $`X`$ と集合 $`S`$ と $`X^S`$ 上のネット $`(f_\lambda)_{\lambda\in\Lambda}`$ と $`f\in X^S`$ に対して, **$`(f_\lambda)`$ が $`f`$ へ一様収束する** (*$`(f_\lambda)`$ converges uniformly to $`f`$*) とは, 任意の一様被覆 $`U\in\mathbf{E}_X`$ に対して $`\lambda_0\in\Lambda`$ が存在して次が成り立つ.
     ```math
-    \forall\lambda\in\Lambda,\quad\lambda_0\leq\lambda\Rightarrow(f_\lambda\times f)(S\times S)\subseteq U
+    \forall\lambda\in\Lambda,\quad\lambda_0\leq\lambda\Rightarrow
+    \forall s\in S,\ (f_\lambda(s),f(s))\in U
     ```
 
 ---
@@ -2478,18 +2917,52 @@ Definition. **準近縁系**
 Theorem.
 :   すべての位相空間は準一様化可能である.
 
+Proof.
+:   位相空間 $`X`$ の各開集合 $`G`$ に対して
+    ```math
+    U_Gcoloneqq(G\times G)\cup((X\setminus G)\times X)
+    ```
+    とおく.
+    有限個のこの形の関係の共通部分で生成されるフィルターを $`\mathbf E`$ とする.
+    対角は各 $`U_G`$ に含まれ, また $`U_G\circ U_G\subseteq U_G`$ であるから, $`\mathbf E`$ は準近縁系である.
+    $`x\in G`$ なら $`U_G[x]=G`$ であるため, この準近縁系が誘導する位相は元の位相以上に細かい.
+    一方, 有限交叉に対応する近縁球はいずれも開集合であるから逆の包含も成り立つ.
+    よって元の位相が再現される.
+
 Theorem. 準擬距離と準近縁系の両立
 :   集合 $`X`$ と $`X`$ 上の準擬距離 $`d`$ と $`X`$ 上の準近縁系 $`\mathbf{E}`$ に対して, 以下同値.
     1. $`d`$ は $`(X,\mathbf{E})\times(X,\mathbf{E})`$ 上の一様連続写像となる.
     2. 任意の $`r>0`$ に対して $`d^{-1}([0,r))=\{(x,y)\in X\times X\mid d(x,y)<r\}\in\mathbf{E}`$.
 
+Proof.
+:   実数の近縁基を $`\{(s,t)\mid |s-t|<r\}`$ として考える.
+    準擬距離の三角不等式により, $`d`$ の値が十分小さく変わるようにすることは, 各部分距離集合 $`d^{-1}([0,r))`$ が近縁であることと同値である.
+    したがって直積から実数への一様連続性の逆像条件は (2) に正確に一致する.
+
 Theorem. **準ゲージの定める準近縁系**
-:   集合 $`X`$ の準ゲージ $`D`$ に対して, $`\{d^{-1}([0,r))\mid r>0\}`$ は準近縁系の準基となる. この準近縁系の準基の生成する準近縁系を **準ゲージ $`D`$ の生成する準近縁系** という.
+:   集合 $`X`$ の準ゲージ $`D`$ に対して,
+    ```math
+    \{d^{-1}([0,r))\mid d\in D,\ r>0\}
+    ```
+    は準近縁系の準基となる. この準近縁系の準基の生成する準近縁系を **準ゲージ $`D`$ の生成する準近縁系** という.
+
+Proof.
+:   有限個の条件 $`d_i(x,y)<r_i`$ の共通部分は, $`r=\min_i r_i/2`$ とすれば各条件を二回合成しても保つ.
+    実際, $`d_i(x,z)\leq d_i(x,y)+d_i(y,z)<r_i`$ である.
+    各関係は対角を含み, 有限交叉と上方閉包を取ればフィルターになる.
+    よって準近縁系の公理がすべて満たされる.
 
 準近縁系の準基の生成する準近縁系の定義から, 準ゲージ $`D`$ の生成する準近縁系 $`\mathbf{E}`$ は各 $`d\in D`$ が $`(X,\mathbf{E})\times(X,\mathbf{E})`$ 上の一様連続写像となるもののうち最も弱いものである.
 
 Theorem. **準近縁系の定める準ゲージ**
 :   集合 $`X`$ 上の準近縁系 $`\mathbf{E}`$ に対して, $`X`$ 上の準擬距離 $`d`$ として直積一様空間 $`(X,\mathbf{E})\times(X,\mathbf{E})`$ 上の一様連続なもの全体を $`D`$ とすると, $`D`$ は $`X`$ 上の準ゲージであって, $`D`$ によって定まる準近縁系は $`\mathbf{E}`$ と一致する. これを **準近縁系 $`\mathbf{E}`$ の生成する準ゲージ** という.
+
+Proof.
+:   $`d`$ が一様連続なら, 直前の定理からその各距離球は $`\mathbf E`$ に属する.
+    従って $`D`$ の生成する準近縁系は $`\mathbf E`$ より粗い.
+    逆に $`U\in\mathbf E`$ をとり, $`V_{n+1}\circ V_{n+1}\circ V_{n+1}\subseteq V_n`$ かつ $`V_0\subseteq U`$ となる近縁列を選ぶ.
+    この列から鎖の重みの下限を取る標準的な準擬距離化構成により, 一様連続な準擬距離 $`d_U`$ で $`\{d_U<1\}\subseteq U`$ を得る.
+    したがって各 $`U`$ は $`D`$ の距離球を含み, 逆の細分関係も成り立つ.
 
 ---
 
@@ -2503,6 +2976,11 @@ Theorem. **準近縁系の定める準ゲージ**
 Proposition.
 :   位相空間 $`X`$ の部分集合 $`G`$ が点列開であることと, 次が同値:
     - $`X`$ の任意の収束点列 $`(p_n)`$ に対して, $`(p_n)`$ の極限点が $`G`$ に含まれるならば, ある非負整数 $`N\geq 0`$ が存在して $`n\geq N`$ なる整数 $`n`$ に対して $`p_n\in G`$ となる.
+
+Proof.
+:   $`G`$ が点列開であることは $`X\setminus G`$ が点列閉であることと同値である.
+    これは, $`p_n\to p\in G`$ であって無限個の項が $`X\setminus G`$ に属するなら, それらを抜き出した部分列が $`p`$ に収束して点列閉性に矛盾することと同値である.
+    部分列を抜き出せないことは, ある段階以後すべての項が $`G`$ に属することに等しい.
 
 Proposition.
 :   位相空間 $`X`$ において, 開集合は点列開であり閉集合は点列閉である.
@@ -2536,6 +3014,17 @@ Proposition. **列型空間の特徴づけ**
     3. $`X`$ は距離空間の商である.
     4. 任意の $`Y`$ と写像 $`f:X\to Y`$ に対して, $`f`$ が連続写像となることと $`x\in X`$ に収束する点列 $`(p_n)`$ に対して $`Y`$ の点列 $`(f(p_n))`$ は必ず $`f(x)`$ へ収束することは同値である.
 
+Proof.
+:   (3)$`\Rightarrow`$(2) は距離空間が第一可算であることから従う.
+    第一可算空間では閉包の各点をそこへ収束する点列で検出できるので, 商写像の像では点列閉集合が閉集合となる.
+    したがって (2)$`\Rightarrow`$(1) である.
+    (1)$`\Rightarrow`$(3) は Franklin の構成による.
+    $`X`$ のすべての収束点列を互いに素な収束列のコピーとして取り, その直和から極限と各項を元の点へ送る写像を考える.
+    この直和は距離化可能であり, $`X`$ が列型であることはこの写像が商写像となることと同値である.
+    最後に, 連続写像は点列の極限を保つ.
+    逆に点列の極限をすべて保つ写像 $`f`$ に対し, $`f^{-1}(F)`$ は任意の閉集合 $`F\subseteq Y`$ について点列閉である.
+    (1) によりこれは閉集合なので $`f`$ は連続であり, (4) が従う.
+
 位相空間 $`X`$ の部分集合 $`S`$ に対して, $`S`$ 内の収束点列の極限点の全体を $`[S]_{\text{seq}}`$ とすることで写像 $`[-]_{\text{seq}}:2^X\to 2^X`$ とすると, 次を満たす:
 - $`A\subseteq[A]_{\text{seq}}\subseteq\overline{A}`$.
 - $`[\emptyset]_{\text{seq}}=\emptyset`$.
@@ -2562,6 +3051,12 @@ Proposition.
     1. $`x\in X`$, $`\delta>0`$, 正整数 $`m`$ に対して, $`\mathbf{U}_\varepsilon^m(B_\delta(x))\subseteq B_{\delta+2m\varepsilon}(x)`$.
     2. $`\mathbf{U}_\varepsilon^\varDelta\leq\mathbf{U}_{2\varepsilon},\quad\mathbf{U}_\varepsilon^\ast\leq\mathbf{U}_{3\varepsilon}`$
 
+Proof.
+:   (1) は隣接する二つの半径 $`\varepsilon`$ の球が交わるとき, その中心間の距離が $`2\varepsilon`$ 未満であることを三角不等式から用い, 鎖の長さについて帰納法を行えば従う.
+    (2) について, $`B_\varepsilon(y)`$ が $`B_\varepsilon(x)`$ と交われば
+    $`d(x,y)<2\varepsilon`$ であり, $`B_\varepsilon(y)\subseteq B_{3\varepsilon}(x)`$ である.
+    これにより星細分の包含が従い, 重心細分の包含はその部分の場合である.
+
 Definition. **被覆の正規性** (Cf. J. W. Tukey)
 :   集合 $`X`$ の被覆列 $`(\mathbf{U}_n\mid n=1,2,\ldots)`$ が **正規被覆列** (*normal sequence of covers*) であるとは, 各 $`n`$ に対して
     ```math
@@ -2587,10 +3082,26 @@ Proposition.
     ```
     を満たすとき, 被覆列 $`(\mathbf{U}_{2n}\mid n=1,2,\ldots)`$ は正規被覆列となる.
 
+Proof.
+:   仮定を二回適用すると
+    ```math
+    \mathbf U_{2n+2}\leq^\varDelta\mathbf U_{2n+1}\leq^\varDelta\mathbf U_{2n}
+    ```
+    を得る.
+    二段の重心細分は星細分を与えるので $`\mathbf U_{2n+2}\leq^\ast\mathbf U_{2n}`$ である.
+    これは偶数番目の部分列が正規被覆列であることを意味する.
+
 Theorem.
 :   位相空間 $`X,Y`$ の間の連続写像 $`f`$ と $`Y`$ の開被覆 $`\mathbf{U},\mathbf{V}`$ に対して, 次がそれぞれ成り立つ.
     1. $`\mathbf{U}\leq^\ast\mathbf{V}`$ ならば $`f^{-1}(\mathbf{U})\leq^\ast f^{-1}(\mathbf{V})`$.
     2. $`\mathbf{U}`$ が正規被覆ならば $`f^{-1}(\mathbf{U})`$ も正規被覆である.
+
+Proof.
+:   逆像は合併・交叉・包含を保つ.
+    したがって $`\mathbf U`$ の各元の星を含む $`\mathbf V`$ の元を引き戻せば, その逆像は $`f^{-1}(\mathbf U)`$ の対応する星を含む.
+    これで (1) が従う.
+    $`(\mathbf U_n)`$ が $`\mathbf U`$ に従属する正規開被覆列なら, (1) より $`(f^{-1}(\mathbf U_n))`$ は $`f^{-1}(\mathbf U)`$ に従属する正規開被覆列である.
+    よって (2) が従う.
 
 集合 $`X`$ に対して写像 $`d:X\times X\to\mathbb{R}`$ が $`x,y,z\in X`$ に対して条件
 1. $`d(x,y)\geq0`$.
@@ -2611,6 +3122,28 @@ Theorem. **距離等化**
     ```
     とすると, $`d^\ast`$ は $`X^\ast`$ 上の距離となる.
     このとき, 自然な射影 $`\pi:X\to X^\ast`$ により $`\pi^{-1}(\pi(A))=A`$ を満たす部分集合 $`A\in2^X`$ に対して, $`A`$ が $`(X,d)`$ の開集合であることと $`\pi(A)`$ が $`(X^\ast,d^\ast)`$ の開集合であることが同値となる.
+
+Proof.
+:   反射性と対称性は擬距離の対応する公理から直ちに従う.
+    $`d(x,y)=0`$ と $`d(y,z)=0`$ なら, 三角不等式により $`d(x,z)=0`$ であるから, $`\sim`$ は推移的である.
+    また $`x\sim x'`$, $`y\sim y'` に対して三角不等式を二度用いると
+    ```math
+    |d(x,y)-d(x',y')|\leq d(x,x')+d(y,y')=0
+    ```
+    を得る.
+    よって $`d^\ast`$ は代表元に依存しない.
+    非負性・対称性・三角不等式は代表元での対応する性質から従う.
+    $`d^\ast([x],[y])=0`$ なら $`x\sim y`$ であり $`[x]=[y]`$ なので, $`d^\ast`$ は距離である.
+
+    次に $`A`$ が飽和していると仮定する.
+    $`x\in A`$ と $`B_r(x)\subseteq A`$ なら
+    ```math
+    \pi(B_r(x))=B_r(\pi(x))
+    ```
+    である.
+    実際, 両辺の所属条件はいずれも $`d(x,y)<r`$ に等しい.
+    したがって $`A`$ が開なら $`\pi(A)`$ は開である.
+    逆に $`\pi(A)`$ が開なら, 射影の逆像として $`A=\pi^{-1}(\pi(A))`$ は開である.
     
 距離空間 $`(X^\ast,d^\ast)`$ を擬距離空間 $`(X,d)`$ の **距離等化** (*metric identification*) という.
 
@@ -2621,6 +3154,14 @@ Theorem.
 
 したがって, 正規被覆列は距離による近さを復元する.
 ただし擬距離では異なる点の距離が $`0`$ となりうるため, 位相を距離化するには点を区別する条件も必要である.
+
+Proof.
+:   各 $`\mathbf U_n`$ を星細分列になるように取り直す.
+    $`x=x_0,\ldots,x_k=y`$ であり, 各隣接対 $`(x_{i-1},x_i)`$ が $`\mathbf U_{n_i}`$ のある元に同時に属するとき, この鎖の長さを $`\sum_i2^{-n_i}`$ と定める.
+    そのような鎖の長さの下限を $`d(x,y)`$ とおく.
+    鎖の連結により三角不等式が従い, 長さ $`0`$ の自明鎖から $`d(x,x)=0`$ である.
+    星細分の条件を二進の鎖に繰り返し適用する Frink の補題により, $`\mathbf U_n(x)`$ 内の二点は上から示した長さで結べ, 逆に長さが $`2^{-n}`$ 未満の鎖は $`\mathbf U_n(x)`$ 内に留まる.
+    これが二つの不等式を与える.
 
 Theorem. **Urysohn の距離化定理**
 :   Kolmogorov かつ正則で第二可算な位相空間 $`X`$ は距離化可能である.
@@ -2641,7 +3182,7 @@ Theorem. **Urysohn の距離化定理**
     各組に対して Urysohn の補題を適用し, 連続写像 $`u_n:X\to[0,1]`$ を選ぶ.
     これらをまとめた写像
     ```math
-    e:X\longrightarrow[0,1]^{\mathbb{N}},qquad e(x)=(u_n(x))_{n\geq0}
+    e:X\longrightarrow[0,1]^{\mathbb{N}},\qquad e(x)=(u_n(x))_{n\geq0}
     ```
     は点を分離し, 開基も逆像で復元するので埋め込みである.
 
@@ -2656,6 +3197,16 @@ Theorem. **Urysohn の距離化定理**
 
 Theorem. **Nagata--Smirnov の距離化定理**
 :   Hausdorff 正則空間 $`X`$ が距離化可能であるための必要十分条件は, $`X`$ が $`\sigma`$ 局所有限な開基を持つことである.
+
+Proof.
+:   距離空間では, 半径 $`2^{-n}`$ の球から局所有限な開細分を各 $`n`$ について取れる.
+    それらを合わせれば $`\sigma`$ 局所有限な開基となる.
+    逆に開基を $`\mathcal B=\bigcup_n\mathcal B_n`$ とし, 各 $`\mathcal B_n`$ を局所有限とする.
+    正則性により各基の要素の閉包をより大きい基の要素に入れるよう細分し, この細分を段階ごとに正規被覆列へ組み直す.
+    局所有限性は各点の近傍に現れる条件を有限個に保つため, 得られた正規被覆列は元の開基と同じ位相を定める.
+    前の正規被覆列の距離化定理から擬距離を得る.
+    Hausdorff 性と基の分離性により異なる二点はある段階で別の被覆要素に分かれるので, この擬距離は零点を持たない.
+    従って距離となり, 元の位相を誘導する.
 
 Corollary. **可算基による距離化**
 :   Hausdorff 正則空間 $`X`$ が可算な開基を持つならば, $`X`$ は距離化可能である.
@@ -2672,6 +3223,24 @@ Theorem. **一様構造による距離化**
 :   Hausdorff 一様空間 $`X`$ が可算な近縁基を持つならば, $`X`$ の一様構造はある距離から定まる.
 
     このとき, その距離が誘導する位相は元の一様位相と一致する.
+
+Proof.
+:   可算近縁基から, 対称な近縁の減少列 $`(V_n)_{n\geq0}`$ で
+    ```math
+    V_{n+1}\circ V_{n+1}\circ V_{n+1}\subseteq V_n
+    ```
+    を満たし, なお近縁基となるものを選ぶ.
+    $`x=x_0,\ldots,x_k=y`$ で各 $`(x_{i-1},x_i)\in V_{n_i}`$ となる鎖について重み $`\sum_i2^{-n_i}`$ を与え, その下限を $`d(x,y)`$ とおく.
+    鎖の反転と連結から $`d`$ は対称で三角不等式を満たす.
+    Frink の補題により
+    ```math
+    V_n\subseteq\{(x,y)\mid d(x,y)<2^{-n+2}\},\qquad
+    \{(x,y)\mid d(x,y)<2^{-n}\}\subseteq V_n
+    ```
+    が成り立つ.
+    よって距離近縁系と元の近縁系は同じ基を持つ.
+    Hausdorff 性から $`\bigcap_nV_n=\Delta(X)`$ であり, $`d(x,y)=0`$ は $`x=y`$ を含意するので $`d`$ は距離である.
+    同じ近縁系は同じ一様位相を誘導する.
 
 ---
 
@@ -2935,7 +3504,7 @@ Theorem. **Urysohn の補題**
     を満たす開集合 $`V`$ を選べる.
     この操作を二進有理数 $`r\in[0,1]`$ に沿って帰納的に適用すると, 開集合族 $`(U_r)`$ を
     ```math
-    A\subseteq U_0,qquad \overline{U_r}\subseteq U_s\quad(r<s),qquad \overline{U_r}\cap B=\emptyset
+    A\subseteq U_0,\qquad \overline{U_r}\subseteq U_s\quad(r<s),\qquad \overline{U_r}\cap B=\emptyset
     ```
     となるように構成できる.
 
@@ -2989,6 +3558,20 @@ Theorem. **Tietze の拡張定理**
 Corollary.
 :   正規 $`\mathbf{T}_1`$ 空間の閉部分集合上の任意の連続実数値関数は, 全空間上の連続実数値関数へ延長できる.
 
+Proof.
+:   まず有界値の場合を示す.
+    $`|f|\leq1`$ としてよい.
+    残差 $`r_0=f`$ に対し, $`r_n`$ が定まったとき
+    ```math
+    r_n^{-1}(({-}\infty,-1/3]),\qquad r_n^{-1}([1/3,\infty))
+    ```
+    は $`A`$ の互いに素な閉集合である.
+    Urysohn の補題から, 絶対値が高々 $`1/3`$ でありこの二つの集合上でそれぞれ $`-1/3,1/3`$ を取る連続関数 $`g_n:X\to\mathbb R`$ を選べる.
+    $`r_{n+1}=r_n-g_n|_A`$ とおけば $`|r_{n+1}|\leq(2/3)|r_n|`$ となる.
+    適切な定数倍を各段階に施して得る級数 $`\sum_n g_n`$ は一様収束し, その和は $`A`$ 上で $`f`$ に一致する.
+    一般の実数値関数についても, 同じ近似を各段階の残差の大きさに応じて行う Tietze の逐次近似法により連続延長を得る.
+    すなわち有界性は各近似項にのみ必要であり, 元の $`f`$ の有界性は仮定しない.
+
 ### 分割の一
 
 Definition. **分割の一**
@@ -3021,7 +3604,7 @@ Theorem. **分割の一の存在定理**
 
     Urysohn の補題から, 各 $`i`$ に対して連続写像 $`\psi_i:X\to[0,1]`$ を
     ```math
-    \psi_i|_{\overline{V_i}}=1,qquad \operatorname{supp}\psi_i\subseteq U_i
+    \psi_i|_{\overline{V_i}}=1,\qquad \operatorname{supp}\psi_i\subseteq U_i
     ```
     となるように選べる.
     支持の族は局所有限であるから, 各点の近傍では有限個の $`\psi_i`$ だけが非零である.
