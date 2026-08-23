@@ -1,0 +1,2065 @@
+# 位相空間論
+
+## はじめに
+
+位相空間論は, 集合に開集合の族を与え, 近傍, 収束, 連続性を距離に依存せずに扱う理論である.
+距離空間を出発点としつつ, 商空間や関数空間のように単一の距離では記述しにくい空間にも同じ言葉を適用する.
+
+$`1`$ 以上の整数を特に自然数と呼ぶこととし, いくつかの代表的な集合の記号を以下で定める:
+$\mathbb{N}$ :自然数全体の集合, $\mathbb{Z}$ :整数全体の集合, $\mathbb{Q}$ :有理数全体の集合, $\mathbb{R}$ :実数全体の集合
+
+---
+
+## 準備
+
+位相に関する収束とコンパクト性は, フィルターや順序構造を用いると統一的に記述できる.
+この節では, 後で用いる選択公理と, 順序集合上のイデアルおよびフィルターの基本事項を定める.
+
+### 選択公理
+
+Axiom. **選択公理**
+:   空でない集合からなる集合族 $`\Sigma`$ に対して, 各 $`S\in\Sigma`$ ごとに $`f(S)\in S`$ となるような写像 $`f:\Sigma\to\bigcup\Sigma`$ が存在する.
+
+Theorem. **選択公理と同値な命題**
+:   以下, 選択公理と同値:
+    1. **Zermelo の整列可能定理**<br>任意の集合は整列可能である.
+    2. **Zorn の補題**<br>順序集合に対して, 任意の全順序部分集合が有界ならば極大元が存在する.
+    3. **Tukey の補題**<br>有限性を満たす空でない任意の集合族は包含関係に関する極大元を持つ.
+
+### 順序集合のイデアルとフィルター
+
+Definition. **イデアル**
+:   半順序集合 $`(P,\leq)`$ における **イデアル基** (*ideal basis*) とは, $`P`$ の空でない部分集合 $`I`$ であって次を満たす:
+    ```math
+    \forall x,y\in I,\exists z\in I\text{ s.t. }x\leq z\land y\leq z
+    ```
+    特に, 下方に閉じているイデアル基を **イデアル** (*ideal*) という.
+
+特に, $`(P,\leq)`$ における **極大イデアル** (maximal ideal) あるいは **超イデアル** (*ultraideal*) とは, $`(P,\leq)`$ のイデアル $`M\subsetneq P`$ であって, $`(P,\leq)`$ の任意のイデアル $`I`$ が $`I\subseteq M`$ であれば $`M=I`$ となるときいう.
+
+Definition. **フィルター**
+:   半順序集合 $`(P,\leq)`$ における **フィルター基** (*filter basis*) とは, $`P`$ の空でない部分集合 $`F`$ であって次を満たす:
+    ```math
+    \forall x,y\in F,\exists z\in F\text{ s.t. }z\leq x\land z\leq y
+    ```
+    特に, 上方に閉じているフィルター基を **フィルター** (*filter*) という.
+
+特に, $`(P,\leq)`$ における **極大フィルター** (maximal filter) あるいは **超フィルター** (*ultrafilter*) とは, $`(P,\leq)`$ のフィルター $`M\subsetneq P`$ であって, $`(P,\leq)`$ の任意のフィルター $`F`$ が $`F\subseteq M`$ であれば $`M=F`$ となるときいう.
+
+Proposition. **イデアル基の生成するイデアル**
+:   半順序集合 $`(P,\leq)`$ のイデアル基 $`I`$ に対して, $`P`$ の部分集合 $`\overline{I}`$ を
+    ```math
+    \overline{I}\coloneqq\{x\in P\mid\exists i\in I\text{ s.t. }x\leq i\}
+    ```
+    とすると, $`\overline{I}`$ は $`I`$ を含むイデアルであって最も弱いものである.
+
+Proposition. **フィルター基の生成するフィルター**
+:   半順序集合 $`(P,\leq)`$ のフィルター基 $`F`$ に対して, $`P`$ の部分集合 $`\overline{F}`$ を
+    ```math
+    \overline{F}\coloneqq\{x\in P\mid\exists f\in F\text{ s.t. }f\leq x\}
+    ```
+    とすると, $`\overline{F}`$ は $`F`$ を含むフィルターであって最も弱いものである.
+
+Proposition. **細分関係**
+:   半順序集合 $`(P,\leq)`$ に対して, $`2^P`$ における二項関係 $`\trianglelefteq`$ を
+    ```math
+    A\trianglelefteq B\mathrel{\overset{\text{def}}{\iff}}\forall a\in A,\exists b\in B\text{ s.t. }a\leq b,\quad A,B\in2^P
+    ```
+    とすると, $`\trianglelefteq`$ は $`2^P`$ 上の前順序となる. このとき $`\trianglelefteq`$ を $`(P,\leq)`$ による細分関係という.
+
+---
+
+## 距離空間
+
+距離は二点の近さを実数で測る構造であり, 位相空間の代表的な具体例を与える.
+点列の収束, Cauchy 列, 完備化を距離によって記述し, 後に導入する位相的な定義と比較する.
+
+### 距離空間
+
+Definition. **距離空間**
+:   **集合 $`X`$ 上の距離** (*metric on a set $`X`$*) とは, 写像 $`d:X\times X\to\mathbb{R}`$ であって, **距離の公理** (*metric axioms*) と呼ばれる次の条件を満たすときいう:
+    - **非負性**:<br><div style="margin-left: 2em;">任意の $`x,y\in X`$ に対して $`d(x,y)\geq 0`$,
+    - **非退化性**:<br><div style="margin-left: 2em;">任意の $`x,y\in X`$ に対して $`x=y\iff d(x,y)=0`$,
+    - **対称性**:<br><div style="margin-left: 2em;">任意の $`x,y\in X`$ に対して $`d(x,y)=d(y,x)`$,
+    - **三角不等式**:<br><div style="margin-left: 2em;">任意の $`x,y,z\in X`$ に対して $`d(x,y)+d(y,z)\geq d(x,z)`$.
+
+    集合 $`X`$ と $`X`$ 上の距離 $`d:X\times X\to\mathbb{R}`$ の組 $`(X,d)`$ を**距離空間** (*metric space*) といい, 集合 $`X`$ をこの距離空間の**台集合** (*underlying set*) という.
+
+特に, 距離 $`d:X\times X\to\mathbb{R}`$ が条件
+```math
+\forall x,y,z\in X,\quad\max\{d(x,y),d(y,z)\}\geq d(x,z)
+```
+を満たすとき, $`d`$ は**非 Archimedes 的** (*non-Archimedean*) あるいは **超距離** (*ultrametric*) であるという.
+
+Definition. **写像の連続性**
+:   距離空間 $`(X, d_X), (Y, d_Y)`$ と写像 $`f:X\to Y`$ に対して, $`f`$ が**点 $`x_0\in X`$ で連続** (*continuous at point $`x_0\in X`$*) であるとは, 以下の条件を満たすときいう:
+    ```math
+    \forall\varepsilon>0,\exists\delta>0\text{ s.t. }\forall x\in X,d_X(x,x_0)\leq\delta\Rightarrow d_Y(f(x),f(x_0))\leq\varepsilon
+    ```
+    特に, 全ての $x_0\in X$ で連続な写像 $`f:X\to Y`$ を, **連続写像** (*Continuous function*) といい, $`f:(X, d_X)\to (Y, d_Y)`$ と表す.
+
+距離空間 $`(X, d_X), (Y, d_Y)`$ と全単射な写像 $`f:X\to Y`$ に対して, $`f`$ と $`f^{-1}`$ がともに連続写像となるとき, $`f`$ を**同相写像** (*homeomorphism*) という.
+また, 距離空間 $`(X, d_X), (Y, d_Y)`$ の間に同相写像が存在するとき, $`(X, d_X)`$ と $`(Y, d_Y)`$ は**同相** (*homeomorphic*) であるといい, 
+```math
+(X, d_X)\cong(Y, d_Y)
+```
+と表す.
+
+Example. 連続な全単射の逆写像が連続とは限らない例
+:   写像
+    ```math
+    f:[0,2\pi)\longrightarrow S^1,\quad t\longmapsto(\cos t,\sin t)
+    ```
+    は連続な全単射である.
+    しかし, $`t_n=2\pi-1/n`$ とすると $`f(t_n)\to f(0)`$ である一方, $`t_n`$ は $`0`$ に収束しない.
+    よって $`f^{-1}`$ は $`f(0)`$ で連続でない.
+
+集合 $`X`$ 上の距離 $`d_1,d_2`$ に対して, $`X`$ 上の恒等写像が距離空間 $`(X,d_1), (X,d_2)`$ の間の同相写像となるとき, $`d_1,d_2`$ は**距離として同値** (*equivalent of metrics*) であるという.
+
+Proposition. 距離の変換
+:   集合 $`X`$ 上の距離 $`d`$ と, 写像 $`f:\mathbb{R}_{\geq0}\to\mathbb{R}_{\geq0}`$ をとる.
+    $`f`$ が $`f(0)=0`$ で劣加法的な狭義単調増加写像なら, 合成写像 $`f\circ d`$ は $`X`$ 上の距離となる.
+    特に $`f`$ が連続写像であれば, $`d`$ と $`f\circ d`$ は距離として同値となる.
+
+<u>proof.</u>
+:   $`d_f\coloneqq f\circ d`$ とおく.
+    $`f`$ の狭義単調性と $`f(0)=0`$ より, $`d_f(x,y)=0`$ と $`d(x,y)=0`$ は同値である.
+    非負性と対称性も直ちに従う.
+    三角不等式 $`d(x,z)\leq d(x,y)+d(y,z)`$ と単調性および劣加法性から
+    ```math
+    d_f(x,z)
+    \leq f(d(x,y)+d(y,z))
+    \leq d_f(x,y)+d_f(y,z)
+    ```
+    を得る.
+    したがって $`d_f`$ は距離である.
+
+    $`f`$ が原点で連続なら, 任意の $`\varepsilon>0`$ に対して $`f(\delta)<\varepsilon`$ となる $`\delta>0`$ を選べるので, 恒等写像 $`(X,d)\to(X,d_f)`$ は連続である.
+    逆に $`\varepsilon>0`$ に対して $`\eta=f(\varepsilon)>0`$ とおくと, $`d_f(x,y)<\eta`$ ならば狭義単調性により $`d(x,y)<\varepsilon`$ である.
+    よって逆向きの恒等写像も連続であり, 二つの距離は同値である.
+
+Definition. **距離を保つ写像**
+:   距離空間 $`(X, d_X), (Y, d_Y)`$ と写像 $`f:X\to Y`$ に対して, $`f`$ が**距離を保つ** (*distance preserving*) とは, 以下の条件を満たすときいう:
+    ```math
+    \forall x,y\in X,d_X(x,y)=d_Y(f(x),f(y))
+    ```
+    距離を保つ写像を **等長写像** (*isometry*) といい, 全単射な等長写像 $`X\to Y`$ が存在する距離空間 $`(X, d_X), (Y, d_Y)`$ を距離空間として **等長** (*isometric*) という.
+
+Definition. **写像の一様連続性**
+:   距離空間 $`(X, d_X), (Y, d_Y)`$ と写像 $`f:X\to Y`$ に対して, $`f`$ が**一様連続** (*uniformly continuous*) であるとは, 以下の条件を満たすときいう:
+    ```math
+    \forall\varepsilon>0,\exists\delta>0\text{ s.t. }\forall x,y\in X,d_X(x,y)\leq\delta\Rightarrow d_Y(f(x),f(y))\leq\varepsilon
+    ```
+    一様連続な写像を **一様連続写像** (*uniformly continuous function*) といい, 全単射な写像 $`f:X\to Y`$ として $`f,f^{-1}`$ がともに一様連続となるとき距離空間 $`(X, d_X), (Y, d_Y)`$ を距離空間として **一様同型** (*uniformly isomorphic*) という.
+
+Proposition.
+:   一様連続写像は連続となる.
+
+Example. 連続だが一様連続でない写像の例
+:   写像 $`f:\mathbb{R}\to\mathbb{R}`$, $`f(x)=x^2`$ は連続であるが一様連続ではない.
+    実際, $`x_n=n`$, $`y_n=n+1/n`$ とすると $`|x_n-y_n|\to0`$ であるが,
+    ```math
+    |f(x_n)-f(y_n)|=2+1/n^2
+    ```
+    は $`0`$ に収束しない.
+
+### 点列
+
+距離空間 $`(X,d)`$ の **点列** (*sequence of points*) を, 非負整数全体から $`X`$ への写像 $`n\mapsto p_n`$ として定義し, $`(p_n)_{n\geq0}`$ あるいは単に $`(p_n)`$ と表す.
+
+Definition. **点列の収束性**
+:   距離空間 $`(X,d)`$ の点列 $`(p_n)`$ と点 $`p\in X`$ に対して, 条件
+    ```math
+    \forall\varepsilon>0,\exists N=0,1,2,\ldots\text{ s.t. }\forall n [N\leq n\Rightarrow d(p_n,p)\leq\varepsilon]
+    ```
+    を満たすとき, $`p`$ を **列 $`(p_n)`$ の極限** (*limit of a sequence $`(p_n)`$*) といい, 極限の存在する列は**収束する** (*converge*) といい, 収束しない列は**発散する** (*diverge*) という.
+
+Proposition. **点列の極限の一意性**
+:   距離空間 $`(X,d)`$ の点列 $`(p_n)`$ は, 収束すればその極限は一意的である.
+
+このことから, 収束点列 $`(p_n)`$ の極限を $`\lim(p_n)`$ あるいは $`\lim_{n\to\infty}p_n`$ と表す.
+
+Definition. **同程度連続**
+:   距離空間 $`(X,d_X),(Y,d_Y)`$ と写像の族 $`f=\{f_\lambda:X\to Y\mid\lambda\in\Lambda\}`$ に対して, $`f`$ が**同程度連続** (*equicontinuous*) であるとは, 任意の $`\varepsilon>0,x\in X`$ に対して, ある $`\delta>0`$ が存在して, 任意の $`\lambda\in\Lambda`$ と $`x'\in X`$ に対して $`d_X(x,x')\leq\delta`$ ならば $`d_Y(f_\lambda(x),f_\lambda(x'))\leq\varepsilon`$ であるときいう.
+
+Proposition. **同程度連続な写像列の各点収束は連続写像をなす**
+:   距離空間 $`(X,d_X),(Y,d_Y)`$ と同程度連続な写像列 $`(f_n:X\to Y)`$ と写像 $`f:X\to Y`$ に対して, 任意の $`x\in X`$ に対して $`f_n(x)\to f(x),\,(n\to\infty)`$ であれば, $`f`$ は連続となる.
+
+### 完備性
+
+距離空間 $`(X,d)`$ の点列 $`(p_n)`$ が条件
+```math
+\forall\epsilon>0,\exists N=0,1,2,\ldots\text{ s.t. }\forall m,n [N\leq m,n\Rightarrow d(p_m,p_n)\leq\varepsilon]
+```
+を満たすとき, $`(p_n)`$ を **Cauchy 列** (*Cauchy sequence*) という.
+
+Proposition. **収束列は Cauchy 列**
+:   収束点列は Cauchy 列となる.
+
+距離空間 $`(X,d)`$ の任意の Cauchy 列 $`(p_n)`$ が収束点列になるとき, $`(X,d)`$ は **完備** (*complete*) といい, 完備な距離空間を **完備距離空間** (*complete metric space*) という.
+
+Definition. **完備化**
+:   距離空間 $`(X,d_X)`$ に対して, 完備距離空間 $`\overline{(X,d_X)}=(\overline{X},\overline{d_X})`$ と連続写像 $`\iota:(X,d_X)\to\overline{(X,d_X)}`$ が次の条件を満たすとする.
+    - $`\iota`$ により距離空間 $`(X,d_X)`$ は完備距離空間 $`\overline{(X,d_X)}`$ の稠密部分空間となる.
+    - 任意の完備距離空間 $`(Y,d_Y)`$ と任意の一様連続写像 $`r:(X,d_X)\to(Y,d_Y)`$ に対して, 一様連続写像 $`\overline{r}:\overline{(X,d_X)}\to(Y,d_Y)`$ が一意的に存在して $`r=\overline{r}\circ\rho`$ が成り立つ.
+
+    このとき, 組 $`(\overline{(X,d_X)},\iota)`$ を距離空間 $`(X,d_X)`$ の **完備化** (*completion*) という.
+
+Theorem. **完備化の一意性**
+:   距離空間 $`(X,d_X)`$ の完備化 $`(C,\iota), (C',\iota')`$ に対して, $`\iota'=f\circ\iota`$ を満たす等長同型写像 $`f:C\to C'`$ が一意的に存在する.
+
+距離空間 $`(X,d)`$ の Cauchy 列全体を $`C`$ とすると, $`C`$ 上の二項関係 $`\sim`$ を
+```math
+(p_n)\sim(q_n)\mathrel{\overset{\text{def}}{\iff}}\lim_{n\to\infty}d(p_n,q_n)=0
+```
+と定義すると, $`\sim`$ は $`C`$ 上の同値関係となる.
+このとき, 商集合 $`C/\sim`$ による射影を $`\pi:C\to C/\sim`$ とすると次が成り立つ.
+
+Lemma.
+:   写像 $`\hat{d}:C/\sim\times C/\sim\to\mathbb{R}`$ を 距離空間 $`(X,d)`$ の Cauchy 列 $`p=(p_n),q=(q_n)`$ に対して
+    ```math
+    \hat{d}(\pi(p),\pi(q))=\lim_{n\to\infty}d(p_n,q_n)
+    ```
+    と定めることができる.
+
+Lemma.
+:   $`\hat{d}`$ は $`C/\sim`$ 上の距離となる.
+
+Lemma.
+:   射影 $`\pi:C\to C/\sim`$ は 距離空間 $`(X,d)`$ から $`(C/\sim,\hat{d})`$ への連続写像である.
+
+Lemma.
+:   距離空間 $`(C/\sim,\hat{d})`$ は完備である.
+
+Theorem. **完備化の存在性**
+:   距離空間 $`(C/\sim,\hat{d})`$ と射影 $`\pi:C\to C/\sim`$ の組 $`((C/\sim,\hat{d}),\pi)`$ は $`(X,d_X)`$ の完備化となる.
+
+Proposition. **極限写像の定義域の拡張**
+:   距離空間 $`(X,d_X)`$ と 完備距離空間 $`(Y,d_Y)`$ と同程度連続な写像列 $`(f_n:X\to Y)`$ に対して, $`(X,d_X)`$ のある稠密な部分集合 $`D`$ における各点 $`x\in X`$ で $`Y`$ の点列 $`(f_n(x))`$ が収束するならば, 点列 $`(f_n(x))`$ は任意の $`x\in X`$ に対して収束し, 極限写像は連続である.
+
+---
+
+## 位相空間と連続写像
+
+距離が与えられない集合でも, 各点の近傍を指定すれば連続性と収束を定められる.
+近傍系, 開集合, ネット, フィルターが同じ位相構造を別の形で表すことを利用して, 距離空間を越えた連続性を扱う.
+
+### 位相構造
+
+Definition. **近傍系**
+:   **集合 $`X`$ 上の近傍系** (*neighbourhood system on a set $`X`$*) とは, 写像
+    ```math
+    \mathcal{N}:X\to\operatorname{Fil}(X)
+    ```
+    であって, 各 $`x\in X`$ に対して次の条件を満たすときいう:
+    1. 任意の $`U\in\mathcal{N}(x)`$ に対して
+        ```math
+        x\in U.
+        ```
+    2. 任意の $`U\in\mathcal{N}(x)`$ に対して
+        ```math
+        \mathcal{N}^{-1}(U)=\{y\in X\mid U\in\mathcal{N}(y)\}\in\mathcal{N}(x)
+        ```
+    ただし $`\operatorname{Fil}(X)`$ は $`X`$ 上のフィルター全体の集合を表す.
+
+集合 $`X`$ とその上の近傍系 $`\mathcal{N}`$ の組
+```math
+(X,\mathcal{N})
+```
+を **位相空間** (*topological space*) といい, $`X`$ をその **台集合** (*underlying set*) という.
+位相空間 $`X`$ における台集合を $`X_0`$ と表し, 近傍系を $`\mathcal{N}_X`$ と表す.
+
+Remark.
+:   条件 2 は, 任意の $`U\in\mathcal{N}(x)`$ に対して, ある $`V\in\mathcal N(x)`$ が存在して
+    ```math
+    \forall y\in V,\quad U\in\mathcal{N}(y)
+    ```
+    となることと同値である.
+    この条件が, 点ごとに独立に与えられたフィルター族を位相的な近傍系にする局所整合性条件である.
+
+Definition. **近傍系の強弱**
+:   集合 $`X`$ 上の近傍系 $`\mathcal{u},\mathcal{U}`$ が, 各 $`x\in X`$ に対して $`\mathcal{u}(x)\subseteq\mathcal{U}(x)`$ であるとき, $`\mathcal{U}`$ は $`\mathcal{u}`$ より **強い** (*strong*) といい, $`\mathcal{u}`$ は $`\mathcal{U}`$ より **弱い** (*week*) という.
+
+Example. **離散位相と密着位相**
+:   集合 $`X`$ 上の最も強い近傍系は
+    ```math
+    \mathcal{N}_{\mathrm{dis}}(x)\coloneqq{U\subseteq X\mid x\in U}
+    ```
+    であり, これによって定まる位相を **離散位相** (*discrete topology*) という.
+
+    他方, 集合 $`X`$ 上の最も弱い近傍系は
+    ```math
+    \mathcal{N}_{\mathrm{ind}}(x)\coloneqq{X}
+    ```
+    であり, これによって定まる位相を **密着位相** (*indiscrete topology*) という.
+
+Definition. **近傍基**
+:   **集合 $`X`$ 上の近傍基** (*neighbourhood basis on a set $`X`$*) とは, 写像
+    ```math
+    \mathcal{N}:X\to\operatorname{FilB}(X)
+    ```
+    であって, 各 $`x\in X`$ に対して次の条件を満たすときいう:
+    1. 任意の $`U\in\mathcal{N}(x)`$ に対して
+        ```math
+        x\in U.
+        ```
+    2. 任意の $`U\in\mathcal{N}(x)`$ に対して次を満たす $`V\in\mathcal{N}(x)`$ が存在する:
+        ```math
+        \forall y\in V,\exists W\in\mathcal{N}(y)\text{ s.t. }W\subseteq U
+        ```
+    
+    ただし $`\operatorname{FilB}(X)`$ は $`X`$ 上のフィルター基全体の集合を表す.
+
+Definition. **近傍系の強弱**
+:   集合 $`X`$ 上の近傍基 $`\mathcal{b},\mathcal{B}`$ が, 各 $`x\in X`$ に対して
+    ```math
+    \forall B\in\mathcal{b}(x),\exists B'\in\mathcal{B}(x)\text{ s.t. }B'\subseteq B
+    ```
+    であるとき, $`\mathcal{B}`$ は $`\mathcal{b}`$ より **強い** (*strong*) といい, $`\mathcal{b}`$ は $`\mathcal{B}`$ より **弱い** (*week*) という.
+
+Proposition. **近傍基の定める近傍**
+:   集合 $`X`$ 上の近傍基 $`\mathcal{B}`$ に対して, 写像 $`\mathcal{U}:X\to2^{2^X}`$ を $`x\in X`$ に対して $`\mathcal{U}(x)`$ をフィルター基 $`\mathcal{B}(x)`$ の生成するフィルターとすると, $`\mathcal{U}`$ は $`X`$ 上の近傍系となる. $`\mathcal{U}`$ を $`\mathcal{B}`$ の生成する近傍系という.
+
+Proposition. **集合の近傍**
+:   集合 $`X`$ 上の近傍系 $`\mathcal{U}`$ に対して,
+    ```math
+    \mathcal{U}[A]\coloneqq\bigcap_{a\in A}\mathcal{U}(a),\quad A\subseteq X
+    ```
+    とすると, 次がそれぞれ成り立つ.
+    - $`\mathcal{U}[\{x\}]=\mathcal{U}(x)`$ である.
+    - $`\mathcal{U}[A]`$ は $`X`$ 上のフィルターである.
+    - 各 $`U\in\mathcal{U}[A]`$ に対して $`A\subseteq U`$ である.
+
+### 写像の連続性
+
+Definition. **写像の連続性**
+:   位相空間 $`X, Y`$ と台集合の間の写像 $`f:X_0\to Y_0`$ に対して, $`f`$ が**点 $`x_0\in X`$ で連続** (*continuous at point $`x_0\in X`$*) であるとは,
+    ```math
+    \forall V\in\mathcal{N}_Y(f(x_0)),\quad f^{-1}(V)\in\mathcal{N}_X(x_0)
+    ```
+    が成り立つときいう. 特に, 全ての $x_0\in X$ で連続な写像 $`f:X_0\to Y_0`$ を, **連続写像** (*Continuous function*) といい,
+    ```math
+    f:X\longrightarrow Y
+    ```
+    と表す.
+
+以後, 位相空間 $`X, Y`$ に対して, 単に写像 $`X\to Y`$ といったとき台集合の間の写像 $`X_0\to Y_0`$ のこととする.
+
+Proposition.
+:   位相空間 $`X,Y,Z`$ と写像 $`f:X\to Y, g:Y\to Z`$ に対して, $`f`$ が 点 $`x_0\in X`$ で連続かつ $`g`$ が $`f(x_0)\in Y`$ で連続なとき, 合成写像 $`g\circ f:X\to Z`$ は $`x_0\in X`$ で連続である. 特に, $`f,g`$ がともに連続写像なとき, $`g\circ f`$ も連続写像となる.
+
+Definition. **同相写像**
+:   位相空間 $`X,Y`$ と全単射な写像 $`f:X\to Y`$ に対して, $`f`$ と $`f^{-1}`$ がともに連続写像となるとき, $`f`$ を**同相写像** (*homeomorphism*) という.
+    また, 位相空間 $`X,Y`$ の間に同相写像が存在するとき, $`X`$ と $`Y`$ は**同相** (*homeomorphic*) であるといい, 
+    ```math
+    X\cong Y
+    ```
+    と表す.
+
+Example. 連続な全単射の逆写像が連続とは限らない例
+:   写像
+    ```math
+    f:[0,2\pi)\longrightarrow S^1,\quad t\longmapsto(\cos t,\sin t)
+    ```
+    は連続な全単射である.
+    しかし, $`t_n=2\pi-1/n`$ とすると $`f(t_n)\to f(0)`$ である一方, $`t_n`$ は $`0`$ に収束しない.
+    よって $`f^{-1}`$ は $`f(0)`$ で連続でない.
+
+### 開集合系
+
+Definition. **開集合系**
+:   **集合 $`X`$ 上の開集合系** (*open sets on a set $`X`$*) とは, $`X`$ の部分集合族 $`\mathbf{O}`$ であって次の条件を満たすときいう:
+    - $`\emptyset,X\in\mathbf{O}`$,
+    - $`G,H\in\mathbf{O}`$ に対して $`G\cap H\in\mathbf{O}`$,
+    - $`\mathbf{S}\subseteq\mathbf{O}`$ に対して $`\bigcup\mathbf{S}\in\mathbf{O}`$.
+
+Definition. **開基**
+:   **集合 $`X`$ 上の開基** (*open basis on a set $`X`$*) とは, $`X`$ の部分集合族 $`\mathbf{B}`$ であって次の条件を満たすときいう:
+    - $`X=\bigcup\mathbf{B}_0`$ を満たす $`\mathbf{B}_0\subseteq\mathbf{B}`$ が存在する.
+    - $`G,H\in\mathbf{B}`$ に対して, $`G\cap H=\bigcup\mathbf{B}_0`$ を満たす $`\mathbf{B}_0\subseteq\mathbf{B}`$ が存在する.
+
+Definition. **開基の強弱**
+:   集合 $`X`$ 上の開基 $`\mathbf{B}_1,\mathbf{B}_2`$ が条件
+    ```math
+    \forall G\in\mathbf{B}_1,\exists H\in\mathbf{B}_2\text{ s.t. }H\subseteq G
+    ```
+    を満たすとき, $`\mathbf{B}_2`$ は $`\mathbf{B}_1`$ より **強い** (*strong*) といい, $`\mathbf{B}_1`$ は $`\mathbf{B}_2`$ より **弱い** (*week*) という.
+
+Proposition. **部分集合族から開基の生成**
+:   集合 $`X`$ の部分集合族 $`\mathbf{S}`$ に対して, 
+    ```math
+    \mathbf{B}\coloneqq\left\{\bigcap_{i=0}^{N}S_i\mathrel{}\middle|\mathrel{}S_0,S_1,\ldots,S_N\subseteq\mathbf{S},N=0,1,2,\ldots\right\}
+    ```
+    は $`X`$ 上の開基となる. 特に, $`\mathbf{S}`$ が開基であれば $`\mathbf{B}=\mathbf{S}`$ となる.
+    $`\mathbf{B}`$ を $`\mathbf{S}`$ の生成する開基という.
+
+Proposition. **開基から開集合系の生成**
+:   集合 $`X`$ 上の開基 $`\mathbf{B}`$ に対して, 
+    ```math
+    \mathbf{O}\coloneqq\left\{\bigcup\mathbf{B}'\mathrel{}\middle|\mathrel{}\mathbf{B}'\subseteq\mathbf{B}\right\}
+    ```
+    は $`X`$ 上の開集合系となる. 特に, $`\mathbf{B}`$ が開集合系であれば $`\mathbf{O}=\mathbf{B}`$ となる.
+    $`\mathbf{O}`$ を $`\mathbf{B}`$ の生成する開集合系という.
+
+集合 $`X`$ の部分集合族 $`\mathbf{S}`$ に対して, $`\mathbf{B}`$ を $`\mathbf{S}`$ の生成する開基とし $`\mathbf{O}`$ を $`\mathbf{B}`$ の生成する開集合系としたとき, $`\mathbf{O}`$ を $`\mathbf{S}`$ の生成する開集合系というと, 次が成り立つ.
+
+Proposition.
+:   集合 $`X`$ の部分集合族 $`\mathbf{S}`$ の生成する開集合系 $`\mathbf{O}`$ は, $`\mathbf{S}`$ を含むような開集合系のうち最も弱い開集合系である.
+
+Proposition. **近傍基の定める開基**
+:   集合 $`X`$ 上の近傍基 $`\mathcal{B}`$ に対して, $`X`$ の部分集合族 $`\beta`$ を
+    ```math
+    \beta\coloneqq\{B\in2^X\mid\forall x\in B,B\in\mathcal{B}(x)\}
+    ```
+    とすると, $`\beta`$ は $`X`$ 上の開基であり, $`\beta`$ の生成する位相と $`\mathcal{B}`$ の生成する位相は一致する.
+
+Proposition. **開基の定める近傍基**
+:   集合 $`X`$ 上の開基 $`\beta`$ に対して, 写像 $`\mathcal{B}:X\to2^{2^X}`$ を
+    ```math
+    \mathcal{B}(x)\coloneqq\{B\in\beta\mid x\in B\},\quad x\in X
+    ```
+    とすると, $`\mathcal{B}`$ は $`X`$ 上の近傍基であり, $`\beta`$ の生成する位相と $`\mathcal{B}`$ の生成する位相は一致する.
+
+位相空間 $`X`$ と台集合 $`X_0`$ 上の開集合系 $`\mathbf{O}`$ に対して, $`\mathbf{O}`$ の生成する近傍系が $`X`$ の近傍系 $`\mathcal{N}_X`$ と一致するとき $`\mathbf{O}`$ を位相空間 $`X`$ の開集合系という.
+位相空間 $`X`$ の開集合系き $`\mathbf{O}`$ に対して, $`G\in\mathbf{O}`$ を **位相空間 $`X`$ の開集合** (*open set on a $`X`$*) といい, $`F^\complement=X_0\setminus F\in\mathbf{O}`$ となる $`F`$ を **位相空間 $`X`$ の閉集合** (*closed set on a $`X`$*) という.
+
+Lemma.
+:   位相空間 $`X,Y`$ と写像 $`f:X\to Y`$ と $`x_0\in X`$ に対して, 以下同値.
+    1. $`f`$ は $`x_0`$ で連続である.
+    2. $`f(x_0)`$ を含むような任意の開集合 $`G\subseteq Y`$ に対して $`f^{-1}(G)`$ は $`X`$ の開集合である.
+
+Theorem. **連続性の開集合による特徴づけ**
+:   位相空間 $`X,Y`$ と写像 $`f:X\to Y`$ に対して, 以下同値.
+    1. $`f`$ は連続である.
+    2. 任意の開集合 $`G\subseteq Y`$ に対して $`f^{-1}(G)`$ は $`X`$ の開集合である.
+
+したがって、通常の「開集合の逆像が開集合」という条件は、近傍系による連続性の大域的な特徴づけとして得られる。
+
+### 開核と閉包
+
+Definition. **開核作用素**
+:   **集合 $`X`$ 上の開核作用素** (*interior operator on a set $`X`$*) とは, 写像 $`i:2^X\to2^X`$ であって次の条件を満たすときいう:
+    - $`i(X)=X`$.
+    - 任意の $`A\in 2^X`$ に対して $`i(A)\subseteq A`$.
+    - 任意の $`A\in 2^X`$ に対して $`i(i(A))=i(A)`$.
+    - 任意の $`A,B\in2^X`$ に対して $`i(A\cap B)=i(A)\cap i(B)`$.
+
+Theorem. **開核作用素の定める位相構造**
+:   集合 $`X`$ 上の開核作用素 $`i`$ に対して, $`X`$ 上の写像 $`\mathcal{N}:X\to\operatorname{Fil}(X)`$ を
+    ```math
+    \mathcal{N}(x)\coloneqq\{U\subseteq X\mid x\in i(U)\}
+    ```
+    とすると, $`\mathcal{N}`$ は $`X`$ 上の近傍系となる. $`\mathcal{N}`$ を $`i`$ の生成する近傍系といい, 位相空間 $`(X,\mathcal{N})`$ を $`i`$ の生成する位相空間という.
+
+Definition. **閉包作用素**
+:   **集合 $`X`$ 上の閉包作用素** (*closure operator on a set $`X`$*) とは, 写像 $`c:2^X\to2^X`$ であって次の条件を満たすときいう:
+    - $`c(\emptyset)=\emptyset`$.
+    - 任意の $`A\in 2^X`$ に対して $`A\subseteq c(A)`$.
+    - 任意の $`A\in 2^X`$ に対して $`c(c(A))=c(A)`$.
+    - 任意の $`A,B\in2^X`$ に対して $`c(A\cup B)=c(A)\cup c(B)`$.
+
+Proposition. **開核作用素と閉包作用素の関係**
+:   集合 $`X`$ 上の閉包作用素 $`c`$ に対して, 写像 $`i:2^X\to2^X`$ を
+    ```math
+    i(A)=X\setminus c(X\setminus A),\quad A\in2^X
+    ```
+    とすると, $`i`$ は $`X`$ 上の開核作用素となる.
+    $`i`$ を $`c`$ の定める開核作用素という.
+
+$`X`$ 上の閉包作用素 $`c`$ と $`c`$ の定める開核作用素 $`i`$ に対して, $`i`$ の生成する位相空間を $`c`$ の生成する位相空間という.
+
+Theorem. **位相構造の定める開核作用素**
+:   集合 $`X`$ 上の近傍系 $`\mathcal{N}`$ に対して, 写像 $`(-)^\circ:2^X\to2^X`$ を
+    ```math
+    A^\circ\coloneqq\{x\in X\mid A\in\mathcal{N}(x)\}
+    ```
+    とすると, $`(-)^\circ`$ は $`X`$ 上の開核作用素となり, $`(-)^\circ`$ の定める近傍系は $`\mathcal{N}`$ と一致する. $`(-)^\circ`$ を位相空間 $`(X,\mathcal{N})`$ の定める開核作用素という.
+
+位相空間 $`X`$ に対して, 点 $`x\in X`$ が部分集合 $`A\subseteq X`$ の **内点** (*interior point*) であるとは, $`x\in A^\circ`$ であるときいう.
+他方, 点 $`x`$ が $`A^\complement=X\setminus A`$ の内点であるとき, 点 $`x`$ を $`A`$ の **外点** (*exterior point*) という.
+さらに, 点 $`x`$ が $`A`$ の内点でないかつ外点でないとき, 点 $`x`$ を $`A`$ の **境界点** (*boundary point*) という.
+
+Theorem. **位相構造の定める閉包作用素**
+:   集合 $`X`$ 上の近傍系 $`\mathcal{N}`$ に対して, 写像 $`\overline{(-)}:2^X\to2^X`$ を
+    ```math
+    \overline{A}\coloneqq\{x\in X\mid\forall U\in\mathcal{N}(x),U\cap A\neq\emptyset\}
+    ```
+    とすると, $`\overline{(-)}`$ は $`X`$ 上の閉包作用素となり, $`\overline{(-)}`$ の定める近傍系は $`\mathcal{N}`$ と一致する. $`\overline{(-)}`$ を位相空間 $`(X,\mathcal{N})`$ の定める閉包作用素という.
+
+位相空間 $`X`$ に対して, 点 $`x\in X`$ が部分集合 $`A\subseteq X`$ の **触点** (*adherent point*) であるとは, $`x\in\overline{A}`$ であるときいう.
+他方, 点 $`x`$ が $`A\setminus\{x\}`$ の触点であるとき, 点 $`x`$ を $`A`$ の **集積点** (*accumulation point*) という.
+さらに, 点 $`x`$ が $`A`$ の集積点でないとき 点 $`x`$ を $`A`$ の **孤立点** (*isolated point*) という.
+
+Definition.
+:   位相空間 $`X`$ の部分集合 $`A\in2^X`$ の境界点全体を $`\partial A`$ とし, これを $`A`$ の境界という.
+
+Proposition.
+:   このとき, 次がそれぞれ成り立つ.
+    - $`\overline{A}=A^\circ\sqcup\partial{A}`$,
+    - $`\partial{A}=\overline{A}\cap\overline{A^\complement}`$,
+    - $`\overline{A\cap B}\subseteq\overline{A}\cap\overline{B}`$ であり, $`\partial{A}\cap\partial{B}=\emptyset`$ であれば等号が成り立つ.
+
+### 距離の誘導する位相
+
+Definition. **開球**
+:   距離空間 $`X`$ の点 $`x\in X`$ と $`r>0`$ に対して,
+    ```math
+    B_r(x)\coloneqq\{y\in X\mid d_X(x,y) < r\}
+    ```
+    を, **点 $`x`$ を中心とする半径 $`r`$ の開球** (*open ball of radius $`r`$ centered at a point $`x`$*) という.
+
+Proposition. **距離の定める位相構造**
+:   距離空間 $`X`$ に対して, $`X`$ の台集合上の近傍基 $`\mathcal{B}`$ を
+    ```math
+    \mathcal{B}(x)\coloneqq\{B_r(x)\mid r>0\},\quad x\in X
+    ```
+    を満たすものが存在する.
+
+上記の近傍基により生成される位相構造を **$`(X,d)`$ の距離位相** (*metric topology on $`(X,d)`$*) という.
+
+Proposition. **距離位相による連続性の整合性**
+:   距離空間 $`X,Y`$ と写像 $`f:X\to Y`$ に対して以下同値:
+    1. $`f`$ は距離空間の間の連続写像である.
+    2. 距離位相により $`f`$ は位相空間の間の連続写像である.
+
+以後, 距離空間には距離位相による位相構造が備わっているとして, 適宜位相空間として扱えることとする.
+
+位相空間 $`X`$ に対して, $`X`$ の台集合上の距離 $`d`$ が存在して距離空間 $`(X,d)`$ が位相空間 $`X`$ と同相になるとき, $`X`$ は **距離化可能** (*metrizable*) であるといい, 距離化可能な位相空間を **距離化可能空間** (*metrizable space*) という.
+
+### 位相空間上のネット
+
+Definition. **有向集合**
+:   前順序集合 $`(\Lambda,\leq)`$ が **有向集合** (*directed set*) であるとは, 任意の $`a,b\in\Lambda`$ に対して $`a\leq c`$ かつ $`b\leq c`$ を満たす $`c\in\Lambda`$ が存在するときいう.
+
+Definition. **ネット**
+:   集合 $`X`$ と有向集合 $`(\Lambda,\leq)`$ に対して, 写像 $`\Lambda\to X,\lambda\mapsto x_\lambda`$ を $`(\Lambda,\leq)`$ によって添字付けられた **$`X`$ のネット** (*net in $`X`$*) といい, $`(x_\lambda)_{\lambda\in\Lambda}`$ と表す.
+
+特に, 非負整数全体は大小関係により有向集合となるため, それにより添字付けられたネットを **点列** (*sequence of points*) という.
+
+Definition. **部分ネット**
+:   有向集合 $`(\Lambda,\leq_\Lambda)`$ に対して, $`X`$ のネット $`x=(x_\lambda)_{\lambda\in\Lambda}`$ の **部分ネット** (*subnet*) とは, 有向集合 $`(I,\leq_I)`$ で添字付けられた $`X`$ のネット $`y=(y_i)_{i\in I}`$ であって, 以下を満たす写像 $`s:I\to\Lambda`$ が存在するときいう:
+    - $`y=x\circ s`$. (i.e. $`\forall i\in I,y_i=x_{s(i)}`$)
+    - **単調性**: 任意の $`i,i'\in I`$ に対して $`i\leq_I i'`$ ならば $`s(i)\leq_\Lambda s(i')`$.
+    - **共終性**: 任意の $`\lambda\in\Lambda`$ に対して $`\lambda\leq_\Lambda s(i)`$ を満たす $`i\in I`$ が存在する.
+
+点列 $`(x_n)`$ の **部分点列** (*subsequence of points*) とは, 点列 $`(y_n)`$ であって, 以下を満たす非負整数全体からそれ自体への写像 $`s`$ が存在するときいう:
+- $`y=x\circ s`$. (i.e. $`\forall i\in I,y_i=x_{s(i)}`$)
+- **狭義単調性**: 任意の非負整数 $`m,n`$ に対して $`m<n`$ ならば $`s(m)<s(n)`$.
+- **共終性**: 任意の非負整数 $`n`$ に対して $`n\leq s(m)`$ を満たす非負整数 $`m`$ が存在する.
+
+Definition. **eventually in, frequentlly in**
+:   集合 $`X`$ のネット $`(x_\lambda)_{\lambda\in\Lambda}`$ と部分集合 $`A\subseteq X`$ に対して,
+    - **$`(x_\lambda)_{\lambda\in\Lambda}`$ is eventually in $`A`$** $`\mathrel{\overset{\text{def}}{\iff}}`$ $`\exists\lambda_0\in\Lambda\text{ s.t. }\forall\lambda\in\Lambda,\lambda_0\leq\lambda\Rightarrow x_\lambda\in A`$.
+    - **$`(x_\lambda)_{\lambda\in\Lambda}`$ is frequentlly in $`A`$** $`\mathrel{\overset{\text{def}}{\iff}}`$ $`\forall\lambda\in\Lambda,\exists\lambda_0\in\Lambda\text{ s.t. }\lambda\leq\lambda_0\land x_\lambda\in A`$.
+
+定義より明らかに, $`(x_\lambda)_{\lambda\in\Lambda}`$ is eventually in $`A`$ $`\Rightarrow`$ $`(x_\lambda)_{\lambda\in\Lambda}`$ is frequentlly in $`A`$ である.
+
+Proposition.
+:   $`(x_\lambda)_{\lambda\in\Lambda}`$ is eventually in $`A`$ $`\iff`$ $`(x_\lambda)_{\lambda\in\Lambda}`$ is not frequentlly in $`X\setminus A`$
+
+Definition. **普遍ネット**
+:   集合 $`X`$ のネット $`(x_\lambda)_{\lambda\in\Lambda}`$ が **普遍ネット** (*universal net*) あるいは **超ネット** (*ultranet*) であるとは, 任意の $`A\subseteq X`$ に対して次ののいずれかの条件が成り立つときいう:
+    - $`(x_\lambda)_{\lambda\in\Lambda}`$ is eventually in $`A`$
+    - $`(x_\lambda)_{\lambda\in\Lambda}`$ is eventually in $`X\setminus A`$
+
+Theorem. **普遍部分ネットの存在**
+:   任意のネットに対して普遍ネットであるような部分ネットが存在する.
+
+Definition. **ネットの収束**
+:   位相空間 $`X`$ と $`X`$ のネット $`(x_\lambda)_{\lambda\in\Lambda}`$ と 点 $`x\in X`$ に対して, 条件
+    ```math
+    \forall U\in\mathcal{N}_X(x),(x_\lambda)_{\lambda\in\Lambda}\text{ is eventually in }U
+    ```
+    を満たすとき, $`x`$ を **ネット $`(x_n)`$ の極限点** (*limit point of a net $`(x_n)`$*) といい, 極限の存在するネットは**収束する** (*converge*) といい, 収束しないネットは**発散する** (*diverge*) という.
+
+Definition. **ネットの堆積**
+:   位相空間 $`X`$ と $`X`$ のネット $`(x_\lambda)_{\lambda\in\Lambda}`$ と 点 $`x\in X`$ に対して, 条件
+    ```math
+    \forall U\in\mathcal{N}_X(x),(x_\lambda)_{\lambda\in\Lambda}\text{ is frequently in }U
+    ```
+    を満たすとき, $`x`$ を **ネット $`(x_n)`$ の堆積点** (*cluster point of a net $`(x_n)`$*) という.
+
+Theorem. **堆積点の特徴づけ**
+:   位相空間 $`X`$ と $`X`$ のネット $`(x_\lambda)_{\lambda\in\Lambda}`$ と 点 $`x\in X`$ に対して, 以下同値:
+    1. $`x`$ は $`(x_n)`$ の堆積点である.
+    2. $`(x_n)`$ の部分ネットで $`x`$ に収束するものが存在する.
+
+Theorem.
+:   位相空間 $`X`$ と部分集合 $`A\subseteq X`$ と 点 $`x\in X`$ に対して, 以下同値:
+    1. $`x\in\overline{A}`$.
+    2. $`x`$ に収束する $`A`$ のネットが存在する.
+
+Theorem.
+:   位相空間 $`X,Y`$ と写像 $`f:X\to Y`$ と 点 $`x\in X`$ に対して, 以下同値:
+    1. $`f`$ は $`x`$ で連続である.
+    2. $`x`$ に収束する任意のネット $`(x_\lambda)_{\lambda\in\Lambda}`$ に対して, ネット $`(f(x_\lambda))_{\lambda\in\Lambda}`$ は $`f(x)`$ へ収束する.
+
+### 位相空間上のフィルター
+
+Definition. **有限交叉性**
+:   集合 $`X`$ の部分集合族 $`\mathcal{F}`$ が **有限交叉性** (*finite intersection property*) を持つとは, $`\mathcal{F}`$ に属する任意の有限個の集合 $`F_i`$ ($`i=1,2,\ldots,n`$) に対して $`\bigcap_{i=1}^{n}F_i\neq\emptyset`$ を満たすときいう.
+
+半順序集合 $`(2^X,\subseteq)`$ のフィルター(基)であって $`\emptyset`$ を含まないものを $`X`$ 上のフィルター(基)と呼び, 半順序集合 $`(2^X,\subseteq)`$ による細分関係をフィルター(基)同士の順序として導入する. 特に, $`X`$ 上のフィルター $`\mathcal{F},\mathcal{G}`$ に対して以下同値となる:
+1. $`\mathcal{G}`$ は $`\mathcal{F}`$ の細分である.
+2. 包含関係 $`\mathcal{F}\subseteq\mathcal{G}`$ が成り立つ.
+
+Definition. **フィルターの両立**
+:   $`X`$ 上のフィルター $`\mathcal{F},\mathcal{G}`$ に対して, 条件
+    ```math
+    \forall F\in\mathcal{F},\forall G\in\mathcal{G},F\cap G\neq\emptyset
+    ```
+    を満たすとき, $`\mathcal{F}`$ と $`\mathcal{G}`$ は両立しているという.
+
+Proposition.
+:   $`X`$ 上のフィルター $`\mathcal{F},\mathcal{G}`$ に対して, 以下同値:
+    1. $`\mathcal{F}`$ と $`\mathcal{G}`$ は両立している.
+    2. $`\mathcal{F}`$ と $`\mathcal{G}`$ は共通の細分を持つ.
+
+Definition.
+:   両立している $`X`$ 上のフィルター $`\mathcal{F},\mathcal{G}`$ の **交わり** (*meet*) とは, $`X`$ 上のフィルター $`\mathcal{F}\wedge\mathcal{G}`$ であって, 次で定まる.
+    ```math
+    \mathcal{F}\wedge\mathcal{G}\coloneqq\{F\cap G\mid F\in\mathcal{F},G\in\mathcal{G}\}
+    ```
+    定義より明らかに, $`\mathcal{F}\wedge\mathcal{G}`$ は $`\mathcal{F}`$ と $`\mathcal{G}`$ の細分であって, 細分関係により最大のものである.
+
+Proposition. **有限交叉族の生成するフィルター基**
+:   集合 $`X`$ と有限交叉性を持つ $`X`$ の部分集合族 $`\mathcal{F}`$ に対して, $`X`$ の部分集合族 $`\mathcal{F}^\ast`$ を
+    ```math
+    \mathcal{F}^\ast\coloneqq\left\{\bigcap_{i=1}^{n}F_i\mathrel{}\middle|\mathrel{}F_i\in\mathcal{F}(i=1,2,\ldots,n),n\in\mathbf{Z}_{\geq1}\right\}
+    ```
+    とすると, $`\mathcal{F}^\ast`$ は $`\mathcal{F}`$ の細分であって, 細分関係により最大のフィルター基となる.
+
+有限交叉性を持つ $`X`$ の部分集合族 $`\mathcal{F}`$ の生成するフィルター基 $`\mathcal{F}^\ast`$ に対して, $`\mathcal{F}^\ast`$ の生成するフィルターを $`\langle\mathcal{F}\rangle`$ と表し, これを $`\mathcal{F}`$ の生成するフィルターと呼ぶ. 定義より明らかに $`\langle\mathcal{F}\rangle`$ は $`\mathcal{F}`$ の細分であって, 細分関係により最大のフィルターとなる. 特に, 空でない部分集合 $`A\subseteq X`$ のみからなる集合族 $`\{A\}`$ の生成するフィルター $`\langle\{A\}\rangle`$ を $`A`$ が生成する単項フィルターという.
+
+Theorem. **超フィルターの存在**
+:   集合 $`X`$ の部分集合 $`A`$ に対して, $`A`$ を含むような $`X`$ 上の超フィルターが存在する.
+
+Proposition. **超フィルターの特徴づけ**
+:   集合 $`X`$ 上のフィルター $`\mathcal{M}`$ に対して, 以下同値.
+    1. $`\mathcal{M}`$ は超フィルターである.
+    2. 任意の $`A\in2^X`$ に対して, 各 $`M\in\mathcal{M}`$ で $`A\cap M\neq\emptyset`$ であれば $`A\in\mathcal{M}`$ である.
+    3. 任意の $`A\in\mathcal{M}`$ に対して, $`B\subseteq A`$ は $`B\in\mathcal{M}`$ である.
+    4. 任意の $`A\in2^X`$ に対して, $`A\in\mathcal{M}`$ あるいは $`A^\complement\in\mathcal{M}`$ である.
+
+Definition. **フィルターの制限と拡張**
+:   集合 $`X`$ と空でない部分集合 $`A\subseteq X`$ に対して, 次がそれぞれ成り立つ.
+    - $`X`$ 上のフィルター $`\mathcal{F}`$ が $`A\in\mathcal{F}`$ であれば集合族 $`\mathcal{F}|_A\coloneqq\{F\cap A\mid F\in\mathcal{F}\}`$ は $`A`$ 上のフィルターである. $`\mathcal{F}|_A`$ を $`\mathcal{F}`$ の $`A`$ への制限と呼ぶ.
+    - $`A`$ 上のフィルター $`\mathcal{G}`$ に対して集合族 $`\hat{\mathcal{G}}\coloneqq\{F\in2^X\mid\exists G\in\mathcal{G}\text{ s.t. }G\subseteq F\}`$ は $`X`$ 上のフィルターである. $`\hat{\mathcal{G}}`$ を $`\mathcal{G}`$ の $`X`$ への拡張と呼ぶ.
+
+    さらに, 対応 $`\mathcal{F}\mapsto\mathcal{F}|_A`$, $`\mathcal{G}\mapsto\hat{\mathcal{G}}`$ はそれぞれ $`A`$ を含む $`X`$ 上のフィルター全体と $`A`$ 上のフィルター全体の写像となり, 制限と拡張は互いに逆写像となる.
+
+以後, この対応により $`A`$ を含む $`X`$ 上のフィルターと $`A`$ 上のフィルターを同一視する.
+
+Proposition. **フィルターの像**
+:   集合 $`X`$ 上のフィルター $`\mathcal{M}`$ と写像 $`f:X\to Y`$ に対して, $`\mathcal{F}`$ の $`f`$ による像
+    ```math
+    f[\mathcal{F}]\coloneqq\{G\in2^Y\mid f^{-1}(G)\in\mathcal{F}\}
+    ```
+    は $`Y`$ 上のフィルターである. 特に $`\mathcal{F}`$ が超フィルターであれば $`f[\mathcal{F}]`$ も超フィルターである.
+
+Definition. **フィルターの収束**
+:   位相空間 $`X`$ と $`X`$ 上のフィルター $`\mathcal{F}`$ と 点 $`x\in X`$ に対して, $`\mathcal{F}`$ が $`x`$ の近傍系 $`\mathcal{N}_X(x)`$ の細分となるとき, $`x`$ を **フィルター $`\mathcal{F}`$ の極限点** (*limit point of a filter $`\mathcal{F}`$*) といい, 極限の存在するフィルターは**収束する** (*converge*) といい, 収束しないフィルターは**発散する** (*diverge*) という.
+
+Definition. **フィルターの堆積**
+:   位相空間 $`X`$ と $`X`$ 上のフィルター $`\mathcal{F}`$ と 点 $`x\in X`$ に対して, $`\mathcal{F}`$ が $`x`$ の近傍系 $`\mathcal{N}_X(x)`$ と両立するとき, $`x`$ を **フィルター $`\mathcal{F}`$ の堆積点** (*cluster point of a filter $`\mathcal{F}`$*) という.
+
+フィルター基 $`\mathcal{F}`$ に対して, $`\mathcal{F}`$ の極限点(resp. 堆積点)を $`\mathcal{F}`$ の生成するフィルターの極限点(resp. 堆積点)とする.
+
+Theorem. **堆積点の特徴づけ**
+:   位相空間 $`X`$ と $`X`$ 上のフィルター $`\mathcal{F}`$ と 点 $`x\in X`$ に対して, 以下同値:
+    1. $`x`$ は $`\mathcal{F}`$ の堆積点である.
+    2. $`\mathcal{F}`$ の細分で $`x`$ に収束するものが存在する.
+
+Theorem.
+:   位相空間 $`X`$ と部分集合 $`A\subseteq X`$ と 点 $`x\in X`$ に対して, 以下同値:
+    1. $`x\in\overline{A}`$.
+    2. $`x`$ に収束する $`A`$ 上のフィルターが存在する.
+
+Theorem.
+:   位相空間 $`X`$ に対して, $`X`$ 上のフィルター $`\mathcal{F}`$ の堆積点全体は $`\bigcap_{F\in\mathcal{F}}\overline{F}`$ と一致する.
+
+Theorem.
+:   位相空間 $`X,Y`$ と写像 $`f:X\to Y`$ と 点 $`x\in X`$ に対して, 以下同値:
+    1. $`f`$ は $`x`$ で連続である.
+    2. $`x`$ に収束する $`X`$ 上の任意のフィルター $`\mathcal{F}`$ に対して, $`\mathcal{F}`$ の $`f`$ による像 $`f[\mathcal{F}]`$ は $`f(x)`$ へ収束する.
+
+### フィルターとネットの相互変換
+
+Proposition. **ネットの生成するフィルター基**
+:   位相空間 $`X`$ と $`X`$ のネット $`p=(p_\lambda)_{\lambda\in\Lambda}`$ に対して,
+    ```math
+    \mathcal{F}\coloneqq\{F_\lambda\mid\lambda\in\Lambda\},\quad
+    F_\lambda\coloneqq\{p_j\mid j\in\Lambda,\lambda\leq j\}
+    ```
+    とすると, $`\mathcal{F}`$ は $`X`$ 上のフィルター基であり, $`x\in X`$ に対して以下同値:
+    1. $`(p_\lambda)_{\lambda\in\Lambda}`$ は $`x`$ に収束する.
+    2. $`\mathcal{F}`$ は $`x`$ に収束する.
+
+    $`\mathcal{F}`$ をネット $`p=(p_\lambda)_{\lambda\in\Lambda}`$ の生成するフィルター基といい, $`\varphi(p)`$ と表す.
+
+Proposition. **フィルター基の生成するネット**
+:   位相空間 $`X`$ と $`X`$ 上のフィルター基 $`\mathcal{F}`$ に対して,
+    ```math
+    \Lambda\coloneqq\{(a,A)\mid a\in A\in\mathcal{F}\},\quad
+    (a,A)\leq(b,B)\mathrel{\overset{\text{def}}{\iff}}B\subseteq A
+    ```
+    とすると, $`(\Lambda,\leq)`$ は有向集合となる. このとき, 写像 $`p:\Lambda\to X`$ を $`p_{(a,A)}\coloneqq a`$ とすると $`p`$ は $`X`$ のネットであり, $`x\in X`$ に対して以下同値:
+    1. $`\mathcal{F}`$ は $`x`$ に収束する.
+    2. $`(p_{(a,A)})`$ は $`x`$ に収束する.
+
+    $`(p_{(a,A)})`$ をフィルター基 $`\mathcal{F}`$ の生成するネットといい, $`\psi(\mathcal{F})`$ と表す.
+
+Proposition. **ネットとフィルター基の合成**
+:   集合 $`X`$ のネット $`p=(p_\lambda)_{\lambda\in\Lambda}`$ に対して, $`(\psi\circ\varphi)(p)`$ は $`p`$ の部分ネットとなる.
+
+Proposition. **フィルター基とネットの合成**
+:   集合 $`X`$ 上のフィルター基 $`\mathcal{F}`$ に対して, $`\mathcal{F}=(\varphi\circ\psi)(\mathcal{F})`$ となる.
+
+### 特別な部分集合
+
+Definition.
+:   位相空間 $`X`$ の部分集合 $`A\in2^X`$ の集積点全体を $`A^d`$ とし, これを $`A`$ の**導来集合** (*derived set*) という.
+    $`A\subseteq A^d`$ な $`A`$ を **自己稠密集合** (*dense-in-itself set*) といい, 特に $`A=A^d`$ な $`A`$ を **完全集合** (*prefect set*) という.
+
+Definition. **正則開集合**
+:   位相空間 $`X`$ に対して, 開集合 $`G`$ が $`\overline{G}^\circ=G`$ を満たすとき, $`G`$ を **正則開集合** (*regular open set*) という.
+
+Definition. **稠密と疎**
+:   位相空間 $`X`$ に対して, 部分集合 $`S\in2^X`$ が $`X=\overline{S}`$ を満たすとき $`S`$ は $`X`$ において **稠密** (*dence*) であるという.
+    他方, 部分集合 $`S\in2^X`$ が $`\overline{S}^\circ=\emptyset`$ を満たすとき, $`S`$ は $`X`$ における **疎集合** (*nowhere dense set*) という.
+
+Definition. **痩集合**
+:   位相空間 $`X`$ の部分集合 $`S`$ が $`X`$ の疎集合の可算和で表現できるとき **痩せている** (*meager in $`X`$*) といい, 痩せている集合を **痩集合** (*meager set*) あるいは **第一類集合** (*set of the first category*) という. 他方, 痩集合でない集合を **非痩集合** (*nonmeager set*) あるいは **第二類集合** (*set of the second category*) という.
+    特に, 位相空間 $`X`$ の台集合自体が痩せているとき, $`X`$ を **痩空間** (*meager space*) あるいは第一類空間という. 他方, 痩空間でない位相空間を **非痩空間** (*nonmeager space*) あるいは第二類空間という.
+    また, 補集合 $`S^\complement=X\setminus S`$ が痩せているような集合 $`S`$ を **補痩である** (*comeager*) あるいは **残留的である** (*residual*) という.
+
+---
+
+## 空間の構成
+
+新しい位相空間は, 既知の空間を積, 直和, 商, 部分空間として組み合わせることで得られる.
+ここでは連続写像に関する最弱位相と最強位相を使い, それらの構成を統一して記述する.
+
+### 積と余積
+
+Definition. **積空間**
+:   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ に対して, 台集合の直積による標準射影 $`\pi_\lambda\colon\prod_{\lambda\in\Lambda}(X_\lambda)_0\to(X_\lambda)_0`$ により
+    ```math
+    \mathbf{S}\coloneqq\bigcup_{\lambda\in\Lambda}\{\pi_\lambda^{-1}(G_\lambda)\mid G_\lambda\in\mathbf{O}_{X_\lambda}\}
+    ```
+    として, $`\mathbf{S}`$ により生成される開集合系を $`\mathbf{O}`$ とする. このとき, 開集合系 $`\mathbf{O}`$ により定まる位相空間を, 位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ による **積空間** (*product space*) といい
+    ```math
+    \prod_{\lambda\in\Lambda}X_\lambda
+    ```
+    と表す.
+
+Definition. **余積空間**
+:   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ に対して, 台集合の直和による標準射影 $`\pi_\lambda\colon(X_0)_\lambda\to\coprod_{\lambda\in\Lambda}(X_0)_\lambda`$ により
+    ```math
+    \mathbf{O}\coloneqq\bigcap_{\lambda\in\Lambda}\left\{G\subseteq\coprod_{\lambda\in\Lambda}(X_0)_\lambda\mathrel{}\middle|\mathrel{}\pi_\lambda^{-1}(G)\in\mathbf{O}_{X_\lambda}\right\}
+    ```
+    とすると, $`\mathbf{O}`$ は $`\coprod_{\lambda\in\Lambda}(X_0)_\lambda`$ の開集合系となる. このとき, 開集合系 $`\mathbf{O}`$ により定まる位相空間を, 位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ による **余積空間** (*coproduct space*) といい
+    ```math
+    \coprod_{\lambda\in\Lambda}X_\lambda
+    ```
+    と表す.
+
+### 商と等化
+
+Definition. **商空間**
+:   位相空間 $`X`$ と集合 $`Y`$ と全射な写像 $`f:X\to Y`$ に対して, $`Y`$ の部分集合族
+    ```math
+    \mathbf{O}_f\coloneqq\{G\subseteq Y\mid f^{-1}(G)\in\mathbf{O}_X\}
+    ```
+    は $`Y`$ の開集合系となる. このとき $`\mathbf{O}_f`$ により定まる位相空間を, $`f`$ による **商空間** (*quotient space*) といい $`X_f`$ と表す.
+
+Definition. **等化空間**
+:   位相空間 $`X`$ と $`X_0`$ 上の同値関係 $`\sim`$ に対して, 同値関係による射影 $`\pi:X_0\to X_0/\sim`$ による商空間 $`X_\pi`$ を, $`\sim`$ による **等化空間** (*identification space*) といい $`X/\sim`$ と表す.
+
+また, 位相空間 $`X`$ の部分集合 $`S`$ に対して, $`S`$ の点を同一視して(一点に縮めて)得られる空間 $`X/A`$ とは, 
+- **$`S`$ が空でないとき**: 同値関係 $`\sim_A\coloneqq\Delta(X)\cup(A\times A)`$ による等化空間
+- **$`S`$ が空なとき**: $`\infty`$ を $`X`$ の点でない形式的な点として $`X`$ と密着空間 $`\{\infty\}`$ の余積空間
+
+として定義する.
+
+### 誘導と余誘導
+
+Definition. **誘導位相**
+:   集合 $`X`$ と位相空間の列 $`(Y_\lambda\mid\lambda\in\Lambda)`$ と写像列 $`f=(f_\lambda:X\to Y_\lambda\mid\lambda\in\Lambda)`$ に対して, 各 $`f_\lambda`$ が連続となるような $`X`$ の位相のうち最も弱いものを, $`f`$ による **誘導位相** (*induced topology*) あるいは **始位相** (*initial topology*), **射影位相** (*projective topology*) という.
+
+Proposition. **誘導位相の構成**
+:   集合 $`X`$ と位相空間の列 $`(Y_\lambda\mid\lambda\in\Lambda)`$ と写像列 $`f=(f_\lambda:X\to Y_\lambda\mid\lambda\in\Lambda)`$ に対して, $`X`$ の部分集合族
+    ```math
+    \bigcup_{\lambda\in\Lambda}\{f_\lambda^{-1}(G_\lambda)\mid G_\lambda\in\mathbf{O}_{X_\lambda}\}
+    ```
+    から生成される開集合系は $`f`$ による誘導位相による開集合系と一致する.
+
+Proposition.
+:   集合 $`X`$ と位相空間の列 $`(Y_\lambda\mid\lambda\in\Lambda)`$ と位相空間 $`A`$ と写像 $`f:A\to X`$ と写像列 $`g=(g_\lambda:X\to Y_\lambda\mid\lambda\in\Lambda)`$ に対して, 以下同値:
+    - $`g`$ による誘導位相により $`f`$ は $`A`$ 上の連続写像となる.
+    - 各 $`\lambda\in\Lambda`$ に対して合成写像 $`g_\lambda\circ f`$ は $`A`$ から $`Y_\lambda`$ への連続写像となる.
+
+Definition. **余誘導位相**
+:   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ と集合 $`Y`$ と写像列 $`f=(f_\lambda:X_\lambda\to Y\mid\lambda\in\Lambda)`$ に対して, 各 $`f_\lambda`$ が連続となるような $`Y`$ の位相のうち最も強いものを, $`f`$ による **余誘導位相** (*coinduced topology*) あるいは **終位相** (*final topology*), **帰納位相** (*inductive topology*) という.
+
+Proposition. **余誘導位相の構成**
+:   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ と集合 $`Y`$ と写像列 $`f=(f_\lambda:X_\lambda\to Y\mid\lambda\in\Lambda)`$ に対して,
+    ```math
+    \bigcap_{\lambda\in\Lambda}\{G\subseteq Y\mid f_\lambda^{-1}(G)\in\mathbf{O}_{X_\lambda}\}
+    ```
+    は, $`f`$ による余誘導位相と一致する.
+
+Proposition.
+:   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ と集合 $`Y`$ と位相空間 $`A`$ と写像列 $`f=(f_\lambda:X_\lambda\to Y\mid\lambda\in\Lambda)`$ と写像 $`g:Y\to A`$ に対して, 以下同値:
+    - $`f`$ による余誘導位相により $`g`$ は $`A`$ への連続写像となる.
+    - 各 $`\lambda\in\Lambda`$ に対して合成写像 $`g\circ f_\lambda`$ は $`X_\lambda`$ から $`A`$ への連続写像となる.
+
+### 位相的性質
+
+Definition. **位相的性質**
+:   位相空間における性質 $`P`$ が **位相的性質** (*topological property*) あるいは **位相不変量** (*topological invariant*) であるとは, 任意の同相な位相空間 $`X,Y`$ に対して $`X`$ が $`P`$ を満たすことと $`Y`$ が $`P`$ を満たすことが同値となるときいう.
+
+Definition. **局所的性質**
+:   位相的性質 $`P`$ が **局所的** (*locally*) であるとは, 任意の位相空間 $`X`$ に対して次が同値なときいう:
+    - $`X`$ は $`P`$ を満たす.
+    - 任意の点 $`x\in X`$ の開近傍 $`x\in G`$ が存在し, 部分空間として $`P`$ を満たす.
+
+    また, 位相空間 $`X`$ の任意の開部分空間が $`P`$ を満たすとき $`X`$ は **局所的に $`P`$** (*locally $`P`$*) であるという.
+
+Definition. **遺伝的性質**
+:   位相的性質 $`P`$ が **遺伝的** (*hereditary*) であるとは, 任意の位相空間 $`X`$ に対して次が同値なときいう:
+    - $`X`$ は $`P`$ を満たす.
+    - 位相空間 $`X`$ の任意の部分空間 $`S`$ は $`P`$ を満たす.
+
+    また, 位相空間 $`X`$ の任意の部分空間が $`P`$ を満たすとき $`X`$ は **遺伝的に $`P`$** (*hereditary $`P`$*) であるという.
+
+位相的性質 $`P`$ が **弱遺伝的** (*weakly hereditary*) であるとは, $`P`$ を満たすような任意の位相空間 $`X`$ に対して, その任意の閉部分空間 $`F`$ も $`P`$ を満たすときいう.
+
+Definition. **乗法的性質**
+:   $`\kappa`$ を基数とする.
+    位相的性質 $`P`$ が **$`\kappa`$-乗法的** (*$`\kappa`$-multiplicative*) であるとは, $`P`$ を満たすような任意の位相空間の族 $`(X_j\mid j\in\kappa)`$ に対して, その積空間 $`\prod_{j\in\kappa}X_j`$ も $`P`$ を満たすときいう.
+    特に $`P`$ が如何なる基数 $`\kappa`$ に対しても $`\kappa`$-乗法的であるとき単に乗法的であるという. また, $`\aleph_0`$-乗法的な位相的性質を **可算乗法的** (*countable multiplicative*) であるといい, 有限基数 $`\kappa`$ について $`\kappa`$-乗法的な位相的性質を **有限乗法的** (*finite multiplicative*) であるという.
+
+Definition. **除法的性質**
+:   位相的性質 $`P`$ が **除法的** (*divisibility*) であるとは, $`P`$ を満たすような任意の位相空間 $`X`$ に対して, 任意の集合 $`Y`$ と任意の全射写像 $`f:Y\to X`$ による商空間 $`X/f`$ も $`P`$ を満たすときいう.
+
+---
+
+## 分離性
+
+異なる点や閉集合を開近傍でどこまで区別できるかは, 位相空間の性質を大きく左右する.
+分離公理を段階的に定め, 後の距離化, コンパクト化, 連続関数の構成で必要になる条件を区別する.
+
+Definition. **分離公理**
+:   位相空間 $`X`$ の近傍系 $`\mathcal{U}`$ と $`X`$ の部分集合 $`A,B`$ に対して次をそれぞれ定義する.
+    1. $`A,B`$ が **位相的に識別可能** (*topologically distinguishable*) であるとは, 各 $`a\in A,b\in B`$ に対して
+        ```math
+        \mathcal{U}(a)\neq\mathcal{U}(b)
+        ```
+        であるときいう.
+    2. $`A,B`$ が **分離される** (*separated*) とは, 
+        ```math
+        \overline{A}\cap B=A\cap\overline{B}=\emptyset
+        ```
+        であるときいう.
+    3. $`A,B`$ が **近傍で分離される** (*separated by neighbourhoods*) とは, 次を満たすときいう:
+        ```math
+        \exists U\in\mathcal{U}[A],\exists V\in\mathcal{U}[B],\text{ s.t. }U\cap V=\emptyset.
+        ```
+    4. $`A,B`$ が **閉近傍で分離される** (*closed separated by neighbourhoods*) とは, 次を満たすときいう:
+        ```math
+        \exists U\in\mathcal{U}[A],\exists V\in\mathcal{U}[B],\text{ s.t. }\overline{U}\cap\overline{V}=\emptyset.
+        ```
+    5. $`A,B`$ が **函数で分離される** (*separated by a continuous function*) とは, $`X`$ 上の実数値連続写像 $`f`$ として $`f(A)=\{0\}`$ かつ $`f(B)=\{1\}`$ を満たすものが存在するときいう.
+    6. $`A,B`$ が **函数でちょうど分離される** (*precisely separated by a continuous function*) とは, $`X`$ 上の実数値連続写像 $`f`$ として $`f^{-1}(\{0\})=A`$ かつ $`f^{-1}(\{1\})=B`$ を満たすものが存在するときいう.
+
+### 点同士の分離性
+
+Definition. **Kolmogorov 空間**
+:   位相空間 $`X`$ が **Kolmogorov 空間** (*Kolmogorov space*) であるとは, $`X`$ の任意の異なる 2 点が位相的に識別可能であるときいう.
+
+これは古典的な $`\mathbf{T}_0`$ 公理に相当する.
+
+Definition. **$`\mathbf{T}_1`$ 空間**
+:   位相空間 $`X`$ が **$`\mathbf{T}_1`$ 空間** (*$`\mathbf{T}_1`$ space*) であるとは, $`X`$ の任意の異なる 2 点が分離されるときいう.
+
+$`\mathbf{T}_1`$ 空間は古典的には **Fréchet 空間** (*Fréchet space*) または **到達可能空間** (*accessible space*) と呼ばれることがある。ただし現代では "Fréchet space" が関数解析における Fréchet–Urysohn 性を指す場合も多いため, 本書では $`\mathbf{T}_1`$ 空間を主名称とする.
+
+Definition. **前正則空間**
+:   位相空間 $`X`$ が **前正則** (*preregular*) であるとは, $`X`$ の任意の異なる 2 点が近傍で分離されるときいう.
+
+Definition. **Hausdorff 空間**
+:   位相空間 $`X`$ が **Hausdorff 空間** (*Hausdorff space*) であるとは, $`X`$ の任意の異なる 2 点が近傍で分離されるときいう.
+
+これは古典的な $`\mathbf{T}_2`$ 公理に相当する.
+
+Definition. **Urysohn 空間**
+:   位相空間 $`X`$ が **Urysohn 空間** (*Urysohn space*) であるとは, $`X`$ の任意の異なる 2 点が閉近傍で分離されるときいう.
+
+古典的には $`\mathbf{T}_{2\frac12}`$ 公理と呼ばれることがある.
+
+### 点と閉集合の分離
+
+Definition. **正則**
+:   位相空間 $`X`$ が **正則** (*regular*) であるとは, $`X`$ の任意の点 $`x`$ と任意の閉集合 $`F`$ が $`x\notin F`$ ならば $`\{x\},F`$ は近傍で分離されるときいう.
+
+Definition. **完全正則**
+:   位相空間 $`X`$ が **完全正則** (*completely regular*) であるとは, $`X`$ の任意の点 $`x`$ と任意の閉集合 $`F`$ が $`x\notin F`$ ならば $`\{x\},F`$ は函数で分離されるときいう.
+
+### 閉集合同士の分離
+
+Definition. **正規**
+:   位相空間 $`X`$ が **正規** (*normal*) であるとは, 任意の閉集合 $`F,E`$ に対して, $`F\cap E=\emptyset`$ ならば $`F,E`$ は近傍で分離されるときいう.
+
+Theorem. **遺伝的正規性の特徴づけ**
+:   位相空間 $`X`$ に対して, 以下同値.
+    1. $`X`$ は遺伝的正規である. すなわち, $`X`$ の任意の部分空間は正規である.
+    2. 任意の部分集合 $`A,B`$ に対して $`A,B`$ が分離されるならば $`A,B`$ は近傍で分離される.
+
+遺伝的正規空間は古典的には **全部分正規空間** (*completely normal space*) と呼ばれる.
+
+Definition. **完全正規**
+:   位相空間 $`X`$ が **完全正規** (*perfectly normal*) であるとは, 任意の閉集合 $`F,E`$ に対して, $`F\cap E=\emptyset`$ ならば $`F,E`$ は函数でちょうど分離されるときいう.
+
+Theorem. **完全正規 (perfectly normal)**
+:   位相空間 $`X`$ に対して, 以下同値.
+    1. $`X`$ は完全正規である.
+    2. $`X`$ は正規であり, 任意の閉集合が $`G_\delta`$ 集合となる.
+
+### Kolmogorov 商
+
+2 点 $`x,y`$ が位相的に識別可能でないとき $`x\sim y`$ として定めたとき, この関係 $`\sim`$ を**位相的不可識別性** (*topological indistinguishability*) と呼ぶ.
+
+Proposition.
+:   位相的不可識別性はの同値関係である.
+
+Definition. **Kolmogorov 商**
+:   位相空間 $`X`$ に対して, 位相的不可識別性 $`\sim`$ による商空間 $`X/\sim`$ を $`X`$ の **Kolmogorov 商** (*Kolmogorov quotient*) といい, $`\operatorname{KQ}X`$ と表す.
+
+Theorem. **Kolmogorov 商の普遍性**
+:   位相空間 $`X`$ の Kolmogorov 商 $`X_0`$ は Kolmogorov 空間となる.
+    さらに任意の Kolmogorov 空間 $`Y`$ と連続写像 $`f:X\to Y`$ に対して, 連続写像 $`\overline{f}:\operatorname{KQ}X\to Y`$ が一意的に存在して $`f=\overline{f}\circ\pi`$ が成り立つ. ただし, $`\pi:X\to\operatorname{KQ}X`$ は商写像である.
+
+この定理より対応 $`X\mapsto\operatorname{KQ}X`$ は, 位相空間から Kolmogorov 空間への反射とみなせる.
+
+### $`\mathbf{T}_0`$-reflection と弱い分離性
+
+Definition. **対称的空間**
+:   位相空間 $`X`$ が **対称的** (*symmetric*) であるとは, 任意の 2 点 $`x,y`$ が位相的に識別可能 ならば $`x,y`$ は分離されるときいう.
+
+Proposition. **対称的**
+:   位相空間 $`X`$ に対して, 以下同値.
+    1. $`X`$ は対称的である.
+    2. $`X`$ の Kolmogorov 商 は $`\mathbf{T}_1`$ 空間である.
+
+Proposition.
+:   位相空間 $`X`$ に対して, 以下同値.
+    1. $`X`$ は前正則である.
+    2. $`X`$ の Kolmogorov 商 は Hausdorff 空間である.
+
+古典的には前正則性を $`\mathbf{R}_1`$ 公理と呼ぶことがある.
+
+Definition. **弱 Urysohn 性**
+:   位相空間 $`X`$ が **弱 Urysohn 性**を持つとは, $`X`$ の任意の 2 点 $`x,y`$ が位相的に識別可能 ならば $`x,y`$ は閉近傍で分離されるときいう.
+
+この名称は本書での便宜的なものであり, 古典的な記号では $`R_{1\frac12}`$ と表されることがある.
+
+Proposition.
+:   位相空間 $`X`$ に対して, 以下同値.
+    1. $`X`$ は弱 Urysohn 性を持つ.
+    2. $`X`$ の Kolmogorov 商 は Urysohn 空間である.
+
+### 名前付き $`\mathbf{T}_0`$-分離空間
+
+Definition. **Vietoris 空間**
+:   正則かつ Kolmogorov な位相空間を **Vietoris 空間** (*Vietoris space*) という.
+
+同値に, 正則 Hausdorff 空間である.
+
+古典的には $`\mathbf{T}_3`$ 空間と呼ばれる.
+
+Definition. **Tychonoff 空間**
+:   完全正則かつ Kolmogorov な位相空間を **Tychonoff 空間** (*Tychonoff space*) という.
+
+同値に, 完全正則 Hausdorff 空間である.
+
+古典的には $`\mathbf{T}_{3\frac12}`$ 空間と呼ばれる.
+
+Definition. **Tietze 空間**
+:   正規かつ $`\mathbf{T}_1`$ な位相空間を **Tietze 空間** (*Tietze space*) という.
+
+同値に, 正規 Hausdorff 空間である.
+
+古典的には $`\mathbf{T}_4`$ 空間と呼ばれる.
+
+Definition. **$`\mathbf{T}_5`$ 空間**
+:   遺伝的正規かつ $`\mathbf{T}_1`$ な位相空間を $`\mathbf{T}_5`$ 空間という.
+
+古典的には **全部分正規 Hausdorff** (*completely normal Hausdorff space*) とも呼ばれる.
+
+Definition. **$`\mathbf{T}_6`$ 空間**
+:   完全正規かつ $`\mathbf{T}_1`$ な位相空間を $`\mathbf{T}_6`$ 空間という.
+
+古典的には **完全正規 Hausdorf** (*perfectly normal Hausdorff space*) とも呼ばれる.
+
+### 古典的分離公理との対応
+
+古典的な $`\mathbf{T}_n`$ 記法は, 以上の名前付き性質を次のように組み合わせたものとして理解できる.
+
+| 古典記号 | 現代的な記述 |
+| --- | --- |
+| $`\mathbf{T}_0`$ | Kolmogorov |
+| $`\mathbf{T}_1`$ | $`\mathbf{T}_1`$ |
+| $`\mathbf{T}_2`$ | Hausdorff |
+| $`\mathbf{T}_{2\frac{1}{2}}`$ | Urysohn |
+| $`\mathbf{T}_3`$ | regular + $`\mathbf{T}_0`$ |
+| $`\mathbf{T}_{3\frac{1}{2}}`$ | completely regular + $`\mathbf{T}_0`$ |
+| $`\mathbf{T}_4`$ | normal + $`\mathbf{T}_1`$ |
+| $`\mathbf{T}_5`$ | hereditarily normal + $`\mathbf{T}_1`$ |
+| $`\mathbf{T}_6`$ | perfectly normal + $`\mathbf{T}_1`$ |
+
+この表から分かるように, $`\mathbf{T}_0,\mathbf{T}_1,\mathbf{T}_2,\dots`$ は一種類の分離条件を単純に段階的に強めた系列ではない.
+
+実際,
+
+- $`\mathbf{T}_0,\mathbf{T}_1,\mathbf{T}_2`$ は主として点同士の分離,
+- regularity は点と閉集合の分離,
+- complete regularity は連続函数による点と閉集合の分離,
+- normality は閉集合同士の分離,
+- hereditary normality は normality の遺伝性,
+- perfect normality は normality に閉集合の $`G_\delta`$ 性を加えた条件,
+
+という異なる方向の強化を含んでいる.
+
+したがって, 本書では $`\mathbf{T}_n`$ を分離性の基本定義としては用いず, 名前付きの分離性を基本概念とし, $`\mathbf{T}_n`$ はそれらの古典的な組合せを表す記法として扱う.
+
+---
+
+## 連結性
+
+連結性は, 空間が二つの互いに交わらない開集合へ分解できるかを測る性質である.
+点と部分集合の到達可能性を表す連結成分と弧状連結性も, この開集合による定義から導く.
+
+### 連結空間
+
+Definition. **連結空間**
+:   位相空間 $`X`$ が **不連結** (*disconnected*) であるとは, 次を満たす開集合 $`G,H`$ が存在する時言う:
+    ```math
+    A\cup B=X,\quad A\cap B=\emptyset,\quad A\neq\emptyset,\quad B\neq\emptyset
+    ```
+    位相空間が不連結でないとき **連結** (*connected*) であるといい, 連結な位相空間を **連結空間** (*connected space*) という.
+
+位相空間の部分集合が, 相対位相により連結空間になるとき **連結集合** (*connected set*) という.
+
+Theorem. **連結性の特徴づけ**
+:   位相空間 $`X`$ に対して, 以下同値:
+    1. $`X`$ は連結である.
+    2. 開かつ閉な部分集合は $`\emptyset`$ か $`X`$ のみである.
+    3. 2 点離散空間 $`B`$ に対して, 連続な全射 $`X\to B`$ は存在しない.
+
+Theorem.
+:   位相空間 $`X,Y`$ に対して, $`X`$ が連結かつ全射な連続写像 $`X\to Y`$ が存在するなら, $`Y`$ も連結となる.
+
+Theorem.
+:   位相空間 $`X,Y`$ と商写像 $`f:X\to Y`$ が以下の 2 つの条件
+    - $`Y`$ は連結,
+    - 各 $`y\in Y`$ に対して $`f^{-1}(\{y\})\subseteq X`$ は連結集合
+    を満たすとき, $`X`$ は連結となる.
+
+Theorem. **中間値の定理**
+:   連結空間 $`X`$ と連続写像 $`f:X\to\mathbb{R}`$ に対して, $`f(a)<f(b)`$ なる $`a,b\in X`$ に対して次が成り立つ.
+    ```math
+    \forall t\in[f(a),f(b)],\exists c\in X\text{ s.t. }f(c)=t
+    ```
+
+Proposition. **連結集合の貼り合わせ**
+:   位相空間 $`X`$ の連結集合の族 $`\mathcal{C}`$ が条件
+    ```math
+    \exists C_0\in\mathcal{C}\text{ s.t. }\forall C\in\mathcal{C},C\cap C_0\neq\emptyset
+    ```
+    を満たすとき, $`\bigcup\mathcal{C}`$ は $`X`$ の連結集合となる.
+
+Theorem. **局所連結性の性質**
+:   位相空間 $`X,Y`$ に対して, $`X`$ が局所連結かつ商写像 $`X\to Y`$ が存在するなら, $`Y`$ も局所連結となる.
+
+### 連結成分
+
+Definition. **連結成分**
+:   位相空間 $`X`$ に対して, $`X`$ 上の二項関係 $`\sim`$ を
+    - $`x\sim y`$ $`\mathrel{\overset{\text{def}}{\iff}}`$ $`x,y\in C`$ となる $`X`$ の連結集合 $`C`$ が存在する
+    
+    として定義すると $`\sim`$ は同値関係となる.
+    このとき, 点 $`x\in X`$ の **連結成分** (*connected component*) を $`x\in\Gamma`$ を満たす商集合 $`X/\sim`$ の要素 $`\Gamma`$ として定義する.
+
+Theorem. **連結成分の性質**
+:   位相空間 $`X`$ の点 $`x\in X`$ の連結成分を $`\Gamma`$ は, 点 $`x`$ を含む $`X`$ の連結集合のうち最大のものであり, かつ閉集合である.
+
+Definition. **完全不連結空間**
+:   各連結成分がすべて 1 点のみからなるような位相空間を **完全不連結空間** (*totally disconnected space*) という.
+
+### 弧状連結
+
+Definition. **道**
+:   位相空間 $`X`$ の点 $`a,b\in X`$ に対して, **$`a`$ から $`b`$ への道** (*path from $`a`$ to $`b`$*) とは, $`f(0)=a`$ かつ $`f(1)=b`$ を満たすような連続写像 $`f\colon[0,1]\toX`$ のことである.
+    このとき, $`a`$ をこの道の始点, $`b`$ をこの道の終点という.
+
+Definition. **弧状連結**
+:   位相空間が **弧状連結** (*pathwise connected*) であるとは, 任意の 2 点の間に道が存在するときいう. 弧状連結な位相空間を **弧状連結空間** (*pointwise connected space*) という.
+    特に, 弧状連結空間であって任意の 2 点の間に道として埋め込みであるようなものが存在するとき, **弧連結** (*arcwise connected*) であるといい, そのような位相空間を **弧連結空間** (*arcwise connected space*) という.
+
+Theorem. **道の性質**
+:   位相空間 $`X`$ に対して次がそれぞれ成り立つ.
+    - 始点と終点が一致するような道は存在する.
+    - $`a`$ から $`b`$ への道 $`f`$ に対して, 写像 $`\overline{f}:[0,1]\to X`$ を
+        ```math
+        \overline{f}(t)\coloneqq f(1-t),\quad 0\leq t\leq 1
+        ```
+        とすると, $`\overline{f}`$ は $`b`$ から $`a`$ への道となる. これを $`f`$ の逆道という.
+    - $`a`$ から $`b`$ への道 $`f`$ と $`b`$ から $`c`$ への道 $`g`$ に対して, 写像 $`f\ast g:[0,1]\to X`$ を
+        ```math
+        (f\ast g)(t)\coloneqq
+        \begin{cases}
+        f(2t),&0\leq t\leq 1/2.\\
+        g(2t-1),&1/2< t\leq 1.
+        \end{cases}
+        ```
+        とすると, $`f\ast g`$ は $`a`$ から $`c`$ への道となる. これは $`f`$ と $`g`$ の合成道という.
+
+Theorem.
+:   弧状連結なら連結である.
+
+### 既約空間
+
+Definition. **既約空間**
+:   位相空間 $`X`$ が **既約** (*irreducible*) あるいは **超連結** (*hyperconnected*) であるとは, $`X`$ の任意の真部分閉集合 $`F,E`$ に対して $`F\cup E\neq X`$ となるときいう.
+
+位相空間の部分集合が, 相対位相により既約空間になるとき **既約集合** (*irreducible set*) という.
+
+Proposition. **既約空間の特徴づけ**
+:   位相空間 $`X`$ に対して以下同値:
+    1. $`X`$ は既約である.
+    2. 任意の空でない開集合 $`G, H`$ に対して, $`G\cap H\neq\emptyset`$ となる.
+    3. 任意の空でない開集合 $`G`$ は $`X`$ において稠密である.
+    4. 任意の開集合は連結である.
+
+Definition. **既約成分**
+:   位相空間 $`X`$ に対して, $`X`$ 上の二項関係 $`\sim`$ を
+    - $`x\sim y`$ $`\iff`$ $`x,y\in I`$ となる $`X`$ の既約集合 $`I`$ が存在する
+    
+    として定義すると $`\sim`$ は同値関係となる.
+    このとき, 点 $`x\in X`$ の **既約成分** (*irreducible component*) を $`x\in I`$ を満たす商集合 $`X/\sim`$ の要素 $`I`$ として定義する.
+
+Theorem. **既約成分の性質**
+:   位相空間 $`X`$ の点 $`x\in X`$ の既約成分を $`I`$ は, 点 $`x`$ を含む $`X`$ の既約集合のうち極大のものであり, かつ閉集合である.
+
+---
+
+## 可算性
+
+可算性公理は, 空間の局所情報を可算個の開集合で記録できるかを表す.
+基の濃度は Lindelöf 性や距離化可能性と結び付き, 点列による議論がどこまで有効かも左右する.
+
+### 基数不変量
+
+Definition. **位相的密度**
+:   位相空間 $`X`$ の稠密な部分集合の濃度のうち最小のものを, $`X`$ の **位相的密度** (*topological density*) あるいは単に **密度** (*density*) という.
+
+Definition. **位相的指標**
+:   位相空間 $`X`$ の点 $`x\in X`$ に対して, $`x`$ の近傍基の濃度のうち最小のものを, $`X`$ の点 $`x`$ における **位相的指標** (*topological character*) あるいは単に **指標** (*character*) という.
+    また, $`X`$ の各点における位相的指標の上限(最小上界)を $`X`$ の位相的指標あるいは単に指標という.
+
+Definition. **位相的荷重**
+:   位相空間 $`X`$ の開基の濃度のうち最小のものを, $`X`$ の **位相的荷重** (*topological weight*) あるいは単に **荷重** (*weight*) という.
+
+### 可算公理
+
+Definition. **可分空間**
+:   位相空間 $`X`$ が **可分** (*separable*) であるとは, $`X`$ の位相的密度が高々可算であるときいう.
+    可分な位相空間を **可分空間** (*separable space*) という.
+
+Definition. **第一可算空間**
+:   位相空間 $`X`$ が **第一可算** (*first-countable*) であるとは, $`X`$ の位相的指標が高々可算であるときいう.
+    第一可算な位相空間を **第一可算空間** (*first-countable space*) という.
+    第一可算であるための条件を **第一可算公理** (*first axiom of countability*) という.
+
+Definition. **第二可算空間**
+:   位相空間 $`X`$ が **第一可算** (*second-countable*) であるとは, $`X`$ の位相的荷重が高々可算であるときいう.
+    第二可算な位相空間を **第二可算空間** (*second-countable space*) という.
+    第二可算であるための条件を **第二可算公理** (*second axiom of countability*) という.
+
+Proposition.
+:   第二可算空間は可分である.
+
+---
+
+## 被覆と次元
+
+開被覆は局所的な情報を空間全体へ配置するための道具であり, 細分はその情報をより細かくする操作である.
+局所有限性と被覆の操作を整備して, コンパクト性, パラコンパクト性, 次元論で用いる被覆の制御を記述する.
+
+### 局所有限性
+
+Definition. **局所有限性**
+:   位相空間 $`X`$ の部分集合族 $`\sigma`$ が **局所有限** (*locally finite*) であるとは, 任意の点 $`x\in X`$ に対して, $`x\in G`$ であって集合族 $`\{S\in\sigma\mid S\cap G\neq\emptyset\}`$ が有限集合となるような開集合 $`G`$ が存在するときいう.
+
+Definition. **星有限性**
+:   位相空間 $`X`$ の部分集合族 $`\sigma`$ が **星有限** (*star finite*) であるとは, 任意の $`A\in\sigma`$ に対して集合族 $`\{S\in\sigma\mid S\cap A\neq\emptyset\}`$ が有限集合となるときいう.
+
+Proposition.
+:   位相空間 $`X,Y`$ と $`Y`$ の部分集合族 $`\sigma`$ と連続写像 $`f:X\to Y`$ に対して, $`\sigma`$ が局所有限なら $`\{f^{-1}(S)\mid S\in\sigma\}`$ もまた局所有限となる.
+
+Proposition.
+:   位相空間 $`X`$ の部分集合族 $`\sigma`$ が局所有限であれば, $`\overline{\sigma}\coloneqq\{\overline{S}\mid S\in\sigma\}`$ もまた局所有限となり, $`\bigcup\overline{\sigma}\subseteq\overline{\bigcup\sigma}`$ が成り立つ.
+
+Definition. **位数**
+:   集合 $`X`$ の部分集合族 $`\sigma`$ に対して, $`\sigma`$ の **点 $`x\in X`$ における位数** (*order of a point $`x\in X`$*) を集合族 $`\{S\in\sigma\mid x\in S\}`$ の濃度とし, $`\operatorname{ord}_x\sigma`$ と表す.
+    また, $`\sigma`$ の**位数** (*order*) を各点での位数の上限とし, $`\operatorname{ord}\sigma`$ と表す.
+    特に, 各点での位数が高々可算であるとき $`\sigma`$ は**点可算** (*pointwise countable*) といい, 各点での位数が有限であるとき $`\sigma`$ は**点有限** (*pointwise finite*) という.
+
+### 被覆
+
+Definition. **被覆**
+:   **集合 $`X`$ の被覆** (*covering of a set $`X`$*) とは, $`X`$ の部分集合族 $`\mathbf{C}`$ であって $`X=\bigcup\mathbf{C}`$ を満たすときいう.
+    また, 基数 $`\kappa`$ に対して濃度が高々 $`\kappa`$ となる被覆を **$`\kappa`$-被覆** ($`\kappa`$-covering) といい, 特に $`\aleph_0`$-被覆を **可算被覆** (*countable covering*) といい, 有限基数 $`\kappa`$ による $`\kappa`$-被覆を **有限被覆** (*finite covering*) という.
+
+特に, 位相空間 $`X`$ の **開被覆** (*open covering*) とは, $`X`$ の開集合からなる $`X`$ の被覆のこととする. 他方, 位相空間 $`X`$ の **閉被覆** (*closed covering*) とは, $`X`$ の閉集合からなる $`X`$ の被覆のこととする.
+
+集合 $`X`$ の被覆 $`\mathbf{C}_1,\mathbf{C}_2`$ が $`\mathbf{C}_1\subseteq\mathbf{C}_2`$ を満たすとき, $`\mathbf{C}_1`$ を $`\mathbf{C}_2`$ の **部分被覆** (*subcovering*) という.
+
+### 細分関係
+
+集合 $`X`$ に対して, 包含関係による半順序集合 $`(2^X,\subseteq)`$ による細分関係を $`\leq`$ とすると次が成り立つ:
+```math
+\mathbf{G}\leq\mathbf{H}\iff\forall G\in\mathbf{G},\exists H\in\mathbf{H}\text{ s.t. }G\subseteq H
+```
+この細分関係により, $`X`$ の被覆全体は完備束となる. すなわち, 被覆の列 $`(\mathbf{C}_\lambda\mid\lambda\in\Lambda)`$ に対して, 結びと交わり
+```math
+\bigvee_{\lambda\in\Lambda}\mathbf{C}_\lambda=\left\{\bigcup_{\lambda\in\Lambda}U_\lambda\mathrel{}\middle|\mathrel{}U_\lambda\in\mathbf{C}_\lambda,\lambda\in\Lambda\right\}
+,\quad
+\bigwedge_{\lambda\in\Lambda}\mathbf{C}_\lambda=\left\{\bigcap_{\lambda\in\Lambda}U_\lambda\mathrel{}\middle|\mathrel{}U_\lambda\in\mathbf{C}_\lambda,\lambda\in\Lambda\right\}
+```
+はそれぞれ $`X`$ の被覆となる.
+
+Definition. **星型集合**
+:   集合 $`X`$ の被覆 $`\mathbf{U}`$ と部分集合 $`A\subseteq X`$ に対して, 
+    ```math
+    \mathbf{U}(A)\coloneqq\bigcup\{U\in\mathbf{U}\mid U\cap A\neq\emptyset\}
+    ```
+    を **$`\mathbf{U}`$ における $`A`$ の星** (*star of a set $`A`$ in a cover $`\mathbf{U}`$*) という.
+    特に, $`A`$ が 1 点 $`x\in X`$ のみからなる集合のときは, $`\mathbf{U}(x)`$ と表す.
+    また正整数 $`n`$ に対して,
+    ```math
+    \mathbf{U}^n\coloneqq\left\{\bigcup_{i=1}^{n}U_i\mathrel{}\middle|\mathrel{}U_i\in\mathcal{U},U_i\cap U_{i+1}\neq\emptyset\right\},\quad \mathbf{U}^0=2^X
+    ```
+    とする.
+
+Proposition.
+:   集合 $`X`$ の被覆 $`\mathbf{U},\mathbf{V}`$ と 正整数 $`m,n`$ に対して, $`\mathbf{U}^{mn}=(\mathbf{U}^m)^n`$.
+
+Proposition.
+:   集合 $`X`$ の被覆 $`\mathbf{U}`$ と $`A\in2^X`$ に対して $`\mathbf{U}(A)=\bigcup_{a\in A}\mathbf{U}(a)`$.
+
+Proposition.
+:   集合 $`X`$ の被覆 $`\mathbf{U},\mathbf{V}`$ と $`A,B\in2^X`$ が $`\mathbf{U}\leq\mathbf{V}`$ かつ $`A\subseteq B`$ ならば $`\mathbf{U}(A)\subseteq\mathbf{V}(B)`$.
+
+Proposition.
+:   集合 $`X`$ の被覆 $`\mathbf{U},\mathbf{V}`$ と $`x,y\in X`$ に対して, $`x\in\mathbf{U}(y)\iff y\in\mathbf{U}(x)`$.
+
+Proposition.
+:   集合 $`X`$ の被覆 $`\mathbf{U},\mathbf{V}`$ と $`A,B\in2^X`$ に対して次がそれぞれ成り立つ.
+    1. 正整数 $`m`$ に対して, $`A\cap\mathbf{U}^m(B)\neq\emptyset\iff\mathbf{U}^m\cap B\neq\emptyset`$.
+    2. 正整数 $`m,n`$ に対して, $`\mathbf{U}^{m+n}(A)=\mathbf{U}^m(\mathbf{U}^n(A))`$.
+
+Definition. **重心細分と星型細分**
+:   集合 $`X`$ の被覆 $`\mathbf{U},\mathbf{V}`$ に対して,
+    ```math
+    \mathbf{U}^\varDelta\coloneqq\{\mathbf{U}(x)\mid x\in X\},\quad
+    \mathbf{U}^\ast\coloneqq\{\mathbf{U}(U)\mid U\in\mathbf{U}\}
+    ```
+    とし, $`\leq`$ を被覆同士の細分関係として
+    ```math
+    \mathbf{U}\leq^\varDelta\mathbf{V}\mathrel{\overset{\text{def}}{\iff}}\mathbf{U}^\varDelta\leq\mathbf{V},\quad
+    \mathbf{U}\leq^\ast\mathbf{V}\mathrel{\overset{\text{def}}{\iff}}\mathbf{U}^\ast\leq\mathbf{V}
+    ```
+    とする. このとき, $`\leq^\varDelta`$ を **重心細分** (*barycentric refinement*) といい, $`\leq^\ast`$ を **星細分** (*star refinement*) という.
+
+Proposition.
+:   集合 $`X`$ の被覆 $`\mathbf{U}`$ と $`A\in2^X`$ に対して, $`\mathbf{U}^2(A)=\mathbf{U}^\varDelta(A)`$ かつ $`\mathbf{U}^3(A)=\mathbf{U}^\ast(A)`$ が成り立つ.
+
+Proposition.
+:   集合 $`X`$ の被覆 $`\mathbf{U}`$ に対して, $`\mathbf{U}\leq\mathbf{U}^\varDelta\leq\mathbf{U}^\ast\leq(\mathbf{U}^\varDelta)^\varDelta=\{\mathbf{U}^2(x)\mid x\in X\}`$ が成り立つ.
+
+Proposition.
+:   位相空間 $`X`$ の開被覆 $`\mathbf{U}`$ と部分集合 $`A\in2^X`$ に対して, $`\overline{A}\subseteq\mathbf{U}(A)`$ となる.
+
+### 帰納次元と被覆次元
+
+
+---
+
+## コンパクト性
+
+コンパクト性は, 任意の開被覆から有限個だけを選んでも空間を覆えるという有限性の条件である.
+この条件は連続写像, フィルター, 点列, 関数空間における収束を結び付けるため, その変種と保存性を比較する.
+
+### コンパクト空間
+
+Definition. **コンパクト空間**
+:   位相空間 $`X`$ が **コンパクト性を持つ** (*compactness*) とは, $`X`$ の任意の開被覆が有限な部分被覆を持つときいう. コンパクト性を持つ位相空間を **コンパクト空間** (*compact space*) という.
+
+Theorem. **コンパクト性と同値な命題**
+:   位相空間 $`X`$ に対して以下同値.
+    1. $`X`$ はコンパクト空間である.
+    2. $`X`$ の有限交叉性をもつ部分集合族 $`\mathbf{F}`$ に対して $`\bigcap_{F\in\mathbf{F}}\overline{F}\neq\emptyset`$ となる.
+    3. $`X`$ 上の任意のフィルターは堆積点を持つ. すなわち, フィルター $`\mathbf{F}`$ に対して $`\bigcap_{F\in\mathbf{F}}\overline{F}\neq\emptyset`$ となる.
+    4. $`X`$ 上の任意のフィルターは収束する細分を持つ.
+    5. $`X`$ 上の任意の極大フィルターは収束する.
+
+Proposition. **コンパクト性の連続全射像による保存**
+:   コンパクト空間 $`X`$ と位相空間 $`Y`$ に対して, 全射連続写像 $`f:X\to Y`$ が存在すれば, $`Y`$ もコンパクト空間となる.
+
+Proposition. **コンパクト性の閉部分空間への遺伝**
+:   コンパクト空間 $`X`$ の閉部分空間 $`F`$ もコンパクト空間となる.
+
+Proposition. **Hausdorff 空間のコンパクト部分集合**
+:   Hausdorff 空間のコンパクトな部分集合は閉集合となる.
+
+Theorem. **Heine–Borel の被覆定理の類似**
+:   コンパクト距離空間 $`K`$ 上の複素数値写像の集合 $`S`$ に対して, $`S`$ が一様ノルムによりコンパクトであることと, $`S`$ が閉集合かつ各点毎に有界かつ同程度連続であることは同値である.
+
+Theorem. **Dini の定理**
+:   コンパクト空間 $`X`$ に対して, 連続写像の列 $`(f_n:X\to\mathbb{R})_{n=1,2,\ldots}`$ が
+    1. $`(f_n)`$ はある連続写像 $`f:X\to\mathbb{R}`$ に各点収束する.
+    2. $`(f_n)`$ は単調増加列である. (i.e. $`f_n(x)\leq f_{n+1}(x),x\in X,n=1,2,\ldots`$)
+
+    を満たすとき, $`(f_n)`$ は $`f`$ に一様収束する.
+
+Theorem. **Tychonoff の定理**
+:   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ に対して, 以下同値.
+    1. 各 $`X_\lambda`$ はコンパクト空間である.
+    2. 積空間 $`\prod_{\lambda\in\Lambda}X_\lambda`$ はコンパクト空間である.
+
+### Lindelöf 空間
+
+Definition. **Lindelöf 空間**
+:   位相空間 $`X`$ が **Lindelöf 性を持つ** (*Lindelöfness*) とは, $`X`$ の任意の開被覆が可算な部分被覆を持つときいう. Lindelöf 性を持つ位相空間を **Lindelöf 空間** (*Lindelöf space*) という.
+
+Proposition. **Lindelöf 性の連続全射像による保存**
+:   Lindelöf 空間 $`X`$ と位相空間 $`Y`$ に対して, 全射連続写像 $`f:X\to Y`$ が存在すれば, $`Y`$ も Lindelöf 空間となる.
+
+Proposition. **Lindelöf 性の閉部分空間への遺伝**
+:   Lindelöf 空間 $`X`$ の閉部分空間 $`F`$ も Lindelöf 空間となる.
+
+Proposition. **第二可算性から Lindelöf 性**
+:   第二可算な位相空間は Lindelöf 空間となる.
+
+Proposition. **正則 Lindelöf 空間の正規性**
+:   正則な Lindelöf 空間は正規空間となる.
+
+Proposition. **コンパクト性から Lindelöf 性**
+:   コンパクト空間は Lindelöf 空間となる.
+
+Theorem.
+:   距離空間 $`X`$ に対して, 以下同値.
+    1. $`X`$ は Lindelöf 空間である.
+    2. $`X`$ は第二可算である.
+    3. $`X`$ は可分である.
+
+### 可算コンパクト空間
+
+Definition. **可算コンパクト空間**
+:   位相空間 $`X`$ が **可算コンパクト性を持つ** (*Countably compactness*) とは, $`X`$ の任意の可算開被覆が有限な部分被覆を持つときいう. 可算コンパクト性を持つ位相空間を **可算コンパクト空間** (*Countably compact space*) という.
+
+Theorem. **可算コンパクト性と同値な命題**
+:   位相空間 $`X`$ に対して以下同値.
+    1. $`X`$ は可算コンパクト空間である.
+    2. $`X`$ の有限交叉性をもつ可算部分集合族 $`\mathbf{F}`$ に対して $`\bigcap_{F\in\mathbf{F}}\overline{F}\neq\emptyset`$ となる.
+    3. $`X`$ のすべての可算無限集合は集積点を持つ.
+
+Proposition. **可算コンパクト性の連続全射像による保存**
+:   可算コンパクト空間 $`X`$ と位相空間 $`Y`$ に対して, 全射連続写像 $`f:X\to Y`$ が存在すれば, $`Y`$ も可算コンパクト空間となる.
+
+Proposition. **可算コンパクト性の閉部分空間への遺伝**
+:   可算コンパクト空間 $`X`$ の閉部分空間 $`F`$ も可算コンパクト空間となる.
+
+Proposition. **コンパクト性から可算コンパクト性**
+:   コンパクト空間は可算コンパクト空間となる.
+
+Definition. **弱可算コンパクト空間**
+:   位相空間 $`X`$ が **弱可算コンパクト性を持つ** (*weakly Countably compactness*) あるいは **極限点コンパクト性を持つ** (*limit point compactness*) とは, $`X`$ の任意の無限部分集合が集積点を持つときいう. 弱可算コンパクト性を持つ位相空間を **弱可算コンパクト空間** (*weakly Countably compact space*) あるいは **極限点コンパクト空間** (*limit point compact space*) という.
+
+Proposition. **弱可算コンパクト性の連続全射像による保存**
+:   弱可算コンパクト空間 $`X`$ と位相空間 $`Y`$ に対して, 全射連続写像 $`f:X\to Y`$ が存在すれば, $`Y`$ も弱可算コンパクト空間となる.
+
+Proposition. **コンパクト性から弱可算コンパクト性**
+:   コンパクト空間は弱可算コンパクト空間となる.
+
+Theorem.
+:   距離空間 $`X`$ に対して, 以下同値.
+    1. $`X`$ はコンパクト空間である.
+    2. $`X`$ は弱可算コンパクト空間である.
+    3. $`X`$ は点列コンパクト空間である.
+
+### パラコンパクト空間
+
+Definition. **パラコンパクト空間**
+:   位相空間 $`X`$ が **パラコンパクト性を持つ** (*paracompactness*) とは, $`X`$ の任意の開被覆が局所有限な開細分を持つときいう. パラコンパクト性を持つ位相空間を **パラコンパクト空間** (*paracompact space*) という.
+
+### 擬コンパクト空間
+
+Definition. **擬コンパクト空間**
+:   位相空間 $`X`$ が **擬コンパクト性を持つ** (*pseudocompactness*) とは, 任意の連続写像 $`X\to\mathbb{R}`$ の像が有界なときいう. 擬コンパクト性を持つ位相空間を **擬コンパクト空間** (*pseudocompact space*) という.
+
+Proposition. **擬コンパクト性の連続全射像による保存**
+:   擬コンパクト空間 $`X`$ と位相空間 $`Y`$ に対して, 全射連続写像 $`f:X\to Y`$ が存在すれば, $`Y`$ も擬コンパクト空間となる.
+
+Proposition. **正規擬コンパクト性の閉部分空間への遺伝**
+:   正規擬コンパクト空間 $`X`$ の閉部分空間 $`F`$ も正規擬コンパクト空間となる.
+
+Proposition. **可算コンパクト性から擬コンパクト性**
+:   可算コンパクト空間は擬コンパクト空間となる.
+
+Proposition. **弱可算コンパクト性から可算コンパクト性**
+:   $`\mathbf{T}_1`$ な弱可算コンパクト空間は可算コンパクト空間となる.
+
+### 点列コンパクト空間
+
+Definition. **点列コンパクト空間**
+:   位相空間 $`X`$ が **点列コンパクト性を持つ** (*sequentially compactness*) とは, $`X`$ の任意の点列が収束する部分列を持つときいう. 点列コンパクト性を持つ位相空間を **点列コンパクト空間** (*sequentially compact space*) という.
+
+Proposition. **点列コンパクト性の連続全射像による保存**
+:   点列コンパクト空間 $`X`$ と位相空間 $`Y`$ に対して, 全射連続写像 $`f:X\to Y`$ が存在すれば, $`Y`$ も点列コンパクト空間となる.
+
+Theorem. **Bolzano–Weierstrass の定理**
+:   $`\mathbb{R}^n`$ の有界点列は収束する部分列をもつ.
+
+corollary. **点列コンパクト性定理 (Bolzano–Weierstrass の定理と同値な定式化)**
+:   $`\mathbb{R}^n`$ の部分集合が点列コンパクトであるための必要十分条件は, それが有界閉集合であることである.
+
+### メタコンパクト空間
+
+Definition. **メタコンパクト空間**
+:   位相空間 $`X`$ が **メタコンパクト性を持つ** (*metacompactness*) とは, $`X`$ の任意の開被覆が点有限な開細分を持つときいう. メタコンパクト性を持つ位相空間を **メタコンパクト空間** (*metacompact space*) という.
+
+Definition. **可算メタコンパクト空間**
+:   位相空間 $`X`$ が **可算メタコンパクト性を持つ** (*countably metacompactness*) とは, $`X`$ の任意の可算開被覆が点有限な開細分を持つときいう. 可算メタコンパクト性を持つ位相空間を **可算メタコンパクト空間** (*countably metacompact space*) という.
+
+### 直交コンパクト空間
+
+Definition. **メタコンパクト空間**
+:   位相空間 $`X`$ が **直行コンパクト性を持つ** (*orthocompactness*) とは, $`X`$ の任意の開被覆が内部を保存する開細分を持つときいう. 直行コンパクト性を持つ位相空間を **直行コンパクト空間** (*orthocompact space*) という.
+
+---
+
+## 一様空間と一様連続写像
+
+位相は各点の近傍を扱うが, 異なる点で同じ尺度を用いる近さまでは記録しない.
+一様構造は二点の組の近さを近縁系で指定し, 一様連続性, Cauchy 性, 関数列の一様収束を距離なしで定める.
+
+### 一様構造
+
+Definition. **近縁系**
+:   **集合 $`X`$ 上の近縁系** (*entourage system on a set $`X`$*) とは, $`X`$ 上の二項関係の族 $`\mathbf{E}`$ であって次の条件を満たすときいう:
+    - $`\mathbf{E}`$ は $`X\times X`$ 上のフィルターである.
+    - 任意の $`U\in\mathbf{E}`$ に対して $`\Delta(X)\subseteq U`$.
+    - 任意の $`U\in\mathbf{E}`$ に対して $`U^{-1}\in\mathbf{E}`$.
+    - 任意の $`U\in\mathbf{E}`$ に対して $`V\circ V\subseteq U`$ を満たす $`V\in\mathbf{E}`$ が存在する.
+
+集合 $`X`$ とその上の近縁系 $`\mathbf{E}`$ の組
+```math
+(X,\mathbf{E})
+```
+を **一様空間** (*uniform spaca*) といい, $`X`$ をその **台集合** (*underlying set*) という.
+一様空間 $`X`$ における台集合を $`X_0`$ と表し, 近縁系を $`\mathbf{E}_X`$ と表す.
+
+Definition. **近縁基**
+:   **集合 $`X`$ 上の近縁基** (*entourage basis on a set $`X`$*) とは, $`X`$ 上の二項関係の族 $`\mathbf{E}`$ であって次の条件を満たすときいう:
+    - $`\mathbf{E}`$ は $`X\times X`$ 上のフィルター基である.
+    - 任意の $`U\in\mathbf{E}`$ に対して $`\Delta(X)\subseteq U`$.
+    - 任意の $`U\in\mathbf{E}`$ に対して $`V\subseteq U^{-1}`$ を満たす $`V\in\mathbf{E}`$ が存在する.
+    - 任意の $`U\in\mathbf{E}`$ に対して $`V\circ V\subseteq U`$ を満たす $`V\in\mathbf{E}`$ が存在する.
+
+Proposition. **近縁基の定める近縁系**
+:   集合 $`X`$ 上の近縁基を $`X\times X`$ 上のフィルター基として生成されるフィルター は $`X`$ の近縁系となる. これを **近縁基の定める近縁系** という.
+
+Definition. **近縁準基**
+:   **集合 $`X`$ 上の近縁準基** (*entourage subbasis on a set $`X`$*) とは, $`X`$ 上の二項関係の族 $`\mathbf{E}`$ であって次の条件を満たすときいう:
+    - $`\mathbf{E}`$ は $`X\times X`$ の有限交叉性をもつ部分集合族である.
+    - 任意の $`U\in\mathbf{E}`$ に対して $`V\subseteq U^{-1}`$ を満たす $`V\in\mathbf{E}`$ が存在する.
+    - 任意の $`U\in\mathbf{E}`$ に対して $`V\circ V\subseteq U`$ を満たす $`V\in\mathbf{E}`$ が存在する.
+
+Proposition. **近縁準基の定める近縁基**
+:   集合 $`X`$ 上の近縁準基を $`X\times X`$ の有限交叉性をもつ部分集合族として生成されるフィルター は $`X`$ の近縁基となる. これを **近縁準基の定める近縁基** という.
+
+Proposition.
+:   距離空間 $`X`$ において, $`X`$ 上の二項関係の族 $`\mathbf{E}`$ を
+    ```math
+    \mathbf{E}\coloneqq\{d_X^{-1}([0,r))\mid r>0\}
+    ```
+    とすると, $`\mathbf{E}`$ は $`X`$ 上の近縁基となる. このとき, $`\mathbf{E}`$ により距離空間 $`X`$ を適宜一様空間とみなす.
+
+Theorem. **近縁系の定める位相**
+:   一様空間 $`X`$ に対して, 写像 $`\mathcal{U}:X\to2^{2^X}`$ を
+    ```math
+    \mathcal{U}(x)\coloneqq\{\mathbf{U}(x)\mid\mathbf{U}\in\Phi\},\quad x\in X
+    ```
+    とすると, $`\mathcal{U}`$ は $`X`$ 上の近傍基となる. このとき, $`\mathcal{U}`$ により定める位相を $`(X,\Phi)`$ における **一様位相** (*uniform topology*) という.
+
+### 写像の一様連続性
+
+Definition. **写像の一様連続性**
+:   一様空間 $`X,Y`$ と 写像 $`f:X\to Y`$ に対して, $`f`$ が**一様連続** (*uniformly continuous*) であるとは, $`Y`$ の任意の近縁 $`U`$ に対して, 次を満たす $`X`$ の近縁 $`V`$ が存在するときいう.
+    ```math
+    \forall a,b\in X,(a,b)\in V\Rightarrow(f(a),f(b))\in U
+    ```
+    一様連続な写像を, **一様連続写像** (*uniformly continuous function*) という.
+
+特に, $`f`$ が全単射であり $`f,f^{-1}`$ がともに一様連続であるとき, $`f`$ を **一様同型写像** (*uniform isomorphism*) といい, 一様同型が存在するような一様空間を **一様同型** (*uniform isomorphic*) という.
+
+Proposition. **一様連続性の特徴づけ**
+:   一様空間 $`X,Y`$ と 写像 $`f:X\to Y`$ に対して, 以下同値である.
+    1. $`f`$ は一様連続である.
+    2. $`Y`$ の任意の近縁 $`U`$ に対して, $`(f\times f)^{-1}(U)=\{(a,b)\mid(f(a),f(b))\in U\}`$ は $`X`$ の近縁となる.
+
+Proposition. **一様連続写像の連続性**
+:   一様連続写像は連続である.
+
+Theorem.
+:   コンパクトな一様空間から一様空間への連続写像は一様連続となる.
+
+### Cauchy フィルターと完備性
+
+距離空間では Cauchy 列によって, 極限が空間内に存在するかを問うた.
+一様空間では点列だけでは一般の収束を捉えきれないため, 近縁によって十分小さくなるフィルターを用いる.
+
+Definition. **分離一様空間**
+:   一様空間 $`X`$ が **分離的** (*separated*) であるとは,
+    ```math
+    \bigcap_{U\in\mathbf{E}_X}U=\Delta(X)
+    ```
+    が成り立つときいう.
+
+Proposition. **分離性の特徴づけ**
+:   一様空間 $`X`$ に対して, 以下は同値である.
+    1. $`X`$ は分離的である.
+    2. $`X`$ の一様位相は Hausdorff である.
+    3. 一様収束するフィルターの極限は高々一つである.
+
+Definition. **Cauchy フィルター**
+:   一様空間 $`X`$ 上のフィルター $`\mathcal{F}`$ が **Cauchy** (*Cauchy*) であるとは, 任意の近縁 $`U\in\mathbf{E}_X`$ に対して
+    ```math
+    A\times A\subseteq U
+    ```
+    を満たす $`A\in\mathcal{F}`$ が存在するときいう.
+
+    すなわち, $`\mathcal{F}`$ に属するある集合を任意の一様な精度で選べるほど, フィルターが一つの点の周りへ集中していることを表す.
+
+Proposition.
+:   一様空間 $`X`$ 上の収束フィルターは Cauchy フィルターである.
+    また, Cauchy フィルターの任意の細分も Cauchy フィルターである.
+
+Proposition. **距離空間の場合**
+:   距離空間 $`(X,d)`$ に距離の定める一様構造を入れる.
+    このとき, フィルター $`\mathcal{F}`$ が一様空間として Cauchy であることと, 任意の $`\varepsilon>0`$ に対して直径が $`\varepsilon`$ 未満の集合が $`\mathcal{F}`$ に属することは同値である.
+
+Definition. **完備一様空間**
+:   一様空間 $`X`$ が **完備** (*complete*) であるとは, $`X`$ 上の任意の Cauchy フィルターが収束するときいう.
+    完備な一様空間を **完備一様空間** (*complete uniform space*) という.
+
+Theorem. **距離による完備性との整合性**
+:   距離空間 $`(X,d)`$ に距離の定める一様構造を入れる.
+    このとき, 一様空間としての完備性と距離空間としての完備性は同値である.
+
+### 一様完備化
+
+Definition. **一様埋め込み**
+:   一様連続な単射 $`i:X\to Y`$ が **一様埋め込み** (*uniform embedding*) であるとは, $`i`$ が $`X`$ と部分一様空間 $`i(X)`$ の間の一様同型となるときいう.
+
+Definition. **一様完備化**
+:   分離一様空間 $`X`$ の **一様完備化** (*uniform completion*) とは, 完備分離一様空間 $`\widehat{X}`$ と一様埋め込み
+    ```math
+    \iota:X\longrightarrow\widehat{X}
+    ```
+    の組であって, $`\iota(X)`$ が $`\widehat{X}`$ で稠密となるものをいう.
+
+Theorem. **一様完備化の存在と一意性**
+:   任意の分離一様空間は一様完備化を持つ.
+    二つの一様完備化 $`(\widehat{X},\iota)`$, $`(\widehat{X}',\iota')`$ の間には,
+    ```math
+    h\circ\iota=\iota'
+    ```
+    を満たす一意的な一様同型 $`h:\widehat{X}\to\widehat{X}'`$ が存在する.
+
+Theorem. **一様完備化の普遍性**
+:   $`(\widehat{X},\iota)`$ を分離一様空間 $`X`$ の一様完備化とする.
+    完備分離一様空間 $`Y`$ と一様連続写像 $`f:X\to Y`$ に対して, 一様連続写像 $`\widehat{f}:\widehat{X}\to Y`$ が一意に存在して
+    ```math
+    \widehat{f}\circ\iota=f
+    ```
+    を満たす.
+
+Remark. **Cauchy フィルターによる構成**
+:   一様完備化は, $`X`$ 上の Cauchy フィルターを, 共通の Cauchy 細分を持つという関係で同一視して構成できる.
+    埋め込み $`\iota`$ は点 $`x\in X`$ を $`x`$ の近傍フィルターへ送る.
+    この構成では, $`\widehat{X}`$ の各点が $`X`$ の中で収束先を持たなかった Cauchy 的な振る舞いを表す.
+
+Example.
+:   有理数全体 $`\mathbb{Q}`$ は通常の距離から定まる一様構造では完備でない.
+    その一様完備化は実数全体 $`\mathbb{R}`$ であり, 標準的な包含 $`\mathbb{Q}\hookrightarrow\mathbb{R}`$ が稠密一様埋め込みとなる.
+
+### 一様被覆系
+
+Definition. **一様被覆系**
+:   集合 $`X`$ 上の被覆の族 $`\Phi`$ に対して, 次をそれぞれ定義する.
+    - $`\Phi`$ が **$`X`$ 上の一様被覆系の準基** (*subbasis of uniform covers*) であるとは, 任意の $`\mathcal{G}\in\Phi`$ に対して $`\mathcal{G}`$ の重心細分となるような $`\mathcal{H}\in\Phi`$ が存在するときいう.
+    - $`\Phi`$ が **$`X`$ 上の一様被覆系の基** (*basis of uniform covers*) であるとは, $`\Phi`$ は一様被覆系の準基であって, $`\Phi`$ が細分関係によりフィルター基であるときいう.
+    - $`\Phi`$ が **$`X`$ 上の一様被覆系** (*uniform covers*) であるとは, $`\Phi`$ は一様被覆系の基であって, $`\Phi`$ が細分関係により上方閉であるときいう. (すなわち, $`\Phi`$ は細分関係によりフィルターとなる)
+
+Proposition. **一様被覆系の準基から基の生成**
+:   $`X`$ 上の一様被覆系の準基 $`\Phi`$ に対して, $`\Psi`$ を
+    ```math
+    \Psi\coloneqq\left\{\bigwedge_{i=0}^{n}\mathcal{G}_i\mathrel{}\middle|\mathrel{}\mathcal{G}_0,\ldots,\mathcal{G}_n\in\Psi,(n=0,1,2,\ldots)\right\}
+    ```
+    とすると, $`\Psi`$ は $`X`$ 上の一様被覆系の基となる.
+
+Proposition. **一様被覆系の基から系の生成**
+:   $`X`$ 上の一様被覆系の基 $`\Phi`$ を細分関係による上方閉包をとったものを $`\Psi`$ とすると, $`\Psi`$ は $`X`$ 上の一様被覆系となる.
+
+Proposition. **近縁系の定める一様被覆系**
+:   集合 $`X`$ 上の近縁系 $`\mathbf{E}`$ に対して, $`X`$ 上の被覆の族 $`\Phi`$ を
+    ```math
+    \Phi\coloneqq\left\{\mathbf{U}\mathrel{}\middle|\mathrel{}\exists U\in\mathbf{E}\text{ s.t. }\{U(x)\mid x\in X\}\leq\mathbf{U}\right\}
+    ```
+    とすると, $`\Phi`$ は $`X`$ 上の一様被覆系となる. $`\Phi`$ を $`\mathbf{E}`$ の定める一様被覆系という.
+
+以後, 一様空間 $`X`$ の近縁系 $`\mathbf{E}_X`$ の定める一様被覆系を $`\Phi_X`$ とする.
+
+Proposition. **一様被覆系の定める近縁系**
+:   集合 $`X`$ 上の被覆の族 $`\Phi`$ に対して, $`X`$ 上の二項関係の族 $`\mathbf{E}`$ を
+    ```math
+    \mathbf{E}\coloneqq\left\{U\mathrel{}\middle|\mathrel{}\exists\mathbf{U}\in\Phi\text{ s.t. }\bigcup_{S\in\mathbf{U}}S\times S\subseteq U\right\}
+    ```
+    とすると, $`\mathbf{E}`$ は $`X`$ 上の近縁系となる. $`\mathbf{E}`$ を $`\Phi`$ の定める近縁系という.
+
+Proposition.
+:   集合 $`X`$ 上の近縁系 $`\mathbf{E}`$ の生成する一様被覆系 $`\Phi`$ に対して, $`\Phi`$ の生成する近縁系は $`\mathbf{E}`$ と一致する.
+
+Proposition.
+:   集合 $`X`$ 上の被覆の族 $`\Phi`$ の生成する近縁系 $`\mathbf{E}`$ に対して, $`\mathbf{E}`$ の生成する一様被覆系は $`\Phi`$ と一致する.
+
+Proposition. **一様被覆系の定める位相**
+:   集合 $`X`$ 上の一様被覆系 $`\Phi`$ に対して, 写像 $`\mathcal{N}:X\to2^{2^X}`$ を
+    ```math
+    \mathcal{N}(x)\coloneqq\{\mathbf{U}(x)\mid\mathbf{U}\in\Phi\},\quad x\in X
+    ```
+    とすると, $`\mathcal{N}`$ は $`X`$ 上の近傍基となる. 特に, 一様被覆系 $`\Phi`$ の定める近縁系の定める位相構造と $`\mathcal{N}`$ による位相構造は一致する.
+
+Proposition. **一様連続性の一様被覆による特徴づけ**
+:   一様空間 $`X,Y`$ と 写像 $`f:X\to Y`$ に対して, 以下同値である.
+    1. $`f`$ は一様連続である.
+    2. 任意の $`\mathbf{V}\in\Phi_Y`$ に対して $`f^{-1}(\mathbf{V})\in\Phi_X`$ となる.
+
+### 写像列の収束
+
+Proposition. **各点収束**
+:   位相空間 $`X`$ と集合 $`S`$ と $`X^S`$ 上のネット $`(f_\lambda)_{\lambda\in\Lambda}`$ と $`f\in X^S`$ に対して, 以下同値.
+    1. $`(f_\lambda)_{\lambda\in\Lambda}`$ は $`f`$ へ収束する.
+    2. 各 $`c\in S`$ に対して, $`X`$ 上のネット $`(f_\lambda(c))_{\lambda\in\Lambda}`$ は $`X`$ の点 $`f(c)`$ に収束する.
+
+Definition. **一様収束**
+:   一様空間 $`X`$ と集合 $`S`$ と $`X^S`$ 上のネット $`(f_\lambda)_{\lambda\in\Lambda}`$ と $`f\in X^S`$ に対して, **$`(f_\lambda)`$ が $`f`$ へ一様収束する** (*$`(f_\lambda)`$ converges uniformly to $`f`$*) とは, 任意の一様被覆 $`U\in\mathbf{E}_X`$ に対して $`\lambda_0\in\Lambda`$ が存在して次が成り立つ.
+    ```math
+    \forall\lambda\in\Lambda,\quad\lambda_0\leq\lambda\Rightarrow(f_\lambda\times f)(S\times S)\subseteq U
+    ```
+
+---
+
+## ゲージ空間
+
+一つの距離ではなく, 複数の擬距離を同時に用いると, 一様構造を数値的に記述できる場合がある.
+ゲージ空間と準ゲージ空間は, 対称性を持つ一様構造と対称性を仮定しない準一様構造を距離族で表す.
+
+**集合 $`X`$ 上の準擬距離** (*quasi-pseudometric on a set $`X`$*) とは, 写像 $`d:X\times X\to\mathbb{R}`$ であって, 次の条件を満たすときいう:
+- 任意の $`x,y\in X`$ に対して $`d(x,y)\geq 0`$.
+- 任意の $`x\in X`$ に対して $`d(x,x)=0`$.
+- 任意の $`x,y,z\in X`$ に対して $`d(x,y)+d(y,z)\geq d(x,z)`$.
+
+集合 $`X`$ と $`X`$ 上の準擬距離 $`d`$ の組 $`(X,d)`$ を **準擬距離空間** (*quasi-pseudometric space*) という.
+特に, 各 $`x,y\in X`$ に対して $`d(x,y)=d(y,x)`$ となるような準擬距離 $`d`$ を **$`X`$ 上の擬距離** (*pseudometric on $`X`$*) といい, 集合 $`X`$ と $`X`$ 上の擬距離 $`d`$ の組 $`(X,d)`$ を **擬距離空間** (*pseudometric space*) という.
+
+Definition. **準ゲージ空間**
+:    **集合 $`X`$ の準ゲージ** (quasi-gauge on a set $`X`$) を $`X`$ 上の準擬距離の集合のこととして定義し, 集合 $`X`$ と $`X`$ の準ゲージ $`D`$ の組 $`(X,D)`$ を **準ゲージ空間** (*quasi-gauge space*) という.
+    同様にして, $`X`$ 上の擬距離の集合を $`X`$ のゲージ (*gauge on $`X`$*) と呼び, 集合 $`X`$ と $`X`$ のゲージ $`D`$ の組 $`(X,D)`$ を **ゲージ空間** (*gauge space*) という.
+
+Definition. **準近縁系**
+:   **集合 $`X`$ 上の準近縁系** (*quasi-entourage system on a set $`X`$*) とは, $`X`$ 上の二項関係の族 $`\mathbf{E}`$ であって次の条件を満たすときいう:
+    - $`\mathbf{E}`$ は $`X\times X`$ 上のフィルターである.
+    - 任意の $`U\in\mathbf{E}`$ に対して $`\Delta(X)\subseteq U`$.
+    - 任意の $`U\in\mathbf{E}`$ に対して $`V\circ V\subseteq U`$ を満たす $`V\in\mathbf{E}`$ が存在する.
+
+Theorem.
+:   すべての位相空間は準一様化可能である.
+
+Theorem. 準擬距離と準近縁系の両立
+:   集合 $`X`$ と $`X`$ 上の準擬距離 $`d`$ と $`X`$ 上の準近縁系 $`\mathbf{E}`$ に対して, 以下同値.
+    1. $`d`$ は $`(X,\mathbf{E})\times(X,\mathbf{E})`$ 上の一様連続写像となる.
+    2. 任意の $`r>0`$ に対して $`d^{-1}([0,r))=\{(x,y)\in X\times X\mid d(x,y)<r\}\in\mathbf{E}`$.
+
+Theorem. **準ゲージの定める準近縁系**
+:   集合 $`X`$ の準ゲージ $`D`$ に対して, $`\{d^{-1}([0,r))\mid r>0\}`$ は準近縁系の準基となる. この準近縁系の準基の生成する準近縁系を **準ゲージ $`D`$ の生成する準近縁系** という.
+
+準近縁系の準基の生成する準近縁系の定義から, 準ゲージ $`D`$ の生成する準近縁系 $`\mathbf{E}`$ は各 $`d\in D`$ が $`(X,\mathbf{E})\times(X,\mathbf{E})`$ 上の一様連続写像となるもののうち最も弱いものである.
+
+Theorem. **準近縁系の定める準ゲージ**
+:   集合 $`X`$ 上の準近縁系 $`\mathbf{E}`$ に対して, $`X`$ 上の準擬距離 $`d`$ として直積一様空間 $`(X,\mathbf{E})\times(X,\mathbf{E})`$ 上の一様連続なもの全体を $`D`$ とすると, $`D`$ は $`X`$ 上の準ゲージであって, $`D`$ によって定まる準近縁系は $`\mathbf{E}`$ と一致する. これを **準近縁系 $`\mathbf{E}`$ の生成する準ゲージ** という.
+
+---
+
+## 列型空間
+
+点列は収束を扱いやすいが, 一般の位相空間では点列だけで閉集合や連続性を検出できない.
+列型空間は, 点列による収束が位相を完全に決定する空間を切り出し, 距離空間との関係を明確にする.
+
+位相空間 $`X`$ の部分集合 $`F`$ が **点列閉** (*sequentially closed*) であるとは, $`F`$ 内の任意の収束点列 $`(p_n)`$ の任意の極限点 $`x`$ に対して $`x\in F`$ が成り立つときいう. 補集合が点列閉となる集合を **点列開** (*sequentially open*) であるという.
+
+Proposition.
+:   位相空間 $`X`$ の部分集合 $`G`$ が点列開であることと, 次が同値:
+    - $`X`$ の任意の収束点列 $`(p_n)`$ に対して, $`(p_n)`$ の極限点が $`G`$ に含まれるならば, ある非負整数 $`N\geq 0`$ が存在して $`n\geq N`$ なる整数 $`n`$ に対して $`p_n\in G`$ となる.
+
+Proposition.
+:   位相空間 $`X`$ において, 開集合は点列開であり閉集合は点列閉である.
+
+Definition.
+:   位相空間 $`X`$ が **列型空間** (*sequential space*) であるとは, 任意の点列開集合が開となるときいう.
+
+Proposition.
+:   位相空間 $`X`$ が列型空間であることと, 任意の点列閉集合が閉であることは同値である.
+
+第一可算空間は列型空間であるが, 第一可算でない列型空間も存在する.
+
+補可算位相を備えた非可算集合は列型でない空間の例であり, しばしば非可算集合上の補可算位相は列離散 (sequentially discrete) であるといわれる.
+
+Proposition. **列型空間の特徴づけ**
+:   位相空間 $`X`$ に対して以下同値:
+    1. $`X`$ は列型空間である.
+    2. $`X`$ は第一可算空間の商である.
+    3. $`X`$ は距離空間の商である.
+    4. 任意の $`Y`$ と写像 $`f:X\to Y`$ に対して, $`f`$ が連続写像となることと $`x\in X`$ に収束する点列 $`(p_n)`$ に対して $`Y`$ の点列 $`(f(p_n))`$ は必ず $`f(x)`$ へ収束することは同値である.
+
+位相空間 $`X`$ の部分集合 $`S`$ に対して, $`S`$ 内の収束点列の極限点の全体を $`[S]_{\text{seq}}`$ とすることで写像 $`[-]_{\text{seq}}:2^X\to 2^X`$ とすると, 次を満たす:
+- $`A\subseteq[A]_{\text{seq}}\subseteq\overline{A}`$.
+- $`[\emptyset]_{\text{seq}}=\emptyset`$.
+- $`[A\cup B]_{\text{seq}}=[A]_{\text{seq}}\cup[B]_{\text{seq}}`$.
+
+特に, 任意の部分集合 $`S`$ に対して $`[S]_{\text{seq}}=\overline{S}`$ が成り立つような位相空間を **Fréchet–Urysohn 空間** (*Fréchet–Urysohn space*) という.
+
+Fréchet–Urysohn 空間と遺伝的列型空間は同値となる. 特に, 第一可算空間は Fréchet–Urysohn 空間である.
+
+列型空間の圏 $`\mathbf{Seq}`$ を位相空間の圏 $`\mathbf{Top}`$ の充満部分圏として定めると, $`\mathbf{Seq}`$ は $`\mathbf{Top}`$ における余積と商について閉じていることから $`\mathbf{Top}`$ の余反射的部分圏であり, 特に距離化可能空間の圏の余反射包 (すなわち, 距離か可能空間の圏を部分圏として含み, 余積と商について閉じているような位相空間のクラスのうち最も小さいもの) となる.
+$`\mathbf{Seq}`$ は $`\mathbf{Top}`$ とは異なる積を持ち, それにより Cartesian 閉圏となる.
+
+---
+
+## 距離化定理
+
+距離化定理は, 与えられた位相がある距離から得られるための条件を与える.
+被覆の細分, 分離性, 可算性を用いて位相から擬距離を構成し, それが距離になる条件を調べる.
+
+### 被覆の正規性
+
+Proposition.
+:   距離空間 $`(X,d_X)`$ と $`\varepsilon>0`$ に対して, 被覆 $`\mathbf{U}_\varepsilon=\{B_\varepsilon(x)\mid x\in X\}`$ とすると, 次がそれぞれ成り立つ.
+    1. $`x\in X`$, $`\delta>0`$, 正整数 $`m`$ に対して, $`\mathbf{U}_\varepsilon^m(B_\delta(x))\subseteq B_{\delta+2m\varepsilon}(x)`$.
+    2. $`\mathbf{U}_\varepsilon^\varDelta\leq\mathbf{U}_{2\varepsilon},\quad\mathbf{U}_\varepsilon^\ast\leq\mathbf{U}_{3\varepsilon}`$
+
+Definition. **被覆の正規性** (Cf. J. W. Tukey)
+:   集合 $`X`$ の被覆列 $`(\mathbf{U}_n\mid n=1,2,\ldots)`$ が **正規被覆列** (*normal sequence of covers*) であるとは, 各 $`n`$ に対して
+    ```math
+    \mathbf{U}_{n+1}\leq^\ast\mathbf{U}_n
+    ```
+    が成り立つときいう. また, 位相空間 $`X`$ の開被覆 $`\mathbf{U}`$ が **正規** (*normal*) であるとは, $`\mathbf{U}_1\leq\mathbf{U}`$ を満たす正規開被覆列 $`(\mathbf{U}_n\mid n=1,2,\ldots)`$ が存在する時いい, 正規な開被覆を **正規被覆** (*normal covering*) という.
+
+$`\mathbf{U}^\varDelta\leq\mathbf{U}^\ast`$ より
+```math
+\mathbf{U}\leq^\ast\mathbf{V}\Rightarrow\mathbf{U}\leq^\varDelta\mathbf{V}
+```
+なため正規被覆列 $`(\mathbf{U}_n\mid n=1,2,\ldots)`$ は各 $`n`$ に対して
+```math
+\mathbf{U}_{n+1}\leq^\varDelta\mathbf{U}_n
+```
+を満たす.
+また次の命題により, 上記のような条件を満たす被覆列から正規被覆列を取り出すこともできる.
+
+Proposition.
+:   集合 $`X`$ の被覆列 $`(\mathbf{U}_n\mid n=1,2,\ldots)`$ が各 $`n`$ に対して
+    ```math
+    \mathbf{U}_{n+1}\leq^\varDelta\mathbf{U}_n
+    ```
+    を満たすとき, 被覆列 $`(\mathbf{U}_{2n}\mid n=1,2,\ldots)`$ は正規被覆列となる.
+
+Theorem.
+:   位相空間 $`X,Y`$ の間の連続写像 $`f`$ と $`Y`$ の開被覆 $`\mathbf{U},\mathbf{V}`$ に対して, 次がそれぞれ成り立つ.
+    1. $`\mathbf{U}\leq^\ast\mathbf{V}`$ ならば $`f^{-1}(\mathbf{U})\leq^\ast f^{-1}(\mathbf{V})`$.
+    2. $`\mathbf{U}`$ が正規被覆ならば $`f^{-1}(\mathbf{U})`$ も正規被覆である.
+
+集合 $`X`$ に対して写像 $`d:X\times X\to\mathbb{R}`$ が $`x,y,z\in X`$ に対して条件
+1. $`d(x,y)\geq0`$.
+2. $`d(x,x)=0`$.
+3. $`d(x,y)=d(y,x)`$.
+4. $`d(x,y)+d(y,z)\geq d(x,z)`$.
+を満たすとき, $`d`$ を **$`X`$ 上の擬距離** (*pseudometric on $`X`$*) といい組 $`(X,d)`$ を **擬距離空間** (*pseudometric space*) という.
+定義より明らかに, 距離は擬距離となる. 距離空間と同様, 擬距離空間に対して開球により位相を導入することで, 適宜位相空間として扱う.
+
+Theorem. **距離等化**
+:   $`X`$ 上の擬距離 $`d`$ に対して二項関係 $`\sim`$ を
+    ```math
+    x\sim y\mathrel{\overset{\text{def}}{\iff}}d(x,y)=0
+    ```
+    とすると, これは同値関係となる. このとき $`X^\ast\coloneqq X/\sim`$ とし写像 $`d^\ast:X^\ast\times X^\ast\to\mathbb{R}`$ を
+    ```math
+    d^\ast([x],[y])\coloneqq d(x,y)
+    ```
+    とすると, $`d^\ast`$ は $`X^\ast`$ 上の距離となる.
+    このとき, 自然な射影 $`\pi:X\to X^\ast`$ により $`\pi^{-1}(\pi(A))=A`$ を満たす部分集合 $`A\in2^X`$ に対して, $`A`$ が $`(X,d)`$ の開集合であることと $`\pi(A)`$ が $`(X^\ast,d^\ast)`$ の開集合であることが同値となる.
+    
+距離空間 $`(X^\ast,d^\ast)`$ を擬距離空間 $`(X,d)`$ の **距離等化** (*metric identification*) という.
+
+Theorem.
+:   集合 $`X`$ の正規被覆列 $`(\mathbf{U}_n\mid n=1,2,\ldots)`$ に対して, $`X`$ 上の擬距離 $`d`$ として次を満たすものが存在する:
+    - $`y\in\mathbf{U}_n(x)\Rightarrow d(x,y)<2^{-n+2}`$.
+    - $`d(x,y)<2^{-n}\Rightarrow y\in\mathbf{U}_n(x)`$.
+
+したがって, 正規被覆列は距離による近さを復元する.
+ただし擬距離では異なる点の距離が $`0`$ となりうるため, 位相を距離化するには点を区別する条件も必要である.
+
+Theorem. **Urysohn の距離化定理**
+:   Kolmogorov かつ正則で第二可算な位相空間 $`X`$ は距離化可能である.
+
+    特に, 正則第二可算空間は可算な開基から可算な正規被覆列を構成できる.
+    上の定理で得られる擬距離は Kolmogorov 性により距離となり, 元の位相を誘導する.
+
+Theorem. **Nagata--Smirnov の距離化定理**
+:   Hausdorff 正則空間 $`X`$ が距離化可能であるための必要十分条件は, $`X`$ が $`\sigma`$ 局所有限な開基を持つことである.
+
+Corollary. **可算基による距離化**
+:   Hausdorff 正則空間 $`X`$ が可算な開基を持つならば, $`X`$ は距離化可能である.
+
+    実際, 可算な開基は $`\sigma`$ 局所有限な開基である.
+    この系は Urysohn の距離化定理の直接の系である.
+
+Theorem. **一様構造による距離化**
+:   Hausdorff 一様空間 $`X`$ が可算な近縁基を持つならば, $`X`$ の一様構造はある距離から定まる.
+
+    このとき, その距離が誘導する位相は元の一様位相と一致する.
+
+---
+
+## Baire のカテゴリー定理
+
+痩集合は可算個の閉疎集合の和として表される, 位相的に小さい部分集合である.
+Baire のカテゴリー定理は, 完備性または局所コンパクト性があれば空間全体をそのような集合で尽くせないことを示す.
+
+### Baire 空間
+
+Definition. **Baire 空間**
+:   位相空間 $`X`$ が **Baire 空間** (*Baire space*) であるとは, $`X`$ の任意の可算個の稠密開集合 $`G_0,G_1,\ldots`$ に対して
+    ```math
+    \bigcap_{n=0}^{\infty}G_n
+    ```
+    が稠密であるときいう.
+
+Proposition. **Baire 性の特徴づけ**
+:   位相空間 $`X`$ に対して, 以下は同値である.
+    1. $`X`$ は Baire 空間である.
+    2. $`X`$ の空でない開集合は痩集合でない.
+    3. $`X`$ の任意の可算個の閉疎集合の和集合は内点を持たない.
+
+Theorem. **Baire のカテゴリー定理**
+:   完備距離空間は Baire 空間である.
+
+Theorem. **局所コンパクト空間の Baire 性**
+:   局所コンパクト Hausdorff 空間は Baire 空間である.
+
+Example. **有理数全体は Baire 空間でない**
+:   有理数全体 $`\mathbb{Q}`$ は可算であり, 各一点集合は $`\mathbb{Q}`$ で閉かつ内点を持たない.
+    したがって $`\mathbb{Q}`$ は可算個の閉疎集合の和集合であり, Baire 空間ではない.
+
+Remark.
+:   Baire のカテゴリー定理における「小さい」は測度 $`0`$ とは異なる.
+    たとえば実数全体の有理数部分集合は可算で測度 $`0`$ かつ痩集合であるが, 一般には二つの概念は一致しない.
+
+---
+
+## 局所コンパクト性とコンパクト化
+
+コンパクト性を各点の近傍へ局所化すると, 非コンパクト空間にも有限性の議論を適用できる.
+局所コンパクト性をもつ空間では一点コンパクト化を構成でき, Tychonoff 空間では Stone-Čech コンパクト化が有界連続関数の延長を特徴づける.
+
+### 局所コンパクト空間
+
+Definition. **局所コンパクト空間**
+:   Hausdorff 空間 $`X`$ が **局所コンパクト** (*locally compact*) であるとは, 任意の点 $`x\in X`$ がコンパクトな近傍を持つときいう.
+
+Proposition. **局所コンパクト性の近傍による特徴づけ**
+:   Hausdorff 空間 $`X`$ に対して, 以下は同値である.
+    1. $`X`$ は局所コンパクトである.
+    2. 任意の $`x\in X`$ とその開近傍 $`U`$ に対して,
+        ```math
+        x\in V\subseteq\overline{V}\subseteq U
+        ```
+        かつ $`\overline{V}`$ がコンパクトとなる開集合 $`V`$ が存在する.
+
+Proposition. **局所コンパクト性の閉部分空間への遺伝**
+:   局所コンパクト Hausdorff 空間の閉部分空間は局所コンパクト Hausdorff 空間である.
+
+### 一点コンパクト化
+
+Definition. **一点コンパクト化**
+:   非コンパクトな局所コンパクト Hausdorff 空間 $`X`$ と $`X`$ に属さない一点 $`\infty`$ に対して,
+    ```math
+    X^+\coloneqq X\sqcup\{\infty\}
+    ```
+    とおく.
+    $`U\subseteq X^+`$ が開であるとは, $`U\cap X`$ が $`X`$ で開であり, かつ $`\infty\in U`$ ならば $`X\setminus(U\cap X)`$ がコンパクトであることとする.
+    この位相空間 $`X^+`$ を $`X`$ の **一点コンパクト化** (*one-point compactification*) という.
+
+Theorem. **一点コンパクト化の性質**
+:   $`X^+`$ はコンパクト Hausdorff 空間である.
+    $`X`$ は $`X^+`$ の稠密な開部分空間であり, $`X^+\setminus X=\{\infty\}`$ である.
+
+Theorem. **一点コンパクト化の一意性**
+:   コンパクト Hausdorff 空間 $`K`$ が $`X`$ を稠密な開部分空間として含み, $`K\setminus X`$ が一点からなるならば, $`K`$ は $`X^+`$ と $`X`$ 上恒等な同相写像によって同相である.
+
+Example.
+:   $`\mathbb{R}^n`$ の一点コンパクト化は $`n`$ 次元球面 $`S^n`$ と同相である.
+    立体射影がこの同相を与える.
+
+### Stone-Čech コンパクト化
+
+Definition. **Stone-Čech コンパクト化**
+:   Tychonoff 空間 $`X`$ の **Stone-Čech コンパクト化** とは, コンパクト Hausdorff 空間 $`\beta X`$ と稠密埋め込み $`\iota:X\to\beta X`$ の組であって, 任意のコンパクト Hausdorff 空間 $`K`$ と連続写像 $`f:X\to K`$ に対して, 連続写像 $`\overline{f}:\beta X\to K`$ が一意に存在して
+    ```math
+    \overline{f}\circ\iota=f
+    ```
+    を満たすものをいう.
+
+Theorem. **Stone-Čech コンパクト化の存在と一意性**
+:   任意の Tychonoff 空間は Stone-Čech コンパクト化を持つ.
+    Stone-Čech コンパクト化は $`X`$ 上恒等な同相写像を除いて一意である.
+
+Proposition. **有界実数値関数による特徴づけ**
+:   Tychonoff 空間 $`X`$ のコンパクト化 $`\iota:X\to K`$ が Stone-Čech コンパクト化であるための必要十分条件は, 任意の連続写像 $`f:X\to[0,1]`$ が $`K`$ 上の連続写像へ一意に延長できることである.
+
+Remark.
+:   一点コンパクト化は余剰点を一つだけ加える最小の形のコンパクト化である.
+    Stone-Čech コンパクト化は有界連続関数をすべて延長できるという普遍性によって定まり, 一般には一点コンパクト化より大きい.
+
+---
+
+## 正規性と連続関数
+
+正規性は互いに交わらない閉集合を開近傍で分離する条件であり, 連続実数値関数を構成するための十分な仮定となる.
+この節では分離を関数として表す Urysohn の補題, 閉部分空間からの関数の延長, 局所的な関数を貼り合わせる分割の一を扱う.
+
+### Urysohn の補題
+
+Theorem. **Urysohn の補題**
+:   正規 $`\mathbf{T}_1`$ 空間 $`X`$ の互いに交わらない閉集合 $`A,B`$ に対して, 連続写像
+    ```math
+    f:X\longrightarrow[0,1]
+    ```
+    であって $`f(A)=\{0\}`$ および $`f(B)=\{1\}`$ を満たすものが存在する.
+
+Corollary.
+:   正規 $`\mathbf{T}_1`$ 空間は完全正則である.
+
+### Tietze の拡張定理
+
+Theorem. **Tietze の拡張定理**
+:   正規 $`\mathbf{T}_1`$ 空間 $`X`$ の閉部分集合 $`A`$ と連続写像 $`f:A\to[-1,1]`$ に対して, 連続写像 $`\overline{f}:X\to[-1,1]`$ が存在して
+    ```math
+    \overline{f}|_A=f
+    ```
+    を満たす.
+
+Corollary.
+:   正規 $`\mathbf{T}_1`$ 空間の閉部分集合上の任意の連続実数値関数は, 全空間上の連続実数値関数へ延長できる.
+
+### 分割の一
+
+Definition. **分割の一**
+:   位相空間 $`X`$ の開被覆 $`\mathcal{U}`$ に **従属する分割の一** (*partition of unity subordinate to $`\mathcal{U}`$*) とは, 連続写像の族
+    ```math
+    (\varphi_i:X\to[0,1]\mid i\in I)
+    ```
+    であって, 次を満たすものをいう.
+    - 族 $`(\operatorname{supp}\varphi_i\mid i\in I)`$ は局所有限である.
+    - 各 $`i\in I`$ に対して, $`\operatorname{supp}\varphi_i\subseteq U_i`$ となる $`U_i\in\mathcal{U}`$ が存在する.
+    - 各 $`x\in X`$ に対して,
+        ```math
+        \sum_{i\in I}\varphi_i(x)=1
+        ```
+        が成り立つ.
+
+    ここで $`\operatorname{supp}\varphi`$ は $`\{x\in X\mid\varphi(x)\neq0\}`$ の閉包である.
+
+Theorem. **分割の一の存在定理**
+:   パラコンパクト Hausdorff 空間の任意の開被覆には従属する分割の一が存在する.
+
+Remark.
+:   局所有限性により, 各点の近傍では上の和の非零項が有限個しかない.
+    そのため分割の一は局所的な連続関数を一つの連続関数へ貼り合わせる道具になる.
+
+---
+
+## 関数空間
+
+連続写像の集合そのものに位相を入れると, パラメータに依存する写像や積空間上の写像を一つの空間として扱える.
+コンパクト開位相はコンパクト部分集合上での値の振る舞いを記録し, 局所コンパクト Hausdorff 空間に対する指数法則を与える.
+
+### コンパクト開位相
+
+Definition. **コンパクト開位相**
+:   位相空間 $`X,Y`$ に対して, $`X`$ から $`Y`$ への連続写像全体の集合を $`C(X,Y)`$ と表す.
+    $`K\subseteq X`$ をコンパクト集合, $`U\subseteq Y`$ を開集合として,
+    ```math
+    [K,U]\coloneqq\{f\in C(X,Y)\mid f(K)\subseteq U\}
+    ```
+    とおく.
+    この形の集合を準基として $`C(X,Y)`$ に入る位相を **コンパクト開位相** (*compact-open topology*) といい, この位相を備えた空間を $`C_k(X,Y)`$ と表す.
+
+Proposition. **評価写像**
+:   $`X`$ が局所コンパクト Hausdorff 空間ならば, 評価写像
+    ```math
+    \operatorname{ev}:C_k(X,Y)\times X\longrightarrow Y,
+    \quad(f,x)\longmapsto f(x)
+    ```
+    は連続である.
+
+Theorem. **指数法則**
+:   $`X`$ を局所コンパクト Hausdorff 空間とする.
+    任意の位相空間 $`Z,Y`$ と連続写像 $`f:Z\times X\to Y`$ に対して,
+    ```math
+    \widetilde{f}:Z\longrightarrow C_k(X,Y),
+    \quad z\longmapsto(x\longmapsto f(z,x))
+    ```
+    は連続である.
+    逆に連続写像 $`g:Z\to C_k(X,Y)`$ から
+    ```math
+    (z,x)\longmapsto g(z)(x)
+    ```
+    によって連続写像 $`Z\times X\to Y`$ を得る.
+    この二つの対応は互いに逆であり, $`Z`$ と $`Y`$ に関して自然である.
+
+Remark.
+:   任意の位相空間 $`X`$ に対してこの指数対象が存在するわけではないので, 圏 $`\mathbf{Top}`$ は Cartesian 閉圏ではない.
+    局所コンパクト Hausdorff 空間を定義域に限れば, コンパクト開位相が指数対象を与える.
+
+### コンパクト生成空間
+
+Definition. **コンパクト生成空間**
+:   Hausdorff 空間 $`X`$ が **コンパクト生成** (*compactly generated*) であるとは, 部分集合 $`A\subseteq X`$ が閉であることと, 任意のコンパクト Hausdorff 空間 $`K`$ および連続写像 $`f:K\to X`$ に対して $`f^{-1}(A)`$ が閉であることが同値になるときいう.
+
+Remark.
+:   コンパクト生成弱 Hausdorff 空間の圏では, 積と関数空間を適切に取り直すことで Cartesian 閉な圏を得る.
+    この圏はホモトピー論で, 写像空間を持つ圏として広く用いられる.
