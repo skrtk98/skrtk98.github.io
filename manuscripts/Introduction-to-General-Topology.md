@@ -53,6 +53,25 @@ Proposition. **イデアル基の生成するイデアル**
     ```
     とすると, $`\overline{I}`$ は $`I`$ を含むイデアルであって最も弱いものである.
 
+<u>proof.</u>
+:   まず $`I\subseteq\overline{I}`$ である.
+    実際, $`i\in I`$ に対して $`i\leq i`$ であるから $`i\in\overline{I}`$ となる.
+
+    $`x,y\in\overline{I}`$ をとる.
+    ある $`i,j\in I`$ が $`x\leq i`$ と $`y\leq j`$ を満たす.
+    $`I`$ がイデアル基であるから, $`i\leq k`$ と $`j\leq k`$ を満たす $`k\in I`$ が存在する.
+    したがって $`x\leq k`$ および $`y\leq k`$ であり, $`k\in\overline{I}`$ である.
+    よって $`\overline{I}`$ はイデアル基である.
+
+    $`x\in\overline{I}`$ と $`y\leq x`$ をとる.
+    $`x\leq i`$ となる $`i\in I`$ が存在するので, 推移律から $`y\leq i`$ である.
+    よって $`y\in\overline{I}`$ であり, $`\overline{I}`$ は下方に閉じている.
+
+    最後に, $`I`$ を含む任意のイデアル $`J`$ をとる.
+    $`x\in\overline{I}`$ ならば $`x\leq i`$ となる $`i\in I`$ が存在する.
+    $`i\in J`$ と $`J`$ の下方閉性から $`x\in J`$ が従う.
+    したがって $`\overline{I}\subseteq J`$ である.
+
 Proposition. **フィルター基の生成するフィルター**
 :   半順序集合 $`(P,\leq)`$ のフィルター基 $`F`$ に対して, $`P`$ の部分集合 $`\overline{F}`$ を
     ```math
@@ -60,12 +79,39 @@ Proposition. **フィルター基の生成するフィルター**
     ```
     とすると, $`\overline{F}`$ は $`F`$ を含むフィルターであって最も弱いものである.
 
+<u>proof.</u>
+:   $`f\in F`$ に対して $`f\leq f`$ であるから $`F\subseteq\overline{F}`$ である.
+
+    $`x,y\in\overline{F}`$ をとる.
+    ある $`f,g\in F`$ が $`f\leq x`$ と $`g\leq y`$ を満たす.
+    $`F`$ がフィルター基であるから, $`h\leq f`$ と $`h\leq g`$ を満たす $`h\in F`$ が存在する.
+    このとき $`h\leq x`$ と $`h\leq y`$ であるから $`h\in\overline{F}`$ である.
+    よって $`\overline{F}`$ はフィルター基である.
+
+    $`x\in\overline{F}`$ と $`x\leq y`$ をとる.
+    $`f\leq x`$ となる $`f\in F`$ が存在し, 推移律から $`f\leq y`$ となる.
+    よって $`y\in\overline{F}`$ であり, $`\overline{F}`$ は上方に閉じている.
+
+    $`F`$ を含む任意のフィルター $`G`$ に対して, $`x\in\overline{F}`$ ならば $`f\leq x`$ となる $`f\in F`$ が存在する.
+    $`f\in G`$ と $`G`$ の上方閉性から $`x\in G`$ が従う.
+    したがって $`\overline{F}\subseteq G`$ である.
+
 Proposition. **細分関係**
 :   半順序集合 $`(P,\leq)`$ に対して, $`2^P`$ における二項関係 $`\trianglelefteq`$ を
     ```math
     A\trianglelefteq B\mathrel{\overset{\text{def}}{\iff}}\forall a\in A,\exists b\in B\text{ s.t. }a\leq b,\quad A,B\in2^P
     ```
     とすると, $`\trianglelefteq`$ は $`2^P`$ 上の前順序となる. このとき $`\trianglelefteq`$ を $`(P,\leq)`$ による細分関係という.
+
+<u>proof.</u>
+:   任意の $`A\subseteq P`$ と $`a\in A`$ に対して $`a\leq a`$ である.
+    よって $`A\trianglelefteq A`$ であり, この関係は反射的である.
+
+    $`A\trianglelefteq B`$ および $`B\trianglelefteq C`$ を仮定する.
+    $`a\in A`$ に対して, ある $`b\in B`$ が $`a\leq b`$ を満たす.
+    さらに, ある $`c\in C`$ が $`b\leq c`$ を満たす.
+    半順序の推移律から $`a\leq c`$ である.
+    よって $`A\trianglelefteq C`$ であり, この関係は推移的である.
 
 ---
 
@@ -155,6 +201,17 @@ Definition. **写像の一様連続性**
 Proposition.
 :   一様連続写像は連続となる.
 
+<u>proof.</u>
+:   $`x_0\in X`$ と $`\varepsilon>0`$ を固定する.
+    一様連続性から, 任意の $`x,y\in X`$ に対して
+    ```math
+    d_X(x,y)\leq\delta\Rightarrow d_Y(f(x),f(y))\leq\varepsilon
+    ```
+    を満たす $`\delta>0`$ が存在する.
+    ここで $`y=x_0`$ とおけば, $`d_X(x,x_0)\leq\delta`$ ならば $`d_Y(f(x),f(x_0))\leq\varepsilon`$ となる.
+    したがって $`f`$ は $`x_0`$ で連続である.
+    $`x_0`$ は任意であったから, $`f`$ は連続である.
+
 Example. 連続だが一様連続でない写像の例
 :   写像 $`f:\mathbb{R}\to\mathbb{R}`$, $`f(x)=x^2`$ は連続であるが一様連続ではない.
     実際, $`x_n=n`$, $`y_n=n+1/n`$ とすると $`|x_n-y_n|\to0`$ であるが,
@@ -177,6 +234,18 @@ Definition. **点列の収束性**
 Proposition. **点列の極限の一意性**
 :   距離空間 $`(X,d)`$ の点列 $`(p_n)`$ は, 収束すればその極限は一意的である.
 
+<u>proof.</u>
+:   $`p_n\to p`$ かつ $`p_n\to q`$ と仮定する.
+    $`p\neq q`$ ならば $`d(p,q)>0`$ である.
+    $`\varepsilon=d(p,q)/3`$ とおく.
+    収束の定義から, ある $`N_p,N_q` が存在して, $`n\geq N_p` ならば $`d(p_n,p)\leq\varepsilon`$, $`n\geq N_q` ならば $`d(p_n,q)\leq\varepsilon`$ となる.
+    $`n\geq\max\{N_p,N_q\}`$ をとると, 三角不等式より
+    ```math
+    d(p,q)\leq d(p,p_n)+d(p_n,q)\leq2\varepsilon=\frac{2}{3}d(p,q)<d(p,q)
+    ```
+    となり矛盾する.
+    よって $`p=q`$ である.
+
 このことから, 収束点列 $`(p_n)`$ の極限を $`\lim(p_n)`$ あるいは $`\lim_{n\to\infty}p_n`$ と表す.
 
 Definition. **同程度連続**
@@ -184,6 +253,29 @@ Definition. **同程度連続**
 
 Proposition. **同程度連続な写像列の各点収束は連続写像をなす**
 :   距離空間 $`(X,d_X),(Y,d_Y)`$ と同程度連続な写像列 $`(f_n:X\to Y)`$ と写像 $`f:X\to Y`$ に対して, 任意の $`x\in X`$ に対して $`f_n(x)\to f(x),\,(n\to\infty)`$ であれば, $`f`$ は連続となる.
+
+<u>proof.</u>
+:   $`x_0\in X`$ と $`\varepsilon>0`$ をとる.
+    同程度連続性から, 任意の $`n`$ と $`x`$ に対して
+    ```math
+    d_X(x,x_0)\leq\delta\Rightarrow d_Y(f_n(x),f_n(x_0))\leq\varepsilon/3
+    ```
+    を満たす $`\delta>0`$ が存在する.
+    $`d_X(x,x_0)\leq\delta`$ となる $`x`$ を固定する.
+    $`f_n(x)\to f(x)` および $`f_n(x_0)\to f(x_0)` であるから, ある $`n`$ が存在して
+    ```math
+    d_Y(f(x),f_n(x))\leq\varepsilon/3,qquad
+    d_Y(f_n(x_0),f(x_0))\leq\varepsilon/3
+    ```
+    となる.
+    三角不等式より
+    ```math
+    d_Y(f(x),f(x_0))
+    \leq d_Y(f(x),f_n(x))+d_Y(f_n(x),f_n(x_0))+d_Y(f_n(x_0),f(x_0))
+    \leq\varepsilon
+    ```
+    である.
+    よって $`f`$ は $`x_0`$ で連続であり, $`x_0`$ は任意であったから $`f`$ は連続である.
 
 ### 完備性
 
@@ -195,6 +287,16 @@ Proposition. **同程度連続な写像列の各点収束は連続写像をな�
 
 Proposition. **収束列は Cauchy 列**
 :   収束点列は Cauchy 列となる.
+
+<u>proof.</u>
+:   $`p_n\to p`$ とし, $`\varepsilon>0`$ をとる.
+    収束の定義から, $`n\geq N`$ ならば $`d(p_n,p)\leq\varepsilon/2`$ となる $`N`$ が存在する.
+    $`m,n\geq N`$ に対して三角不等式から
+    ```math
+    d(p_m,p_n)\leq d(p_m,p)+d(p,p_n)leq\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon
+    ```
+    となる.
+    したがって $`(p_n)`$ は Cauchy 列である.
 
 距離空間 $`(X,d)`$ の任意の Cauchy 列 $`(p_n)`$ が収束点列になるとき, $`(X,d)`$ は **完備** (*complete*) といい, 完備な距離空間を **完備距離空間** (*complete metric space*) という.
 
@@ -348,6 +450,13 @@ Definition. **写像の連続性**
 Proposition.
 :   位相空間 $`X,Y,Z`$ と写像 $`f:X\to Y, g:Y\to Z`$ に対して, $`f`$ が 点 $`x_0\in X`$ で連続かつ $`g`$ が $`f(x_0)\in Y`$ で連続なとき, 合成写像 $`g\circ f:X\to Z`$ は $`x_0\in X`$ で連続である. 特に, $`f,g`$ がともに連続写像なとき, $`g\circ f`$ も連続写像となる.
 
+<u>proof.</u>
+:   $`g(f(x_0))`$ の任意の近傍 $`W`$ をとる.
+    $`g`$ の $`f(x_0)`$ における連続性から, $`f(x_0)\in V`$ かつ $`g(V)\subseteq W`$ を満たす近傍 $`V`$ が存在する.
+    $`f`$ の $`x_0`$ における連続性から, $`x_0\in U`$ かつ $`f(U)\subseteq V`$ を満たす近傍 $`U`$ が存在する.
+    このとき $`(g\circ f)(U)\subseteq g(V)\subseteq W`$ である.
+    よって $`g\circ f`$ は $`x_0`$ で連続である.
+
 Definition. **同相写像**
 :   位相空間 $`X,Y`$ と全単射な写像 $`f:X\to Y`$ に対して, $`f`$ と $`f^{-1}`$ がともに連続写像となるとき, $`f`$ を**同相写像** (*homeomorphism*) という.
     また, 位相空間 $`X,Y`$ の間に同相写像が存在するとき, $`X`$ と $`Y`$ は**同相** (*homeomorphic*) であるといい, 
@@ -426,12 +535,31 @@ Proposition. **開基の定める近傍基**
 Lemma.
 :   位相空間 $`X,Y`$ と写像 $`f:X\to Y`$ と $`x_0\in X`$ に対して, 以下同値.
     1. $`f`$ は $`x_0`$ で連続である.
-    2. $`f(x_0)`$ を含むような任意の開集合 $`G\subseteq Y`$ に対して $`f^{-1}(G)`$ は $`X`$ の開集合である.
+    2. $`f(x_0)`$ を含むような任意の開集合 $`G\subseteq Y`$ に対して $`f^{-1}(G)`$ は $`x_0`$ の近傍である.
+
+<u>proof.</u>
+:   $`f`$ が $`x_0`$ で連続であるとする.
+    $`f(x_0)\in G`$ かつ $`G`$ が開であれば, $`G`$ は $`f(x_0)`$ の近傍である.
+    連続性から $`f^{-1}(G)`$ は $`x_0`$ の近傍となる.
+
+    逆に条件 2 を仮定する.
+    $`f(x_0)`$ の任意の近傍 $`V`$ は, $`f(x_0)\in G\subseteq V`$ を満たす開集合 $`G`$ を含む.
+    条件 2 により $`f^{-1}(G)`$ は $`x_0`$ の近傍であり, $`f^{-1}(G)\subseteq f^{-1}(V)`$ である.
+    よって $`f^{-1}(V)`$ は $`x_0`$ の近傍である.
+    したがって $`f`$ は $`x_0`$ で連続である.
 
 Theorem. **連続性の開集合による特徴づけ**
 :   位相空間 $`X,Y`$ と写像 $`f:X\to Y`$ に対して, 以下同値.
     1. $`f`$ は連続である.
     2. 任意の開集合 $`G\subseteq Y`$ に対して $`f^{-1}(G)`$ は $`X`$ の開集合である.
+
+<u>proof.</u>
+:   $`f`$ が連続ならば, 任意の $`x\in X`$ に前の補題を適用して条件 2 を得る.
+
+    逆に条件 2 を仮定する.
+    $`x\in X`$ と $`f(x)` を含む開集合 $`G`$ をとると, $`f^{-1}(G)`$ は開集合であり $`x`$ を含むので $`x`$ の近傍である.
+    前の補題により $`f`$ は $`x`$ で連続である.
+    $`x`$ は任意であったから $`f`$ は連続である.
 
 したがって、通常の「開集合の逆像が開集合」という条件は、近傍系による連続性の大域的な特徴づけとして得られる。
 
@@ -1057,14 +1185,50 @@ Theorem. **連結性の特徴づけ**
     2. 開かつ閉な部分集合は $`\emptyset`$ か $`X`$ のみである.
     3. 2 点離散空間 $`B`$ に対して, 連続な全射 $`X\to B`$ は存在しない.
 
+<u>proof.</u>
+:   $`X`$ が不連結であることは, 互いに交わらない空でない開集合 $`U,V`$ が $`X=U\cup V`$ を満たすことである.
+    このとき $`U=X\setminus V`$ であるから $`U`$ は開かつ閉であり, $`\emptyset`$ と $`X`$ のいずれでもない.
+    逆にこのような開かつ閉な集合 $`U`$ があれば, $`U`$ と $`X\setminus U`$ は不連結分解を与える.
+    よって条件 1 と条件 2 は同値である.
+
+    条件 2 を仮定し, 連続全射 $`f:X\to B`$ が存在するとする.
+    $`B`$ の各一点集合は開かつ閉であるから, その逆像は $`X`$ の開かつ閉な集合である.
+    全射性により二つの逆像はともに空でなく, 条件 2 に矛盾する.
+
+    最後に条件 2 が成り立たないとする.
+    $`\emptyset\neq U\neq X`$ となる開かつ閉な集合 $`U`$ に対して, $`U`$ 上で一方の点を, $`X\setminus U`$ 上で他方の点をとる写像 $`X\to B`$ は連続かつ全射である.
+    よって条件 3 も条件 2 と同値である.
+
 Theorem.
 :   位相空間 $`X,Y`$ に対して, $`X`$ が連結かつ全射な連続写像 $`X\to Y`$ が存在するなら, $`Y`$ も連結となる.
+
+<u>proof.</u>
+:   連続全射写像を $`f:X\to Y`$ とする.
+    $`Y`$ が不連結であると仮定し, 互いに交わらない空でない開集合 $`U,V`$ で $`Y=U\cup V`$ となるものをとる.
+    $`f`$ の連続性から $`f^{-1}(U),f^{-1}(V)`$ は開集合である.
+    全射性から両者は空でなく, また互いに交わらず和が $`X`$ となる.
+    これは $`X`$ の連結性に矛盾する.
+    よって $`Y`$ は連結である.
 
 Theorem.
 :   位相空間 $`X,Y`$ と商写像 $`f:X\to Y`$ が以下の 2 つの条件
     - $`Y`$ は連結,
     - 各 $`y\in Y`$ に対して $`f^{-1}(\{y\})\subseteq X`$ は連結集合
     を満たすとき, $`X`$ は連結となる.
+
+<u>proof.</u>
+:   $`X`$ が不連結であると仮定し, 互いに交わらない空でない開かつ閉な集合 $`A,B`$ で $`X=A\cup B`$ となるものをとる.
+    各ファイバー $`f^{-1}(\{y\})`$ は連結であるから, $`A`$ と $`B`$ の両方に交わることはない.
+    したがって
+    ```math
+    f^{-1}(f(A))=A,qquad f^{-1}(f(B))=B
+    ```
+    である.
+    $`f`$ は商写像であるから, $`f(A)`$ と $`f(B)`$ は $`Y`$ の開かつ閉な集合である.
+    全射性からこれらは互いに交わらず, その和は $`Y`$ である.
+    さらに $`A,B`$ は空でないので $`f(A),f(B)`$ も空でない.
+    これは $`Y`$ の連結性に矛盾する.
+    よって $`X`$ は連結である.
 
 Theorem. **中間値の定理**
 :   連結空間 $`X`$ と連続写像 $`f:X\to\mathbb{R}`$ に対して, $`f(a)<f(b)`$ なる $`a,b\in X`$ に対して次が成り立つ.
@@ -1078,6 +1242,16 @@ Proposition. **連結集合の貼り合わせ**
     \exists C_0\in\mathcal{C}\text{ s.t. }\forall C\in\mathcal{C},C\cap C_0\neq\emptyset
     ```
     を満たすとき, $`\bigcup\mathcal{C}`$ は $`X`$ の連結集合となる.
+
+<u>proof.</u>
+:   $`C_0\in\mathcal{C}`$ を仮定の集合とする.
+    $`\bigcup\mathcal{C}`$ が互いに交わらない二つの空でない相対開集合 $`U,V`$ に分解されると仮定する.
+    $`C_0`$ は連結であるから $`C_0\subseteq U`$ または $`C_0\subseteq V`$ である.
+    対称性により $`C_0\subseteq U`$ としてよい.
+    任意の $`C\in\mathcal{C}`$ は $`C\cap C_0\neq\emptyset`$ を満たすので, $`C\cap U\neq\emptyset`$ である.
+    $`C`$ の連結性から $`C\subseteq U`$ となる.
+    したがって $`\bigcup\mathcal{C}\subseteq U`$ となり, $`V`$ が空でないことに矛盾する.
+    よって $`\bigcup\mathcal{C}`$ は連結である.
 
 Theorem. **局所連結性の性質**
 :   位相空間 $`X,Y`$ に対して, $`X`$ が局所連結かつ商写像 $`X\to Y`$ が存在するなら, $`Y`$ も局所連結となる.
@@ -1127,6 +1301,14 @@ Theorem. **道の性質**
 
 Theorem.
 :   弧状連結なら連結である.
+
+<u>proof.</u>
+:   弧状連結空間 $`X`$ が不連結であると仮定し, 互いに交わらない空でない開集合 $`U,V`$ で $`X=U\cup V`$ となるものをとる.
+    $`a\in U`$ と $`b\in V`$ を選ぶ.
+    弧状連結性から $`a`$ から $`b`$ への道 $`f:[0,1]\to X`$ が存在する.
+    このとき $`f^{-1}(U)`$ と $`f^{-1}(V)`$ は $`[0,1]`$ の互いに交わらない空でない開集合であり, その和は $`[0,1]`$ である.
+    これは区間 $`[0,1]`$ の連結性に矛盾する.
+    よって $`X`$ は連結である.
 
 ### 既約空間
 
@@ -1190,6 +1372,14 @@ Definition. **第二可算空間**
 Proposition.
 :   第二可算空間は可分である.
 
+<u>proof.</u>
+:   $`X`$ の可算な開基を $`\mathcal{B}`$ とする.
+    空集合でない各 $`B\in\mathcal{B}`$ から一点 $`x_B\in B`$ を選び, これらの点全体を $`D`$ とする.
+    $`\mathcal{B}`$ は可算であるから $`D`$ も可算である.
+    空でない開集合 $`U\subseteq X`$ をとると, 開基の性質により $`B\in\mathcal{B}`$ で $`\emptyset\neq B\subseteq U`$ を満たすものが存在する.
+    このとき $`x_B\in D\cap U`$ である.
+    よって $`D`$ は稠密であり, $`X`$ は可分である.
+
 ---
 
 ## 被覆と次元
@@ -1208,8 +1398,25 @@ Definition. **星有限性**
 Proposition.
 :   位相空間 $`X,Y`$ と $`Y`$ の部分集合族 $`\sigma`$ と連続写像 $`f:X\to Y`$ に対して, $`\sigma`$ が局所有限なら $`\{f^{-1}(S)\mid S\in\sigma\}`$ もまた局所有限となる.
 
+<u>proof.</u>
+:   $`x\in X`$ をとる.
+    $`\sigma`$ の局所有限性から, $`f(x)` の開近傍 $`V`$ であって $`V`$ と交わる $`\sigma`$ の元が有限個しかないものが存在する.
+    連続性により $`f^{-1}(V)`$ は $`x`$ の開近傍である.
+    $`f^{-1}(V)`$ が $`f^{-1}(S)`$ と交わるならば $`V\cap S\neq\emptyset`$ である.
+    よって $`f^{-1}(V)`$ と交わる逆像は有限個しかない.
+    $`x`$ は任意であるから, 逆像の族は局所有限である.
+
 Proposition.
 :   位相空間 $`X`$ の部分集合族 $`\sigma`$ が局所有限であれば, $`\overline{\sigma}\coloneqq\{\overline{S}\mid S\in\sigma\}`$ もまた局所有限となり, $`\bigcup\overline{\sigma}\subseteq\overline{\bigcup\sigma}`$ が成り立つ.
+
+<u>proof.</u>
+:   $`x\in X`$ をとり, $`\sigma`$ と交わる元が有限個しかない $`x`$ の開近傍 $`G`$ をとる.
+    $`G\cap\overline{S}\neq\emptyset`$ ならば, $`G`$ が開であることから $`G\cap S\neq\emptyset`$ である.
+    したがって $`G`$ と交わる $`\overline{\sigma}`$ の元も有限個しかない.
+    よって $`\overline{\sigma}`$ は局所有限である.
+
+    各 $`S\in\sigma`$ は $`\bigcup\sigma`$ の部分集合であるから, 閉包の単調性により $`\overline{S}\subseteq\overline{\bigcup\sigma}`$ である.
+    $`S`$ について合併をとれば $`\bigcup\overline{\sigma}\subseteq\overline{\bigcup\sigma}`$ を得る.
 
 Definition. **位数**
 :   集合 $`X`$ の部分集合族 $`\sigma`$ に対して, $`\sigma`$ の **点 $`x\in X`$ における位数** (*order of a point $`x\in X`$*) を集合族 $`\{S\in\sigma\mid x\in S\}`$ の濃度とし, $`\operatorname{ord}_x\sigma`$ と表す.
@@ -1318,11 +1525,38 @@ Theorem. **コンパクト性と同値な命題**
 Proposition. **コンパクト性の連続全射像による保存**
 :   コンパクト空間 $`X`$ と位相空間 $`Y`$ に対して, 全射連続写像 $`f:X\to Y`$ が存在すれば, $`Y`$ もコンパクト空間となる.
 
+<u>proof.</u>
+:   $`Y`$ の開被覆 $`\mathcal{V}`$ をとる.
+    連続性により, $`\{f^{-1}(V)\mid V\in\mathcal{V}\}`$ は $`X`$ の開集合族である.
+    $`f`$ が全射であるから, この族は $`X`$ を被覆する.
+    $`X`$ のコンパクト性により, $`V_1,\ldots,V_n\in\mathcal{V}`$ が存在して
+    ```math
+    X=f^{-1}(V_1)\cup\cdots\cup f^{-1}(V_n)
+    ```
+    となる.
+    全射性から $`Y=V_1\cup\cdots\cup V_n`$ である.
+    よって $`\mathcal{V}`$ は有限部分被覆を持つ.
+
 Proposition. **コンパクト性の閉部分空間への遺伝**
 :   コンパクト空間 $`X`$ の閉部分空間 $`F`$ もコンパクト空間となる.
 
+<u>proof.</u>
+:   $`F`$ の開被覆 $`\mathcal{U}`$ をとる.
+    各 $`U\in\mathcal{U}`$ を $`X`$ の開集合として選ぶと, $`\mathcal{U}\cup\{X\setminus F\}`$ は $`X`$ の開被覆となる.
+    $`X`$ のコンパクト性から有限部分被覆が存在する.
+    そこから $`X\setminus F`$ を除けば, 残る有限個の集合は $`F`$ を被覆する.
+    よって $`F`$ はコンパクトである.
+
 Proposition. **Hausdorff 空間のコンパクト部分集合**
 :   Hausdorff 空間のコンパクトな部分集合は閉集合となる.
+
+<u>proof.</u>
+:   Hausdorff 空間 $`X`$ のコンパクト部分集合 $`K`$ と $`x\in X\setminus K`$ をとる.
+    各 $`y\in K`$ に対して, $`x\in U_y`$, $`y\in V_y`$, $`U_y\cap V_y=\emptyset`$ を満たす開集合 $`U_y,V_y`$ が存在する.
+    $`\{V_y\mid y\in K\}`$ は $`K`$ の開被覆であるから, ある $`y_1,\ldots,y_n\in K`$ に対して $`K\subseteq V_{y_1}\cup\cdots\cup V_{y_n}`$ となる.
+    $`U=U_{y_1}\cap\cdots\cap U_{y_n}`$ とおくと, $`U`$ は $`x`$ の開近傍である.
+    さらに $`U\cap K=\emptyset`$ であるから $`U\subseteq X\setminus K`$ である.
+    よって $`X\setminus K`$ は開集合であり, $`K`$ は閉集合である.
 
 Theorem. **Heine–Borel の被覆定理の類似**
 :   コンパクト距離空間 $`K`$ 上の複素数値写像の集合 $`S`$ に対して, $`S`$ が一様ノルムによりコンパクトであることと, $`S`$ が閉集合かつ各点毎に有界かつ同程度連続であることは同値である.
@@ -1347,17 +1581,49 @@ Definition. **Lindelöf 空間**
 Proposition. **Lindelöf 性の連続全射像による保存**
 :   Lindelöf 空間 $`X`$ と位相空間 $`Y`$ に対して, 全射連続写像 $`f:X\to Y`$ が存在すれば, $`Y`$ も Lindelöf 空間となる.
 
+<u>proof.</u>
+:   $`Y`$ の開被覆 $`\mathcal{V}`$ をとる.
+    $`\{f^{-1}(V)\mid V\in\mathcal{V}\}`$ は $`X`$ の開被覆である.
+    $`X`$ の Lindelöf 性から, ある可算部分族 $`\{V_n\mid n\in\mathbb{N}\}\subseteq\mathcal{V}`$ が存在して
+    ```math
+    X=\bigcup_{n\in\mathbb{N}}f^{-1}(V_n)
+    ```
+    となる.
+    $`f`$ の全射性により $`Y=\bigcup_{n\in\mathbb{N}}V_n`$ である.
+    よって $`Y`$ は Lindelöf 空間である.
+
 Proposition. **Lindelöf 性の閉部分空間への遺伝**
 :   Lindelöf 空間 $`X`$ の閉部分空間 $`F`$ も Lindelöf 空間となる.
 
+<u>proof.</u>
+:   $`F`$ の開被覆 $`\mathcal{U}`$ をとる.
+    各 $`U\in\mathcal{U}`$ を $`X`$ の開集合として選ぶと, $`\mathcal{U}\cup\{X\setminus F\}`$ は $`X`$ の開被覆である.
+    $`X`$ の Lindelöf 性から可算部分被覆が存在する.
+    そこから $`X\setminus F`$ を除けば, 残る可算個の集合が $`F`$ を被覆する.
+    よって $`F`$ は Lindelöf 空間である.
+
 Proposition. **第二可算性から Lindelöf 性**
 :   第二可算な位相空間は Lindelöf 空間となる.
+
+<u>proof.</u>
+:   可算な開基を $`\mathcal{B}`$ とし, $`X`$ の開被覆 $`\mathcal{U}`$ をとる.
+    $`\mathcal{B}`$ のうち, ある $`U\in\mathcal{U}`$ に含まれるもの全体を $`\mathcal{B}'`$ とする.
+    $`\mathcal{B}'`$ は可算である.
+    $`x\in X`$ に対して $`x\in U`$ となる $`U\in\mathcal{U}`$ を選ぶと, 開基の性質から $`x\in B\subseteq U`$ を満たす $`B\in\mathcal{B}`$ が存在する.
+    この $`B`$ は $`\mathcal{B}'`$ に属する.
+    よって各 $`B\in\mathcal{B}'`$ について $`B\subseteq U_B`$ となる $`U_B\in\mathcal{U}`$ を一つ選べば, $`\{U_B\mid B\in\mathcal{B}'\}`$ は $`\mathcal{U}`$ の可算部分被覆である.
+    したがって $`X`$ は Lindelöf 空間である.
 
 Proposition. **正則 Lindelöf 空間の正規性**
 :   正則な Lindelöf 空間は正規空間となる.
 
 Proposition. **コンパクト性から Lindelöf 性**
 :   コンパクト空間は Lindelöf 空間となる.
+
+<u>proof.</u>
+:   コンパクト空間の任意の開被覆は有限部分被覆を持つ.
+    有限集合は可算であるから, この有限部分被覆は可算部分被覆でもある.
+    よってコンパクト空間は Lindelöf 空間である.
 
 Theorem.
 :   距離空間 $`X`$ に対して, 以下同値.
@@ -1729,11 +1995,23 @@ Proposition.
 Proposition.
 :   位相空間 $`X`$ において, 開集合は点列開であり閉集合は点列閉である.
 
+<u>proof.</u>
+:   開集合 $`G`$ と $`G`$ に収束する点列 $`(p_n)`$ をとる.
+    極限 $`p`$ は $`G`$ に属し, $`G`$ は $`p`$ の近傍である.
+    収束の定義から, ある $`N`$ が存在して $`n\geq N`$ ならば $`p_n\in G`$ となる.
+    よって $`G`$ は点列開である.
+    補集合をとると, 閉集合は点列閉である.
+
 Definition.
 :   位相空間 $`X`$ が **列型空間** (*sequential space*) であるとは, 任意の点列開集合が開となるときいう.
 
 Proposition.
 :   位相空間 $`X`$ が列型空間であることと, 任意の点列閉集合が閉であることは同値である.
+
+<u>proof.</u>
+:   部分集合 $`F\subseteq X`$ が点列閉であることは, 補集合 $`X\setminus F`$ が点列開であることと同値である.
+    同様に $`F`$ が閉であることは, $`X\setminus F`$ が開であることと同値である.
+    したがって「任意の点列開集合が開である」という列型空間の定義は, 「任意の点列閉集合が閉である」という条件と同値である.
 
 第一可算空間は列型空間であるが, 第一可算でない列型空間も存在する.
 
@@ -1838,6 +2116,32 @@ Theorem. **Urysohn の距離化定理**
     特に, 正則第二可算空間は可算な開基から可算な正規被覆列を構成できる.
     上の定理で得られる擬距離は Kolmogorov 性により距離となり, 元の位相を誘導する.
 
+<u>proof.</u>
+:   $`X`$ の可算な開基を $`(B_n)_{n\geq0}`$ とする.
+    正則性と第二可算性から $`X`$ は正規である.
+    正則性を各基の要素に適用して, 閉包が別の基の要素に含まれる可算個の組
+    ```math
+    \overline{B_i}\subseteq B_j
+    ```
+    を選ぶことができる.
+    これらの組は点と閉集合を分離するのに十分である.
+
+    各組に対して Urysohn の補題を適用し, 連続写像 $`u_n:X\to[0,1]`$ を選ぶ.
+    これらをまとめた写像
+    ```math
+    e:X\longrightarrow[0,1]^{\mathbb{N}},qquad e(x)=(u_n(x))_{n\geq0}
+    ```
+    は点を分離し, 開基も逆像で復元するので埋め込みである.
+
+    可算積 $`[0,1]^{\mathbb{N}}`$ には
+    ```math
+    d(a,b)\coloneqq\sum_{n=0}^{\infty}2^{-n-1}|a_n-b_n|
+    ```
+    で定まる距離があり, その位相は積位相と一致する.
+    $`X`$ 上に $`d_X(x,y)=d(e(x),e(y))`$ とおく.
+    $`e`$ が単射であるから $`d_X`$ は距離である.
+    $`e`$ が埋め込みであることから, $`d_X`$ の誘導する位相は元の位相と一致する.
+
 Theorem. **Nagata--Smirnov の距離化定理**
 :   Hausdorff 正則空間 $`X`$ が距離化可能であるための必要十分条件は, $`X`$ が $`\sigma`$ 局所有限な開基を持つことである.
 
@@ -1846,6 +2150,11 @@ Corollary. **可算基による距離化**
 
     実際, 可算な開基は $`\sigma`$ 局所有限な開基である.
     この系は Urysohn の距離化定理の直接の系である.
+
+<u>proof.</u>
+:   Hausdorff 空間は Kolmogorov 空間である.
+    仮定より $`X`$ は正則かつ第二可算であるから, Urysohn の距離化定理を適用できる.
+    よって $`X`$ は距離化可能である.
 
 Theorem. **一様構造による距離化**
 :   Hausdorff 一様空間 $`X`$ が可算な近縁基を持つならば, $`X`$ の一様構造はある距離から定まる.
@@ -1877,8 +2186,40 @@ Proposition. **Baire 性の特徴づけ**
 Theorem. **Baire のカテゴリー定理**
 :   完備距離空間は Baire 空間である.
 
+<u>proof.</u>
+:   完備距離空間 $`X`$ の稠密開集合列 $`(G_n)_{n\geq0}`$ と空でない開集合 $`O`$ をとる.
+    $`O\cap G_0`$ は空でない開集合であるから, その閉包が $`O\cap G_0`$ に含まれ, 半径が $`1`$ 未満である閉球 $`K_0`$ を選べる.
+    帰納的に, $`K_n`$ を選んだとする.
+    $`\operatorname{int}(K_n)\cap G_{n+1}`$ は空でない開集合であるから, その閉包がこれに含まれ, 半径が $`2^{-n-1}`$ 未満である閉球 $`K_{n+1}`$ を選べる.
+    この構成により
+    ```math
+    K_{n+1}\subseteq K_n\cap G_{n+1}
+    ```
+    であり, $`K_n`$ の半径は $`0`$ に収束する.
+
+    各 $`K_n`$ の中心を $`x_n`$ とする.
+    列 $`(x_n)`$ は Cauchy 列であるから, 完備性によりある $`x\in X`$ に収束する.
+    任意の $`n`$ に対して列の後尾は $`K_n`$ に含まれ, $`K_n`$ は閉であるから $`x\in K_n`$ である.
+    したがって $`x\in O\cap\bigcap_{n\geq0}G_n`$ である.
+    任意の空でない開集合 $`O`$ がこの共通部分と交わるので, $`\bigcap_{n\geq0}G_n`$ は稠密である.
+
 Theorem. **局所コンパクト空間の Baire 性**
 :   局所コンパクト Hausdorff 空間は Baire 空間である.
+
+<u>proof.</u>
+:   稠密開集合列 $`(G_n)_{n\geq0}`$ と空でない開集合 $`O`$ をとる.
+    局所コンパクト性の近傍による特徴づけから, 空でない開集合の内部にコンパクトな閉包を持つ非空開集合を選べる.
+    これを $`O\cap G_0`$ に適用して, 非空開集合 $`V_0`$ で $`\overline{V_0}\subseteq O\cap G_0`$ かつ $`\overline{V_0}`$ がコンパクトなものを選ぶ.
+    帰納的に $`V_n`$ を選んだ後, $`V_n\cap G_{n+1}`$ に同じ性質を適用して
+    ```math
+    \overline{V_{n+1}}\subseteq V_n\cap G_{n+1}
+    ```
+    となる非空開集合 $`V_{n+1}`$ を選ぶ.
+
+    コンパクト集合 $`\overline{V_0}`$ の閉部分集合列 $`\overline{V_n}`$ は有限交叉性を持つ.
+    よってコンパクト性から $`\bigcap_{n\geq0}\overline{V_n}\neq\emptyset`$ である.
+    この共通部分の任意の点は $`O`$ と全ての $`G_n`$ に属する.
+    よって $`\bigcap_{n\geq0}G_n`$ は稠密である.
 
 Example. **有理数全体は Baire 空間でない**
 :   有理数全体 $`\mathbb{Q}`$ は可算であり, 各一点集合は $`\mathbb{Q}`$ で閉かつ内点を持たない.
@@ -1912,6 +2253,14 @@ Proposition. **局所コンパクト性の近傍による特徴づけ**
 Proposition. **局所コンパクト性の閉部分空間への遺伝**
 :   局所コンパクト Hausdorff 空間の閉部分空間は局所コンパクト Hausdorff 空間である.
 
+<u>proof.</u>
+:   局所コンパクト Hausdorff 空間 $`X`$ の閉部分集合 $`F`$ と $`x\in F`$ をとる.
+    $`x`$ は $`X`$ においてコンパクトな近傍 $`K`$ を持つ.
+    $`F\cap K`$ は $`K`$ の閉部分集合であるからコンパクトである.
+    $`K`$ に含まれる $`x`$ の開近傍 $`U`$ をとれば, $`U\cap F`$ は $`F\cap K`$ に含まれる $`x`$ の $`F`$ における開近傍である.
+    よって $`F\cap K`$ は $`x`$ のコンパクト近傍である.
+    $`x`$ は任意であり, Hausdorff 性は部分空間へ遺伝するから $`F`$ は局所コンパクト Hausdorff 空間である.
+
 ### 一点コンパクト化
 
 Definition. **一点コンパクト化**
@@ -1926,6 +2275,24 @@ Definition. **一点コンパクト化**
 Theorem. **一点コンパクト化の性質**
 :   $`X^+`$ はコンパクト Hausdorff 空間である.
     $`X`$ は $`X^+`$ の稠密な開部分空間であり, $`X^+\setminus X=\{\infty\}`$ である.
+
+<u>proof.</u>
+:   $`X^+`$ の開被覆をとり, $`\infty`$ を含む被覆要素を $`U`$ とする.
+    定義から $`K=X\setminus(U\cap X)`$ はコンパクトである.
+    被覆の残りは $`K`$ の開被覆を与えるので, 有限部分被覆を持つ.
+    これに $`U`$ を加えると $`X^+`$ の有限部分被覆となる.
+    よって $`X^+`$ はコンパクトである.
+
+    $`X`$ の異なる二点は $`X`$ の Hausdorff 性により $`X^+`$ においても分離できる.
+    $`x\in X`$ に対して, 局所コンパクト性から $`x\in V\subseteq K`$ を満たす開集合 $`V\subseteq X`$ とコンパクト集合 $`K\subseteq X`$ を選べる.
+    $`V`$ と $`X^+\setminus K`$ はそれぞれ $`x`$ と $`\infty`$ の交わらない開近傍である.
+    よって $`X^+`$ は Hausdorff である.
+
+    $`X=X^+\setminus\{\infty\}`$ であることは集合の構成から従う.
+    $`X`$ は定義により開集合である.
+    $`\infty`$ の任意の近傍 $`U`$ が $`X`$ と交わらないとすると $`U=\{\infty\}`$ となり, 定義から $`X`$ はコンパクトとなる.
+    これは仮定に反する.
+    よって $`X`$ は $`X^+`$ に稠密である.
 
 Theorem. **一点コンパクト化の一意性**
 :   コンパクト Hausdorff 空間 $`K`$ が $`X`$ を稠密な開部分空間として含み, $`K\setminus X`$ が一点からなるならば, $`K`$ は $`X^+`$ と $`X`$ 上恒等な同相写像によって同相である.
@@ -1946,6 +2313,20 @@ Definition. **Stone-Čech コンパクト化**
 Theorem. **Stone-Čech コンパクト化の存在と一意性**
 :   任意の Tychonoff 空間は Stone-Čech コンパクト化を持つ.
     Stone-Čech コンパクト化は $`X`$ 上恒等な同相写像を除いて一意である.
+
+<u>proof.</u>
+:   存在については, $`X`$ から $`[0,1]`$ への連続写像全体を添字とする積空間への評価写像を用いる.
+    Tychonoff 性によりこの評価写像は埋め込みであり, その像の閉包は Tychonoff の定理によりコンパクト Hausdorff である.
+    各座標関数の延長から, この閉包は Stone-Čech の普遍性を満たす.
+
+    一意性を示す.
+    $`(eta X,\iota)`$ と $`(eta'X,\iota')` を二つの Stone-Čech コンパクト化とする.
+    普遍性を $`iota':X\to\beta'X`$ に適用すると, 連続写像 $`F:\beta X\to\beta'X`$ で $`F\circ\iota=\iota'`$ を満たすものが一意に存在する.
+    同様に連続写像 $`G:\beta'X\to\beta X`$ で $`G\circ\iota'=\iota`$ を満たすものが一意に存在する.
+    $`G\circ F`$ と恒等写像は稠密部分集合 $`\iota(X)`$ 上で一致する.
+    値域 $`\beta X`$ は Hausdorff であるから, 連続写像の一致集合は閉であり, 稠密性から $`G\circ F=\operatorname{id}_{\beta X}`$ となる.
+    同様に $`F\circ G=\operatorname{id}_{\beta'X}`$ である.
+    よって $`F`$ は $`X` 上恒等な同相写像であり, その一意性も普遍性から従う.
 
 Proposition. **有界実数値関数による特徴づけ**
 :   Tychonoff 空間 $`X`$ のコンパクト化 $`\iota:X\to K`$ が Stone-Čech コンパクト化であるための必要十分条件は, 任意の連続写像 $`f:X\to[0,1]`$ が $`K`$ 上の連続写像へ一意に延長できることである.
@@ -1970,8 +2351,36 @@ Theorem. **Urysohn の補題**
     ```
     であって $`f(A)=\{0\}`$ および $`f(B)=\{1\}`$ を満たすものが存在する.
 
+<u>proof.</u>
+:   正規性により, 閉集合 $`C`$ とそれを含む開集合 $`U`$ に対して
+    ```math
+    C\subseteq V\subseteq\overline{V}\subseteq U
+    ```
+    を満たす開集合 $`V`$ を選べる.
+    この操作を二進有理数 $`r\in[0,1]`$ に沿って帰納的に適用すると, 開集合族 $`(U_r)`$ を
+    ```math
+    A\subseteq U_0,qquad \overline{U_r}\subseteq U_s\quad(r<s),qquad \overline{U_r}\cap B=\emptyset
+    ```
+    となるように構成できる.
+
+    次で写像 $`f:X\to[0,1]`$ を定める.
+    ```math
+    f(x)\coloneqq\inf\{r\in\mathbb{D}\cap[0,1]\mid x\in U_r\},
+    ```
+    ただし集合が空の場合は $`f(x)=1`$ とする.
+    入れ子条件から $`f^{-1}([0,r))`$ と $`f^{-1}((r,1])`$ はそれぞれ開集合として表せる.
+    よって $`f`$ は連続である.
+    構成により $`A`$ 上では $`f=0`$, $`B`$ 上では $`f=1`$ である.
+
 Corollary.
 :   正規 $`\mathbf{T}_1`$ 空間は完全正則である.
+
+<u>proof.</u>
+:   $`x\in X`$ と $`x` を含まない閉集合 $`F`$ をとる.
+    $`\mathbf{T}_1`$ 性により $`\{x\}`$ は閉集合であり, $`\{x\}`$ と $`F`$ は互いに交わらない.
+    Urysohn の補題から, $`f(x)=0`$ かつ $`f(F)=\{1\}`$ を満たす連続写像 $`f:X\to[0,1]`$ が存在する.
+    したがって点とそれを含まない閉集合は連続実数値関数で分離できる.
+    これが完全正則性である.
 
 ### Tietze の拡張定理
 
@@ -1981,6 +2390,25 @@ Theorem. **Tietze の拡張定理**
     \overline{f}|_A=f
     ```
     を満たす.
+
+<u>proof.</u>
+:   Urysohn の補題から, 閉集合 $`A`$ 上の連続関数 $`h:A\to[-1,1]`$ に対して, 連続関数 $`g:X\to[-1/3,1/3]`$ で
+    ```math
+    |h(a)-g(a)|\leq\frac{2}{3}\lVert h\rVert_\infty\qquad(a\in A)
+    ```
+    を満たすものを構成できる.
+    実際, $`h`$ の正負の水準集合を有限個に分け, 隣接しない閉集合を Urysohn の補題で分離して得られる関数を線形結合すればよい.
+
+    この近似を残差に反復して, $`g_n:X\to\mathbb{R}`$ を選ぶ.
+    $`g_0=0`$ とし, $`g_0+\cdots+g_n`$ の $`A`$ 上での誤差が幾何級数的に $`0`$ へ収束するように選ぶと,
+    ```math
+    \sum_{n=0}^{\infty}\lVert g_n\rVert_\infty<\infty
+    ```
+    となる.
+    したがって級数 $`g=\sum_{n\geq0}g_n`$ は $`X`$ 上で一様収束し, 連続である.
+    残差の極限は $`0`$ であるから $`g|_A=f`$ となる.
+    さらに各段階を区間 $`[-1,1]`$ 内に保つように選ぶことで, $`g(X)\subseteq[-1,1]`$ を得る.
+    この $`g`$ を $`\overline{f}`$ とおく.
 
 Corollary.
 :   正規 $`\mathbf{T}_1`$ 空間の閉部分集合上の任意の連続実数値関数は, 全空間上の連続実数値関数へ延長できる.
@@ -2005,6 +2433,33 @@ Definition. **分割の一**
 
 Theorem. **分割の一の存在定理**
 :   パラコンパクト Hausdorff 空間の任意の開被覆には従属する分割の一が存在する.
+
+<u>proof.</u>
+:   開被覆 $`\mathcal{U}`$ をとる.
+    パラコンパクト Hausdorff 空間は正規であり, 縮小補題により局所有限な開細分 $`(V_i)_{i\in I}`$ と $`U_i\in\mathcal{U}`$ を
+    ```math
+    \overline{V_i}\subseteq U_i
+    ```
+    となるように選べる.
+    族 $`(V_i)`$ は $`X`$ を被覆する.
+
+    Urysohn の補題から, 各 $`i`$ に対して連続写像 $`\psi_i:X\to[0,1]`$ を
+    ```math
+    \psi_i|_{\overline{V_i}}=1,qquad \operatorname{supp}\psi_i\subseteq U_i
+    ```
+    となるように選べる.
+    支持の族は局所有限であるから, 各点の近傍では有限個の $`\psi_i`$ だけが非零である.
+    したがって
+    ```math
+    \psi(x)\coloneqq\sum_{i\in I}\psi_i(x)
+    ```
+    は連続である.
+    $`(V_i)`$ が被覆であることから $`\psi(x)>0`$ が全ての $`x\in X`$ で成り立つ.
+
+    $`\varphi_i(x)=\psi_i(x)/\psi(x)`$ とおく.
+    この族は局所有限であり, 各 $`\operatorname{supp}\varphi_i`$ は $`U_i`$ に含まれる.
+    さらに各点で $`\sum_i\varphi_i(x)=1`$ である.
+    よって $`(\varphi_i)_{i\in I}`$ は $`\mathcal{U}`$ に従属する分割の一である.
 
 Remark.
 :   局所有限性により, 各点の近傍では上の和の非零項が有限個しかない.
@@ -2036,6 +2491,14 @@ Proposition. **評価写像**
     ```
     は連続である.
 
+<u>proof.</u>
+:   $`(f_0,x_0)` と $`f_0(x_0)` の開近傍 $`U`$ をとる.
+    $`f_0^{-1}(U)`$ は $`x_0`$ の開近傍である.
+    局所コンパクト性から, $`x_0\in V\subseteq K\subseteq f_0^{-1}(U)`$ を満たす開集合 $`V`$ とコンパクト集合 $`K`$ を選べる.
+    $`[K,U]` は $`f_0`$ のコンパクト開近傍であり, $`V`$ は $`x_0`$ の近傍である.
+    $`f\in[K,U]` と $`x\in V`$ ならば $`x\in K`$ であるから $`f(x)\in U`$ となる.
+    よって評価写像は $`(f_0,x_0)` で連続であり, この点は任意である.
+
 Theorem. **指数法則**
 :   $`X`$ を局所コンパクト Hausdorff 空間とする.
     任意の位相空間 $`Z,Y`$ と連続写像 $`f:Z\times X\to Y`$ に対して,
@@ -2050,6 +2513,26 @@ Theorem. **指数法則**
     ```
     によって連続写像 $`Z\times X\to Y`$ を得る.
     この二つの対応は互いに逆であり, $`Z`$ と $`Y`$ に関して自然である.
+
+<u>proof.</u>
+:   $`f:Z\times X\to Y`$ を連続とする.
+    $`\widetilde{f}`$ の連続性は準基 $`[K,U]`$ の逆像を調べればよい.
+    $`z_0\in\widetilde{f}^{-1}([K,U])`$ とすると, $`f(\{z_0\}\times K)\subseteq U`$ である.
+    $`K`$ はコンパクトであり $`f^{-1}(U)`$ は開であるから, 管状近傍補題により $`z_0`$ の開近傍 $`W`$ が存在して
+    ```math
+    f(W\times K)\subseteq U
+    ```
+    となる.
+    よって $`W\subseteq\widetilde{f}^{-1}([K,U])`$ であり, $`\widetilde{f}`$ は連続である.
+
+    逆に $`g:Z\to C_k(X,Y)`$ が連続ならば, 非カリー化写像は評価写像との合成
+    ```math
+    Z\times X\xrightarrow{g\times\operatorname{id}_X}C_k(X,Y)\times X
+    \xrightarrow{\operatorname{ev}}Y
+    ```
+    であるから連続である.
+    カリー化と非カリー化を順に適用すると各点で元の値へ戻るため, 二つの対応は互いに逆である.
+    合成との可換性を各点で確認すれば, 自然性も従う.
 
 Remark.
 :   任意の位相空間 $`X`$ に対してこの指数対象が存在するわけではないので, 圏 $`\mathbf{Top}`$ は Cartesian 閉圏ではない.
