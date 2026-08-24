@@ -4845,6 +4845,28 @@ Remark.
 この節では, 一般位相で用いられる古典的な例と, 一般化された距離化定理および積空間の定理をまとめる.
 以下でいう Arhangel'skii の空間は単独の通称ではなく, 外延基, 弱基, p 空間, 点可算型などを用いて定義される空間の総称として扱う.
 
+### Alexandroff 直線
+
+Definition. **Alexandroff 直線**
+:   順序集合 $`[0,\omega_1)\times[0,1)`$ に辞書式順序を入れ, 順序位相を与えた空間を閉長半直線と呼ぶ.
+    閉長半直線を二つ用意し, 一方の順序を反転させて最小点同士を同一視した空間を **Alexandroff 直線** (*Alexandroff line* または *long line*) $`\mathbb L`$ と呼ぶ.
+
+Proposition. **Alexandroff 直線の性質**
+:   Alexandroff 直線 $`\mathbb L`$ は Hausdorff かつ局所ユークリッドであり, 局所コンパクトかつ可算コンパクトである.
+    しかし $`\mathbb L`$ はコンパクトでも Lindelöf でもなく, 可分でも第二可算でも距離化可能でもない.[^alexandroff-line]
+
+<u>proof.</u>
+:   順序位相の性質から $`\mathbb L`$ は Hausdorff である.
+    各点のまわりで座標 $`[0,1)`$ の有限部分区間だけを動かせば, その点の近傍は実数直線の開区間と同相になる.
+    同じ構成により, 各点はコンパクトな閉区間を含む近傍を持つため, $`\mathbb L`$ は局所コンパクトである.
+    可算部分集合が持つ第一座標の集合は $`\omega_1`$ において上に有界であるから, 可算部分集合は $`\mathbb L`$ のあるコンパクトな初期区間に含まれる.
+    したがって $`\mathbb L`$ は可算コンパクトである.
+    一方, 開初期区間からなる開被覆は有限部分被覆を持たないため $`\mathbb L`$ はコンパクトでない.
+    可算コンパクトな Lindelöf 空間はコンパクトであるから, $`\mathbb L`$ は Lindelöf でない.
+    また, 可算集合はある初期区間に含まれるため, その後方の開集合と交わらず, $`\mathbb L`$ は可分でない.
+    第二可算空間は可分であるから $`\mathbb L`$ は第二可算でない.
+    可算コンパクトな距離空間はコンパクトであるから, $`\mathbb L`$ は距離化可能でない.
+
 ### Sorgenfrey 直線と Michael 直線
 
 Definition. **Sorgenfrey 直線**
@@ -4987,6 +5009,7 @@ Theorem. **Smirnov コンパクト化の普遍性**
 
 [^sorgenfrey]: J. R. Munkres, *Topology*, §17.
 [^michael]: E. Michael, “The product of a normal space and a metric space”, *Bull. Amer. Math. Soc.* 54 (1948), 540--542.
+[^alexandroff-line]: [Long line](https://en.wikipedia.org/wiki/Long_line_(topology)).
 [^smirnov-metrization]: Munkres, *Topology*, §42.
 [^point-countable-type]: J. E. Vaughan, “Spaces of countable and point-countable type”, *Trans. Amer. Math. Soc.* 151 (1970), 341--351.
 [^arhangelskii-p]: A. V. Arhangel'skii, “On a class of spaces containing all metric and all locally compact spaces”, *Mat. Sb.* 67 (1965), 55--88.
