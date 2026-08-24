@@ -323,6 +323,14 @@ theorem tietze_extension
     (hs : IsClosed s) (f : C(s, ℝ)) : ∃ g : C(X, ℝ), g.restrict s = f :=
   f.exists_restrict_eq hs
 
+/-- 原稿「Tietze の拡張定理」の値域を保つ形。 -/
+theorem tietze_extension_Icc
+    {X : Type*} [TopologicalSpace X] [NormalSpace X] {s : Set X}
+    (hs : IsClosed s) (f : C(s, ℝ))
+    (hf : ∀ x, f x ∈ Set.Icc (-1 : ℝ) 1) :
+    ∃ g : C(X, ℝ), (∀ x, g x ∈ Set.Icc (-1 : ℝ) 1) ∧ g.restrict s = f :=
+  f.exists_restrict_eq_forall_mem_of_closed hf ⟨-1, by simp⟩ hs
+
 /-- 原稿「分割の一の存在定理」。 -/
 theorem partition_of_unity_exists
     {X ι : Type*} [TopologicalSpace X] [NormalSpace X] [ParacompactSpace X]
@@ -385,6 +393,15 @@ theorem countablyCompact_closed_subspace
 theorem compact_countablyCompact
     {X : Type*} [TopologicalSpace X] [CompactSpace X] : CountablyCompactSpace X :=
   inferInstance
+
+/-- 原稿「可算コンパクト性と同値な命題」の無限集合による定式化。 -/
+theorem countablyCompact_iff_infinite_subset_has_accPt
+    {X : Type*} [TopologicalSpace X] [T1Space X] :
+    CountablyCompactSpace X ↔
+      ∀ A : Set X, A.Infinite → ∃ x ∈ Set.univ, AccPt x (Filter.principal A) := by
+  rw [← isCountablyCompact_univ_iff]
+  simpa using
+    (isCountablyCompact_iff_infinite_subset_has_accPt (E := X) (A := Set.univ))
 
 /-! ## Lindelöf 性 -/
 
@@ -791,6 +808,14 @@ theorem metric_completion_coe_isometry
     Isometry ((↑) : X → UniformSpace.Completion X) :=
   UniformSpace.Completion.coe_isometry
 
+/-- 原稿「完備化の存在性」の完備性、稠密性、等長性。 -/
+theorem metric_completion_complete_dense_isometric
+    {X : Type*} [PseudoMetricSpace X] :
+    CompleteSpace (UniformSpace.Completion X) ∧
+      DenseRange ((↑) : X → UniformSpace.Completion X) ∧
+      Isometry ((↑) : X → UniformSpace.Completion X) :=
+  ⟨inferInstance, UniformSpace.Completion.denseRange_coe, metric_completion_coe_isometry⟩
+
 /-! ## 距離位相 -/
 
 /-- 原稿「距離位相による連続性の整合性」の ε--δ 定式化。 -/
@@ -1135,6 +1160,31 @@ theorem perfectlyNormal_completelyNormal
     {X : Type*} [TopologicalSpace X] [PerfectlyNormalSpace X] :
     CompletelyNormalSpace X :=
   inferInstance
+
+/-- 原稿「遺伝的正規性の特徴づけ」の部分空間による定式化。 -/
+theorem completelyNormal_iff_hereditarilyNormal
+    {X : Type*} [TopologicalSpace X] :
+    CompletelyNormalSpace X ↔ ∀ s : Set X, NormalSpace s :=
+  completelyNormalSpace_iff_forall_normalSpace
+
+/-- 原稿「完全正規 (perfectly normal)」の閉集合による定式化。 -/
+theorem perfectlyNormal_iff_normal_closed_isGDelta
+    {X : Type*} [TopologicalSpace X] :
+    PerfectlyNormalSpace X ↔
+      NormalSpace X ∧ ∀ s : Set X, IsClosed s → IsGδ s := by
+  constructor
+  · intro h
+    exact ⟨inferInstance, fun s hs => @IsClosed.isGδ X _ h s hs⟩
+  · rintro ⟨hnormal, hgd⟩
+    exact { toNormalSpace := hnormal, closed_gdelta := fun {s} hs => hgd s hs }
+
+/-- 原稿「完全正規 (perfectly normal)」の零集合表示。 -/
+theorem perfectlyNormal_iff_closed_is_zero_set
+    {X : Type*} [TopologicalSpace X] :
+    PerfectlyNormalSpace X ↔
+      ∀ s : Set X, IsClosed s → ∃ f : C(X, ℝ),
+        s = f ⁻¹' {0} ∧ ∀ x, f x ∈ Icc (0 : ℝ) 1 :=
+  perfectlyNormalSpace_iff_forall_isClosed_preimage_zero
 
 /-- 原稿「正規性」で使う閉集合と開集合の縮小補題。 -/
 theorem normal_exists_open_closure_subset
