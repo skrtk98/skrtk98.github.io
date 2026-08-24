@@ -6,6 +6,7 @@
 
 - `manuscripts/`：公開する Markdown 原稿と、原稿から参照する共通章。
 - `previewer/`：Markdown、KaTeX、TikZ を HTML に変換する CLI とブラウザプレビューワー。
+- `previewer/THIRD_PARTY_LICENSES.md`：Markdown Preview Enhanced から移植したレイアウト規則の出典とライセンス。
 - `site/`：`npm run build` が生成する GitHub Pages 用 HTML。直接編集しない。
 - `build/preview-site/`：`npm run preview` が生成するローカルプレビュー用 HTML。公開対象ではない。
 - `TopologyFormalization/`：位相空間論の Lean 4 検証プロジェクト。
@@ -72,6 +73,8 @@ npm run build
 `latex` の属性付きコードフェンス（`cmd=true` を含む）内の TikZ は LaTeX でコンパイルされ、SVG として HTML に埋め込まれる。
 
 各ドキュメントの見出しから目次を自動生成し、本文の冒頭に表示する。
+
+目次の開閉、本文幅、余白、見出し、コード、表のレイアウトは Markdown Preview Enhanced の HTML export 用実装に合わせている。
 
 ### 変換結果の検査
 

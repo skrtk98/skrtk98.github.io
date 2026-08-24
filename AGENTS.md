@@ -8,6 +8,7 @@
 - `manuscripts/`：公開する Markdown 原稿と、原稿から参照する共通章。編集対象は原則としてこのディレクトリ以下とする。
 - `manuscripts/contents/`：単独公開ではなく、複数の原稿から参照する基礎事項や共通章。
 - `previewer/`：Markdown、KaTeX、TikZ を HTML に変換する CLI とブラウザプレビューワー。
+- `previewer/THIRD_PARTY_LICENSES.md`：Markdown Preview Enhanced から移植したレイアウト規則の出典とライセンス。
 - `site/`：`npm run build` が出力する GitHub Pages 用 HTML。生成物であり、原稿の代わりに直接編集しない。
 - `build/preview-site/`：`npm run preview` が出力するローカルプレビュー用 HTML。公開対象ではない。
 - `TopologyFormalization/`：位相空間論の原稿に対応する Lean 4 と mathlib の検証プロジェクト。
@@ -24,6 +25,8 @@
 - スキルの指示と既存原稿の表記が衝突する場合は、数学的正確性とユーザーの明示的な指示を優先し、採用した判断を作業報告に記す。
 - 原稿を変更した場合は、変更対象の章と、必要に応じて参照元および参照先を確認する。
 - `site/` の HTML を手作業で修正せず、原稿を修正してから `npm run build` で再生成する。
+- プレビューワーのレイアウトを変更するときは、Markdown Preview Enhanced の HTML export 用 DOM と CSS を基準にし、独自の簡略化したレイアウトへ置き換えない。
+- Markdown Preview Enhanced のコードまたは CSS を移植するときは、`previewer/THIRD_PARTY_LICENSES.md` の出典とライセンス表示を維持する。
 - 生成物、ロックファイル、設定ファイルは、変更が必要な作業でない限り編集しない。
 - 共通章の定義や記号を変更するときは、`@import` による利用箇所と公開対象の全原稿を確認する。
 
