@@ -1469,38 +1469,38 @@ Definition. **積空間**
     と表す.
 
 Proposition. **積空間の近傍系**
-:   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ に対して, $`X=\prod_{\lambda\in\Lambda}(X_\lambda)_0`$ として台集合の直積による標準射影 $`\pi_\lambda\colon X\to(X_\lambda)_0`$ により写像 $`\mathcal N:X\to2^{2^X}`$ を
+:   積空間 $`Y=\prod_{\lambda\in\Lambda}X_\lambda`$ の点 $`y`$ に対して
     ```math
-    \mathcal{N}(x)\coloneqq
-    \left\{U\subseteq X\mathrel{}\middle|\mathrel{}
+    \mathcal N^{\times}(y)\coloneqq
+    \left\{U\subseteq Y\mathrel{}\middle|\mathrel{}
     \begin{array}{l}
-    \exists F\subseteq\Lambda,\ F\text{ finite},\ \exists(U_\lambda)_{\lambda\in F},\\
-    \left(\forall\lambda\in F,\ U_\lambda\in\mathcal N_{X_\lambda}(\pi_\lambda(x))\right)\ \land\\
+    \exists F\subseteq\Lambda,\ F\text{ is finite},\ \exists(U_\lambda)_{\lambda\in F},\\
+    \left(\forall\lambda\in F,\ U_\lambda\in\mathcal N_{X_\lambda}(\pi_\lambda(y))\right)\ \land\\
     \displaystyle\bigcap_{\lambda\in F}\pi_\lambda^{-1}(U_\lambda)\subseteq U
     \end{array}\right\}
     ```
-    ここで $`F=\emptyset`$ のときの共通部分は $`X`$ とする.
-    とすると, $`\mathcal N`$ は積空間 $`\prod_{\lambda\in\Lambda}X_\lambda`$ の近傍系となる.
+    と定めると, $`\mathcal N^{\times}`$ は積空間の近傍系となる.
+    ただし, $`F=\emptyset`$ のときの共通部分は $`Y`$ とする.
 
 <u>proof.</u>
-:   まず $`\mathcal N(x)`$ が $`X`$ 上のフィルターであることを示す.
-    $`U\in\mathcal N(x)`$ を表す有限集合 $`F`$ と近傍族 $`(U_\lambda)_{\lambda\in F}`$ をとる.
-    各 $`U_\lambda`$ は $`\pi_\lambda(x)`$ を含むため, その逆像の共通部分は $`x`$ を含む.
-    よって $`x\in U`$ である.
-    二つの元 $`U,V\in\mathcal N(x)`$ を表す有限集合の和をとり, 共通する座標では対応する近傍を交わらせれば, $`U\cap V\in\mathcal N(x)`$ となる.
-    また, $`U\subseteq W`$ かつ $`U\in\mathcal N(x)`$ なら同じ円筒集合が $`W`$ を表すため, $`W\in\mathcal N(x)`$ である.
-    したがって $`\mathcal N(x)`$ はフィルターである.
+:   まず $`\mathcal N^{\times}(y)`$ が $`Y`$ 上のフィルターであることを示す.
+    $`U\in\mathcal N^{\times}(y)`$ を表す有限集合 $`F`$ と近傍族 $`(U_\lambda)_{\lambda\in F}`$ をとる.
+    各 $`U_\lambda`$ は $`\pi_\lambda(y)`$ を含むため, その逆像の共通部分は $`y`$ を含む.
+    よって $`y\in U`$ である.
+    二つの元 $`U,V\in\mathcal N^{\times}(y)`$ を表す有限集合の和をとり, 共通する座標では対応する近傍を交わらせれば, $`U\cap V\in\mathcal N^{\times}(y)`$ となる.
+    また, $`U\subseteq W`$ かつ $`U\in\mathcal N^{\times}(y)`$ なら同じ円筒集合が $`W`$ を表すため, $`W\in\mathcal N^{\times}(y)`$ である.
+    したがって $`\mathcal N^{\times}(y)`$ はフィルターである.
     次に近傍系の局所性を示す.
-    $`U\in\mathcal N(x)`$ をとり, $`B=\bigcap_{\lambda\in F}\pi_\lambda^{-1}(U_\lambda)\subseteq U`$ となる表示を選ぶ.
-    各因子の近傍系の局所性により, $`V_\lambda\in\mathcal N_{X_\lambda}(\pi_\lambda(x))`$ を
+    $`U\in\mathcal N^{\times}(y)`$ をとり, $`B=\bigcap_{\lambda\in F}\pi_\lambda^{-1}(U_\lambda)\subseteq U`$ となる表示を選ぶ.
+    各因子の近傍系の局所性により, $`V_\lambda\in\mathcal N_{X_\lambda}(\pi_\lambda(y))`$ を
     ```math
     \forall z\in V_\lambda,\quad U_\lambda\in\mathcal N_{X_\lambda}(z)
     ```
     となるように選べる.
-    $`V=\bigcap_{\lambda\in F}\pi_\lambda^{-1}(V_\lambda)`$ とおくと $`V\in\mathcal N(x)`$ である.
-    $`y\in V`$ なら各 $`U_\lambda`$ は $`\pi_\lambda(y)`$ の近傍であるから, $`B\in\mathcal N(y)`$ となる.
-    $`B\subseteq U`$ と近傍系の上方閉性から $`U\in\mathcal N(y)`$ が従う.
-    よって $`\mathcal N`$ は積空間の近傍系である.
+    $`V=\bigcap_{\lambda\in F}\pi_\lambda^{-1}(V_\lambda)`$ とおくと $`V\in\mathcal N^{\times}(y)`$ である.
+    $`z\in V`$ なら各 $`U_\lambda`$ は $`\pi_\lambda(z)`$ の近傍であるから, $`B\in\mathcal N^{\times}(z)`$ となる.
+    $`B\subseteq U`$ と近傍系の上方閉性から $`U\in\mathcal N^{\times}(z)`$ が従う.
+    よって $`\mathcal N^{\times}`$ は積空間の近傍系である.
 
 Proposition.
 :   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ の積空間 $`X=\prod_{\lambda\in\Lambda}X_\lambda`$ に対して, 次がそれぞれ成り立つ.
