@@ -1288,6 +1288,36 @@ Theorem.
     各 $`x`$ の近傍 $`U`$ から $`U\setminus f^{-1}(V)`$ の一点を選ぶネットは $`x`$ に収束するが, その像は $`V`$ に入らない.
     これは (2) に矛盾する.
 
+### Arens--Fort 空間
+
+Definition. **Arens--Fort 空間**
+:   集合
+    ```math
+    A=(\mathbb N\times\mathbb N)\cup\{\infty\}
+    ```
+    に次の位相を入れる.
+    $`\mathbb N\times\mathbb N`$ の各点は孤立点とし, $`\infty`$ の近傍は $`\infty`$ を含み, 各 $`n\in\mathbb N`$ に対してある $`m_n`$ が存在して
+    ```math
+    \{(n,m)\mid m\geq m_n\}\subseteq U
+    ```
+    を満たす集合 $`U`$ とする.
+    この空間を **Arens--Fort 空間** (*Arens--Fort space*) と呼ぶ.
+
+Proposition. **Arens--Fort 空間の性質**
+:   Arens--Fort 空間は可算 Hausdorff 空間であり, $`\infty`$ で第一可算でない.
+    また, コンパクトではない.
+
+<u>proof.</u>
+:   $`\infty`$ と孤立点 $`(n,m)`$ を分離するには, $`\infty`$ の近傍からその点を除けばよい.
+    したがって空間は Hausdorff である.
+    $`\mathbb N\times\mathbb N`$ と一点の和であるから可算でもある.
+    $`\infty`$ の可算近傍基 $`(U_k)_{k\geq0}`$ が存在すると仮定する.
+    各 $`k`$ に対して, $`U_k`$ の $`k`$ 行に含まれる点 $`(k,m_k)`$ を一つ選ぶ.
+    $`V=A\setminus\{(k,m_k)\mid k\in\mathbb N\}`$ は $`\infty`$ の近傍であるが, どの $`U_k`$ も $`V`$ に含まれない.
+    これは $`(U_k)`$ が近傍基であることに反する.
+    最後に, $`U=A\setminus\{(n,0)\mid n\in\mathbb N\}`$ と各一点集合 $`\{(n,0)\}`$ からなる開被覆を考える.
+    $`U`$ と有限個の一点集合では $`A`$ を覆えないから, $`A`$ はコンパクトでない[^arens-fort].
+
 ### 位相空間上のフィルター
 
 Definition. **有限交叉性**
@@ -1632,6 +1662,27 @@ Proposition. **有限個の位相空間の積空間**
     制限されない座標では $`G_i=X_i`$ とおけばよい.
     逆に, 各 $`G_i`$ が開集合なら $`\prod_iG_i`$ は各座標の円筒集合の有限交叉である.
     したがってこの族は積位相の開基である.
+
+### 箱位相
+
+Definition. **箱位相**
+:   位相空間の族 $`(X_\lambda)_{\lambda\in\Lambda}`$ に対して, 直積集合 $`\prod_{\lambda\in\Lambda}X_\lambda`$ の部分集合
+    ```math
+    \prod_{\lambda\in\Lambda}U_\lambda
+    ```
+    ただし各 $`U_\lambda`$ は $`X_\lambda`$ の開集合, を開基とする位相を **箱位相** (*box topology*) と呼ぶ.
+
+Proposition. **箱位相と積位相**
+:   箱位相は積位相より細かい.
+    添字集合 $`\Lambda`$ が有限であるとき, 箱位相と積位相は一致する.
+    無限個の因子に対しては, 一般に両者は一致しない.
+
+<u>proof.</u>
+:   積位相の基本開集合は有限個の座標だけを制限する.
+    これは箱位相の基本開集合で, 制限しない座標に $`U_\lambda=X_\lambda`$ を選んだものに等しい.
+    よって積位相は箱位相に含まれる.
+    添字集合が有限なら, 箱位相の基本開集合も有限個の座標条件の共通部分であるから, 積位相に含まれる.
+    無限積では無限個の座標を同時に制限する箱型集合が現れるため, 一般には一致しない.
 
 Definition. **余積空間**
 :   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ に対して, 台集合のタグ付き和による標準入射 $`\iota_\lambda\colon(X_\lambda)_0\to\coprod_{\lambda\in\Lambda}(X_\lambda)_0`$ により
@@ -2706,6 +2757,52 @@ Theorem.
     このとき $`f^{-1}(U)`$ と $`f^{-1}(V)`$ は $`[0,1]`$ の互いに交わらない空でない開集合であり, その和は $`[0,1]`$ である.
     これは区間 $`[0,1]`$ の連結性に矛盾する.
     よって $`X`$ は連結である.
+
+### Topologist's sine curve
+
+Example. **Topologist's sine curve**
+:   $`\mathbb{R}^2`$ の部分集合
+    ```math
+    S=\{(x,\sin(1/x))\mid 0<x\leq1\}
+    \cup(\{0\}\times[-1,1])
+    ```
+    に部分空間位相を入れた空間を **Topologist's sine curve** と呼ぶ.
+
+Proposition. **Topologist's sine curve の性質**
+:   Topologist's sine curve はコンパクトかつ連結であるが, 道連結でない.
+    また, 縦の線分上の点では局所連結でない.
+
+<u>proof.</u>
+:   $`S`$ は閉区間 $`[0,1]`$ 上の有界なグラフの閉包であるから, $`\mathbb{R}^2`$ の閉かつ有界な集合であり, コンパクトである.
+    グラフ $`\{(x,\sin(1/x))\mid0<x\leq1\}`$ は連結であり, その閉包も連結である.
+    一方, グラフの部分から縦の線分へ連続な道をつなぐと, 道の始点に近い $`x`$ 座標が正であることから $`\sin(1/x)`$ の振動を一つの極限へ収束させる必要が生じる.
+    これは不可能であるから, $`S`$ は道連結でない.
+    縦の線分上の任意の近傍は振動するグラフを含むため, その内部に連結な開近傍を持たず, 局所連結でもない[^topologist-sine-curve].
+
+### Hawaiian earring
+
+Example. **Hawaiian earring**
+:   原点に接する円
+    ```math
+    C_n=\left\{(x,y)\in\mathbb{R}^2\mathrel{}\middle|\mathrel{}
+    \left(x-\frac1n\right)^2+y^2=\frac1{n^2}\right\}
+    ```
+    の和集合
+    ```math
+    \mathbb H=\bigcup_{n=1}^{\infty}C_n
+    ```
+    に部分空間位相を入れた空間を **Hawaiian earring** と呼ぶ.
+
+Proposition. **Hawaiian earring の性質**
+:   Hawaiian earring はコンパクトかつ道連結である.
+    しかし, 原点では局所単連結でなく, その基本群は有限個の円のくさび和に現れる自由群とは異なる複雑な構造を持つ.
+
+<u>proof.</u>
+:   各 $`C_n`$ はコンパクトであり, $`C_n`$ の直径は $`2/n`$ で $`0`$ に収束する.
+    よって $`\mathbb H`$ は原点を含む閉かつ有界な集合であり, コンパクトである.
+    各円周上の点は円周に沿う道で原点と結べるので, $`\mathbb H`$ は道連結である.
+    原点の任意の近傍は十分大きい $`n`$ に対する円 $`C_n`$ を含む.
+    これらの円は原点の近傍内で縮められないため, 原点には単連結な開近傍基が存在しない[^hawaiian-earring].
 
 ### 既約空間
 
@@ -5327,3 +5424,9 @@ Remark.
 [^volterra]: J. Cao and D. Gauld, “Volterra spaces revisited”, *Journal of the Australian Mathematical Society* 79 (2005), 61--76; J. Cao and H. J. K. Junnila, “When is a Volterra space Baire?”, *Topology and its Applications* 154 (2007), 527--532.
 
 [^cantor-space]: L. E. J. Brouwer, “On the structure of perfect sets of points”, *Proceedings of the Koninklijke Akademie van Wetenschappen te Amsterdam* 12 (1910), 785--794. カントール空間の特徴づけについては, [Cantor space](https://ncatlab.org/nlab/show/Cantor%2Bspace) も参照.
+
+[^topologist-sine-curve]: J. R. Munkres, *Topology*, §24; [Topologist's sine curve](https://en.wikipedia.org/wiki/Topologist%27s_sine_curve).
+
+[^hawaiian-earring]: J. W. Cannon and G. R. Conner, “The combinatorial structure of the Hawaiian earring group”, *Topology and its Applications* 106 (2000), 225--271.
+
+[^arens-fort]: L. A. Steen and J. A. Seebach, *Counterexamples in Topology*, 2nd ed., Example 104.
