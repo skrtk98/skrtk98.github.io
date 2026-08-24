@@ -1468,6 +1468,44 @@ Definition. **積空間**
     ```
     と表す.
 
+Proposition. **積空間の近傍系**
+:   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ に対して, $`X=\prod_{\lambda\in\Lambda}(X_\lambda)_0`$ として台集合の直積による標準射影 $`\pi_\lambda\colon X\to(X_\lambda)_0`$ により写像 $`\mathcal N:X\to2^{2^X}`$ を
+    ```math
+    \mathcal{N}(x)\coloneqq\bigcup_{n\in\mathbb N}\left\{\bigcap_{i=1}^{n}\pi_{\lambda_i}^{-1}(U_i)\mathrel{}\middle|\mathrel{}U_i\in\mathcal{N}_{X_{\lambda_i}}(\pi_{\lambda_i}(x)),\lambda_i\in\Lambda,i=1,\ldots,n\right\}
+    ```
+    とすると, $`\mathcal N`$ は積空間 $`\prod_{\lambda\in\Lambda}X_\lambda`$ の近傍系となる.
+
+Proposition.
+:   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ の積空間 $`X=\prod_{\lambda\in\Lambda}X_\lambda`$ に対して, 次がそれぞれ成り立つ.
+    - 各射影 $`\pi_\lambda\colon X\to X_\lambda`$ は連続かつ開写像である.
+    - 位相空間 $`Y`$ と写像 $`f:Y\to X`$ に対して以下同値.
+        1. $`f`$ は連続である.
+        2. 各 $`\lambda\in\Lambda`$ に対して $`\pi_\lambda\circ f:Y\to X_\lambda`$ は連続である.
+
+<u>proof.</u>
+:   積位相の生成元 $`\pi_\lambda^{-1}(G)`$ は $`G\subseteq X_\lambda`$ が開集合なら開集合である.
+    したがって $`\pi_\lambda`$ は連続である.
+    $`X`$ の開集合 $`U`$ は有限個の生成元の共通部分の和として表せるので, $`\pi_\lambda(U)`$ が開集合であることを有限交叉の場合に示せばよい.
+    空でない基本開集合 $`B=\bigcap_{i=1}^n\pi_{\lambda_i}^{-1}(G_i)`$ をとる.
+    $`\lambda`$ がこの有限個の添字に現れるときは, $`\pi_\lambda(B)`$ はその $`\lambda`$ に対応する $`G_i`$ たちの共通部分であり, そうでないときは $`\pi_\lambda(B)=X_\lambda`$ である.
+    実際, $`B`$ の点を一つ固定し, $`\lambda`$ 座標だけを任意の許された点に置き換えればよい.
+    $`B`$ が空ならその射影も空であるから, いずれの場合も $`\pi_\lambda(B)`$ は開集合である.
+    よって射影は開写像である.
+    $`f`$ が連続なら, 射影との合成 $`\pi_\lambda\circ f`$ も連続である.
+    逆にすべての $`\pi_\lambda\circ f`$ が連続なら, 積位相の部分基の逆像
+    ```math
+    f^{-1}\bigl(\pi_\lambda^{-1}(G)\bigr)=(\pi_\lambda\circ f)^{-1}(G)
+    ```
+    が開集合である.
+    連続性は部分基の逆像が開集合であることと同値なので, $`f`$ は連続である.
+
+Proposition. **有限個の位相空間の積空間**
+:   位相空間の有限列 $`(X_i\mid i=1,2,\ldots,n)`$ に対して,
+    ```math
+    \left\{\prod_{i=1}^{n}G_i\mathrel{}\middle|\mathrel{}G_i\in\mathbf{O}_{X_i},i=1,\ldots,n\right\}
+    ```
+    は積空間 $`\prod_{\lambda\in\Lambda}X_\lambda`$ の開基となる.
+
 Definition. **余積空間**
 :   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ に対して, 台集合のタグ付き和による標準入射 $`\iota_\lambda\colon(X_\lambda)_0\to\coprod_{\lambda\in\Lambda}(X_\lambda)_0`$ により
     ```math
@@ -1478,6 +1516,34 @@ Definition. **余積空間**
     \coprod_{\lambda\in\Lambda}X_\lambda
     ```
     と表す.
+
+Proposition. **余積空間の標準入射と普遍性**
+:   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ の余積空間 $`Y=\coprod_{\lambda\in\Lambda}X_\lambda`$ に対して, 次が成り立つ.
+    - 各標準入射 $`\iota_\lambda\colon X_\lambda\to Y`$ は開埋め込みである.
+    - 位相空間 $`Z`$ と写像 $`f:Y\to Z`$ に対して以下同値.
+        1. $`f`$ は連続である.
+        2. 各 $`\lambda\in\Lambda`$ に対して $`f\circ\iota_\lambda:X_\lambda\to Z`$ は連続である.
+
+<u>proof.</u>
+:   余積の定義から, $`G\subseteq Y`$ が開集合であることは, すべての $`\lambda`$ に対して $`\iota_\lambda^{-1}(G)`$ が $`X_\lambda`$ で開集合であることと同値である.
+    よって $`\iota_\lambda`$ は連続である.
+    また $`\iota_\lambda(X_\lambda)`$ は各成分のタグだけからなる開集合であり, $`\iota_\lambda`$ の逆写像はこの開部分空間上で連続である.
+    したがって $`\iota_\lambda`$ は開埋め込みである.
+    $`f`$ が連続なら, 各 $`f\circ\iota_\lambda`$ は連続写像の合成として連続である.
+    逆にすべての $`f\circ\iota_\lambda`$ が連続なら, 任意の開集合 $`G\subseteq Z`$ に対して
+    ```math
+    \iota_\lambda^{-1}\bigl(f^{-1}(G)\bigr)=(f\circ\iota_\lambda)^{-1}(G)
+    ```
+    が各 $`\lambda`$ で開集合となる.
+    余積の定義から $`f^{-1}(G)`$ は $`Y`$ で開集合である.
+    よって $`f`$ は連続である.
+
+Theorem. **位相空間の直和分解**
+:   位相空間 $`X`$ と, $`X`$ の開集合からなる直和分解 $`\{G_\lambda\mid\lambda\in\Lambda\}`$ に対して, 余積空間
+    ```math
+    \coprod_{\lambda\in\Lambda}G_\lambda
+    ```
+    は $`X`$ と同相となる.
 
 ### 商と等化
 
