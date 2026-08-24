@@ -2771,13 +2771,13 @@ Theorem. **線型連続体と連結性**
 
 ### 位相学者の正弦曲線
 
-Example. **位相学者の正弦曲線** (*Topologist's sine curve*)
+Example. **位相学者の正弦曲線**
 :   $`\mathbb{R}^2`$ の部分集合
     ```math
     S=\{(x,\sin(1/x))\mid 0<x\leq1\}
     \cup(\{0\}\times[-1,1])
     ```
-    に部分空間位相を入れた空間を **位相学者の正弦曲線** と呼ぶ.
+    に部分空間位相を入れた空間を **位相学者の正弦曲線** (*Topologist's sine curve*) と呼ぶ.
 
 Proposition. **位相学者の正弦曲線の性質**
 :   位相学者の正弦曲線はコンパクトかつ連結であるが, 道連結でない.
@@ -2792,7 +2792,7 @@ Proposition. **位相学者の正弦曲線の性質**
 
 ### ハワイの耳飾り
 
-Example. **ハワイの耳飾り** (*Hawaiian earring*)
+Example. **ハワイの耳飾り**
 :   原点に接する円
     ```math
     C_n=\left\{(x,y)\in\mathbb{R}^2\mathrel{}\middle|\mathrel{}
@@ -2802,7 +2802,7 @@ Example. **ハワイの耳飾り** (*Hawaiian earring*)
     ```math
     \mathbb H=\bigcup_{n=1}^{\infty}C_n
     ```
-    に部分空間位相を入れた空間を **ハワイの耳飾り** と呼ぶ.
+    に部分空間位相を入れた空間を **ハワイの耳飾り** (*Hawaiian earring*) と呼ぶ.
 
 Proposition. **ハワイの耳飾りの性質**
 :   ハワイの耳飾りはコンパクトかつ道連結である.
@@ -2886,26 +2886,26 @@ Definition. **位相的荷重**
 
 Definition. **network weight**
 :   位相空間 $`X`$ のネットワークとは, 任意の開集合 $`U`$ と点 $`x\in U`$ に対して $`x\in N\subseteq U`$ を満たす部分集合 $`N`$ を含む集合族である.
-    ネットワークの濃度の最小値を $`nw(X)`$ と表し, network weight と呼ぶ.
+    ネットワークの濃度の最小値を $`nw(X)`$ と表し, **network weight** と呼ぶ.
 
 Definition. **Lindelöf 度数**
-:   位相空間 $`X`$ の任意の開被覆が濃度高々 $`\kappa`$ の部分被覆を持つような基数の最小値を $`L(X)`$ と表し, Lindelöf 度数 (*Lindelöf number*) と呼ぶ.
+:   位相空間 $`X`$ の任意の開被覆が濃度高々 $`\kappa`$ の部分被覆を持つような基数の最小値を $`L(X)`$ と表し, **Lindelöf 度数** (*Lindelöf number*) と呼ぶ.
     $`L(X)\leq\aleph_0`$ であることは Lindelöf 性と同値である.
 
 Definition. **弱被覆度数**
-:   位相空間 $`X`$ の任意の開被覆が, 合併の閉包が $`X`$ となる濃度高々 $`\kappa`$ の部分族を持つような基数の最小値を $`wc(X)`$ と表す.
+:   位相空間 $`X`$ の任意の開被覆が, 合併の閉包が $`X`$ となる濃度高々 $`\kappa`$ の部分族を持つような基数の最小値を **弱被覆度数** といい $`wc(X)`$ と表す.
     定義から $`wc(X)\leq L(X)`$ が成り立つ.
 
 Definition. **cellularity**
-:   位相空間 $`X`$ の互いに素な非空開集合からなる族の濃度の上限を $`c(X)`$ と表し, cellularity と呼ぶ.
+:   位相空間 $`X`$ の互いに素な非空開集合からなる族の濃度の上限を $`c(X)`$ と表し, **cellularity** と呼ぶ.
 
 Definition. **spread と extent**
-:   位相空間 $`X`$ の離散部分空間の濃度の上限を spread $`s(X)`$ と呼ぶ.
+:   位相空間 $`X`$ の離散部分空間の濃度の上限を **spread** $`s(X)`$ と呼ぶ.
     離散かつ閉じた部分空間の濃度の上限を extent $`e(X)`$ と呼ぶ.
     これらは $`e(X)\leq s(X)`$ を満たす.
 
 Definition. **tightness**
-:   位相空間 $`X`$ の tightness $`t(X)`$ とは, 任意の $`A\subseteq X`$ と $`x\in\operatorname{cl}(A)`$ に対して, $`|B|\leq\kappa`$, $`B\subseteq A`$, $`x\in\operatorname{cl}(B)`$ を満たす $`B`$ が存在するような基数 $`\kappa`$ の最小値である.
+:   位相空間 $`X`$ の **tightness** $`t(X)`$ とは, 任意の $`A\subseteq X`$ と $`x\in\operatorname{cl}(A)`$ に対して, $`|B|\leq\kappa`$, $`B\subseteq A`$, $`x\in\operatorname{cl}(B)`$ を満たす $`B`$ が存在するような基数 $`\kappa`$ の最小値である.
 
 Proposition. **基数不変量の基本不等式**
 :   任意の位相空間 $`X`$ に対して $`wc(X)\leq d(X)\leq w(X)`$, $`nw(X)\leq w(X)`$, $`t(X)\leq\chi(X)\leq w(X)`$, および $`e(X)\leq s(X)`$ が成り立つ.
@@ -2919,16 +2919,16 @@ Proposition. **基数不変量の基本不等式**
 ### 代数的不変量
 
 Definition. **ホモトピー群**
-:   点付き位相空間 $`(X,x_0)`$ と整数 $`n\geq 1`$ に対して, $`n`$ 次元球面 $`S^n`$ から $`X`$ への基点を保つ写像のホモトピー類全体を $`\pi_n(X,x_0)`$ と表し, $`n`$ 次ホモトピー群 (*homotopy group*) と呼ぶ.
+:   点付き位相空間 $`(X,x_0)`$ と整数 $`n\geq 1`$ に対して, $`n`$ 次元球面 $`S^n`$ から $`X`$ への基点を保つ写像のホモトピー類全体を $`\pi_n(X,x_0)`$ と表し, **$`n`$ 次ホモトピー群** (*$`n`$-th homotopy group*) と呼ぶ.
     $`n=1`$ の場合を基本群 $`\pi_1(X,x_0)`$ と呼ぶ.
 
 Definition. **特異ホモロジー群**
 :   位相空間 $`X`$ と可換群 $`G`$ に対して, $`n`$ 次特異鎖群 $`C_n(X;G)`$ を $`n`$ 単体から $`X`$ への連続写像を生成元とする自由 $`G`$ 加群とし, 境界写像 $`\partial_n`$ を面の交代和で定める.
-    $`n`$ 次特異ホモロジー群 (*singular homology group*) を $`H_n(X;G)=\ker\partial_n/\operatorname{im}\partial_{n+1}`$ と定める.
+    **$`n`$ 次特異ホモロジー群** (*$`n`$-th singular homology group*) を $`H_n(X;G)=\ker\partial_n/\operatorname{im}\partial_{n+1}`$ と定める.
 
 Definition. **特異コホモロジー群**
 :   特異鎖複体に対して $`n`$ 次コチェイン群を $`C^n(X;G)=\operatorname{Hom}(C_n(X;\mathbb{Z}),G)`$ とし, 境界写像の双対からコ境界写像 $`\delta^n`$ を定める.
-    $`n`$ 次特異コホモロジー群 (*singular cohomology group*) を $`H^n(X;G)=\ker\delta^n/\operatorname{im}\delta^{n-1}`$ と定める.
+    **$`n`$ 次特異コホモロジー群** (*$`n`$-th singular cohomology group*) を $`H^n(X;G)=\ker\delta^n/\operatorname{im}\delta^{n-1}`$ と定める.
 
 Theorem. **代数的不変量の同相不変性**
 :   同相写像 $`f:X\to Y`$ は, 任意の基点と係数群に対して基本群, ホモトピー群, ホモロジー群, コホモロジー群の同型を誘導する.
@@ -5524,7 +5524,7 @@ Remark.
 
 [^cantor-space]: L. E. J. Brouwer, “On the structure of perfect sets of points”, *Proceedings of the Koninklijke Akademie van Wetenschappen te Amsterdam* 12 (1910), 785--794. Cantor 空間の特徴づけについては, [Cantor space](https://ncatlab.org/nlab/show/Cantor%2Bspace) も参照.
 
-[^topologist-sine-curve]: J. R. Munkres, *Topology*, §24; [位相学者の正弦曲線](https://en.wikipedia.org/wiki/Topologist%27s_sine_curve).
+[^topologist-sine-curve]: J. R. Munkres, *Topology*, §24; [Topologist's sine curve](https://en.wikipedia.org/wiki/Topologist%27s_sine_curve).
 
 [^hawaiian-earring]: J. W. Cannon and G. R. Conner, “The combinatorial structure of the Hawaiian earring group”, *Topology and its Applications* 106 (2000), 225--271.
 
