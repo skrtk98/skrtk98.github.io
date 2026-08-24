@@ -1471,9 +1471,34 @@ Definition. **積空間**
 Proposition. **積空間の近傍系**
 :   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ に対して, $`X=\prod_{\lambda\in\Lambda}(X_\lambda)_0`$ として台集合の直積による標準射影 $`\pi_\lambda\colon X\to(X_\lambda)_0`$ により写像 $`\mathcal N:X\to2^{2^X}`$ を
     ```math
-    \mathcal{N}(x)\coloneqq\bigcup_{n\in\mathbb N}\left\{\bigcap_{i=1}^{n}\pi_{\lambda_i}^{-1}(U_i)\mathrel{}\middle|\mathrel{}U_i\in\mathcal{N}_{X_{\lambda_i}}(\pi_{\lambda_i}(x)),\lambda_i\in\Lambda,i=1,\ldots,n\right\}
+    \mathcal{N}(x)\coloneqq\left\{U\subseteq X\mathrel{}\middle|\mathrel{}\begin{array}{l}
+    \text{ある }n\in\mathbb N\cup\{0\},\lambda_1,\ldots,\lambda_n\in\Lambda,\\
+    U_i\in\mathcal{N}_{X_{\lambda_i}}(\pi_{\lambda_i}(x))\text{ が存在して }\\
+    \displaystyle\bigcap_{i=1}^{n}\pi_{\lambda_i}^{-1}(U_i)\subseteq U
+    \end{array}\right\}
     ```
+    ここで $`n=0`$ のときの共通部分は $`X`$ とする.
     とすると, $`\mathcal N`$ は積空間 $`\prod_{\lambda\in\Lambda}X_\lambda`$ の近傍系となる.
+
+<u>proof.</u>
+:   まず $`\mathcal N(x)`$ が $`X`$ 上のフィルターであることを示す.
+    $`U\in\mathcal N(x)`$ を表す有限個の近傍 $`U_i`$ をとる.
+    各 $`U_i`$ は $`\pi_{\lambda_i}(x)`$ を含むため, その逆像の共通部分は $`x`$ を含む.
+    よって $`x\in U`$ である.
+    二つの元 $`U,V\in\mathcal N(x)`$ を表す有限個の円筒集合を共通部分にすれば, $`U\cap V\in\mathcal N(x)`$ となる.
+    また, $`U\subseteq W`$ かつ $`U\in\mathcal N(x)`$ なら同じ円筒集合が $`W`$ を表すため, $`W\in\mathcal N(x)`$ である.
+    したがって $`\mathcal N(x)`$ はフィルターである.
+    次に近傍系の局所性を示す.
+    $`U\in\mathcal N(x)`$ をとり, $`B=\bigcap_{i=1}^{n}\pi_{\lambda_i}^{-1}(U_i)\subseteq U`$ となる表示を選ぶ.
+    各因子の近傍系の局所性により, $`V_i\in\mathcal N_{X_{\lambda_i}}(\pi_{\lambda_i}(x))`$ を
+    ```math
+    \forall z\in V_i,\quad U_i\in\mathcal N_{X_{\lambda_i}}(z)
+    ```
+    となるように選べる.
+    $`V=\bigcap_{i=1}^{n}\pi_{\lambda_i}^{-1}(V_i)`$ とおくと $`V\in\mathcal N(x)`$ である.
+    $`y\in V`$ なら各 $`U_i`$ は $`\pi_{\lambda_i}(y)`$ の近傍であるから, $`B\in\mathcal N(y)`$ となる.
+    $`B\subseteq U`$ と近傍系の上方閉性から $`U\in\mathcal N(y)`$ が従う.
+    よって $`\mathcal N`$ は積空間の近傍系である.
 
 Proposition.
 :   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ の積空間 $`X=\prod_{\lambda\in\Lambda}X_\lambda`$ に対して, 次がそれぞれ成り立つ.
@@ -1506,6 +1531,17 @@ Proposition. **有限個の位相空間の積空間**
     ```
     は積空間 $`\prod_{\lambda\in\Lambda}X_\lambda`$ の開基となる.
 
+<u>proof.</u>
+:   積位相の部分基は, 一つの座標だけを開集合で制限した円筒集合である.
+    有限個の部分基の共通部分は, 各座標について現れる開集合の共通部分を $`G_i`$ とおくことで
+    ```math
+    \prod_{i=1}^{n}G_i
+    ```
+    と表せる.
+    制限されない座標では $`G_i=X_i`$ とおけばよい.
+    逆に, 各 $`G_i`$ が開集合なら $`\prod_iG_i`$ は各座標の円筒集合の有限交叉である.
+    したがってこの族は積位相の開基である.
+
 Definition. **余積空間**
 :   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ に対して, 台集合のタグ付き和による標準入射 $`\iota_\lambda\colon(X_\lambda)_0\to\coprod_{\lambda\in\Lambda}(X_\lambda)_0`$ により
     ```math
@@ -1516,6 +1552,29 @@ Definition. **余積空間**
     \coprod_{\lambda\in\Lambda}X_\lambda
     ```
     と表す.
+
+Proposition. **余積空間の近傍系**
+:   余積空間 $`Y=\coprod_{\lambda\in\Lambda}X_\lambda`$ の点 $`y`$ に対して
+    ```math
+    \mathcal N^{\amalg}(y)\coloneqq
+    \left\{U\subseteq Y\mathrel{}\middle|\mathrel{}
+    \exists\lambda\in\Lambda,\exists x\in X_\lambda,
+    \ y=\iota_\lambda(x)\ \land
+    \iota_\lambda^{-1}(U)\in\mathcal N_{X_\lambda}(x)\right\}
+    ```
+    と定めると, $`\mathcal N^{\amalg}`$ は余積空間の近傍系となる.
+
+<u>proof.</u>
+:   タグ付き和の表示の一意性により, 各 $`y\in Y`$ はただ一つの $`\lambda`$ と $`x\in X_\lambda`$ によって $`y=\iota_\lambda(x)`$ と表される.
+    したがって $`\mathcal N^{\amalg}(y)`$ は, $`\iota_\lambda^{-1}`$ による $`\mathcal N_{X_\lambda}(x)`$ の逆像として記述できる.
+    逆像は包含関係と有限交叉を保つので, $`\mathcal N^{\amalg}(y)`$ はフィルターである.
+    また $`\iota_\lambda^{-1}(U)`$ が $`x`$ の近傍なら, 近傍系の第一公理により $`x\in\iota_\lambda^{-1}(U)`$ である.
+    よって $`y\in U`$ となる.
+    $`U\in\mathcal N^{\amalg}(y)`$ をとる.
+    $`\iota_\lambda^{-1}(U)`$ は $`x`$ の近傍であるから, $`x`$ を含む $`X_\lambda`$ の開集合 $`V_\lambda`$ で $`V_\lambda\subseteq\iota_\lambda^{-1}(U)`$ となるものを選べる.
+    $`V=\iota_\lambda(V_\lambda)`$ は余積空間で開集合であり, $`y\in V\subseteq U`$ を満たす.
+    任意の $`z\in V`$ に対して $`V`$ は $`z`$ の近傍で $`V\subseteq U`$ であるから, $`U\in\mathcal N^{\amalg}(z)`$ となる.
+    よって近傍系の局所性が成り立つ.
 
 Proposition. **余積空間の標準入射と普遍性**
 :   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ の余積空間 $`Y=\coprod_{\lambda\in\Lambda}X_\lambda`$ に対して, 次が成り立つ.
@@ -1544,6 +1603,25 @@ Theorem. **位相空間の直和分解**
     \coprod_{\lambda\in\Lambda}G_\lambda
     ```
     は $`X`$ と同相となる.
+
+<u>proof.</u>
+:   各 $`G_\lambda`$ を $`X`$ の部分空間とみなし, 標準入射を包含写像 $`j_\lambda:G_\lambda\to X`$ とする.
+    直和分解は互いに素な集合の族で $`X=\bigcup_{\lambda\in\Lambda}G_\lambda`$ を満たすから, 写像
+    ```math
+    h:\coprod_{\lambda\in\Lambda}G_\lambda\longrightarrow X,qquad h\circ\iota_\lambda=j_\lambda
+    ```
+    は一意に定まり, 全単射である.
+    各 $`j_\lambda`$ は部分空間の包含写像として連続であるから, 余積の普遍性により $`h`$ は連続である.
+    逆写像 $`h^{-1}`$ の連続性を示す.
+    余積の定義により, $`W\subseteq\coprod_\lambda G_\lambda`$ が開集合であることは各 $`\iota_\lambda^{-1}(W)`$ が $`G_\lambda`$ で開集合であることと同値である.
+    $`W`$ を開集合とすると, 各 $`\iota_\lambda^{-1}(W)`$ は $`X`$ の開集合 $`O_\lambda`$ と $`G_\lambda`$ の共通部分で表せる.
+    $`G_\lambda`$ 自身が $`X`$ で開集合であるため, $`\iota_\lambda^{-1}(W)`$ は $`X`$ でも開集合である.
+    したがって, 各 $`\iota_\lambda^{-1}(W)`$ を $`X`$ の部分集合と同一視すれば,
+    ```math
+    h(W)=\bigcup_{\lambda\in\Lambda}\iota_\lambda^{-1}(W)
+    ```
+    は $`X`$ で開集合である.
+    よって $`h^{-1}`$ は連続であり, $`h`$ は同相写像である.
 
 ### 商と等化
 
