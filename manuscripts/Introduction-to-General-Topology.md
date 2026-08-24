@@ -2433,7 +2433,7 @@ Theorem. **部分空間, 閉和, 積に対する次元不等式**
     補題を $`\dim X\leq n`$ に適用すると, A の任意の有限開被覆が次数高々 $`n`$ の有限開細分を持つため, $`\dim A\leq\dim X`$ を得る.
     (2) では $`A`$ と $`B`$ 上で低い次数の細分を構成し, 正規性によりそれらを近傍へ拡張して貼り合わせる.
     (3) では $`X`$ と $`Y`$ の細分を直積して得られる被覆をさらに細分し, 重なりの次数を二つの次元の和で抑える.
-    各構成で用いる局所有限細分の詳細は[1](#reference-1)および[2](#reference-2)を参照されたい.[^dimension-scope][^dimension-formalization]
+    各構成で用いる局所有限細分の詳細は[1](#reference-1)および[2](#reference-2)を参照されたい.[^dimension-scope]
 
 Corollary. **Euclid 空間の直積**
 :   $`m,n\geq0`$ に対して,
@@ -2482,7 +2482,6 @@ Remark. **色つき次元に関するオストランドの定理**
     順方向の証明は局所有限細分を縮小して色ごとの離散な開族を帰納的に構成し, 逆方向は一組の $`n+1`$ 色を選んで次数高々 $`n`$ の細分を得る.[^ostrand]
 
 [^dimension-scope]: 定理の陳述は標準的な可分距離化可能空間の場合に限った. より一般の正規空間または距離化可能空間では, 三つの次元の間に別の不等式や一致定理が現れる.
-[^dimension-formalization]: 被覆次元の定義とこの節の三つの次元定理は, 現在の `TopologyFormalization/` では形式化していない. したがって, この節の証明は文献に基づく自然言語の証明概要であり, Lean による形式検証済みの証明とは区別する.
 [^nobeling-pontryagin]: R. Engelking, *Theory of Dimensions, Finite and Infinite*, Heldermann Verlag, 1995, 定理 1.11.4 と歴史的注記. 一般次元の場合の埋込み定理を Nöbeling, Pontryagin--Tolstowa, Lefschetz が 1931 年に証明したことが記録されている.
 [^menger-nobeling]: G. Nöbeling, "Über eine n-dimensionale Universalmenge im $`\mathbb R^{2n+1}`$", *Mathematische Annalen* 104 (1931), 71--80. 1932 年刊の K. Menger, *Kurventheorie* はこの結果を含む古典的文献である.
 [^lebesgue-covering]: N. V. Ivanov, "Cubes and cubical chains and cochains", 2019, Lebesgue first covering theorem.
@@ -4043,7 +4042,6 @@ Theorem. **Tietze の拡張定理**
 :   $`[-1,1]`$ が実数の順序凸な閉区間であることを用いる Tietze の拡張補題を適用する.
     補題は, 閉部分空間上の連続写像 $`h:A\to\mathbb R`$ が区間 $`[-1,1]`$ に値を取るなら, 全空間上の連続写像 $`g:X\to\mathbb R`$ で同じ区間に値を取り, $`g|_A=h`$ となるものを与える.
     したがって $`h=f`$ とすれば, 求める $`\overline f`$ が得られる.
-    この補題は Lean では `tietze_extension_Icc` として, `sorry` なしに検証している.
 
 Corollary.
 :   正規 $`\mathbf{T}_1`$ 空間の閉部分集合上の任意の連続実数値関数は, 全空間上の連続実数値関数へ延長できる.
