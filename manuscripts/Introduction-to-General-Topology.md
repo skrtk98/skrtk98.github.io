@@ -1471,32 +1471,34 @@ Definition. **積空間**
 Proposition. **積空間の近傍系**
 :   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ に対して, $`X=\prod_{\lambda\in\Lambda}(X_\lambda)_0`$ として台集合の直積による標準射影 $`\pi_\lambda\colon X\to(X_\lambda)_0`$ により写像 $`\mathcal N:X\to2^{2^X}`$ を
     ```math
-    \mathcal{N}(x)\coloneqq\left\{U\subseteq X\mathrel{}\middle|\mathrel{}\begin{array}{l}
-    \text{ある }n\in\mathbb N\cup\{0\},\lambda_1,\ldots,\lambda_n\in\Lambda,\\
-    U_i\in\mathcal{N}_{X_{\lambda_i}}(\pi_{\lambda_i}(x))\text{ が存在して }\\
-    \displaystyle\bigcap_{i=1}^{n}\pi_{\lambda_i}^{-1}(U_i)\subseteq U
+    \mathcal{N}(x)\coloneqq
+    \left\{U\subseteq X\mathrel{}\middle|\mathrel{}
+    \begin{array}{l}
+    \exists F\subseteq\Lambda,\ F\text{ finite},\ \exists(U_\lambda)_{\lambda\in F},\\
+    \left(\forall\lambda\in F,\ U_\lambda\in\mathcal N_{X_\lambda}(\pi_\lambda(x))\right)\ \land\\
+    \displaystyle\bigcap_{\lambda\in F}\pi_\lambda^{-1}(U_\lambda)\subseteq U
     \end{array}\right\}
     ```
-    ここで $`n=0`$ のときの共通部分は $`X`$ とする.
+    ここで $`F=\emptyset`$ のときの共通部分は $`X`$ とする.
     とすると, $`\mathcal N`$ は積空間 $`\prod_{\lambda\in\Lambda}X_\lambda`$ の近傍系となる.
 
 <u>proof.</u>
 :   まず $`\mathcal N(x)`$ が $`X`$ 上のフィルターであることを示す.
-    $`U\in\mathcal N(x)`$ を表す有限個の近傍 $`U_i`$ をとる.
-    各 $`U_i`$ は $`\pi_{\lambda_i}(x)`$ を含むため, その逆像の共通部分は $`x`$ を含む.
+    $`U\in\mathcal N(x)`$ を表す有限集合 $`F`$ と近傍族 $`(U_\lambda)_{\lambda\in F}`$ をとる.
+    各 $`U_\lambda`$ は $`\pi_\lambda(x)`$ を含むため, その逆像の共通部分は $`x`$ を含む.
     よって $`x\in U`$ である.
-    二つの元 $`U,V\in\mathcal N(x)`$ を表す有限個の円筒集合を共通部分にすれば, $`U\cap V\in\mathcal N(x)`$ となる.
+    二つの元 $`U,V\in\mathcal N(x)`$ を表す有限集合の和をとり, 共通する座標では対応する近傍を交わらせれば, $`U\cap V\in\mathcal N(x)`$ となる.
     また, $`U\subseteq W`$ かつ $`U\in\mathcal N(x)`$ なら同じ円筒集合が $`W`$ を表すため, $`W\in\mathcal N(x)`$ である.
     したがって $`\mathcal N(x)`$ はフィルターである.
     次に近傍系の局所性を示す.
-    $`U\in\mathcal N(x)`$ をとり, $`B=\bigcap_{i=1}^{n}\pi_{\lambda_i}^{-1}(U_i)\subseteq U`$ となる表示を選ぶ.
-    各因子の近傍系の局所性により, $`V_i\in\mathcal N_{X_{\lambda_i}}(\pi_{\lambda_i}(x))`$ を
+    $`U\in\mathcal N(x)`$ をとり, $`B=\bigcap_{\lambda\in F}\pi_\lambda^{-1}(U_\lambda)\subseteq U`$ となる表示を選ぶ.
+    各因子の近傍系の局所性により, $`V_\lambda\in\mathcal N_{X_\lambda}(\pi_\lambda(x))`$ を
     ```math
-    \forall z\in V_i,\quad U_i\in\mathcal N_{X_{\lambda_i}}(z)
+    \forall z\in V_\lambda,\quad U_\lambda\in\mathcal N_{X_\lambda}(z)
     ```
     となるように選べる.
-    $`V=\bigcap_{i=1}^{n}\pi_{\lambda_i}^{-1}(V_i)`$ とおくと $`V\in\mathcal N(x)`$ である.
-    $`y\in V`$ なら各 $`U_i`$ は $`\pi_{\lambda_i}(y)`$ の近傍であるから, $`B\in\mathcal N(y)`$ となる.
+    $`V=\bigcap_{\lambda\in F}\pi_\lambda^{-1}(V_\lambda)`$ とおくと $`V\in\mathcal N(x)`$ である.
+    $`y\in V`$ なら各 $`U_\lambda`$ は $`\pi_\lambda(y)`$ の近傍であるから, $`B\in\mathcal N(y)`$ となる.
     $`B\subseteq U`$ と近傍系の上方閉性から $`U\in\mathcal N(y)`$ が従う.
     よって $`\mathcal N`$ は積空間の近傍系である.
 
