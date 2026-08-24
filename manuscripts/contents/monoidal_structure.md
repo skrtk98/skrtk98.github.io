@@ -114,7 +114,7 @@ $$
 
 モノイダル圏 $\mathfrak{M}$ の **右トレース** (*right trace*) とは、$a,b,x\in\mathfrak{M}$ で添字付けられた射
 $$
-\operatorname{tr}_R^x\colon\mathfrak{M}(a\otimes x、b\otimes x)\to\mathfrak{M}(a、b)
+\operatorname{tr}_R^x\colon\mathfrak{M}(a\otimes x,b\otimes x)\to\mathfrak{M}(a,b)
 $$
 の族であり、以下の公理を満たすときいう:
 

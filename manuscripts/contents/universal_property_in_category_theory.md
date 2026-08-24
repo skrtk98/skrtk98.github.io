@@ -325,7 +325,7 @@ $$
 $$
 
 また、図式 $A\underset{t}{\overset{s}{\rightrightarrows}}B$ の等化子は、$A$ の部分集合 $\{a\in A\colon s(a)=t(a)\}$ と包含写像 $E\hookrightarrow A$ の組であり、他方、図式 $A\underset{t}{\overset{s}{\rightrightarrows}}B$ の余等化子は、条件 **$\forall a\in A,s(a)\simeq t(a)$** で生成される $B$ 上の同値関係 $\simeq$ による商集合 $B/\simeq$ と商写像 $B\twoheadrightarrow B/\simeq$ の組である。
-さらに、図式 $A\xrightarrow{s}C\xleftarrow{t}B$ の引き戻しは $、A\times B$ の部分集合 $P=\{(a,b)\colon s(a)=t(b)\}$ と各成分への射影 $P\ni (a,b)\mapsto a\in A$ , $E\ni (a,b)\mapsto b\in B$ の組であり、他方、図式 $A\xleftarrow{s}C\xrightarrow{t}B$ 押し出しは条件 **$\forall c\in C,s(c)\simeq t(c)$** で生成される $A\sqcup B$ 上の同値関係 $\simeq$ による商集合 $A\sqcup B/\simeq$ と商写像 $A\sqcup B\twoheadrightarrow A\sqcup B/\simeq$ と直和への射影 $A\to A\sqcup B$ , $B\to A\sqcup B$ の合成射の組である。
+さらに、図式 $A\xrightarrow{s}C\xleftarrow{t}B$ の引き戻しは $A\times B$ の部分集合 $P=\{(a,b)\colon s(a)=t(b)\}$ と各成分への射影 $P\ni (a,b)\mapsto a\in A$ , $E\ni (a,b)\mapsto b\in B$ の組であり、他方、図式 $A\xleftarrow{s}C\xrightarrow{t}B$ 押し出しは条件 **$\forall c\in C,s(c)\simeq t(c)$** で生成される $A\sqcup B$ 上の同値関係 $\simeq$ による商集合 $A\sqcup B/\simeq$ と商写像 $A\sqcup B\twoheadrightarrow A\sqcup B/\simeq$ と直和への射影 $A\to A\sqcup B$ , $B\to A\sqcup B$ の合成射の組である。
 
 ---
 
