@@ -259,6 +259,33 @@ theorem dense_iInter_of_isOpen_dense
     Dense (⋂ n, G n) :=
   dense_iInter_of_isOpen_nat hG_open hG_dense
 
+/-! ## 可縮空間 -/
+
+/-- 原稿「可縮性の特徴づけ」。 -/
+theorem contractible_iff_homotopyEquiv_unit
+    (X : Type*) [TopologicalSpace X] :
+    ContractibleSpace X ↔ Nonempty (ContinuousMap.HomotopyEquiv X Unit) :=
+  by
+    constructor
+    · intro h
+      exact ContractibleSpace.hequiv_unit X
+    · intro h
+      exact { hequiv_unit' := h }
+
+/-- 原稿「可縮空間の積」。 -/
+theorem contractible_product
+    {X Y : Type*} [TopologicalSpace X] [TopologicalSpace Y]
+    [ContractibleSpace X] [ContractibleSpace Y] :
+    ContractibleSpace (X × Y) :=
+  inferInstance
+
+/-- 原稿「凸集合は可縮」。 -/
+theorem convex_contractible
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    {C : Set E} (hC : Convex ℝ C) (hCne : C.Nonempty) :
+    ContractibleSpace C :=
+  hC.contractibleSpace hCne
+
 /-- 原稿「局所コンパクト性の閉部分空間への遺伝」。 -/
 theorem locallyCompact_closed_subspace
     {X : Type*} [TopologicalSpace X] [LocallyCompactSpace X] {s : Set X}

@@ -4782,7 +4782,7 @@ Remark.
 ## 古典的な例と発展的な定理
 
 この節では, 一般位相で用いられる古典的な例と, 一般化された距離化定理および積空間の定理をまとめる.
-以下でいう Arhangel'skii の空間は単独の通称ではなく, 外延基, 弱基, p 空間, 点有限型などを用いて定義される空間の総称として扱う.
+以下でいう Arhangel'skii の空間は単独の通称ではなく, 外延基, 弱基, p 空間, 点可算型などを用いて定義される空間の総称として扱う.
 
 ### Sorgenfrey 直線と Michael 直線
 
@@ -4856,12 +4856,12 @@ Definition. **外延基**
 Definition. **弱基**
 :   $`\mathcal B=\bigcup_{x\in X}\mathcal B_x`$ が **弱基** (*weak base*) であるとは, 各 $`\mathcal B_x`$ が $`x`$ を含み有限交叉で閉じ, $`U`$ が開であることと「各 $`x\in U`$ に対して $`x\in B\subseteq U`$ を満たす $`B\in\mathcal B_x`$ が存在すること」が同値となることをいう.
 
-Definition. **点有限型**
-:   Tychonoff 空間 $`X`$ が **点有限型** (*point-countable type*) であるとは, 各 $`x\in X`$ が, $`X`$ において可算な文字を持つコンパクト部分空間 $`K`$ に含まれるときいう.
+Definition. **点可算型**
+:   Tychonoff 空間 $`X`$ が **点可算型** (*point-countable type*) であるとは, 各 $`x\in X`$ が, $`X`$ において可算な文字を持つコンパクト部分空間 $`K`$ に含まれるときいう.
 
 Theorem. **Arhangel'skii の外延基定理**
-:   点有限型の空間では, 各点を含む可算文字のコンパクト部分空間が存在し, そのコンパクト部分空間は任意のコンパクト化において可算外延基で制御される.
-    コンパクト空間, 第一可算空間, 局所コンパクト空間, および Arhangel'skii の p 空間は点有限型である.[^point-countable-type]
+:   点可算型の空間では, 各点を含む可算文字のコンパクト部分空間が存在する.
+    コンパクト空間, 第一可算空間, 局所コンパクト空間, および Arhangel'skii の p 空間は点可算型である.[^point-countable-type]
 
 Definition. **Arhangel'skii の p 空間**
 :   Tychonoff 空間 $`X`$ が **p 空間** (*p-space*) であるとは, あるコンパクト化における可算個の開集合の閉包の交叉が $`X`$ の各点の近傍として振る舞う可算交叉条件を満たすときいう.
@@ -4924,9 +4924,9 @@ Theorem. **Smirnov コンパクト化の普遍性**
 :   有界一様連続写像は Smirnov コンパクト化へ一意に連続延長する.
     Smirnov コンパクト化は, その一様構造に関してこの延長性を持つ最小のコンパクト化である.[^smirnov-compactification]
 
-[^sorgenfrey]: J. R. Munkres, *Topology*, `17.
+[^sorgenfrey]: J. R. Munkres, *Topology*, §17.
 [^michael]: E. Michael, “The product of a normal space and a metric space”, *Bull. Amer. Math. Soc.* 54 (1948), 540--542.
-[^smirnov-metrization]: Munkres, *Topology*, `42.
+[^smirnov-metrization]: Munkres, *Topology*, §42.
 [^point-countable-type]: J. E. Vaughan, “Spaces of countable and point-countable type”, *Trans. Amer. Math. Soc.* 151 (1970), 341--351.
 [^arhangelskii-p]: A. V. Arhangel'skii, “On a class of spaces containing all metric and all locally compact spaces”, *Mat. Sb.* 67 (1965), 55--88.
 [^borges-okuyama]: C. R. Borges, “On stratifiable spaces”, *Pacific J. Math.* 17 (1966), 1--16; A. Okuyama, “On metrizability of M-spaces”, *Proc. Japan Acad.* 40 (1964), 176--179.
