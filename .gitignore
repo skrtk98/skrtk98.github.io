@@ -1,5 +1,6 @@
 # Locally generated Crossnote exports.  The release script copies these into site/.
 build/
+node_modules/
 
 # Local editor and operating-system files
 .DS_Store

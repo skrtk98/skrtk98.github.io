@@ -1,34 +1,54 @@
 # Category Theory Notes
 
-このリポジトリは、次の3冊を一つの GitHub Pages サイトとして公開するためのリリース用リポジトリです。
+このリポジトリは、Markdown 原稿から3冊の数学ノートを HTML に変換し、GitHub Pages で公開する。
 
-- [速習圏論](site/category-theory/index.html)
-- [速習モノイダル圏論](site/monoidal-category-theory/index.html)
-- [速習モノイダル基底上の豊穣圏論](site/enriched-category-theory/index.html)
+## 構成
 
-原稿は `manuscripts/` に集約しています。各書籍の公開 HTML は `site/` にあり、GitHub Actions がこのディレクトリを GitHub Pages にデプロイします。
+- `manuscripts/`：公開する Markdown 原稿と共通章。
+- `previewer/`：`@import`、KaTeX、TikZ の SVG 化を処理する変換器とブラウザプレビューワー。
+- `site/`：`npm run build` が生成する HTML。直接編集しない。
+- `TopologyFormalization/`：位相空間論の Lean 4 検証プロジェクト。
 
-## リリース手順
+## ローカルでの確認
 
-1. `manuscripts/` の原稿を Crossnote で HTML にエクスポートする。
-2. エクスポートした3ファイルを、従来どおり `~/proj/Introduction-to-Category-Theory/outputs/` に置く（別の出力先を使う場合も可）。
-3. このリポジトリで次を実行する。
+Node.js 20 以上と、TikZ の変換に使う `latex` および `dvisvgm` を用意する。
 
-   ```bash
-   ./scripts/sync-site.sh
-   # 別の出力先を使う場合
-   # ./scripts/sync-site.sh /path/to/outputs
-   ```
+依存関係をインストールする。
 
-4. `site/` と `manuscripts/` の変更を同じコミットで push する。
+```bash
+npm ci
+```
 
-`main` への push で3冊が同時に公開されます。最初の公開前に、リポジトリの **Settings → Pages → Build and deployment** で **GitHub Actions** を選択してください。
+全冊を変換して `site/` を更新する。
 
-各ページが使用する Source Han Serif フォントも、`site/fonts/` に共有で配置されます。
+```bash
+npm run build
+```
+
+変換だけを検査する場合は、生成結果を確認したあとに次を実行する。
+
+```bash
+npm run check
+```
+
+原稿を編集しながらブラウザで確認する場合は、次を実行して `http://localhost:4173/` を開く。
+
+```bash
+npm run preview
+```
+
+プレビューワーは `manuscripts/` の Markdown を監視し、保存時に `site/` を再生成する。
+
+## 公開手順
+
+1. 原稿を編集し、`npm run check` で3冊の変換を確認する。
+2. `npm run build` を実行し、`site/` の差分が原稿の変更に対応していることを確認する。
+3. `manuscripts/`、`previewer/`、`package.json`、`package-lock.json`、`site/` の意味のある変更をコミットして `main` に push する。
+4. GitHub Actions が `npm ci` と `npm run build` を実行し、生成した `site/` を GitHub Pages にデプロイする。
+
+初回のみ、リポジトリの **Settings → Pages → Build and deployment** で **GitHub Actions** を選択する。
 
 ## 公開 URL
-
-サイトのトップページから各書籍を開けます。
 
 - `/category-theory/`
 - `/monoidal-category-theory/`
