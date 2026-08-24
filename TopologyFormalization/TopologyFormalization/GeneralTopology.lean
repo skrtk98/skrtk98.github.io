@@ -1348,4 +1348,25 @@ theorem isCover_preimage
 
 end Covering
 
+/-! ## 小さい帰納次元 -/
+
+/-- 原稿「小さい帰納次元」の mathlib における次数高々 `n` の特徴づけ。 -/
+theorem small_inductive_dimension_le_iff
+    {X : Type*} [TopologicalSpace X] {n : ℕ} :
+    smallInductiveDimension X ≤ n ↔ HasSmallInductiveDimensionLE X n :=
+  smallInductiveDimension_le_iff
+
+/-- 原稿「零次元空間の特徴づけ」の小さい帰納次元による可閉基の特徴づけ。 -/
+theorem small_inductive_dimension_zero_iff_clopen_basis
+    {X : Type*} [TopologicalSpace X] :
+    HasSmallInductiveDimensionLE X 0 ↔
+      TopologicalSpace.IsTopologicalBasis {U : Set X | IsClopen U} :=
+  hasSmallInductiveDimensionLT_one_iff
+
+/-- 原稿「小さい帰納次元」の空空間における値。 -/
+theorem small_inductive_dimension_eq_bot_iff
+    {X : Type*} [TopologicalSpace X] :
+    smallInductiveDimension X = ⊥ ↔ IsEmpty X :=
+  smallInductiveDimension_eq_bot
+
 end IntroductionToGeneralTopology
