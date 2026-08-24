@@ -3217,18 +3217,18 @@ Theorem. **零次元空間の特徴づけ**
 :   可分距離化可能空間に対する次元一致定理から, (1), (3), (4) は同値である.
     可閉基をもつことと $`\operatorname{ind}X=0`$ との同値性は, 可算な基を用いて境界を順に除く構成により示される.[1](#reference-1), [2](#reference-2)
 
-### カントール空間
+### Cantor 空間
 
-Definition. **カントール空間**
+Definition. **Cantor 空間**
 :   $`2=\{0,1\}`$ に離散位相を入れ, 積空間
     ```math
     2^{\mathbb N}=\prod_{n\in\mathbb N}2
     ```
-    を **カントール空間** (*Cantor space*) と呼ぶ.
-    これと同相な空間もカントール空間と呼ぶ.
+    を **Cantor 空間** と呼ぶ.
+    これと同相な空間も Cantor 空間と呼ぶ.
 
-Proposition. **カントール空間の基本性質**
-:   カントール空間 $`C`$ はコンパクト, Hausdorff, 距離化可能, 可分, 零次元であり, 孤立点をもたない.
+Proposition. **Cantor 空間の基本性質**
+:   Cantor 空間 $`C`$ はコンパクト, Hausdorff, 距離化可能, 可分, 零次元であり, 孤立点をもたない.
     特に $`C`$ は完全不連結で, 濃度は $`2^{\aleph_0}`$ である.
 
 <u>proof.</u>
@@ -3242,8 +3242,8 @@ Proposition. **カントール空間の基本性質**
     任意の基本開集合では指定されていない座標を変更できるので, どの点も孤立しない.
     各二進列が異なる点を与えることから $`|C|=2^{\aleph_0}`$ である.
 
-Theorem. **カントール空間の特徴づけ**
-:   位相空間 $`X`$ が非空, コンパクト, Hausdorff, 距離化可能, 零次元, かつ孤立点をもたないならば, $`X`$ はカントール空間と同相である.
+Theorem. **Cantor 空間の特徴づけ**
+:   位相空間 $`X`$ が非空, コンパクト, Hausdorff, 距離化可能, 零次元, かつ孤立点をもたないならば, $`X`$ は Cantor 空間と同相である.
 
 <u>proof.</u>
 :   $`X`$ の各点を含む直径が $`2^{-n}`$ 未満の有限個の互いに素な開かつ閉集合へ, 帰納的に細分する.
@@ -3315,11 +3315,11 @@ Corollary. **Euclid 空間の直積**
 
 #### 有限次元空間の埋込み
 
-Remark. **ネーベリング＝ポントリャーギンの定理**
+Remark. **Nöbeling＝Pontryagin の定理**
 :   可分距離化可能空間 $`X`$ について, $`\dim X<\infty`$ であることと, ある $`m\geq0`$ および同相埋込み $`X\to\mathbb R^m`$ が存在することは同値である.[^nobeling-pontryagin]
     順方向は次の埋込み定理を用い, 逆方向は Euclid 空間の被覆次元と部分空間への遺伝性を用いる.
 
-Remark. **メンガー＝ネーベリングの定理（1932）**
+Remark. **Menger＝Nöbeling の定理（1932）**
 :   コンパクト距離空間 $`X`$ が $`\dim X\leq n`$ を満たすならば, 同相埋込み
     ```math
     X\longrightarrow\mathbb R^{2n+1}
@@ -3330,7 +3330,7 @@ Remark. **メンガー＝ネーベリングの定理（1932）**
 
 #### 立方体の被覆と色つき被覆
 
-Remark. **ルベーグ被覆定理**
+Remark. **Lebesgue 被覆定理**
 :   $`I^n=[0,1]^n`$ の有限閉被覆 $`D_1,\ldots,D_r`$ をとる.
     どの $`D_j`$ も, いずれの座標方向についても相対する二つの面 $`\{x\mid x_i=0\}`$ と $`\{x\mid x_i=1\}`$ の両方と交わらないと仮定する.
     このとき相異なる $`n+1`$ 個の添字 $`j_0,\ldots,j_n`$ が存在して
@@ -3343,7 +3343,7 @@ Remark. **ルベーグ被覆定理**
 Definition. **離散な開族**
 :   位相空間 $`X`$ の部分集合族 $`\mathcal V`$ が **離散な開族** (*discrete open family*) であるとは, 各元が開集合であり, 任意の $`x\in X`$ が高々一つの $`V\in\mathcal V`$ と交わる開近傍をもつことをいう.
 
-Remark. **色つき次元に関するオストランドの定理**
+Remark. **色つき次元に関する Ostrand の定理**
 :   距離化可能空間 $`X`$ と $`n\geq0`$ について, $`\dim X\leq n`$ であることは次と同値である.[^ostrand]
     任意の局所有限開被覆 $`\mathcal U`$ に対し, 離散な開族の列 $`\mathcal V_1,\mathcal V_2,\ldots`$ を選べて, 各 $`\mathcal V_i`$ が $`\mathcal U`$ を細分し, 任意の相異なる $`n+1`$ 個の添字 $`i_1,\ldots,i_{n+1}`$ に対して $`\mathcal V_{i_1}\cup\cdots\cup\mathcal V_{i_{n+1}}`$ が $`X`$ を覆うことである.
     添字を色とみなせば, 任意の $`n+1`$ 色だけで被覆になるように, 被覆を互いに交わらない色の族へ分けられることを表す.
@@ -3367,24 +3367,24 @@ Remark. **色つき次元に関するオストランドの定理**
 Definition. **コンパクト空間**
 :   位相空間 $`X`$ が **コンパクト性を持つ** (*compactness*) とは, $`X`$ の任意の開被覆が有限な部分被覆を持つときいう. コンパクト性を持つ位相空間を **コンパクト空間** (*compact space*) という.
 
-### ネーター空間
+### Noether 空間
 
-Definition. **ネーター空間**
-:   位相空間 $`X`$ が **ネーター空間** (*Noetherian space*) であるとは, $`X`$ の閉集合の任意の降鎖
+Definition. **Noether 空間**
+:   位相空間 $`X`$ が **Noether 空間** (*Noetherian space*) であるとは, $`X`$ の閉集合の任意の降鎖
     ```math
     F_0\supseteq F_1\supseteq F_2\supseteq\cdots
     ```
     がある段階で安定する, すなわちある $`m`$ が存在して $`F_m=F_{m+1}=\cdots`$ となるときいう.
     同値に, 開集合の任意の昇鎖が安定する.
 
-Theorem. **ネーター性と遺伝的コンパクト性**
+Theorem. **Noether 性と遺伝的コンパクト性**
 :   位相空間 $`X`$ に対して, 次は同値である.
-    1. $`X`$ はネーター空間である.
+    1. $`X`$ は Noether 空間である.
     2. $`X`$ の任意の開集合はコンパクトである.
     3. $`X`$ の任意の部分空間はコンパクトである.
 
 <u>proof.</u>
-:   ネーター空間の任意の部分集合は, 誘導位相に関してネーター空間である.
+:   Noether 空間の任意の部分集合は, 誘導位相に関して Noether 空間である.
     実際, 部分空間の閉集合の降鎖を全空間の閉集合との共通部分で表し, 全空間の降鎖条件を適用すればよい.
     よって $`(1)\Rightarrow(3)`$ が成り立つ.
     $`(3)\Rightarrow(2)`$ は開集合を部分空間とみれば従う.
@@ -3394,8 +3394,8 @@ Theorem. **ネーター性と遺伝的コンパクト性**
     したがって $`U`$ はコンパクトでなく, (2) に反する.
 
 Remark.
-:   Hausdorff ネーター空間は有限離散空間である.
-    実際, ネーター空間はコンパクトであり, Hausdorff 空間ではコンパクト部分集合が閉である.
+:   Hausdorff Noether 空間は有限離散空間である.
+    実際, Noether 空間はコンパクトであり, Hausdorff 空間ではコンパクト部分集合が閉である.
     よってすべての部分集合が閉となり, 空間は離散である.
 
 Theorem. **コンパクト性と同値な命題**
@@ -5046,18 +5046,18 @@ Proposition. **Smith--Volterra--Cantor 集合の性質**
     \sum_{n=1}^{\infty}2^{n-1}4^{-n}=\frac12
     ```
     となり, $`m(V)=1/2`$ を得る.
-    なお, $`V`$ は非空, コンパクト, 距離化可能, 完全不連結, 孤立点をもたないので, カントール空間と同相である.
+    なお, $`V`$ は非空, コンパクト, 距離化可能, 完全不連結, 孤立点をもたないので, Cantor 空間と同相である.
     したがって通常の Cantor 集合との差は抽象位相空間としてではなく, $`[0,1]`$ に埋め込まれた部分集合としての測度に現れる[^smith-volterra-cantor].
 
-### ヴォルテラ空間
+### Volterra 空間
 
-Definition. **ヴォルテラ空間**
-:   位相空間 $`X`$ が **ヴォルテラ空間** (*Volterra space*) であるとは, $`X`$ の任意の二つの稠密な $`G_\delta`$ 集合の共通部分が稠密であるときいう.
+Definition. **Volterra 空間**
+:   位相空間 $`X`$ が **Volterra 空間** であるとは, $`X`$ の任意の二つの稠密な $`G_\delta`$ 集合の共通部分が稠密であるときいう.
 
-Proposition. **Baire 空間とヴォルテラ空間**
-:   Baire 空間はヴォルテラ空間である.
+Proposition. **Baire 空間と Volterra 空間**
+:   Baire 空間は Volterra 空間である.
     逆向きの含意は一般には成り立たない.
-    ただし, 距離化可能空間ではヴォルテラ性と Baire 性は同値である.
+    ただし, 距離化可能空間では Volterra 性と Baire 性は同値である.
 
 <u>proof.</u>
 :   $`A,B`$ を稠密な $`G_\delta`$ 集合とする.
@@ -5068,7 +5068,7 @@ Proposition. **Baire 空間とヴォルテラ空間**
     A\cap B=\bigcap_{n\geq0}(U_n\cap V_n)
     ```
     は稠密となる.
-    距離化可能空間における逆向きの含意と一般の場合の反例は, ヴォルテラ空間の研究結果による[^volterra].
+    距離化可能空間における逆向きの含意と一般の場合の反例は, Volterra 空間の研究結果による[^volterra].
 
 ---
 
@@ -5522,7 +5522,7 @@ Remark.
 
 [^volterra]: J. Cao and D. Gauld, “Volterra spaces revisited”, *Journal of the Australian Mathematical Society* 79 (2005), 61--76; J. Cao and H. J. K. Junnila, “When is a Volterra space Baire?”, *Topology and its Applications* 154 (2007), 527--532.
 
-[^cantor-space]: L. E. J. Brouwer, “On the structure of perfect sets of points”, *Proceedings of the Koninklijke Akademie van Wetenschappen te Amsterdam* 12 (1910), 785--794. カントール空間の特徴づけについては, [Cantor space](https://ncatlab.org/nlab/show/Cantor%2Bspace) も参照.
+[^cantor-space]: L. E. J. Brouwer, “On the structure of perfect sets of points”, *Proceedings of the Koninklijke Akademie van Wetenschappen te Amsterdam* 12 (1910), 785--794. Cantor 空間の特徴づけについては, [Cantor space](https://ncatlab.org/nlab/show/Cantor%2Bspace) も参照.
 
 [^topologist-sine-curve]: J. R. Munkres, *Topology*, §24; [位相学者の正弦曲線](https://en.wikipedia.org/wiki/Topologist%27s_sine_curve).
 
