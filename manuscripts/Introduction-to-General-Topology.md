@@ -892,20 +892,38 @@ Definition. **開写像と閉写像**
     任意の閉集合 $`F\subseteq X`$ に対して $`f(F)`$ が $`Y`$ で閉となるとき **閉写像** (*closed map*) という.
 
 Definition. **商写像**
-:   全射連続写像 $`q:X\to Y`$ が **商写像** (*quotient map*) であるとは, 任意の部分集合 $`G\subseteq Y`$ について
+:   全射連続写像 $`q:X\to Y`$ が **商写像** (*quotient map*) であるとは,
     ```math
-    G\in\mathbf O_Y\quad\Longleftrightarrow\quad q^{-1}(G)\in\mathbf O_X
+    \mathbf O_Y=\{G\subseteq Y\mid q^{-1}(G)\in\mathbf O_X\}
     ```
     が成り立つときいう.
+
+Proposition. **商空間と商写像の特徴づけ**
+:   全射連続写像 $`q:X\to Y`$ による商空間 $`X_q`$ に対して, $`X_q`$ と $`Y`$ は同じ台集合を持つ.
+    このとき, 標準的な恒等写像
+    ```math
+    \operatorname{id}:X_q\longrightarrow Y
+    ```
+    が同相写像であることと, $`q`$ が商写像であることは同値である.
+
+<u>proof.</u>
+:   商空間の定義により, $`X_q`$ の開集合系は
+    ```math
+    \mathbf O_{X_q}=\{G\subseteq Y\mid q^{-1}(G)\in\mathbf O_X\}
+    ```
+    である.
+    標準的な恒等写像は全単射であり, それと逆写像がともに連続であることは $`\mathbf O_{X_q}=\mathbf O_Y`$ と同値である.
+    この開集合系の等式は, 商写像の定義と同値である.
+    よって標準的な恒等写像が同相写像であることと $`q`$ が商写像であることは同値である.
 
 Definition. **位相的埋め込み**
 :   連続単射 $`e:X\to Y`$ が **位相的埋め込み** (*topological embedding*) であるとは, $`e:X\to e(X)`$ が, $`e(X)`$ に $`Y`$ の部分空間位相を入れたとき同相写像となるときいう.
 
 Proposition. **埋め込みと商写像の特徴づけ**
 :   位相空間 $`X,Y`$ の間の連続写像 $`f:X\to Y`$ に対して, 次が成り立つ.
-    1. $`f`$ が全射であるならば, $`f`$ が商写像であることと, 任意の部分集合 $`G\subseteq Y`$ に対して
+    1. $`f`$ が全射であるならば, $`f`$ が商写像であることと,
         ```math
-        G\in\mathbf O_Y\quad\Longleftrightarrow\quad f^{-1}(G)\in\mathbf O_X
+        \mathbf O_Y=\{G\subseteq Y\mid f^{-1}(G)\in\mathbf O_X\}
         ```
         が成り立つことは同値である.
     2. $`f`$ が単射であるならば, $`f`$ が位相的埋め込みであることと,
@@ -915,7 +933,11 @@ Proposition. **埋め込みと商写像の特徴づけ**
         が成り立つことは同値である.
 
 <u>proof.</u>
-:   $`f`$ が全射である場合, 商写像の定義は, 任意の $`G\subseteq Y`$ について $`G`$ が $`Y`$ で開集合であることと $`f^{-1}(G)`$ が $`X`$ で開集合であることが同値であることを要求する.
+:   $`f`$ が全射である場合, 商写像の定義は
+    ```math
+    \mathbf O_Y=\{G\subseteq Y\mid f^{-1}(G)\in\mathbf O_X\}
+    ```
+    を要求する.
     よって (1) は商写像の定義そのものである.
     次に $`f`$ が単射である場合を考える.
     $`f`$ が埋め込みであると仮定する.
