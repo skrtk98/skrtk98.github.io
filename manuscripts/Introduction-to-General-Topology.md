@@ -1644,7 +1644,7 @@ Theorem. **位相空間の直和分解**
 :   各 $`G_\lambda`$ を $`X`$ の部分空間とみなし, 標準入射を包含写像 $`j_\lambda:G_\lambda\to X`$ とする.
     直和分解は互いに素な集合の族で $`X=\bigcup_{\lambda\in\Lambda}G_\lambda`$ を満たすから, 写像
     ```math
-    h:\coprod_{\lambda\in\Lambda}G_\lambda\longrightarrow X,qquad h\circ\iota_\lambda=j_\lambda
+    h:\coprod_{\lambda\in\Lambda}G_\lambda\longrightarrow X,\qquad h\circ\iota_\lambda=j_\lambda
     ```
     は一意に定まり, 全単射である.
     各 $`j_\lambda`$ は部分空間の包含写像として連続であるから, 余積の普遍性により $`h`$ は連続である.
@@ -1753,6 +1753,112 @@ Proposition. **等化空間と飽和集合**
     また $`A`$ が飽和なら (2) により $`\pi^{-1}(\pi(A))=A`$ である.
     よって二つの対応は互いに逆である.
     最後の開集合の同値は等化空間の開集合系の定義から従う.
+
+Definition. **接着空間**
+:   位相空間 $`X,Y`$, 部分空間 $`A\subseteq Y`$, 連続写像 $`f:A\to X`$, 包含写像 $`i:A\to Y`$ に対して, 余積空間 $`X\coprod Y`$ 上の最小の同値関係 $`\sim_f`$ を
+    ```math
+    \iota_X(f(a))\sim_f\iota_Y(i(a))\qquad(a\in A)
+    ```
+    を満たすものとして定める.
+    このとき等化空間
+    ```math
+    X\cup_fY\coloneqq(X\coprod Y)/\sim_f
+    ```
+    を $`f`$ による $`Y`$ の $`X`$ への **接着空間** (*attaching space*) と呼ぶ.
+    標準射影を $`q:X\coprod Y\to X\cup_fY`$ とし,
+    ```math
+    j_X=q\circ\iota_X:X\to X\cup_fY,\qquad
+    j_Y=q\circ\iota_Y:Y\to X\cup_fY
+    ```
+    とおく.
+
+Proposition. **接着空間の標準写像**
+:   接着空間の標準写像 $`j_X,j_Y`$ は連続であり,
+    ```math
+    j_X\circ f=j_Y\circ i
+    ```
+    を満たす.
+
+<u>proof.</u>
+:   $`q`$ と余積の標準入射 $`\iota_X,\iota_Y`$ は連続であるから, それらの合成 $`j_X,j_Y`$ も連続である.
+    $`a\in A`$ に対して $`\iota_X(f(a))\sim_f\iota_Y(i(a))`$ であるから, 商空間への射影を合成すれば $`j_X(f(a))=j_Y(i(a))`$ となる.
+    よって示す等式が成り立つ.
+
+Proposition. **接着空間の普遍性**
+:   位相空間 $`Z`$ と連続写像 $`g:X\to Z`$, $`h:Y\to Z`$ が
+    ```math
+    g\circ f=h\circ i
+    ```
+    を満たすとする.
+    このとき
+    ```math
+    u:X\cup_fY\to Z,\qquad u\circ j_X=g,\quad u\circ j_Y=h
+    ```
+    を満たす連続写像 $`u`$ が一意に存在する.
+
+<u>proof.</u>
+:   余積の普遍性により, $`g,h`$ から連続写像 $`k:X\coprod Y\to Z`$ で
+    ```math
+    k\circ\iota_X=g,\qquad k\circ\iota_Y=h
+    ```
+    を満たすものが一意に存在する.
+    仮定 $`g\circ f=h\circ i`$ により, $`k`$ は $`\sim_f`$ の各同値類上で一定である.
+    等化空間の写像の普遍性から, $`k=u\circ q`$ を満たす写像 $`u:X\cup_fY\to Z`$ が一意に存在する.
+    $`q`$ は商写像で $`k`$ は連続であるから, $`u`$ は連続である.
+    $`j_X=q\circ\iota_X`$, $`j_Y=q\circ\iota_Y`$ と $`k\circ\iota_X=g`$, $`k\circ\iota_Y=h`$ から, $`u\circ j_X=g`$ と $`u\circ j_Y=h`$ が従う.
+
+Proposition. **接着空間の開集合**
+:   部分集合 $`W\subseteq X\cup_fY`$ に対して, 以下同値.
+    1. $`W`$ は接着空間で開集合である.
+    2. $`j_X^{-1}(W)`$ は $`X`$ で開集合であり, $`j_Y^{-1}(W)`$ は $`Y`$ で開集合である.
+
+<u>proof.</u>
+:   $`q`$ は商写像であるから, $`W`$ が開集合であることと $`q^{-1}(W)`$ が $`X\coprod Y`$ で開集合であることは同値である.
+    余積空間の開集合の特徴づけにより, $`q^{-1}(W)`$ が開集合であることは $`\iota_X^{-1}(q^{-1}(W))`$ と $`\iota_Y^{-1}(q^{-1}(W))`$ がそれぞれ開集合であることと同値である.
+    これら二つの集合は $`j_X^{-1}(W)`$ と $`j_Y^{-1}(W)`$ に等しいから, (1) と (2) は同値である.
+
+Proposition. **空集合に沿う接着**
+:   $`A=\emptyset`$ のとき, 接着空間 $`X\cup_fY`$ は余積空間 $`X\coprod Y`$ と同相である.
+
+<u>proof.</u>
+:   $`A=\emptyset`$ なら $`\sim_f`$ は恒等関係である.
+    したがって商写像 $`q:X\coprod Y\to X\cup_fY`$ は台集合上の全単射である.
+    $`q`$ は商写像であり, 恒等関係による商空間の開集合系は余積空間の開集合系と一致する.
+    よって $`q`$ は同相写像である.
+
+Proposition. **同相写像に沿う接着**
+:   $`f:A\to X`$ が同相写像であるとき, 標準写像 $`j_Y:Y\to X\cup_fY`$ は同相写像である.
+
+<u>proof.</u>
+:   $`j_Y`$ は連続である.
+    $`f`$ が全射であるから, $`j_Y`$ は全射である.
+    $`j_Y(a)=j_Y(a')`$ なら, 接着関係の定義と $`f`$ の単射性から $`a=a'`$ となるので, $`j_Y`$ は単射である.
+    $`W\subseteq Y`$ を開集合とする.
+    $`j_Y(W)`$ の $`j_Y`$ による逆像は $`W`$ で開集合であり, $`j_X`$ による逆像は $`f(W\cap A)`$ である.
+    $`A`$ は $`Y`$ の部分空間で, $`f`$ は同相写像であるから, $`f(W\cap A)`$ は $`X`$ で開集合である.
+    接着空間の開集合の特徴づけにより $`j_Y(W)`$ は開集合である.
+    よって $`j_Y`$ は開写像であり, 全単射連続写像の逆写像も連続である.
+    したがって $`j_Y`$ は同相写像である.
+
+Definition. **写像錐**
+:   位相空間 $`A`$ に対して, $`A\times\{0\}`$ から一点空間 $`\{\ast\}`$ への定数写像 $`c`$ による接着空間
+    ```math
+    CA\coloneqq\{\ast\}\cup_c(A\times[0,1])
+    ```
+    を $`A`$ の **写像錐** (*mapping cone*) と呼ぶ.
+
+Proposition. **写像錐の商空間表示**
+:   写像錐 $`CA`$ は
+    ```math
+    (A\times[0,1])/(A\times\{0\})
+    ```
+    と同相である.
+
+<u>proof.</u>
+:   $`\{\ast\}\cup_c(A\times[0,1])`$ の定義では, $`A\times\{0\}`$ のすべての点が一点 $`\ast`$ と同一視され, その他の点は同一視されない.
+    したがって, この接着空間を作る同値関係は, $`A\times\{0\}`$ を一つの同値類とし, それ以外の点を一元類とする同値関係である.
+    これは $`A\times\{0\}`$ を一点に縮める等化空間の同値関係と一致する.
+    二つの空間は同じ商写像から得られるため, 標準的な恒等写像により同相である.
 
 ### 誘導と余誘導
 
