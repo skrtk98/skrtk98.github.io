@@ -4950,6 +4950,34 @@ Remark.
 :   Baire のカテゴリー定理における「小さい」は測度 $`0`$ とは異なる.
     たとえば実数全体の有理数部分集合は可算で測度 $`0`$ かつ痩集合であるが, 一般には二つの概念は一致しない.
 
+Example. **Smith--Volterra--Cantor 集合**
+:   区間 $`[0,1]`$ から中央の開区間を段階的に除去する.
+    第 $`n`$ 段階で, 残った各閉区間の中央から長さ $`4^{-n}`$ の開区間を除去する.
+    この操作で残る集合を $`V`$ とする.
+    $`V`$ を **Smith--Volterra--Cantor 集合** (*Smith--Volterra--Cantor set*) または **太った Cantor 集合** (*fat Cantor set*) と呼ぶ.
+
+Proposition. **Smith--Volterra--Cantor 集合の性質**
+:   $`V`$ は $`[0,1]`$ のコンパクトな完全不連結集合であり, 内点をもたない.
+    さらに, $`V`$ は孤立点をもたないが, Lebesgue 測度は
+    ```math
+    m(V)=1-\sum_{n=1}^{\infty}2^{n-1}4^{-n}=\frac12
+    ```
+    である.
+
+<u>proof.</u>
+:   $`V`$ は閉区間 $`[0,1]`$ の閉集合であるからコンパクトである.
+    各段階で残った区間をさらに二つに分けるので, 任意の二点は十分後の段階で異なる閉区間に分かれる.
+    したがって $`V`$ は完全不連結である.
+    どの残存区間にも次の段階以降で除去されない点が残るため, $`V`$ に孤立点はない.
+    また, 任意の残存区間は後の段階で中央を除去されるので, $`V`$ はどの区間も含まず, 内点をもたない.
+    第 $`n`$ 段階で除去される開区間の総長は $`2^{n-1}4^{-n}`$ であるから,
+    ```math
+    \sum_{n=1}^{\infty}2^{n-1}4^{-n}=\frac12
+    ```
+    となり, $`m(V)=1/2`$ を得る.
+    なお, $`V`$ は非空, コンパクト, 距離化可能, 完全不連結, 孤立点をもたないので, カントール空間と同相である.
+    したがって通常の Cantor 集合との差は抽象位相空間としてではなく, $`[0,1]`$ に埋め込まれた部分集合としての測度に現れる[^smith-volterra-cantor].
+
 ### ヴォルテラ空間
 
 Definition. **ヴォルテラ空間**
@@ -5430,3 +5458,5 @@ Remark.
 [^hawaiian-earring]: J. W. Cannon and G. R. Conner, “The combinatorial structure of the Hawaiian earring group”, *Topology and its Applications* 106 (2000), 225--271.
 
 [^arens-fort]: L. A. Steen and J. A. Seebach, *Counterexamples in Topology*, 2nd ed., Example 104.
+
+[^smith-volterra-cantor]: [Smith–Volterra–Cantor set](https://en.wikipedia.org/wiki/Smith%E2%80%93Volterra%E2%80%93Cantor_set) を参照.
