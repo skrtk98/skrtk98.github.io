@@ -3091,7 +3091,7 @@ Remark. **色つき次元に関するオストランドの定理**
     順方向の証明は局所有限細分を縮小して色ごとの離散な開族を帰納的に構成し, 逆方向は一組の $`n+1`$ 色を選んで次数高々 $`n`$ の細分を得る.[^ostrand]
 
 [^dimension-scope]: 定理の陳述は標準的な可分距離化可能空間の場合に限った. より一般の正規空間または距離化可能空間では, 三つの次元の間に別の不等式や一致定理が現れる.
-[^nobeling-pontryagin]: R. Engelking, *Theory of Dimensions, Finite and Infinite*, Heldermann Verlag, 1995, 定理 1.11.4 と歴史的注記. 一般次元の場合の埋込み定理を Nöbeling, Pontryagin--Tolstowa, Lefschetz が 1931 年に証明したことが記録されている.
+[^nobeling-pontryagin]: R. Engelking, *Theory of Dimensions, Finite and Infinite*, Heldermann Verlag, 1995, 定理 1.11.4 と歴史的注記. 一般次元の場合の埋込み定理を Nöbeling, Pontryagin-Tolstowa, Lefschetz が 1931 年に証明したことが記録されている.
 [^menger-nobeling]: G. Nöbeling, "Über eine n-dimensionale Universalmenge im $`\mathbb R^{2n+1}`$", *Mathematische Annalen* 104 (1931), 71--80. 1932 年刊の K. Menger, *Kurventheorie* はこの結果を含む古典的文献である.
 [^lebesgue-covering]: N. V. Ivanov, "Cubes and cubical chains and cochains", 2019, Lebesgue first covering theorem.
 [^ostrand]: P. A. Ostrand, "Dimension of metric spaces and Hilbert's problem 13", *Bulletin of the American Mathematical Society* 71 (1965), 619--622, DOI: 10.1090/S0002-9904-1965-11363-5.
@@ -3489,7 +3489,7 @@ Theorem. **Bolzano–Weierstrass の定理**
 
 <u>proof.</u>
 :   有界点列 $`(x_k)`$ は, ある閉球 $`\overline B(0,R)`$ に含まれる.
-    Heine--Borel の定理により $`\overline B(0,R)`$ はコンパクトである.
+    Heine-Borel の定理により $`\overline B(0,R)`$ はコンパクトである.
     距離空間ではコンパクト集合は点列コンパクトであるから, $`(x_k)`$ は収束する部分列を持つ.
 
 corollary. **点列コンパクト性定理 (Bolzano–Weierstrass の定理と同値な定式化)**
@@ -3611,6 +3611,49 @@ Remark.
 :   Lindelöf な Tychonoff 空間は実コンパクトである.
     また Tychonoff 空間について, コンパクトであることは実コンパクトかつ擬コンパクトであることと同値である.
     この特徴づけにより, 実コンパクト性はコンパクト性から有界性だけを取り除いた性質として位置づけられる.[^realcompact]
+
+### 局所コンパクト空間
+
+Definition. **局所コンパクト空間**
+:   Hausdorff 空間 $`X`$ が **局所コンパクト** (*locally compact*) であるとは, 任意の点 $`x\in X`$ がコンパクトな近傍を持つときいう.
+
+Proposition. **局所コンパクト性の近傍による特徴づけ**
+:   Hausdorff 空間 $`X`$ に対して, 以下は同値である.
+    1. $`X`$ は局所コンパクトである.
+    2. 任意の $`x\in X`$ とその開近傍 $`U`$ に対して,
+        ```math
+        x\in V\subseteq\overline{V}\subseteq U
+        ```
+        かつ $`\overline{V}`$ がコンパクトとなる開集合 $`V`$ が存在する.
+
+<u>proof.</u>
+:   $`(1)\Rightarrow(2)`$ を示す.
+    $`x\in U`$ とし, $`x`$ のコンパクト近傍 $`K`$ をとる.
+    Hausdorff 空間ではコンパクト集合は閉であるから, $`K`$ は閉集合である.
+    部分空間 $`K`$ はコンパクト Hausdorff 空間なので正規である.
+    コンパクト近傍の定義から $`x\in O\subseteq K`$ を満たす $`X`$ の開集合 $`O`$ をとる.
+    $`K\cap U\cap O`$ は $`K`$ における $`x`$ の開近傍であるから, 正規性により
+    ```math
+    x\in V\subseteq\overline{V}^{,K}\subseteq K\cap U
+    ```
+    を満たす $`K`$ での開集合 $`V`$ をとれる.
+    $`V\subseteq O`$ であり $`O\subseteq K`$ なので, $`V`$ は $`X`$ の開集合でもある.
+    $`K`$ が閉であることから $`\overline{V}^{,X}=\overline{V}^{,K}`$ である.
+    よって所望の条件を満たし, 閉部分集合 $`\overline{V}`$ はコンパクトである.
+
+    $`(2)\Rightarrow(1)`$ は $`U=X`$ とおけばよい.
+    このとき得られるコンパクト集合 $`\overline{V}`$ は $`x`$ の近傍である.
+
+Proposition. **局所コンパクト性の閉部分空間への遺伝**
+:   局所コンパクト Hausdorff 空間の閉部分空間は局所コンパクト Hausdorff 空間である.
+
+<u>proof.</u>
+:   局所コンパクト Hausdorff 空間 $`X`$ の閉部分集合 $`F`$ と $`x\in F`$ をとる.
+    $`x`$ は $`X`$ においてコンパクトな近傍 $`K`$ を持つ.
+    $`F\cap K`$ は $`K`$ の閉部分集合であるからコンパクトである.
+    $`K`$ に含まれる $`x`$ の開近傍 $`U`$ をとれば, $`U\cap F`$ は $`F\cap K`$ に含まれる $`x`$ の $`F`$ における開近傍である.
+    よって $`F\cap K`$ は $`x`$ のコンパクト近傍である.
+    $`x`$ は任意であり, Hausdorff 性は部分空間へ遺伝するから $`F`$ は局所コンパクト Hausdorff 空間である.
 
 [^metacompact]: nLab authors, “metacompact space”, *nLab*; “Metacompact space”, *Wikipedia*.
 [^orthocompact]: nLab authors, “orthocompact space”, *nLab*; “Orthocompact space”, *Wikipedia*; B. M. Scott, “Towards a product theory for orthocompactness”, *Studies in Topology*, 1975, 517--537.
@@ -4175,7 +4218,7 @@ Theorem.
 <u>proof.</u>
 :   位相空間 $`X`$ の各開集合 $`G`$ に対して
     ```math
-    U_Gcoloneqq(G\times G)\cup((X\setminus G)\times X)
+    U_G\coloneqq(G\times G)\cup((X\setminus G)\times X)
     ```
     とおく.
     有限個のこの形の関係の共通部分で生成されるフィルターを $`\mathbf E`$ とする.
@@ -4450,7 +4493,7 @@ Theorem. **Urysohn の距離化定理**
     $`e`$ が単射であるから $`d_X`$ は距離である.
     $`e`$ が埋め込みであることから, $`d_X`$ の誘導する位相は元の位相と一致する.
 
-Theorem. **Nagata--Smirnov の距離化定理**
+Theorem. **Nagata-Smirnov の距離化定理**
 :   Hausdorff 正則空間 $`X`$ が距離化可能であるための必要十分条件は, $`X`$ が $`\sigma`$ 局所有限な開基を持つことである.
 
 <u>proof.</u>
@@ -4589,53 +4632,9 @@ Remark.
 
 ---
 
-## 局所コンパクト性とコンパクト化
+## コンパクト化
 
-コンパクト性を各点の近傍へ局所化すると, 非コンパクト空間にも有限性の議論を適用できる.
-局所コンパクト性をもつ空間では一点コンパクト化を構成でき, Tychonoff 空間では Stone-Čech コンパクト化が有界連続関数の延長を特徴づける.
-
-### 局所コンパクト空間
-
-Definition. **局所コンパクト空間**
-:   Hausdorff 空間 $`X`$ が **局所コンパクト** (*locally compact*) であるとは, 任意の点 $`x\in X`$ がコンパクトな近傍を持つときいう.
-
-Proposition. **局所コンパクト性の近傍による特徴づけ**
-:   Hausdorff 空間 $`X`$ に対して, 以下は同値である.
-    1. $`X`$ は局所コンパクトである.
-    2. 任意の $`x\in X`$ とその開近傍 $`U`$ に対して,
-        ```math
-        x\in V\subseteq\overline{V}\subseteq U
-        ```
-        かつ $`\overline{V}`$ がコンパクトとなる開集合 $`V`$ が存在する.
-
-<u>proof.</u>
-:   $`(1)\Rightarrow(2)`$ を示す.
-    $`x\in U`$ とし, $`x`$ のコンパクト近傍 $`K`$ をとる.
-    Hausdorff 空間ではコンパクト集合は閉であるから, $`K`$ は閉集合である.
-    部分空間 $`K`$ はコンパクト Hausdorff 空間なので正規である.
-    コンパクト近傍の定義から $`x\in O\subseteq K`$ を満たす $`X`$ の開集合 $`O`$ をとる.
-    $`K\cap U\cap O`$ は $`K`$ における $`x`$ の開近傍であるから, 正規性により
-    ```math
-    x\in V\subseteq\overline{V}^{,K}\subseteq K\cap U
-    ```
-    を満たす $`K`$ での開集合 $`V`$ をとれる.
-    $`V\subseteq O`$ であり $`O\subseteq K`$ なので, $`V`$ は $`X`$ の開集合でもある.
-    $`K`$ が閉であることから $`\overline{V}^{,X}=\overline{V}^{,K}`$ である.
-    よって所望の条件を満たし, 閉部分集合 $`\overline{V}`$ はコンパクトである.
-
-    $`(2)\Rightarrow(1)`$ は $`U=X`$ とおけばよい.
-    このとき得られるコンパクト集合 $`\overline{V}`$ は $`x`$ の近傍である.
-
-Proposition. **局所コンパクト性の閉部分空間への遺伝**
-:   局所コンパクト Hausdorff 空間の閉部分空間は局所コンパクト Hausdorff 空間である.
-
-<u>proof.</u>
-:   局所コンパクト Hausdorff 空間 $`X`$ の閉部分集合 $`F`$ と $`x\in F`$ をとる.
-    $`x`$ は $`X`$ においてコンパクトな近傍 $`K`$ を持つ.
-    $`F\cap K`$ は $`K`$ の閉部分集合であるからコンパクトである.
-    $`K`$ に含まれる $`x`$ の開近傍 $`U`$ をとれば, $`U\cap F`$ は $`F\cap K`$ に含まれる $`x`$ の $`F`$ における開近傍である.
-    よって $`F\cap K`$ は $`x`$ のコンパクト近傍である.
-    $`x`$ は任意であり, Hausdorff 性は部分空間へ遺伝するから $`F`$ は局所コンパクト Hausdorff 空間である.
+局所コンパクト Hausdorff 空間では一点コンパクト化を構成でき, Tychonoff 空間では Stone-Čech コンパクト化が有界連続関数の延長を特徴づける.
 
 ### 一点コンパクト化
 
@@ -4709,7 +4708,7 @@ Theorem. **Stone-Čech コンパクト化の存在と一意性**
 
     一意性を示す.
     $`(\beta X,\iota)`$ と $`(\beta'X,\iota')`$ を二つの Stone-Čech コンパクト化とする.
-    普遍性を $`iota':X\to\beta'X`$ に適用すると, 連続写像 $`F:\beta X\to\beta'X`$ で $`F\circ\iota=\iota'`$ を満たすものが一意に存在する.
+    普遍性を $`\iota':X\to\beta'X`$ に適用すると, 連続写像 $`F:\beta X\to\beta'X`$ で $`F\circ\iota=\iota'`$ を満たすものが一意に存在する.
     同様に連続写像 $`G:\beta'X\to\beta X`$ で $`G\circ\iota'=\iota`$ を満たすものが一意に存在する.
     $`G\circ F`$ と恒等写像は稠密部分集合 $`\iota(X)`$ 上で一致する.
     値域 $`\beta X`$ は Hausdorff であるから, 連続写像の一致集合は閉であり, 稠密性から $`G\circ F=\operatorname{id}_{\beta X}`$ となる.
@@ -4720,7 +4719,7 @@ Proposition. **有界実数値関数による特徴づけ**
 :   Tychonoff 空間 $`X`$ のコンパクト化 $`\iota:X\to K`$ が Stone-Čech コンパクト化であるための必要十分条件は, 任意の連続写像 $`f:X\to[0,1]`$ が $`K`$ 上の連続写像へ一意に延長できることである.
 
 <u>proof.</u>
-:   $`K=\beta X`$ が Stone--Čech コンパクト化なら, $`[0,1]`$ はコンパクト Hausdorff 空間であるから普遍性を適用できる.
+:   $`K=\beta X`$ が Stone-Čech コンパクト化なら, $`[0,1]`$ はコンパクト Hausdorff 空間であるから普遍性を適用できる.
     したがって各 $`f:X\to[0,1]`$ は連続写像 $`\overline f:\beta X\to[0,1]`$ へ延長される.
     二つの延長は稠密部分集合 $`X`$ 上で一致し, 値域が Hausdorff なので一致する.
 
@@ -4735,7 +4734,7 @@ Proposition. **有界実数値関数による特徴づけ**
     それらを並べると連続写像 $`G:K\to[0,1]^{C(Y,[0,1])}`$ が得られ, $`G\circ\iota=e\circ g`$ である.
     $`e(Y)`$ はコンパクトゆえ閉であり, $`G^{-1}(e(Y))`$ は稠密集合 $`\iota(X)`$ を含む閉集合であるから $`K`$ 全体である.
     従って $`G`$ は $`e(Y)`$ に値を持ち, $`e^{-1}\circ G:K\to Y`$ が $`g`$ の連続延長となる.
-    稠密性によりこの延長は一意であるので, $`K`$ は Stone--Čech コンパクト化の普遍性を満たす.
+    稠密性によりこの延長は一意であるので, $`K`$ は Stone-Čech コンパクト化の普遍性を満たす.
 
 Remark.
 :   一点コンパクト化は余剰点を一つだけ加える最小の形のコンパクト化である.
