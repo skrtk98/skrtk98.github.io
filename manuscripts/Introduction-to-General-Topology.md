@@ -5021,13 +5021,13 @@ Remark.
 :   Baire のカテゴリー定理における「小さい」は測度 $`0`$ とは異なる.
     たとえば実数全体の有理数部分集合は可算で測度 $`0`$ かつ痩集合であるが, 一般には二つの概念は一致しない.
 
-Example. **Smith--Volterra--Cantor 集合**
+Example. **Smith-Volterra-Cantor 集合**
 :   区間 $`[0,1]`$ から中央の開区間を段階的に除去する.
     第 $`n`$ 段階で, 残った各閉区間の中央から長さ $`4^{-n}`$ の開区間を除去する.
     この操作で残る集合を $`V`$ とする.
-    $`V`$ を **Smith--Volterra--Cantor 集合** (*Smith--Volterra--Cantor set*) または **太った Cantor 集合** (*fat Cantor set*) と呼ぶ.
+    $`V`$ を **Smith-Volterra-Cantor 集合** (*Smith-Volterra-Cantor set*) または **太った Cantor 集合** (*fat Cantor set*) と呼ぶ.
 
-Proposition. **Smith--Volterra--Cantor 集合の性質**
+Proposition. **Smith-Volterra-Cantor 集合の性質**
 :   $`V`$ は $`[0,1]`$ のコンパクトな完全不連結集合であり, 内点をもたない.
     さらに, $`V`$ は孤立点をもたないが, Lebesgue 測度は
     ```math
@@ -5372,7 +5372,7 @@ Definition. **Arhangel'skii の p 空間**
 Theorem. **Arhangel'skii の p 空間定理**
 :   パラコンパクト Tychonoff 空間 $`X`$ が p 空間であることと, $`X`$ が距離空間への perfect 写像を持つことは同値である.[^arhangelskii-p]
 
-### Borges--Okuyama の定理
+### Borges-Okuyama の定理
 
 Definition. **M 空間**
 :   $`X`$ が **M 空間** (*M-space*) であるとは, 開被覆列 $`(\mathcal U_n)`$ が存在し, 各 $`x_n\in\operatorname{St}(x,\mathcal U_n)`$ を選んだ列が常に集積点を持つときいう.
@@ -5380,12 +5380,12 @@ Definition. **M 空間**
 Definition. **$`G_\delta`$ 対角線**
 :   対角線 $`\Delta_X=\{(x,x)\mid x\in X\}`$ が $`X\times X`$ の可算個の開集合の共通部分であるとき, $`X`$ は $`G_\delta`$ 対角線を持つという.
 
-Theorem. **Borges--Okuyama の距離化定理**
+Theorem. **Borges-Okuyama の距離化定理**
 :   $`X`$ が距離化可能であることと, $`X`$ がパラコンパクト M 空間であり $`G_\delta`$ 対角線を持つことは同値である.
 
 <u>proof.</u>
 :   M 空間の被覆列と $`G_\delta`$ 対角線を表す開集合列を組み合わせ, 点を分離する可算開被覆列を構成する.
-    パラコンパクト性により局所有限細分をとり, Nagata--Smirnov 型の距離化構成を適用する.[^borges-okuyama]
+    パラコンパクト性により局所有限細分をとり, Nagata-Smirnov 型の距離化構成を適用する.[^borges-okuyama]
 
 ### Morita 空間と積の正規性
 
@@ -5407,7 +5407,7 @@ Theorem. **Tamano の定理**
 
 <u>proof.</u>
 :   $`K=\beta X`$ をとることで一方向が得られる.
-    逆方向は Stone--Čech コンパクト化の関数延長性と積空間の正規性から局所有限細分を構成する Tamano の議論による.[^tamano]
+    逆方向は Stone-Čech コンパクト化の関数延長性と積空間の正規性から局所有限細分を構成する Tamano の議論による.[^tamano]
 
 ### Glicksberg の定理
 
