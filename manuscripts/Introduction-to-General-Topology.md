@@ -655,6 +655,30 @@ Example. **離散位相と密着位相**
     ```
     であり, これによって定まる位相を **密着位相** (*indiscrete topology*) という.
 
+Example. **補有限位相と補可算位相**
+:   集合 $`X`$ 上の位相
+    ```math
+    \mathbf{O}_{\mathrm{cof}}=\{\emptyset\}\cup\{U\subseteq X\mid X\setminus U\text{ is finite}\}
+    ```
+    を **補有限位相** (*cofinite topology*) と呼ぶ.
+    また, 位相
+    ```math
+    \mathbf{O}_{\mathrm{coc}}=\{\emptyset\}\cup\{U\subseteq X\mid X\setminus U\text{ is countable}\}
+    ```
+    を **補可算位相** (*cocountable topology*) と呼ぶ.
+
+Proposition. **補有限位相と補可算位相の分離性**
+:   無限集合 $`X`$ に補有限位相を与えると, $`X`$ は $`T_1`$ 空間であるが Hausdorff ではない.
+    非可算集合 $`X`$ に補可算位相を与えても, $`X`$ は $`T_1`$ 空間であるが Hausdorff ではない.
+
+<u>proof.</u>
+:   一点集合の補集合は有限集合であり, 補有限位相では閉集合である.
+    非可算集合上の補可算位相でも, 一点集合の補集合は可算集合であるから閉集合である.
+    したがっていずれも $`T_1`$ 空間である.
+    一方, 二つの空でない開集合の補集合はそれぞれ有限集合, または可算集合である.
+    $`X`$ が無限集合, または非可算集合であるから, 二つの空でない開集合は交わる.
+    よって異なる二点を交わらない開近傍で分離できず, Hausdorff ではない.
+
 Definition. **近傍基**
 :   **集合 $`X`$ 上の近傍基** (*neighbourhood basis on a set $`X`$*) とは, 写像
     ```math
@@ -4867,6 +4891,47 @@ Proposition. **Alexandroff 直線の性質**
     第二可算空間は可分であるから $`\mathbb L`$ は第二可算でない.
     可算コンパクトな距離空間はコンパクトであるから, $`\mathbb L`$ は距離化可能でない.
 
+### Line with two origins
+
+Definition. **二つの原点をもつ直線**
+:   $`\mathbb{R}\times\{0,1\}`$ において, $`x\neq0`$ に対して $`(x,0)`$ と $`(x,1)`$ を同一視する同値関係を入れる.
+    この商集合に商位相を与えた空間を **二つの原点をもつ直線** (*Line with two origins*) と呼ぶ.
+    $`(0,0)`$ と $`(0,1)`$ の同値類をそれぞれ $`0_0`$, $`0_1`$ と表す.
+
+Proposition. **二つの原点をもつ直線の性質**
+:   二つの原点をもつ直線は $`T_1`$ 空間かつ局所ユークリッドであるが, Hausdorff ではない.
+
+<u>proof.</u>
+:   商写像の定義から, $`0_0`$ と $`0_1`$ のそれぞれは通常の直線の開区間と同相な近傍を持つ.
+    また, 各一点の逆像は一点または二点であるから, 各一点集合は閉集合であり, 空間は $`T_1`$ である.
+    $`0_0`$ と $`0_1`$ の任意の開近傍は, 十分小さい非零実数 $`x`$ に対応する点を共有する.
+    したがってこの二点を交わらない開近傍で分離できず, Hausdorff ではない.
+
+### Homogeneous 空間
+
+Definition. **Homogeneous 空間**
+:   位相空間 $`X`$ が **Homogeneous** (*homogeneous*) であるとは, 任意の $`x,y\in X`$ に対して $`h(x)=y`$ を満たす自己同相写像 $`h:X\to X`$ が存在するときいう.
+
+Proposition. **位相群の Homogeneous 性**
+:   位相群 $`G`$ は Homogeneous である.
+
+<u>proof.</u>
+:   $`x,y\in G`$ をとる.
+    左移動 $`L_{yx^{-1}}:G\to G`$, $`g\mapsto yx^{-1}g`$ は自己同相写像であり, $`L_{yx^{-1}}(x)=y`$ を満たす.
+
+### Polish 空間
+
+Definition. **Polish 空間**
+:   位相空間 $`X`$ が **Polish** (*Polish space*) であるとは, $`X`$ の位相を生成する完備距離が存在し, かつ $`X`$ が可分であるときいう.[^polish-space]
+
+Proposition. **Polish 空間の基本性質**
+:   Polish 空間は第二可算かつ Baire 空間である.
+    $`\mathbb{R}^n`$, 可算離散空間, Cantor 空間 $`2^{\mathbb{N}}`$, および Baire 空間 $`\mathbb{N}^{\mathbb{N}}`$ は Polish 空間である.
+
+<u>proof.</u>
+:   可分距離空間は第二可算である.
+    Polish 空間は完備距離空間でもあるから, Baire のカテゴリー定理により Baire 空間である.
+
 ### Sorgenfrey 直線と Michael 直線
 
 Definition. **Sorgenfrey 直線**
@@ -5010,6 +5075,7 @@ Theorem. **Smirnov コンパクト化の普遍性**
 [^sorgenfrey]: J. R. Munkres, *Topology*, §17.
 [^michael]: E. Michael, “The product of a normal space and a metric space”, *Bull. Amer. Math. Soc.* 54 (1948), 540--542.
 [^alexandroff-line]: [Long line](https://en.wikipedia.org/wiki/Long_line_(topology)).
+[^polish-space]: A. S. Kechris, *Classical Descriptive Set Theory*, §3.
 [^smirnov-metrization]: Munkres, *Topology*, §42.
 [^point-countable-type]: J. E. Vaughan, “Spaces of countable and point-countable type”, *Trans. Amer. Math. Soc.* 151 (1970), 341--351.
 [^arhangelskii-p]: A. V. Arhangel'skii, “On a class of spaces containing all metric and all locally compact spaces”, *Mat. Sb.* 67 (1965), 55--88.
