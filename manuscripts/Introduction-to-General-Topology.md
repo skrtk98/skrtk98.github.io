@@ -2769,18 +2769,18 @@ Theorem. **線型連続体と連結性**
     よってこのような分解は存在せず, $`X`$ は連結である.
     区間と半直線は線型連続体の凸部分集合であり, 同じ切断論法を相対位相に適用すれば連結性が従う[^linear-continuum].
 
-### Topologist's sine curve
+### 位相学者の正弦曲線
 
-Example. **Topologist's sine curve**
+Example. **位相学者の正弦曲線**
 :   $`\mathbb{R}^2`$ の部分集合
     ```math
     S=\{(x,\sin(1/x))\mid 0<x\leq1\}
     \cup(\{0\}\times[-1,1])
     ```
-    に部分空間位相を入れた空間を **Topologist's sine curve** と呼ぶ.
+    に部分空間位相を入れた空間を **位相学者の正弦曲線** と呼ぶ.
 
-Proposition. **Topologist's sine curve の性質**
-:   Topologist's sine curve はコンパクトかつ連結であるが, 道連結でない.
+Proposition. **位相学者の正弦曲線の性質**
+:   位相学者の正弦曲線はコンパクトかつ連結であるが, 道連結でない.
     また, 縦の線分上の点では局所連結でない.
 
 <u>proof.</u>
@@ -2790,9 +2790,9 @@ Proposition. **Topologist's sine curve の性質**
     これは不可能であるから, $`S`$ は道連結でない.
     縦の線分上の任意の近傍は振動するグラフを含むため, その内部に連結な開近傍を持たず, 局所連結でもない[^topologist-sine-curve].
 
-### Hawaiian earring
+### ハワイアン・イヤリング
 
-Example. **Hawaiian earring**
+Example. **ハワイアン・イヤリング**
 :   原点に接する円
     ```math
     C_n=\left\{(x,y)\in\mathbb{R}^2\mathrel{}\middle|\mathrel{}
@@ -2802,10 +2802,10 @@ Example. **Hawaiian earring**
     ```math
     \mathbb H=\bigcup_{n=1}^{\infty}C_n
     ```
-    に部分空間位相を入れた空間を **Hawaiian earring** と呼ぶ.
+    に部分空間位相を入れた空間を **ハワイアン・イヤリング** と呼ぶ.
 
-Proposition. **Hawaiian earring の性質**
-:   Hawaiian earring はコンパクトかつ道連結である.
+Proposition. **ハワイアン・イヤリングの性質**
+:   ハワイアン・イヤリングはコンパクトかつ道連結である.
     しかし, 原点では局所単連結でなく, その基本群は有限個の円のくさび和に現れる自由群とは異なる複雑な構造を持つ.
 
 <u>proof.</u>
@@ -5524,7 +5524,7 @@ Remark.
 
 [^cantor-space]: L. E. J. Brouwer, “On the structure of perfect sets of points”, *Proceedings of the Koninklijke Akademie van Wetenschappen te Amsterdam* 12 (1910), 785--794. カントール空間の特徴づけについては, [Cantor space](https://ncatlab.org/nlab/show/Cantor%2Bspace) も参照.
 
-[^topologist-sine-curve]: J. R. Munkres, *Topology*, §24; [Topologist's sine curve](https://en.wikipedia.org/wiki/Topologist%27s_sine_curve).
+[^topologist-sine-curve]: J. R. Munkres, *Topology*, §24; [位相学者の正弦曲線](https://en.wikipedia.org/wiki/Topologist%27s_sine_curve).
 
 [^hawaiian-earring]: J. W. Cannon and G. R. Conner, “The combinatorial structure of the Hawaiian earring group”, *Topology and its Applications* 106 (2000), 225--271.
 
