@@ -5377,14 +5377,14 @@ Theorem. **Arhangel'skii の p 空間定理**
 Definition. **M 空間**
 :   $`X`$ が **M 空間** (*M-space*) であるとは, 開被覆列 $`(\mathcal U_n)`$ が存在し, 各 $`x_n\in\operatorname{St}(x,\mathcal U_n)`$ を選んだ列が常に集積点を持つときいう.
 
-Definition. **G_delta 対角線**
-:   対角線 $`\Delta_X=\{(x,x)\mid x\in X\}`$ が $`X\times X`$ の可算個の開集合の共通部分であるとき, $`X`$ は G_delta 対角線を持つという.
+Definition. **$`G_\delta`$ 対角線**
+:   対角線 $`\Delta_X=\{(x,x)\mid x\in X\}`$ が $`X\times X`$ の可算個の開集合の共通部分であるとき, $`X`$ は $`G_\delta`$ 対角線を持つという.
 
 Theorem. **Borges--Okuyama の距離化定理**
-:   $`X`$ が距離化可能であることと, $`X`$ がパラコンパクト M 空間であり G_delta 対角線を持つことは同値である.
+:   $`X`$ が距離化可能であることと, $`X`$ がパラコンパクト M 空間であり $`G_\delta`$ 対角線を持つことは同値である.
 
 <u>proof.</u>
-:   M 空間の被覆列と G_delta 対角線を表す開集合列を組み合わせ, 点を分離する可算開被覆列を構成する.
+:   M 空間の被覆列と $`G_\delta`$ 対角線を表す開集合列を組み合わせ, 点を分離する可算開被覆列を構成する.
     パラコンパクト性により局所有限細分をとり, Nagata--Smirnov 型の距離化構成を適用する.[^borges-okuyama]
 
 ### Morita 空間と積の正規性
