@@ -832,6 +832,37 @@ Proposition.
     さらに任意合併で閉じているから, それらの合併である $`\mathbf{O}`$ のすべての元を含む.
     よって $`\mathbf{O}\subseteq\mathbf{O}'`$ であり, $`\mathbf{O}`$ は最も弱い.
 
+Definition. **順序位相**
+:   線型順序集合 $`(X,\leq)`$ に対して, 開区間と開半直線からなる集合族
+    ```math
+    \mathcal{B}_{\leq}
+    =\{(a,b)\mid a,b\in X, a<b\}
+    \cup\{(-\infty,b)\mid b\in X\}
+    \cup\{(a,\infty)\mid a\in X\}
+    ```
+    を開基として生成される位相を $`X`$ の **順序位相** (*order topology*) と呼ぶ.
+    ここで
+    ```math
+    (a,b)=\{x\in X\mid a<x<b\},\quad
+    (-\infty,b)=\{x\in X\mid x<b\},\quad
+    (a,\infty)=\{x\in X\mid a<x\}
+    ```
+    と定める.
+
+Proposition. **順序位相の Hausdorff 性**
+:   順序位相を備えた線型順序集合 $`X`$ は Hausdorff 空間である.
+
+<u>proof.</u>
+:   異なる二点 $`x,y\in X`$ をとり, $`x<y`$ としてよい.
+    $`x<z<y`$ を満たす $`z\in X`$ が存在するなら, $`(-\infty,z)`$ と $`(z,\infty)`$ はそれぞれ $`x`$ と $`y`$ を含む交わらない開集合である.
+    そのような $`z`$ が存在しないなら, $`(-\infty,y)`$ と $`(x,\infty)`$ が $`x`$ と $`y`$ の交わらない開近傍となる.
+    よって $`X`$ は Hausdorff 空間である.
+
+Example. **順序位相の例**
+:   実数全体に通常の大小関係による順序位相を与えると, 通常の実数直線が得られる.
+    順序数 $`\omega_1`$ に順序位相を与えた空間は, 局所コンパクト性と可算コンパクト性を持つ非可算な例である.
+    Alexandroff 直線も, 閉長半直線に順序位相を与える構成から定まる.
+
 Proposition. **近傍基の定める開基**
 :   集合 $`X`$ 上の近傍基 $`\mathcal{B}`$ とその生成する近傍系 $`\mathcal{U}`$ に対して, $`X`$ の部分集合族 $`\beta`$ を
     ```math
