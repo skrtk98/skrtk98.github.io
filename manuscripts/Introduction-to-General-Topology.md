@@ -4499,12 +4499,12 @@ Theorem. **一様構造による距離化**
 
 ---
 
-## Baire のカテゴリー定理
+## Baire 空間とカテゴリー
 
 痩集合は可算個の閉疎集合の和として表される, 位相的に小さい部分集合である.
 Baire のカテゴリー定理は, 完備性または局所コンパクト性があれば空間全体をそのような集合で尽くせないことを示す.
 
-### Baire 空間
+### Baire 性の定義と特徴づけ
 
 Definition. **Baire 空間**
 :   位相空間 $`X`$ が **Baire 空間** (*Baire space*) であるとは, $`X`$ の任意の可算個の稠密開集合 $`G_0,G_1,\ldots`$ に対して
@@ -4535,7 +4535,9 @@ Proposition. **Baire 性の特徴づけ**
     条件 3 により $`\bigcup_nF_n`$ は内点を持たない.
     その補集合 $`\bigcap_nG_n`$ は稠密であり, $`X`$ は Baire 空間である.
 
-Theorem. **Baire のカテゴリー定理**
+### Baire のカテゴリー定理
+
+Theorem. **完備距離空間の Baire 性**
 :   完備距離空間は Baire 空間である.
 
 <u>proof.</u>
@@ -4555,6 +4557,8 @@ Theorem. **Baire のカテゴリー定理**
     したがって $`x\in O\cap\bigcap_{n\geq0}G_n`$ である.
     任意の空でない開集合 $`O`$ がこの共通部分と交わるので, $`\bigcap_{n\geq0}G_n`$ は稠密である.
 
+### 局所コンパクト空間の Baire 性
+
 Theorem. **局所コンパクト空間の Baire 性**
 :   局所コンパクト Hausdorff 空間は Baire 空間である.
 
@@ -4572,6 +4576,8 @@ Theorem. **局所コンパクト空間の Baire 性**
     よってコンパクト性から $`\bigcap_{n\geq0}\overline{V_n}\neq\emptyset`$ である.
     この共通部分の任意の点は $`O`$ と全ての $`G_n`$ に属する.
     よって $`\bigcap_{n\geq0}G_n`$ は稠密である.
+
+### 例
 
 Example. **有理数全体は Baire 空間でない**
 :   有理数全体 $`\mathbb{Q}`$ は可算であり, 各一点集合は $`\mathbb{Q}`$ で閉かつ内点を持たない.
