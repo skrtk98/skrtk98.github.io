@@ -1277,9 +1277,9 @@ Theorem.
     各 $`x`$ の近傍 $`U`$ から $`U\setminus f^{-1}(V)`$ の一点を選ぶネットは $`x`$ に収束するが, その像は $`V`$ に入らない.
     これは (2) に矛盾する.
 
-### Arens--Fort 空間
+### Arens-Fort 空間
 
-Definition. **Arens--Fort 空間**
+Definition. **Arens-Fort 空間**
 :   集合
     ```math
     A=(\mathbb N\times\mathbb N)\cup\{\infty\}
@@ -1290,10 +1290,10 @@ Definition. **Arens--Fort 空間**
     \{(n,m)\mid m\geq m_n\}\subseteq U
     ```
     を満たす集合 $`U`$ とする.
-    この空間を **Arens--Fort 空間** (*Arens--Fort space*) と呼ぶ.
+    この空間を **Arens-Fort 空間** (*Arens-Fort space*) と呼ぶ.
 
-Proposition. **Arens--Fort 空間の性質**
-:   Arens--Fort 空間は可算 Hausdorff 空間であり, $`\infty`$ で第一可算でない.
+Proposition. **Arens-Fort 空間の性質**
+:   Arens-Fort 空間は可算 Hausdorff 空間であり, $`\infty`$ で第一可算でない.
     また, コンパクトではない.
 
 <u>proof.</u>
@@ -2771,7 +2771,7 @@ Theorem. **線型連続体と連結性**
 
 ### 位相学者の正弦曲線
 
-Example. **位相学者の正弦曲線**
+Example. **位相学者の正弦曲線** (*Topologist's sine curve*)
 :   $`\mathbb{R}^2`$ の部分集合
     ```math
     S=\{(x,\sin(1/x))\mid 0<x\leq1\}
@@ -2790,9 +2790,9 @@ Proposition. **位相学者の正弦曲線の性質**
     これは不可能であるから, $`S`$ は道連結でない.
     縦の線分上の任意の近傍は振動するグラフを含むため, その内部に連結な開近傍を持たず, 局所連結でもない[^topologist-sine-curve].
 
-### ハワイアン・イヤリング
+### ハワイの耳飾り
 
-Example. **ハワイアン・イヤリング**
+Example. **ハワイの耳飾り** (*Hawaiian earring*)
 :   原点に接する円
     ```math
     C_n=\left\{(x,y)\in\mathbb{R}^2\mathrel{}\middle|\mathrel{}
@@ -2802,10 +2802,10 @@ Example. **ハワイアン・イヤリング**
     ```math
     \mathbb H=\bigcup_{n=1}^{\infty}C_n
     ```
-    に部分空間位相を入れた空間を **ハワイアン・イヤリング** と呼ぶ.
+    に部分空間位相を入れた空間を **ハワイの耳飾り** と呼ぶ.
 
-Proposition. **ハワイアン・イヤリングの性質**
-:   ハワイアン・イヤリングはコンパクトかつ道連結である.
+Proposition. **ハワイの耳飾りの性質**
+:   ハワイの耳飾りはコンパクトかつ道連結である.
     しかし, 原点では局所単連結でなく, その基本群は有限個の円のくさび和に現れる自由群とは異なる複雑な構造を持つ.
 
 <u>proof.</u>
