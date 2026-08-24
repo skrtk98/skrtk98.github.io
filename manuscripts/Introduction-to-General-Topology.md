@@ -3378,7 +3378,7 @@ Remark.
 集合間の関係に置き換えると, 位相に加えて一様性やコンパクト化を扱う構造が得られる.
 
 Definition. **点と集合の近接関係**
-:   位相空間 $``X``$ の点 $``x\in X``$ と部分集合 $``A\subseteq X``$ に対して, $``x``$ が $``A``$ に **近接する** (*near*) とは
+:   位相空間 $`X`$ の点 $`x\in X`$ と部分集合 $`A\subseteq X`$ に対して, $`x`$ が $`A`$ に **近接する** (*near*) とは
     ```math
     x\mathrel{\mathord{\sim}_X}A\quad\Longleftrightarrow\quad x\in\overline{A}
     ```
@@ -3386,7 +3386,7 @@ Definition. **点と集合の近接関係**
     この関係は位相の閉包作用素をそのまま表している.
 
 Proposition. **点と集合の近接関係による閉包の復元**
-:   任意の部分集合 $``A\subseteq X``$ に対して,
+:   任意の部分集合 $`A\subseteq X`$ に対して,
     ```math
     \overline{A}=\{x\in X\mid x\mathrel{\mathord{\sim}_X}A\}
     ```
@@ -3396,42 +3396,42 @@ Proposition. **点と集合の近接関係による閉包の復元**
 :   これは点と集合の近接関係の定義そのものである.
 
 Definition. **位相から誘導される近接関係**
-:   位相空間 $``X``$ の部分集合 $``A,B\subseteq X``$ に対して, $``A``$ と $``B``$ が **近接関係にある** (*proximal, near*) とは
+:   位相空間 $`X`$ の部分集合 $`A,B\subseteq X`$ に対して, $`A`$ と $`B`$ が **近接関係にある** (*proximal, near*) とは
     ```math
     A\mathrel{\delta_X}B\quad\Longleftrightarrow\quad\overline{A}\cap\overline{B}\neq\emptyset
     ```
     が成り立つこととする.
-    $``\delta_X``$ は $``2^X``$ 上の二項関係である.
+    $`\delta_X`$ は $`2^X`$ 上の二項関係である.
 
 Definition. **遠隔関係**
-:   部分集合 $``A,B\subseteq X``$ が **遠隔関係にある** (*apart, far*) とは
+:   部分集合 $`A,B\subseteq X`$ が **遠隔関係にある** (*apart, far*) とは
     ```math
     A\mathrel{\phi_X}B\quad\Longleftrightarrow\quad\overline{A}\cap\overline{B}=\emptyset
     ```
     が成り立つこととする.
-    $``\phi_X``$ は $``\delta_X``$ の補関係である.
+    $`\phi_X`$ は $`\delta_X`$ の補関係である.
     ここでいう遠隔関係は古典的な補関係の定義であり, 構成的数学でいう apartness relation と同一の概念ではない.
 
 Proposition. **位相から誘導される近接関係の基本性質**
-:   部分集合 $``A,B,C\subseteq X``$ に対して, 次が成り立つ.
-    1. $``A\mathrel{\delta_X}B``$ ならば $``A\neq\emptyset``$ かつ $``B\neq\emptyset``$ である.
-    2. $``A\mathrel{\delta_X}B``$ ならば $``B\mathrel{\delta_X}A``$ である.
-    3. $``A\cap B\neq\emptyset``$ ならば $``A\mathrel{\delta_X}B``$ である.
-    4. $``A\mathrel{\delta_X}(B\cup C)``$ であることと, $``A\mathrel{\delta_X}B``$ または $``A\mathrel{\delta_X}C``$ であることは同値である.
+:   部分集合 $`A,B,C\subseteq X`$ に対して, 次が成り立つ.
+    1. $`A\mathrel{\delta_X}B`$ ならば $`A\neq\emptyset`$ かつ $`B\neq\emptyset`$ である.
+    2. $`A\mathrel{\delta_X}B`$ ならば $`B\mathrel{\delta_X}A`$ である.
+    3. $`A\cap B\neq\emptyset`$ ならば $`A\mathrel{\delta_X}B`$ である.
+    4. $`A\mathrel{\delta_X}(B\cup C)`$ であることと, $`A\mathrel{\delta_X}B`$ または $`A\mathrel{\delta_X}C`$ であることは同値である.
 
 <u>proof.</u>
 :   第一の主張は閉包が空集合を空集合へ写すことから従う.
     第二の主張は閉包の交わりの対称性から従う.
-    第三の主張は $``A\subseteq\overline A``$ と $``B\subseteq\overline B``$ から従う.
-    第四の主張は $``\overline{B\cup C}=\overline B\cup\overline C``$ と有限分配法則から従う.
+    第三の主張は $`A\subseteq\overline A`$ と $`B\subseteq\overline B`$ から従う.
+    第四の主張は $`\overline{B\cup C}=\overline B\cup\overline C`$ と有限分配法則から従う.
 
 Definition. **近接空間**
-:   集合 $``X``$ 上の二項関係 $``\delta``$ が **近接関係** (*proximity relation*) であるとは, 任意の $``A,B,C\subseteq X``$ に対して次の条件を満たすこととする.
-    - $``A\mathrel{\delta}B``$ ならば $``A\neq\emptyset``$ かつ $``B\neq\emptyset``$ である.
-    - $``A\cap B\neq\emptyset``$ ならば $``A\mathrel{\delta}B``$ である.
-    - $``A\mathrel{\delta}B``$ ならば $``B\mathrel{\delta}A``$ である.
-    - $``A\mathrel{\delta}(B\cup C)``$ であることと, $``A\mathrel{\delta}B``$ または $``A\mathrel{\delta}C``$ であることは同値である.
-    - $``A\mathrel{\delta}B``$ かつ $``B\subseteq\operatorname{cl}_{\delta}(C)``$ ならば $``A\mathrel{\delta}C``$ である.
+:   集合 $`X`$ 上の二項関係 $`\delta`$ が **近接関係** (*proximity relation*) であるとは, 任意の $`A,B,C\subseteq X`$ に対して次の条件を満たすこととする.
+    - $`A\mathrel{\delta}B`$ ならば $`A\neq\emptyset`$ かつ $`B\neq\emptyset`$ である.
+    - $`A\cap B\neq\emptyset`$ ならば $`A\mathrel{\delta}B`$ である.
+    - $`A\mathrel{\delta}B`$ ならば $`B\mathrel{\delta}A`$ である.
+    - $`A\mathrel{\delta}(B\cup C)`$ であることと, $`A\mathrel{\delta}B`$ または $`A\mathrel{\delta}C`$ であることは同値である.
+    - $`A\mathrel{\delta}B`$ かつ $`B\subseteq\operatorname{cl}_{\delta}(C)`$ ならば $`A\mathrel{\delta}C`$ である.
 
     ここで
     ```math
@@ -3441,22 +3441,22 @@ Definition. **近接空間**
     最後の条件は Lodato の公理である.
 
 Proposition. **近接関係から得られる閉包作用素**
-:   近接関係 $``\delta``$ に対して, $``\operatorname{cl}_{\delta}:2^X\to2^X``$ は閉包作用素である.
+:   近接関係 $`\delta`$ に対して, $`\operatorname{cl}_{\delta}:2^X\to2^X`$ は閉包作用素である.
 
 <u>proof.</u>
-:   第一の公理から $``\operatorname{cl}_{\delta}(\emptyset)=\emptyset``$ が成り立つ.
-    交差性の公理から $``C\subseteq\operatorname{cl}_{\delta}(C)``$ が成り立つ.
+:   第一の公理から $`\operatorname{cl}_{\delta}(\emptyset)=\emptyset`$ が成り立つ.
+    交差性の公理から $`C\subseteq\operatorname{cl}_{\delta}(C)`$ が成り立つ.
     有限和保存性は有限和に関する公理から従う.
-    $``x\in\operatorname{cl}_{\delta}(\operatorname{cl}_{\delta}(C))``$ とすると $``\{x\}\mathrel{\delta}\operatorname{cl}_{\delta}(C)``$ である.
-    Lodato の公理を適用すれば $``\{x\}\mathrel{\delta}C``$ となる.
+    $`x\in\operatorname{cl}_{\delta}(\operatorname{cl}_{\delta}(C))`$ とすると $`\{x\}\mathrel{\delta}\operatorname{cl}_{\delta}(C)`$ である.
+    Lodato の公理を適用すれば $`\{x\}\mathrel{\delta}C`$ となる.
     よって冪等性が成り立つ.
 
-Theorem. **$``\mathbf{T}_1``$ 空間と位相的近接関係**
-:   $``\mathbf{T}_1``$ 空間 $``X``$ に対して, $``\delta_X``$ が定める閉包作用素は $``X``$ の閉包作用素と一致する.
-    したがって $``\delta_X``$ から元の位相を復元できる.
+Theorem. **$`\mathbf{T}_1`$ 空間と位相的近接関係**
+:   $`\mathbf{T}_1`$ 空間 $`X`$ に対して, $`\delta_X`$ が定める閉包作用素は $`X`$ の閉包作用素と一致する.
+    したがって $`\delta_X`$ から元の位相を復元できる.
 
 <u>proof.</u>
-:   $``\mathbf{T}_1``$ 性から $``\overline{\{x\}}=\{x\}``$ である.
+:   $`\mathbf{T}_1`$ 性から $`\overline{\{x\}}=\{x\}`$ である.
     よって
     ```math
     \{x\}\mathrel{\delta_X}A
@@ -3466,10 +3466,10 @@ Theorem. **$``\mathbf{T}_1``$ 空間と位相的近接関係**
     x\in\overline A
     ```
     である.
-    したがって $``\operatorname{cl}_{\delta_X}(A)=\overline A``$ であり, 閉包作用素から位相を復元する定理により主張が従う.
+    したがって $`\operatorname{cl}_{\delta_X}(A)=\overline A`$ であり, 閉包作用素から位相を復元する定理により主張が従う.
 
 Remark.
-:   一般の位相空間では, $``\delta_X``$ だけから元の非 $``\mathbf{T}_1``$ 位相を復元できるとは限らない.
+:   一般の位相空間では, $`\delta_X`$ だけから元の非 $`\mathbf{T}_1`$ 位相を復元できるとは限らない.
     近接空間は, 一様構造から誘導される近接関係や, 近接関係に対応するコンパクト化を研究するために用いられる.[^proximity]
 
 [^proximity]: S. A. Naimpally and B. D. Warrack, *Proximity Spaces*, Cambridge University Press, 1970; D. Bridges and L. Vîţă, *Apartness and Uniformity: A Constructive Development*, Springer, 2011.
