@@ -4017,22 +4017,34 @@ Remark.
 本稿では, 対称性を要求しない準近接関係を出発点とし, 対称な近接関係とその双対である準遠隔関係を定める.
 
 Definition. **準近接関係**
-:   集合 $`X`$ 上の二項関係 $`\delta\subseteq2^X\times2^X`$ が **準近接関係** (*quasi-proximity relation*) であるとは, 任意の $`A,B,C\subseteq X`$ に対して次の条件を満たすこととする.
+:   集合 $`X`$ 上の二項関係 $`\delta\subseteq2^X\times2^X`$ が **準近接関係** (*quasi-proximity relation*) であるとは, 任意の $`A,B,C,E\subseteq X`$ に対して次の条件を満たすこととする.
     - $`A\mathrel{\delta}B`$ ならば $`A\neq\emptyset`$ かつ $`B\neq\emptyset`$ である.
     - $`A\cap B\neq\emptyset`$ ならば $`A\mathrel{\delta}B`$ である.
     - $`(A\cup B)\mathrel{\delta}C`$ であることと, $`A\mathrel{\delta}C`$ または $`B\mathrel{\delta}C`$ であることは同値である.
     - $`A\mathrel{\delta}(B\cup C)`$ であることと, $`A\mathrel{\delta}B`$ または $`A\mathrel{\delta}C`$ であることは同値である.
-    - $`A\mathrel{\delta}B`$ かつ $`B\subseteq\operatorname{cl}_{\delta}(C)`$ ならば $`A\mathrel{\delta}C`$ である.
+    - $`\neg(A\mathrel{\delta}B)`$ ならば, ある $`E\subseteq X`$ が存在して $`\neg(A\mathrel{\delta}E)`$ かつ $`\neg(B\mathrel{\delta}(X\setminus E))`$ である.
 
-    ここで
+    対称性 $`A\mathrel{\delta}B\Longleftrightarrow B\mathrel{\delta}A`$ は仮定しない.
+    最後の条件は Efremovič 型の強公理である.
+
+Definition. **Lodato 型準近接関係**
+:   集合 $`X`$ 上の二項関係 $`\delta`$ が **Lodato 型準近接関係** (*Lodato-type quasi-proximity relation*) であるとは, 最初の四つの公理と, 任意の $`A,B,C\subseteq X`$ に対する
     ```math
     \operatorname{cl}_{\delta}(C)\coloneqq\{x\in X\mid\{x\}\mathrel{\delta}C\}
     ```
-    とおく.
-    最後の条件は Lodato 型の公理である.
+    によって定まる閉包に関して
+    ```math
+    A\mathrel{\delta}B
+    \quad\text{かつ}\quad
+    B\subseteq\operatorname{cl}_{\delta}(C)
+    \quad\Longrightarrow\quad
+    A\mathrel{\delta}C
+    ```
+    が成り立つこととする.
+    Efremovič 型の強公理は仮定しない.
 
-Proposition. **準近接関係から得られる閉包作用素**
-:   準近接関係 $`\delta`$ に対して, $`\operatorname{cl}_{\delta}:2^X\to2^X`$ は閉包作用素である.
+Proposition. **Lodato 型準近接関係から得られる閉包作用素**
+:   Lodato 型準近接関係 $`\delta`$ に対して, $`\operatorname{cl}_{\delta}:2^X\to2^X`$ は閉包作用素である.
 
 <u>proof.</u>
 :   第一の公理から $`\operatorname{cl}_{\delta}(\emptyset)=\emptyset`$ が成り立つ.
@@ -4042,8 +4054,8 @@ Proposition. **準近接関係から得られる閉包作用素**
     Lodato 型の公理を適用すれば $`\{x\}\mathrel{\delta}C`$ となる.
     よって冪等性が成り立つ.
 
-Definition. **位相的準近接関係**
-:   準近接関係 $`\delta`$ が **位相的** (*topological*) であるとは, 任意の $`A,B\subseteq X`$ に対して
+Definition. **位相的 Lodato 型準近接関係**
+:   Lodato 型準近接関係 $`\delta`$ が **位相的** (*topological*) であるとは, 任意の $`A,B\subseteq X`$ に対して
     ```math
     A\mathrel{\delta}B
     \quad\Longleftrightarrow\quad
@@ -4051,16 +4063,16 @@ Definition. **位相的準近接関係**
     ```
     が成り立つこととする.
 
-Theorem. **位相構造と位相的準近接関係の対応**
-:   集合 $`X`$ 上の位相構造と, $`X`$ 上の位相的準近接関係は一対一に対応する.
-    位相 $`\mathcal O`$ に対応する準近接関係は
+Theorem. **位相構造と位相的 Lodato 型準近接関係の対応**
+:   集合 $`X`$ 上の位相構造と, $`X`$ 上の位相的 Lodato 型準近接関係は一対一に対応する.
+    位相 $`\mathcal O`$ に対応する Lodato 型準近接関係は
     ```math
     A\mathrel{\delta_{\mathcal O}}B
     \quad\Longleftrightarrow\quad
     A\cap\overline{B}^{\mathcal O}\neq\emptyset
     ```
     で与えられる.
-    準近接関係 $`\delta`$ に対応する位相は, 閉包作用素 $`\operatorname{cl}_{\delta}`$ が定める位相である.
+    Lodato 型準近接関係 $`\delta`$ に対応する位相は, 閉包作用素 $`\operatorname{cl}_{\delta}`$ が定める位相である.
 
 <u>proof.</u>
 :   位相 $`\mathcal O`$ から定めた $`\delta_{\mathcal O}`$ に対して, $`\operatorname{cl}_{\delta_{\mathcal O}}(B)=\overline B^{\mathcal O}`$ が成り立つ.
@@ -4075,17 +4087,17 @@ Theorem. **位相構造と位相的準近接関係の対応**
     である.
     したがって $`\delta_{\mathcal O}`$ は位相的である.
     また $`A\mathrel{\delta_{\mathcal O}}B`$ かつ $`B\subseteq\operatorname{cl}_{\delta_{\mathcal O}}(C)`$ ならば $`A\cap\overline B^{\mathcal O}\neq\emptyset`$ かつ $`\overline B^{\mathcal O}\subseteq\overline C^{\mathcal O}`$ であるから, $`A\mathrel{\delta_{\mathcal O}}C`$ である.
-    逆に位相的準近接関係 $`\delta`$ に対応する閉包作用素から得られる位相の閉包を $`\operatorname{cl}_{\delta}`$ とすると, 位相性の定義から元の $`\delta`$ が復元される.
+    逆に位相的 Lodato 型準近接関係 $`\delta`$ に対応する閉包作用素から得られる位相の閉包を $`\operatorname{cl}_{\delta}`$ とすると, 位相性の定義から元の $`\delta`$ が復元される.
     以上により二つの対応は互いに逆である.
 
 Definition. **近接関係**
-:   準近接関係 $`\delta`$ が対称であるとき, $`\delta`$ を **近接関係** (*proximity relation*) といい, $`(X,\delta)`$ を **近接空間** (*proximity space*) という.
+:   Lodato 型準近接関係 $`\delta`$ が対称であるとき, $`\delta`$ を **近接関係** (*proximity relation*) といい, $`(X,\delta)`$ を **近接空間** (*proximity space*) という.
     すなわち, 任意の $`A,B\subseteq X`$ に対して
     ```math
     A\mathrel{\delta}B\quad\Longleftrightarrow\quad B\mathrel{\delta}A
     ```
     が成り立つ.
-    近接関係は準近接関係の特別な場合である.
+    近接関係は対称な Lodato 型準近接関係である.
 
 Proposition. **閉包の共通部分による近接関係**
 :   $`\mathbf{T}_1`$ 空間 $`X`$ に対して
@@ -4105,7 +4117,7 @@ Proposition. **閉包の共通部分による近接関係**
     よって Lodato 型の公理も成り立つ.
 
 Definition. **準遠隔関係**
-:   準近接関係 $`\delta`$ に対して, $`A,B\subseteq X`$ が **準遠隔関係にある** (*quasi-far*) とは
+:   準近接関係または Lodato 型準近接関係 $`\delta`$ に対して, $`A,B\subseteq X`$ が **準遠隔関係にある** (*quasi-far*) とは
     ```math
     A\mathrel{\phi_{\delta}}B\quad\Longleftrightarrow\quad\neg(A\mathrel{\delta}B)
     ```
@@ -4117,7 +4129,7 @@ Definition. **遠隔関係**
     近接関係が対称であるから, 遠隔関係も対称である.
 
 Proposition. **準近接関係と準遠隔関係の双対性**
-:   準近接関係 $`\delta`$ とその準遠隔関係 $`\phi_{\delta}`$ に対して, 次が成り立つ.
+:   準近接関係または Lodato 型準近接関係 $`\delta`$ とその準遠隔関係 $`\phi_{\delta}`$ に対して, 次が成り立つ.
     1. $`A\mathrel{\phi_{\delta}}B`$ ならば $`A\cap B=\emptyset`$ である.
     2. $`(A\cup B)\mathrel{\phi_{\delta}}C`$ であることと, $`A\mathrel{\phi_{\delta}}C`$ かつ $`B\mathrel{\phi_{\delta}}C`$ であることは同値である.
     3. $`A\mathrel{\phi_{\delta}}(B\cup C)`$ であることと, $`A\mathrel{\phi_{\delta}}B`$ かつ $`A\mathrel{\phi_{\delta}}C`$ であることは同値である.
@@ -4148,11 +4160,11 @@ Theorem. **位相構造と標準準遠隔関係の対応**
 
 Remark.
 :   文献では, 対称性を除いた近接関係を quasi-proximity と呼ぶ.
-    公理の選択には文献による差があるため, 本稿では有限和の両側保存性と Lodato 型の公理を含む準近接関係を採用する.[^proximity]
+    公理の選択には文献による差があるため, 本稿では Efremovič 型の強公理を含む一般の準近接関係と, それとは別の公理系をもつ Lodato 型準近接関係を区別する.[^proximity]
     準近接関係は一般に対称でないため, その双対である準遠隔関係も一般に対称でない.
     構成的数学でいう apartness relation は別の公理系を持つため, 準遠隔関係と同一視しない.
 
-[^proximity]: S. A. Naimpally and B. D. Warrack, *Proximity Spaces*, Cambridge University Press, 1970; J. Galton, “Applications of near sets”, *Proceedings of the 2011 IEEE International Conference on Fuzzy Systems*, 2011; D. Bridges and L. Vîţă, *Apartness and Uniformity: A Constructive Development*, Springer, 2011.
+[^proximity]: S. A. Naimpally and B. D. Warrack, *Proximity Spaces*, Cambridge University Press, 1970; J. Galton, “Applications of near sets”, *Proceedings of the 2011 IEEE International Conference on Fuzzy Systems*, 2011; D. Bridges and L. Vîţă, *Apartness and Uniformity: A Constructive Development*, Springer, 2011; [Proximity space](https://en.wikipedia.org/wiki/Proximity_space).
 ---
 
 ## 一様空間と一様連続写像
