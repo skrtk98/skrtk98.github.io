@@ -64,7 +64,7 @@ PORT=8080 npm run preview
 
 ### HTML の生成
 
-`manuscripts/` 直下の Markdown を公開用 HTML に変換して `site/` を更新する場合は、次を実行する。
+`manuscripts/` 直下の Markdown と, 各ディレクトリの `index.md` を公開用 HTML に変換して `site/` を更新する場合は、次を実行する。
 
 ```bash
 npm run build
@@ -102,7 +102,7 @@ npm run check
 
 ## 公開手順
 
-1. `manuscripts/` 直下に Markdown 原稿を追加または編集する。
+1. `manuscripts/` 直下または原稿ディレクトリ内の `index.md` を追加または編集する。
 2. `npm run check` を実行し、公開対象の変換が成功することを確認する。
 3. `npm run build` を実行し、`site/` の差分が原稿の変更に対応していることを確認する。
 4. `manuscripts/`、`previewer/`、`package.json`、`package-lock.json`、`site/` の意味のある変更をコミットして `main` に push する。
@@ -114,7 +114,7 @@ npm run check
 
 GitHub Pages のトップページから、`manuscripts/` 直下の各 Markdown 原稿を開く。
 
-公開 URL は、原稿ファイル名から `.md` を除いた名前を使う。
+公開 URL は、直下の原稿ではファイル名から `.md` を除いた名前を使い、ディレクトリ内の `index.md` ではディレクトリ名を使う。
 
 - `/Introduction-to-Category-Theory/`
 - `/Introduction-to-Monoidal-Category-Theory/`
