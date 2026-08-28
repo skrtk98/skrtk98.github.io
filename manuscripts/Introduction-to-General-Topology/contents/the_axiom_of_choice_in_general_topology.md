@@ -57,3 +57,5 @@ Theorem. **選択公理と Tychonoff の定理**
 Remark.
 :   後の `Tychonoff の定理` は位相空間の積のコンパクト性を扱い, 本節の定理はその選択公理との論理的な強さを扱う.
     コンパクト Hausdorff 空間に限定した場合は, 完全な選択公理ではなく超フィルター原理が対応する.
+
+[^choice-tychonoff]: J. L. Kelley, “The Tychonoff product theorem implies the axiom of choice”, *Fundamenta Mathematicae* 37 (1950), 75--76, [DOI: 10.4064/fm-37-1-75-76](https://doi.org/10.4064/fm-37-1-75-76); [Tychonoff theorem](https://ncatlab.org/nlab/show/Tychonoff%2Btheorem). Kelley の論文は Tychonoff の定理から選択公理を導く方向を扱い, 逆方向は選択公理を用いる標準的な Tychonoff の定理である.

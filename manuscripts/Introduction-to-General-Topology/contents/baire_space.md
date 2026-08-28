@@ -134,3 +134,6 @@ Proposition. **Baire 空間と Volterra 空間**
     ```
     は稠密となる.
     距離化可能空間における逆向きの含意と一般の場合の反例は, Volterra 空間の研究結果による[^volterra].
+
+[^smith-volterra-cantor]: [Smith–Volterra–Cantor set](https://en.wikipedia.org/wiki/Smith%E2%80%93Volterra%E2%80%93Cantor_set) を参照.
+[^volterra]: J. Cao and D. Gauld, “Volterra spaces revisited”, *Journal of the Australian Mathematical Society* 79 (2005), 61--76, [DOI: 10.1017/S1446788700009332](https://doi.org/10.1017/S1446788700009332); J. Cao and H. J. K. Junnila, “When is a Volterra space Baire?”, *Topology and its Applications* 154 (2007), 527--532, [DOI: 10.1016/j.topol.2006.05.009](https://doi.org/10.1016/j.topol.2006.05.009). 前者は Volterra 空間の基本的性質を, 後者は stratifiable 空間などでの Baire 性との関係を扱う.

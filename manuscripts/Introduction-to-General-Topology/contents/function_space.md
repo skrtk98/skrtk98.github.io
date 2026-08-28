@@ -77,19 +77,3 @@ Definition. **コンパクト生成空間**
 Remark.
 :   コンパクト生成弱 Hausdorff 空間の圏では, 積と関数空間を適切に取り直すことで Cartesian 閉な圏を得る.
     この圏はホモトピー論で, 写像空間を持つ圏として広く用いられる.
-
-[^volterra]: J. Cao and D. Gauld, “Volterra spaces revisited”, *Journal of the Australian Mathematical Society* 79 (2005), 61--76; J. Cao and H. J. K. Junnila, “When is a Volterra space Baire?”, *Topology and its Applications* 154 (2007), 527--532.
-
-[^cantor-space]: L. E. J. Brouwer, “On the structure of perfect sets of points”, *Proceedings of the Koninklijke Akademie van Wetenschappen te Amsterdam* 12 (1910), 785--794. Cantor 空間の特徴づけについては, [Cantor space](https://ncatlab.org/nlab/show/Cantor%2Bspace) も参照.
-
-[^topologist-sine-curve]: J. R. Munkres, *Topology*, §24; [Topologist's sine curve](https://en.wikipedia.org/wiki/Topologist%27s_sine_curve).
-
-[^hawaiian-earring]: J. W. Cannon and G. R. Conner, “The combinatorial structure of the Hawaiian earring group”, *Topology and its Applications* 106 (2000), 225--271.
-
-[^arens-fort]: L. A. Steen and J. A. Seebach, *Counterexamples in Topology*, 2nd ed., Example 104.
-
-[^smith-volterra-cantor]: [Smith–Volterra–Cantor set](https://en.wikipedia.org/wiki/Smith%E2%80%93Volterra%E2%80%93Cantor_set) を参照.
-
-[^linear-continuum]: J. R. Munkres, *Topology*, §24; [Linear continuum](https://en.wikipedia.org/wiki/Linear_continuum).
-
-[^choice-tychonoff]: J. L. Kelley, “The Tychonoff product theorem implies the axiom of choice”, *Fundamenta Mathematicae* 37 (1950), 75--76; [Tychonoff theorem](https://ncatlab.org/nlab/show/Tychonoff%2Btheorem).

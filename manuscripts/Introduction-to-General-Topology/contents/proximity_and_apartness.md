@@ -190,4 +190,4 @@ Remark.
     準近接関係は一般に対称でないため, その双対である準遠隔関係も一般に対称でない.
     構成的数学でいう apartness relation は別の公理系を持つため, 準遠隔関係と同一視しない.
 
-[^proximity]: S. A. Naimpally and B. D. Warrack, *Proximity Spaces*, Cambridge University Press, 1970; J. Galton, “Applications of near sets”, *Proceedings of the 2011 IEEE International Conference on Fuzzy Systems*, 2011; D. Bridges and L. Vîţă, *Apartness and Uniformity: A Constructive Development*, Springer, 2011; [Proximity space](https://en.wikipedia.org/wiki/Proximity_space); [proximity space](https://ncatlab.org/nlab/show/proximity%2Bspace).
+[^proximity]: 古典的な近接空間とそのコンパクト化については S. A. Naimpally and B. D. Warrack, *Proximity Spaces*, Cambridge University Press, 1970, および Yu. M. Smirnov, “On proximity spaces”, *Mat. Sb.* 31 (1952), 543--574 を参照. 準近接関係と近傍関係の概念整理については [proximity space](https://ncatlab.org/nlab/show/proximity%2Bspace) を, 構成的数学における apartness relation については D. Bridges and L. Vîță, *Apartness and Uniformity: A Constructive Development*, Springer, 2011 を参照する. J. Galton, “Applications of near sets”, *Proceedings of the 2011 IEEE International Conference on Fuzzy Systems*, 2011 は near set の応用を扱う文献であり, 本稿の準近接関係の公理系の直接の出典ではない.

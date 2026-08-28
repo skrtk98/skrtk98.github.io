@@ -973,3 +973,5 @@ Definition. **痩集合**
 :   位相空間 $`X`$ の部分集合 $`S`$ が $`X`$ の疎集合の可算和で表現できるとき **痩せている** (*meager in $`X`$*) といい, 痩せている集合を **痩集合** (*meager set*) あるいは **第一類集合** (*set of the first category*) という. 他方, 痩集合でない集合を **非痩集合** (*nonmeager set*) あるいは **第二類集合** (*set of the second category*) という.
     特に, 位相空間 $`X`$ の台集合自体が痩せているとき, $`X`$ を **痩空間** (*meager space*) あるいは第一類空間という. 他方, 痩空間でない位相空間を **非痩空間** (*nonmeager space*) あるいは第二類空間という.
     また, 補集合 $`S^\complement=X\setminus S`$ が痩せているような集合 $`S`$ を **補痩である** (*comeager*) あるいは **残留的である** (*residual*) という.
+
+[^arens-fort]: L. A. Steen and J. A. Seebach, *Counterexamples in Topology*, 2nd ed., Example 104.

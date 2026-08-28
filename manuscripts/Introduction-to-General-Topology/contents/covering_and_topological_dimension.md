@@ -374,7 +374,8 @@ Remark. **色つき次元に関する Ostrand の定理**
     順方向の証明は局所有限細分を縮小して色ごとの離散な開族を帰納的に構成し, 逆方向は一組の $`n+1`$ 色を選んで次数高々 $`n`$ の細分を得る.[^ostrand]
 
 [^dimension-scope]: 定理の陳述は標準的な可分距離化可能空間の場合に限った. より一般の正規空間または距離化可能空間では, 三つの次元の間に別の不等式や一致定理が現れる.
-[^nobeling-pontryagin]: R. Engelking, *Theory of Dimensions, Finite and Infinite*, Heldermann Verlag, 1995, 定理 1.11.4 と歴史的注記. 一般次元の場合の埋込み定理を Nöbeling, Pontryagin-Tolstowa, Lefschetz が 1931 年に証明したことが記録されている.
-[^menger-nobeling]: G. Nöbeling, "Über eine n-dimensionale Universalmenge im $`\mathbb R^{2n+1}`$", *Mathematische Annalen* 104 (1931), 71--80. 1932 年刊の K. Menger, *Kurventheorie* はこの結果を含む古典的文献である.
-[^lebesgue-covering]: N. V. Ivanov, "Cubes and cubical chains and cochains", 2019, Lebesgue first covering theorem.
-[^ostrand]: P. A. Ostrand, "Dimension of metric spaces and Hilbert's problem 13", *Bulletin of the American Mathematical Society* 71 (1965), 619--622, DOI: 10.1090/S0002-9904-1965-11363-5.
+[^nobeling-pontryagin]: R. Engelking, *Theory of Dimensions, Finite and Infinite*, Heldermann Verlag, 1995, 定理 1.11.4. 埋込み定理の定式化は同書を出典とし, Nöbeling, Pontryagin-Tolstowa, Lefschetz による 1931 年の証明という帰属も同書の歴史的注記に従う.
+[^menger-nobeling]: G. Nöbeling, “Über eine n-dimensionale Universalmenge im $`\mathbb R^{2n+1}`$”, *Mathematische Annalen* 104 (1931), 71--80; K. Menger, *Kurventheorie*, Teubner, Leipzig and Berlin, 1932, VI+374 pp. 後者は Nöbeling の結果を含む古典的文献として挙げられる.
+[^lebesgue-covering]: N. V. Ivanov, “Cubes and cubical chains and cochains in combinatorial topology”, 2019 年草稿, §1.8, [PDF](https://nikolaivivanov.s3.amazonaws.com/Ivanov2019-Lebesgue-and-cubes.pdf); 改訂版は arXiv:2012.13104 (2020) として公開されている. 同節で, 立方体の相対する面を同時には避けない有限閉被覆に関する Lebesgue の被覆定理を扱っている.
+[^ostrand]: P. A. Ostrand, “Dimension of metric spaces and Hilbert's problem 13”, *Bulletin of the American Mathematical Society* 71 (1965), 619--622, [DOI: 10.1090/S0002-9904-1965-11363-5](https://doi.org/10.1090/S0002-9904-1965-11363-5). 本文の色分けによる定式化は, この論文を出典とする標準的な Ostrand 型の特徴づけとして記載している.
+[^cantor-space]: L. E. J. Brouwer, “On the structure of perfect sets of points”, *Proceedings of the Koninklijke Akademie van Wetenschappen te Amsterdam* 12 (1910), 785--794. 完備可分距離空間としての Cantor 空間の現代的な特徴づけについては, [Cantor space](https://ncatlab.org/nlab/show/Cantor%2Bspace) も参照.

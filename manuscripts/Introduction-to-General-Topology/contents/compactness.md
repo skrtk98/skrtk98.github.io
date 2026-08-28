@@ -541,7 +541,7 @@ Proposition. **基本例と閉部分空間への遺伝**
 Remark.
 :   Lindelöf な Tychonoff 空間は実コンパクトである.
     また Tychonoff 空間について, コンパクトであることは実コンパクトかつ擬コンパクトであることと同値である.
-    この特徴づけにより, 実コンパクト性はコンパクト性から有界性だけを取り除いた性質として位置づけられる.[^realcompact]
+    この特徴づけにより, 実コンパクト性は連続実数値関数による閉埋込み性で記述されるコンパクト性の類似概念として位置づけられる.[^realcompact]
 
 ### 局所コンパクト空間
 
@@ -586,6 +586,6 @@ Proposition. **局所コンパクト性の閉部分空間への遺伝**
     よって $`F\cap K`$ は $`x`$ のコンパクト近傍である.
     $`x`$ は任意であり, Hausdorff 性は部分空間へ遺伝するから $`F`$ は局所コンパクト Hausdorff 空間である.
 
-[^metacompact]: nLab authors, “metacompact space”, *nLab*; “Metacompact space”, *Wikipedia*.
-[^orthocompact]: nLab authors, “orthocompact space”, *nLab*; “Orthocompact space”, *Wikipedia*; B. M. Scott, “Towards a product theory for orthocompactness”, *Studies in Topology*, 1975, 517--537.
-[^realcompact]: “Realcompact space”, *Wikipedia*; L. Gillman and M. Jerison, *Rings of Continuous Functions*, Springer-Verlag, 1976.
+[^metacompact]: nLab authors, [“metacompact space”](https://ncatlab.org/nlab/show/metacompact%2Bspace), *nLab*. メタコンパクト性の定義とパラコンパクト性との含意関係を参照.
+[^orthocompact]: nLab authors, [“orthocompact space”](https://ncatlab.org/nlab/show/orthocompact%2Bspace), *nLab*; B. M. Scott, “Towards a product theory for orthocompactness”, *Studies in Topology*, 1975, 517--537. Scott の論文が $`X\times[0,1]`$ と可算メタコンパクト性の同値性を扱う.
+[^realcompact]: L. Gillman and M. Jerison, *Rings of Continuous Functions*, Springer-Verlag, 1976. 実コンパクト性の定義と, Tychonoff 空間におけるコンパクト性・実コンパクト性・擬コンパクト性の関係を参照.

@@ -304,3 +304,7 @@ Theorem. **既約成分の性質**
     実際, 閉包内の二つの空でない開集合はそれぞれ元の既約集合と交わり, 既約性から両者も交わる.
     したがって $`\overline{I_x}`$ は $`x`$ を含む既約集合であり, 極大性から $`\overline{I_x}\subseteq I_x`$ である.
     逆の包含と合わせて $`I_x=\overline{I_x}`$ となるので, 既約成分は閉集合である.
+
+[^topologist-sine-curve]: J. R. Munkres, *Topology*, §24.
+[^hawaiian-earring]: J. W. Cannon and G. R. Conner, “The combinatorial structure of the Hawaiian earring group”, *Topology and its Applications* 106 (2000), 225--271, DOI: 10.1016/S0166-8641(99)00103-0; [Hawaiian earring space](https://ncatlab.org/nlab/show/Hawaiian%2Bearring%2Bspace). 前者は基本群の構造を, 後者は原点の任意の近傍に非可縮なループがあることを扱う.
+[^linear-continuum]: J. R. Munkres, *Topology*, §24.

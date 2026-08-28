@@ -206,15 +206,15 @@ Theorem. **Smirnov コンパクト化の普遍性**
 :   有界一様連続写像は Smirnov コンパクト化へ一意に連続延長する.
     Smirnov コンパクト化は, その一様構造に関してこの延長性を持つ最小のコンパクト化である.[^smirnov-compactification]
 
-[^sorgenfrey]: J. R. Munkres, *Topology*, §17.
-[^michael]: E. Michael, “The product of a normal space and a metric space”, *Bull. Amer. Math. Soc.* 54 (1948), 540--542.
-[^alexandroff-line]: [Long line](https://en.wikipedia.org/wiki/Long_line_(topology)).
+[^sorgenfrey]: J. R. Munkres, *Topology*, §17, §31. §17 は Sorgenfrey 直線の基本性質を, §31 は Sorgenfrey 平面の標準的な反例を扱う.
+[^michael]: E. Michael, “The product of a normal space and a metric space need not be normal”, *Bulletin of the American Mathematical Society* 69 (1963), 375--376, [DOI: 10.1090/S0002-9904-1963-10931-3](https://doi.org/10.1090/S0002-9904-1963-10931-3).
+[^alexandroff-line]: 本文では, 辞書式順序で構成される標準的な long line を「Alexandroff 直線」と呼んでいる. 構成と性質については [Long line](https://en.wikipedia.org/wiki/Long_line_(topology)) を参照.
 [^polish-space]: A. S. Kechris, *Classical Descriptive Set Theory*, §3.
 [^smirnov-metrization]: Munkres, *Topology*, §42.
-[^point-countable-type]: J. E. Vaughan, “Spaces of countable and point-countable type”, *Trans. Amer. Math. Soc.* 151 (1970), 341--351.
-[^arhangelskii-p]: A. V. Arhangel'skii, “On a class of spaces containing all metric and all locally compact spaces”, *Mat. Sb.* 67 (1965), 55--88.
-[^borges-okuyama]: C. R. Borges, “On stratifiable spaces”, *Pacific J. Math.* 17 (1966), 1--16; A. Okuyama, “On metrizability of M-spaces”, *Proc. Japan Acad.* 40 (1964), 176--179.
-[^morita]: K. Morita, “Products of normal spaces with metric spaces”, *Math. Ann.* 154 (1964), 365--382.
-[^tamano]: H. Tamano, “On paracompactness”, *Pacific J. Math.* 10 (1960), 1043--1047.
-[^glicksberg]: W. Banaszczyk and E. Martín-Peinador, “The Glicksberg theorem on weakly compact sets for nuclear groups”, 1996.
-[^smirnov-compactification]: N. Bourbaki, *General Topology*, Ch. IX.
+[^point-countable-type]: J. E. Vaughan, “Spaces of countable and point-countable type”, *Transactions of the American Mathematical Society* 151 (1970), 341--351, [DOI: 10.1090/S0002-9947-1970-0266157-6](https://doi.org/10.1090/S0002-9947-1970-0266157-6).
+[^arhangelskii-p]: A. V. Arhangel'skii, “On a class of spaces containing all metric and all locally bicompact spaces”, *Mat. Sb.* 67 (1965), 55--88. 原論文は “On a class of spaces containing all metric and all bicompact spaces”, *Dokl. Akad. Nauk SSSR* 151 (1963), 751--754 としても確認できる.
+[^borges-okuyama]: C. R. Borges, “On stratifiable spaces”, *Pacific Journal of Mathematics* 17 (1966), 1--16, [DOI: 10.2140/PJM.1966.17.1](https://doi.org/10.2140/PJM.1966.17.1); A. Okuyama, “On metrizability of M-spaces”, *Proceedings of the Japan Academy* 40 (1964), 176--179, [DOI: 10.3792/pja/1195522799](https://doi.org/10.3792/pja/1195522799).
+[^morita]: K. Morita, “Products of normal spaces with metric spaces”, *Mathematische Annalen* 154 (1964), 365--382, [EuDML](https://eudml.org/doc/161169).
+[^tamano]: H. Tamano, “On paracompactness”, *Pacific Journal of Mathematics* 10 (1960), 1043--1047, [DOI: 10.2140/pjm.1960.10.1043](https://doi.org/10.2140/pjm.1960.10.1043).
+[^glicksberg]: W. Banaszczyk and E. Martín-Peinador, “The Glicksberg Theorem on Weakly Compact Sets for Nuclear Groups”, *Annals of the New York Academy of Sciences* 788 (1996), 34--39, DOI: 10.1111/j.1749-6632.1996.tb36794.x, [本文PDF](https://www.mat.ucm.es/~peinador/ElenaMartinPeinador/docs/PpalesPublic/Glicksberg1996.pdf). この論文は Glicksberg の定理そのものの原論文ではなく, 局所コンパクト Hausdorff 可換群に関する定理を核群へ拡張した論文であり, 要旨で原定理の主張を明記している.
+[^smirnov-compactification]: N. Bourbaki, *General Topology*, Ch. IX; S. A. Naimpally and B. D. Warrack, *Proximity Spaces*, Cambridge University Press, 1970, Chs. 2--3. 後者は近接空間のコンパクト化と Smirnov コンパクト化を直接扱う.
