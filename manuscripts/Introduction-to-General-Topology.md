@@ -363,7 +363,7 @@ Example. 連続だが一様連続でない写像の例
 Definition. **点列の収束性**
 :   距離空間 $`(X,d)`$ の点列 $`(p_n)`$ と点 $`p\in X`$ に対して, 条件
     ```math
-    \forall\varepsilon>0,\exists N=0,1,2,\ldots\text{ s.t. }\forall n [N\leq n\Rightarrow d(p_n,p)\leq\varepsilon]
+    \forall\varepsilon>0,\exists N\in\mathbb N\text{ s.t. }\forall n\in\mathbb N[N\leq n\Rightarrow d(p_n,p)\leq\varepsilon]
     ```
     を満たすとき, $`p`$ を **列 $`(p_n)`$ の極限** (*limit of a sequence $`(p_n)`$*) といい, 極限の存在する列は**収束する** (*converge*) といい, 収束しない列は**発散する** (*diverge*) という.
 
@@ -417,7 +417,7 @@ Proposition. **同程度連続な写像列の各点収束は連続写像をな�
 
 距離空間 $`(X,d)`$ の点列 $`(p_n)`$ が条件
 ```math
-\forall\epsilon>0,\exists N=0,1,2,\ldots\text{ s.t. }\forall m,n [N\leq m,n\Rightarrow d(p_m,p_n)\leq\varepsilon]
+\forall\epsilon>0,\exists N\in\mathbb N\text{ s.t. }\forall m,n\in\mathbb N[N\leq m,n\Rightarrow d(p_m,p_n)\leq\varepsilon]
 ```
 を満たすとき, $`(p_n)`$ を **Cauchy 列** (*Cauchy sequence*) という.
 
@@ -1566,7 +1566,7 @@ Definition. **痩集合**
 ### 積と余積
 
 Definition. **積空間**
-:   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ に対して, 台集合の直積による標準射影 $`\pi_\lambda\colon\prod_{\lambda\in\Lambda}(X_\lambda)_0\to(X_\lambda)_0`$ により
+:   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ に対して, 台集合の直積による標準射影 $`\pi_\lambda:\prod_{\lambda\in\Lambda}(X_\lambda)_0\to(X_\lambda)_0`$ により
     ```math
     \mathbf{S}\coloneqq\bigcup_{\lambda\in\Lambda}\{\pi_\lambda^{-1}(G_\lambda)\mid G_\lambda\in\mathbf{O}_{X_\lambda}\}
     ```
@@ -1612,7 +1612,7 @@ Proposition. **積空間の近傍系**
 
 Proposition.
 :   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ の積空間 $`X=\prod_{\lambda\in\Lambda}X_\lambda`$ に対して, 次がそれぞれ成り立つ.
-    - 各射影 $`\pi_\lambda\colon X\to X_\lambda`$ は連続かつ開写像である.
+    - 各射影 $`\pi_\lambda:X\to X_\lambda`$ は連続かつ開写像である.
     - 位相空間 $`Y`$ と写像 $`f:Y\to X`$ に対して以下同値.
         1. $`f`$ は連続である.
         2. 各 $`\lambda\in\Lambda`$ に対して $`\pi_\lambda\circ f:Y\to X_\lambda`$ は連続である.
@@ -1674,7 +1674,7 @@ Proposition. **箱位相と積位相**
     無限積では無限個の座標を同時に制限する箱型集合が現れるため, 一般には一致しない.
 
 Definition. **余積空間**
-:   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ に対して, 台集合のタグ付き和による標準入射 $`\iota_\lambda\colon(X_\lambda)_0\to\coprod_{\lambda\in\Lambda}(X_\lambda)_0`$ により
+:   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ に対して, 台集合のタグ付き和による標準入射 $`\iota_\lambda:(X_\lambda)_0\to\coprod_{\lambda\in\Lambda}(X_\lambda)_0`$ により
     ```math
     \mathbf{O}\coloneqq\left\{G\subseteq\coprod_{\lambda\in\Lambda}(X_\lambda)_0\mathrel{}\middle|\mathrel{}\forall\lambda\in\Lambda,\ \iota_\lambda^{-1}(G)\in\mathbf{O}_{X_\lambda}\right\}
     ```
@@ -1709,7 +1709,7 @@ Proposition. **余積空間の近傍系**
 
 Proposition. **余積空間の標準入射と普遍性**
 :   位相空間の列 $`(X_\lambda\mid\lambda\in\Lambda)`$ の余積空間 $`Y=\coprod_{\lambda\in\Lambda}X_\lambda`$ に対して, 次が成り立つ.
-    - 各標準入射 $`\iota_\lambda\colon X_\lambda\to Y`$ は開埋め込みである.
+    - 各標準入射 $`\iota_\lambda:X_\lambda\to Y`$ は開埋め込みである.
     - 位相空間 $`Z`$ と写像 $`f:Y\to Z`$ に対して以下同値.
         1. $`f`$ は連続である.
         2. 各 $`\lambda\in\Lambda`$ に対して $`f\circ\iota_\lambda:X_\lambda\to Z`$ は連続である.
@@ -2703,7 +2703,7 @@ Definition. **完全不連結空間**
 ### 弧状連結
 
 Definition. **道**
-:   位相空間 $`X`$ の点 $`a,b\in X`$ に対して, **$`a`$ から $`b`$ への道** (*path from $`a`$ to $`b`$*) とは, $`f(0)=a`$ かつ $`f(1)=b`$ を満たすような連続写像 $`f\colon[0,1]\toX`$ のことである.
+:   位相空間 $`X`$ の点 $`a,b\in X`$ に対して, **$`a`$ から $`b`$ への道** (*path from $`a`$ to $`b`$*) とは, $`f(0)=a`$ かつ $`f(1)=b`$ を満たすような連続写像 $`f:[0,1]\to X`$ のことである.
     このとき, $`a`$ をこの道の始点, $`b`$ をこの道の終点という.
 
 Definition. **道連結**
@@ -3474,9 +3474,9 @@ Theorem. **Heine–Borel の被覆定理の類似**
     よって $`S`$ はコンパクトである.
 
 Theorem. **Dini の定理**
-:   コンパクト空間 $`X`$ に対して, 連続写像の列 $`(f_n:X\to\mathbb{R})_{n=1,2,\ldots}`$ が
+:   コンパクト空間 $`X`$ に対して, 連続写像の列 $`(f_n:X\to\mathbb{R})_{n\in\mathbb N}`$ が
     1. $`(f_n)`$ はある連続写像 $`f:X\to\mathbb{R}`$ に各点収束する.
-    2. $`(f_n)`$ は単調増加列である. (i.e. $`f_n(x)\leq f_{n+1}(x),x\in X,n=1,2,\ldots`$)
+    2. $`(f_n)`$ は単調増加列である. (i.e. $`f_n(x)\leq f_{n+1}(x),x\in X,n\in\mathbb N`$)
 
     を満たすとき, $`(f_n)`$ は $`f`$ に一様収束する.
 
@@ -4445,7 +4445,7 @@ Definition. **一様被覆系**
 Proposition. **一様被覆系の準基から基の生成**
 :   $`X`$ 上の一様被覆系の準基 $`\Phi`$ に対して, $`\Psi`$ を
     ```math
-    \Psi\coloneqq\left\{\bigwedge_{i=0}^{n}\mathcal{G}_i\mathrel{}\middle|\mathrel{}\mathcal{G}_0,\ldots,\mathcal{G}_n\in\Phi,(n=0,1,2,\ldots)\right\}
+    \Psi\coloneqq\bigcup_{n\in\mathbb N}\left\{\bigwedge_{i=1}^{n}\mathcal{G}_i\mathrel{}\middle|\mathrel{}\mathcal{G}_1,\ldots,\mathcal{G}_n\in\Phi\right\}
     ```
     とすると, $`\Psi`$ は $`X`$ 上の一様被覆系の基となる.
 
@@ -4718,17 +4718,17 @@ Proposition.
     これにより星細分の包含が従い, 重心細分の包含はその部分の場合である.
 
 Definition. **被覆の正規性** (Cf. J. W. Tukey)
-:   集合 $`X`$ の被覆列 $`(\mathbf{U}_n\mid n=1,2,\ldots)`$ が **正規被覆列** (*normal sequence of covers*) であるとは, 各 $`n`$ に対して
+:   集合 $`X`$ の被覆列 $`(\mathbf{U}_n\mid n\in\mathbb N)`$ が **正規被覆列** (*normal sequence of covers*) であるとは, 各 $`n`$ に対して
     ```math
     \mathbf{U}_{n+1}\leq^\ast\mathbf{U}_n
     ```
-    が成り立つときいう. また, 位相空間 $`X`$ の開被覆 $`\mathbf{U}`$ が **正規** (*normal*) であるとは, $`\mathbf{U}_1\leq\mathbf{U}`$ を満たす正規開被覆列 $`(\mathbf{U}_n\mid n=1,2,\ldots)`$ が存在する時いい, 正規な開被覆を **正規被覆** (*normal covering*) という.
+    が成り立つときいう. また, 位相空間 $`X`$ の開被覆 $`\mathbf{U}`$ が **正規** (*normal*) であるとは, $`\mathbf{U}_1\leq\mathbf{U}`$ を満たす正規開被覆列 $`(\mathbf{U}_n\mid n\in\mathbb N)`$ が存在する時いい, 正規な開被覆を **正規被覆** (*normal covering*) という.
 
 $`\mathbf{U}^\varDelta\leq\mathbf{U}^\ast`$ より
 ```math
 \mathbf{U}\leq^\ast\mathbf{V}\Rightarrow\mathbf{U}\leq^\varDelta\mathbf{V}
 ```
-なため正規被覆列 $`(\mathbf{U}_n\mid n=1,2,\ldots)`$ は各 $`n`$ に対して
+なため正規被覆列 $`(\mathbf{U}_n\mid n\in\mathbb N)`$ は各 $`n`$ に対して
 ```math
 \mathbf{U}_{n+1}\leq^\varDelta\mathbf{U}_n
 ```
@@ -4736,11 +4736,11 @@ $`\mathbf{U}^\varDelta\leq\mathbf{U}^\ast`$ より
 また次の命題により, 上記のような条件を満たす被覆列から正規被覆列を取り出すこともできる.
 
 Proposition.
-:   集合 $`X`$ の被覆列 $`(\mathbf{U}_n\mid n=1,2,\ldots)`$ が各 $`n`$ に対して
+:   集合 $`X`$ の被覆列 $`(\mathbf{U}_n\mid n\in\mathbb N)`$ が各 $`n`$ に対して
     ```math
     \mathbf{U}_{n+1}\leq^\varDelta\mathbf{U}_n
     ```
-    を満たすとき, 被覆列 $`(\mathbf{U}_{2n}\mid n=1,2,\ldots)`$ は正規被覆列となる.
+    を満たすとき, 被覆列 $`(\mathbf{U}_{2n}\mid n\in\mathbb N)`$ は正規被覆列となる.
 
 <u>proof.</u>
 :   仮定を二回適用すると
@@ -4808,7 +4808,7 @@ Theorem. **距離等化**
 距離空間 $`(X^\ast,d^\ast)`$ を擬距離空間 $`(X,d)`$ の **距離等化** (*metric identification*) という.
 
 Theorem.
-:   集合 $`X`$ の正規被覆列 $`(\mathbf{U}_n\mid n=1,2,\ldots)`$ に対して, $`X`$ 上の擬距離 $`d`$ として次を満たすものが存在する:
+:   集合 $`X`$ の正規被覆列 $`(\mathbf{U}_n\mid n\in\mathbb N)`$ に対して, $`X`$ 上の擬距離 $`d`$ として次を満たすものが存在する:
     - $`y\in\mathbf{U}_n(x)\Rightarrow d(x,y)<2^{-n+2}`$.
     - $`d(x,y)<2^{-n}\Rightarrow y\in\mathbf{U}_n(x)`$.
 
@@ -4953,7 +4953,7 @@ Baire のカテゴリー定理は, 完備性または局所コンパクト性が
 ### Baire 性の定義と特徴づけ
 
 Definition. **Baire 空間**
-:   位相空間 $`X`$ が **Baire 空間** (*Baire space*) であるとは, $`X`$ の任意の可算個の稠密開集合 $`G_0,G_1,\ldots`$ に対して
+:   位相空間 $`X`$ が **Baire 空間** (*Baire space*) であるとは, $`X`$ の任意の可算個の稠密開集合 $`G_0,G_1,\ldots,G_j,\ldots`$ に対して
     ```math
     \bigcap_{n=0}^{\infty}G_n
     ```
@@ -5075,7 +5075,7 @@ Proposition. **Baire 空間と Volterra 空間**
 :   $`A,B`$ を稠密な $`G_\delta`$ 集合とする.
     $`A=\bigcap_{n\geq0}U_n`$, $`B=\bigcap_{n\geq0}V_n`$ と, 開集合 $`U_n,V_n`$ による表示をとる.
     $`A`$ と $`B`$ が稠密であるから, 各 $`U_n,V_n`$ は稠密開集合である.
-    Baire 性を列 $`U_0,V_0,U_1,V_1,\ldots`$ に適用すると,
+    Baire 性を列 $`U_0,V_0,U_1,V_1,\ldots,U_j,V_j,\ldots`$ に適用すると,
     ```math
     A\cap B=\bigcap_{n\geq0}(U_n\cap V_n)
     ```
