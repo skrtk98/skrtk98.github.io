@@ -154,10 +154,10 @@ Corollary.
     一般の実数値関数についても, 同じ近似を各段階の残差の大きさに応じて行う Tietze の逐次近似法により連続延長を得る.
     すなわち有界性は各近似項にのみ必要であり, 元の $`f`$ の有界性は仮定しない.
 
-### １の分割
+###  $`1`$ の分割
 
-Definition. **１の分割**
-:   位相空間 $`X`$ の開被覆 $`\mathcal{U}`$ に **従属する１の分割** (*partition of unity subordinate to $`\mathcal{U}`$*) とは, 連続写像の族
+Definition. **$`1`$ の分割**
+:   位相空間 $`X`$ の開被覆 $`\mathcal{U}`$ に **従属する $`1`$ の分割** (*partition of unity subordinate to $`\mathcal{U}`$*) とは, 連続写像の族
     ```math
     (\varphi_i:X\to[0,1]\mid i\in I)
     ```
@@ -172,8 +172,8 @@ Definition. **１の分割**
 
     ここで $`\operatorname{supp}\varphi`$ は $`\{x\in X\mid\varphi(x)\neq0\}`$ の閉包である.
 
-Theorem. **１の分割の存在定理**
-:   パラコンパクト Hausdorff 空間の任意の開被覆には従属する１の分割が存在する.
+Theorem. **$`1`$ の分割の存在定理**
+:   パラコンパクト Hausdorff 空間の任意の開被覆には従属する $`1`$ の分割が存在する.
 
 <u>proof.</u>
 :   開被覆 $`\mathcal{U}`$ をとる.
@@ -199,11 +199,11 @@ Theorem. **１の分割の存在定理**
     $`\varphi_i(x)=\psi_i(x)/\psi(x)`$ とおく.
     この族は局所有限であり, 各 $`\operatorname{supp}\varphi_i`$ は $`U_i`$ に含まれる.
     さらに各点で $`\sum_i\varphi_i(x)=1`$ である.
-    よって $`(\varphi_i)_{i\in I}`$ は $`\mathcal{U}`$ に従属する１の分割である.
+    よって $`(\varphi_i)_{i\in I}`$ は $`\mathcal{U}`$ に従属する $`1`$ の分割である.
 
 Remark.
 :   局所有限性により, 各点の近傍では上の和の非零項が有限個しかない.
-    そのため１の分割は局所的な連続関数を一つの連続関数へ貼り合わせる道具になる.
+    そのため $`1`$ の分割は局所的な連続関数を一つの連続関数へ貼り合わせる道具になる.
 
 Theorem. **遺伝的正規性の特徴づけ**
 :   位相空間 $`X`$ に対して, 以下同値.

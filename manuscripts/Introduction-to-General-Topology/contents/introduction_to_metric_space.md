@@ -25,7 +25,7 @@ Definition. **写像の連続性**
     ```math
     \forall\varepsilon>0,\exists\delta>0\text{ s.t. }\forall x\in X,d_X(x,x_0)\leq\delta\Rightarrow d_Y(f(x),f(x_0))\leq\varepsilon
     ```
-    特に, 全ての $x_0\in X$ で連続な写像 $`f:X\to Y`$ を, **連続写像** (*Continuous function*) といい, $`f:(X, d_X)\to (Y, d_Y)`$ と表す.
+    特に, 全ての $x_0\in X$ で連続な写像 $`f:X\to Y`$ を, **連続写像** (*continuous function*) といい, $`f:(X, d_X)\to (Y, d_Y)`$ と表す.
 
 距離空間 $`(X, d_X), (Y, d_Y)`$ と全単射な写像 $`f:X\to Y`$ に対して, $`f`$ と $`f^{-1}`$ がともに連続写像となるとき, $`f`$ を**同相写像** (*homeomorphism*) という.
 また, 距離空間 $`(X, d_X), (Y, d_Y)`$ の間に同相写像が存在するとき, $`(X, d_X)`$ と $`(Y, d_Y)`$ は**同相** (*homeomorphic*) であるといい, 

@@ -3,6 +3,26 @@
 痩集合は可算個の閉疎集合の和として表される, 位相的に小さい部分集合である.
 Baire のカテゴリー定理は, 完備性または局所コンパクト性があれば空間全体をそのような集合で尽くせないことを示す.
 
+### 特別な部分集合
+
+閉包と導来集合から定まる基本的な部分集合の概念を用いる.
+
+Definition.
+:   位相空間 $`X`$ の部分集合 $`A\in2^X`$ の集積点全体を $`A^d`$ とし, これを $`A`$ の**導来集合** (*derived set*) という.
+    $`A\subseteq A^d`$ な $`A`$ を **自己稠密集合** (*dense-in-itself set*) といい, 特に $`A=A^d`$ な $`A`$ を **完全集合** (*perfect set*) という.
+
+Definition. **正則開集合**
+:   位相空間 $`X`$ に対して, 開集合 $`G`$ が $`\overline{G}^\circ=G`$ を満たすとき, $`G`$ を **正則開集合** (*regular open set*) という.
+
+Definition. **稠密と疎**
+:   位相空間 $`X`$ に対して, 部分集合 $`S\in2^X`$ が $`X=\overline{S}`$ を満たすとき $`S`$ は $`X`$ において **稠密** (*dense*) であるという.
+    他方, 部分集合 $`S\in2^X`$ が $`\overline{S}^\circ=\emptyset`$ を満たすとき, $`S`$ は $`X`$ における **疎集合** (*nowhere dense set*) という.
+
+Definition. **痩集合**
+:   位相空間 $`X`$ の部分集合 $`S`$ が $`X`$ の疎集合の可算和で表現できるとき **痩せている** (*meager in $`X`$*) といい, 痩せている集合を **痩集合** (*meager set*) あるいは **第一類集合** (*set of the first category*) という. 他方, 痩集合でない集合を **非痩集合** (*nonmeager set*) あるいは **第二類集合** (*set of the second category*) という.
+    特に, 位相空間 $`X`$ の台集合自体が痩せているとき, $`X`$ を **痩空間** (*meager space*) あるいは第一類空間という. 他方, 痩空間でない位相空間を **非痩空間** (*nonmeager space*) あるいは第二類空間という.
+    また, 補集合 $`S^\complement=X\setminus S`$ が痩せているような集合 $`S`$ を **補痩である** (*comeager*) あるいは **残留的である** (*residual*) という.
+
 ### Baire 性の定義と特徴づけ
 
 Definition. **Baire 空間**
