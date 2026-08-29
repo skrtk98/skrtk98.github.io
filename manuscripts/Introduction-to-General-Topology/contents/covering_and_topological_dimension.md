@@ -70,14 +70,14 @@ Definition. **星型集合**
     ```
     を **$`\mathbf{U}`$ における $`A`$ の星** (*star of a set $`A`$ in a cover $`\mathbf{U}`$*) という.
     特に, $`A`$ が 1 点 $`x\in X`$ のみからなる集合のときは, $`\mathbf{U}(x)`$ と表す.
-    また正整数 $`n`$ に対して,
+    また $`n\in\mathbb N`$ に対して,
     ```math
     \mathbf{U}^n\coloneqq\left\{\bigcup_{i=1}^{n}U_i\mathrel{}\middle|\mathrel{}U_i\in\mathbf{U},U_i\cap U_{i+1}\neq\emptyset\right\},\quad \mathbf{U}^0=2^X
     ```
     とする.
 
 Proposition.
-:   集合 $`X`$ の被覆 $`\mathbf{U},\mathbf{V}`$ と 正整数 $`m,n`$ に対して, $`\mathbf{U}^{mn}=(\mathbf{U}^m)^n`$.
+:   集合 $`X`$ の被覆 $`\mathbf{U},\mathbf{V}`$ と $`m,n\in\mathbb N`$ に対して, $`\mathbf{U}^{mn}=(\mathbf{U}^m)^n`$.
 
 <u>proof.</u>
 :   左辺の元は, 隣り合うものが交わる $`mn`$ 個の $`\mathbf U`$ の元の合併である.
@@ -112,8 +112,8 @@ Proposition.
 
 Proposition.
 :   集合 $`X`$ の被覆 $`\mathbf{U},\mathbf{V}`$ と $`A,B\in2^X`$ に対して次がそれぞれ成り立つ.
-    1. 正整数 $`m`$ に対して, $`A\cap\mathbf{U}^m(B)\neq\emptyset\iff\mathbf{U}^m(A)\cap B\neq\emptyset`$.
-    2. 正整数 $`m,n`$ に対して, $`\mathbf{U}^{m+n}(A)=\mathbf{U}^m(\mathbf{U}^n(A))`$.
+    1. $`m\in\mathbb N`$ に対して, $`A\cap\mathbf{U}^m(B)\neq\emptyset\iff\mathbf{U}^m(A)\cap B\neq\emptyset`$.
+    2. $`m,n\in\mathbb N`$ に対して, $`\mathbf{U}^{m+n}(A)=\mathbf{U}^m(\mathbf{U}^n(A))`$.
 
 <u>proof.</u>
 :   (1) は, $`\mathbf{U}`$ の元の鎖を逆順にしても隣接する集合の交わりが保たれることから従う.
@@ -174,9 +174,9 @@ Proposition.
 と表す.
 
 Definition. **被覆の次数**
-:   集合 $`X`$ の被覆 $`\mathcal U`$ が **次数高々 $`n`$** (*of order at most $`n`$*) であるとは, 任意の相異なる $`n+2`$ 個の元 $`U_0,\ldots,U_{n+1}\in\mathcal U`$ に対して
+:   集合 $`X`$ の被覆 $`\mathcal U`$ が **次数高々 $`n`$** (*of order at most $`n`$*) であるとは, 任意の相異なる $`n+2`$ 個の元 $`U_1,\ldots,U_{n+2}\in\mathcal U`$ に対して
     ```math
-    U_0\cap\cdots\cap U_{n+1}=\emptyset
+    U_1\cap\cdots\cap U_{n+2}=\emptyset
     ```
     が成り立つことをいう.
     これは各点が高々 $`n+1`$ 個の被覆要素に属することと同値である.

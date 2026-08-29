@@ -72,14 +72,14 @@ Proposition.
 Theorem. **近縁系の定める位相**
 :   一様空間 $`X`$ に対して, 写像 $`\mathcal{U}:X\to2^{2^X}`$ を
     ```math
-    \mathcal{U}(x)\coloneqq\{U[x]\mid U\in\mathbf{E}_X\},\quad x\in X
+    \mathcal{U}(x)\coloneqq\{U(x)\mid U\in\mathbf{E}_X\},\quad x\in X
     ```
     とすると, $`\mathcal{U}`$ は $`X`$ 上の近傍基となる. このとき, $`\mathcal{U}`$ により定める位相を $`(X,\Phi)`$ における **一様位相** (*uniform topology*) という.
 
 <u>proof.</u>
-:   任意の近縁 $`U`$ は対角集合を含むので $`x\in U[x]`$ である.
+:   任意の近縁 $`U`$ は対角集合を含むので $`x\in U(x)`$ である.
     近縁系のフィルター性から, 二つの球近傍の交叉にはその二つの近縁の交叉による球近傍が含まれる.
-    $`V\circ V\subseteq U`$ を満たす近縁 $`V`$ を取ると, $`y\in V[x]`$ に対して $`V[y]\subseteq U[x]`$ である.
+    $`V\circ V\subseteq U`$ を満たす近縁 $`V`$ を取ると, $`y\in V(x)`$ に対して $`V[y]\subseteq U(x)`$ である.
     よって球近傍は近傍基の局所性の条件も満たす.
 
 ### 写像の一様連続性
@@ -112,7 +112,7 @@ Proposition. **一様連続写像の連続性**
 :   一様連続写像 $`f:X\to Y`$ と $`x\in X`$ をとる.
     $`f(x)`$ の近傍 $`O`$ に対し, 一様位相の近傍基の性質から $`U[f(x)]\subseteq O`$ となる $`Y`$ の近縁 $`U`$ をとれる.
     一様連続性により, $`(f\times f)(V)\subseteq U`$ となる $`X`$ の近縁 $`V`$ がある.
-    $`V[x]`$ は $`x`$ の近傍であり, $`y\in V[x]`$ なら $`f(y)\in U[f(x)]\subseteq O`$ である.
+    $`V(x)`$ は $`x`$ の近傍であり, $`y\in V(x)`$ なら $`f(y)\in U[f(x)]\subseteq O`$ である.
     よって $`f`$ は $`x`$ で連続である.
 
 Theorem.
@@ -147,7 +147,7 @@ Proposition. **分離性の特徴づけ**
 <u>proof.</u>
 :   (1) を仮定し $`x\neq y`$ とする.
     ある近縁 $`U`$ は $`(x,y)`$ を含まない.
-    $`V\circ V\subseteq U`$ となる対称近縁 $`V`$ に対して $`V[x]`$ と $`V[y]`$ は交わらないので, 一様位相は Hausdorff である.
+    $`V\circ V\subseteq U`$ となる対称近縁 $`V`$ に対して $`V(x)`$ と $`V[y]`$ は交わらないので, 一様位相は Hausdorff である.
     Hausdorff 空間では収束フィルターの極限は高々一つだから (2)$`\Rightarrow`$(3) が従う.
     逆に $`x\neq y`$ がすべての近縁に属するなら, 球近傍の記述から $`x`$ と $`y`$ の近傍フィルターは一致する.
     この共通の近傍フィルターは $`x`$ と $`y`$ の双方へ収束する.
@@ -169,9 +169,9 @@ Proposition.
 <u>proof.</u>
 :   $`\mathcal F`$ が $`x`$ に収束するとする.
     任意の近縁 $`U`$ に対し, 一様構造の公理から $`V\circ V\subseteq U`$ となる対称な近縁 $`V`$ をとれる.
-    収束性より $`V[x]=\{y\mid(x,y)\in V\}`$ は $`\mathcal F`$ に属する.
-    $`a,b\in V[x]`$ なら対称性から $`(a,x),(x,b)\in V`$ であり, $`(a,b)\in V\circ V\subseteq U`$ である.
-    よって $`V[x]\times V[x]\subseteq U`$ であり, $`\mathcal F`$ は Cauchy である.
+    収束性より $`V(x)=\{y\mid(x,y)\in V\}`$ は $`\mathcal F`$ に属する.
+    $`a,b\in V(x)`$ なら対称性から $`(a,x),(x,b)\in V`$ であり, $`(a,b)\in V\circ V\subseteq U`$ である.
+    よって $`V(x)\times V(x)\subseteq U`$ であり, $`\mathcal F`$ は Cauchy である.
 
     $`\mathcal G`$ が $`\mathcal F`$ の細分であるとする.
     $`\mathcal F`$ が Cauchy であれば, 各近縁 $`U`$ に対して $`A\times A\subseteq U`$ となる $`A\in\mathcal F`$ がある.
@@ -302,7 +302,7 @@ Proposition. **近縁系の定める一様被覆系**
     とすると, $`\Phi`$ は $`X`$ 上の一様被覆系となる. $`\Phi`$ を $`\mathbf{E}`$ の定める一様被覆系という.
 
 <u>proof.</u>
-:   近縁 $`U`$ ごとの球被覆 $`\{U[x]\mid x\in X\}`$ は被覆である.
+:   近縁 $`U`$ ごとの球被覆 $`\{U(x)\mid x\in X\}`$ は被覆である.
     近縁系の有限交叉性は, これらの被覆の共通細分を与える.
     $`V\circ V\subseteq U`$ を満たす近縁 $`V`$ を取ると, $`V`$ の球被覆は $`U`$ の球被覆の重心細分となる.
     したがって表示した上方閉包は一様被覆系の公理を満たす.

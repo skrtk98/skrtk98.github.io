@@ -7,7 +7,7 @@
 
 Proposition.
 :   距離空間 $`(X,d_X)`$ と $`\varepsilon>0`$ に対して, 被覆 $`\mathbf{U}_\varepsilon=\{B_\varepsilon(x)\mid x\in X\}`$ とすると, 次がそれぞれ成り立つ.
-    1. $`x\in X`$, $`\delta>0`$, 正整数 $`m`$ に対して, $`\mathbf{U}_\varepsilon^m(B_\delta(x))\subseteq B_{\delta+2m\varepsilon}(x)`$.
+    1. $`x\in X`$, $`\delta>0`$, $`m\in\mathbb N`$ に対して, $`\mathbf{U}_\varepsilon^m(B_\delta(x))\subseteq B_{\delta+2m\varepsilon}(x)`$.
     2. $`\mathbf{U}_\varepsilon^\varDelta\leq\mathbf{U}_{2\varepsilon},\quad\mathbf{U}_\varepsilon^\ast\leq\mathbf{U}_{3\varepsilon}`$
 
 <u>proof.</u>
@@ -52,14 +52,19 @@ Proposition.
 
 Theorem.
 :   位相空間 $`X,Y`$ の間の連続写像 $`f`$ と $`Y`$ の開被覆 $`\mathbf{U},\mathbf{V}`$ に対して, 次がそれぞれ成り立つ.
-    1. $`\mathbf{U}\leq^\ast\mathbf{V}`$ ならば $`f^{-1}(\mathbf{U})\leq^\ast f^{-1}(\mathbf{V})`$.
-    2. $`\mathbf{U}`$ が正規被覆ならば $`f^{-1}(\mathbf{U})`$ も正規被覆である.
+    1. $`\mathbf U\leq^\ast\mathbf V`$ ならば $`f^{-1}(\mathbf U)\leq^\ast f^{-1}(\mathbf V)`$.
+    2. $`\mathbf U`$ が正規被覆ならば $`f^{-1}(\mathbf U)`$ も正規被覆である.
+
+    ただし,
+    ```math
+    f^{-1}(\mathbf U)\coloneqq\{f^{-1}(U)\mid U\in\mathbf U\}
+    ```
 
 <u>proof.</u>
 :   逆像は合併・交叉・包含を保つ.
     したがって $`\mathbf U`$ の各元の星を含む $`\mathbf V`$ の元を引き戻せば, その逆像は $`f^{-1}(\mathbf U)`$ の対応する星を含む.
     これで (1) が従う.
-    $`(\mathbf U_n)`$ が $`\mathbf U`$ に従属する正規開被覆列なら, (1) より $`(f^{-1}(\mathbf U_n))`$ は $`f^{-1}(\mathbf U)`$ に従属する正規開被覆列である.
+    $`(\mathbf U_n\mid n\in\mathbb N)`$ が $`\mathbf U`$ に従属する正規開被覆列なら, (1) より $`(f^{-1}(\mathbf U_n)\mid n\in\mathbb N)`$ は $`f^{-1}(\mathbf U)`$ に従属する正規開被覆列である.
     よって (2) が従う.
 
 集合 $`X`$ に対して写像 $`d:X\times X\to\mathbb{R}`$ が $`x,y,z\in X`$ に対して条件

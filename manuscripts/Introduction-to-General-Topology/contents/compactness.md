@@ -228,7 +228,7 @@ Theorem.
 <u>proof.</u>
 :   $`(2)\Rightarrow(1)`$ は第二可算性から Lindelöf 性への命題である.
     $`(1)\Rightarrow(3)`$ を示す.
-    各正整数 $`n`$ に対して半径 $`1/n`$ の開球全体は $`X`$ の開被覆である.
+    各 $`n\in\mathbb N`$ に対して半径 $`1/n`$ の開球全体は $`X`$ の開被覆である.
     Lindelöf 性から各 $`n`$ について可算部分被覆を選び, その中心全体を $`D_n`$ とおく.
     $`D=\bigcup_{n\geq1}D_n`$ は可算である.
     空でない開集合 $`U`$ と $`x\in U`$ をとり, $`B(x,\varepsilon)\subseteq U`$ となる $`\varepsilon>0`$ を選ぶ.

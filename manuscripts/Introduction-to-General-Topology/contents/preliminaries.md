@@ -24,15 +24,18 @@ Definition. **集合族と集合演算**
     A\setminus B\coloneqq\{x\in X\mid x\in A\land x\notin B\}
     ```
     と定め, それぞれ **和集合**, **共通部分**, **差集合** という.
-    特に $`A\subseteq X`$ に対して $`A^\complement\coloneqq X\setminus A`$ を $`X`$ における $`A`$ の **補集合** という.
+    特に全体集合 $`X`$ が文脈から明らかなとき, $`A\subseteq X`$ に対して $`A^\complement\coloneqq X\setminus A`$ を $`X`$ における $`A`$ の **補集合** という.
 
     $`X`$ の部分集合族 $`\mathcal A`$ に対して,
     ```math
     \bigcup\mathcal A\coloneqq\{x\in X\mid\exists A\in\mathcal A,\ x\in A\},\qquad
     \bigcap\mathcal A\coloneqq\{x\in X\mid\forall A\in\mathcal A,\ x\in A\}
     ```
-    と定める.
-    $`\mathcal A=\{A_\lambda\mid\lambda\in\Lambda\}`$ のとき, これらをそれぞれ $`\bigcup_{\lambda\in\Lambda}A_\lambda`$, $`\bigcap_{\lambda\in\Lambda}A_\lambda`$ と書く.
+    と定める. $`\mathcal A=\{A_\lambda\mid\lambda\in\Lambda\}`$ のとき, これらをそれぞれ
+    ```math
+    \bigcup_{\lambda\in\Lambda}A_\lambda,\qquad\bigcap_{\lambda\in\Lambda}A_\lambda
+    ```
+    と書く.
     この約束により, $`\bigcup\emptyset=\emptyset`$ および $`\bigcap\emptyset=X`$ である.
 
     $`A\cap B=\emptyset`$ のとき, $`A,B`$ は **互いに素** であるという.
