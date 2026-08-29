@@ -4,10 +4,10 @@
 分離公理を段階的に定め, 後の距離化, コンパクト化, 連続関数の構成で必要になる条件を区別する.
 
 Definition. **分離公理**
-:   位相空間 $`X`$ の近傍系 $`\mathcal{U}`$ と $`X`$ の部分集合 $`A,B`$ に対して次をそれぞれ定義する.
+:   位相空間 $`X`$ の近傍系 $`\mathcal{N}_X`$ と $`X`$ の部分集合 $`A,B`$ に対して次をそれぞれ定義する.
     1. $`A,B`$ が **位相的に識別可能** (*topologically distinguishable*) であるとは, 各 $`a\in A,b\in B`$ に対して
         ```math
-        \mathcal{U}(a)\neq\mathcal{U}(b)
+        \mathcal{N}_X(a)\neq\mathcal{N}_X(b)
         ```
         であるときいう.
     2. $`A,B`$ が **分離される** (*separated*) とは, 
@@ -17,11 +17,11 @@ Definition. **分離公理**
         であるときいう.
     3. $`A,B`$ が **近傍で分離される** (*separated by neighbourhoods*) とは, 次を満たすときいう:
         ```math
-        \exists U\in\mathcal{U}[A],\exists V\in\mathcal{U}[B],\text{ s.t. }U\cap V=\emptyset.
+        \exists U\in\mathcal{N}_X[A],\exists V\in\mathcal{N}_X[B],\text{ s.t. }U\cap V=\emptyset.
         ```
     4. $`A,B`$ が **閉近傍で分離される** (*closed separated by neighbourhoods*) とは, 次を満たすときいう:
         ```math
-        \exists U\in\mathcal{U}[A],\exists V\in\mathcal{U}[B],\text{ s.t. }\overline{U}\cap\overline{V}=\emptyset.
+        \exists U\in\mathcal{N}_X[A],\exists V\in\mathcal{N}_X[B],\text{ s.t. }\overline{U}\cap\overline{V}=\emptyset.
         ```
     5. $`A,B`$ が **函数で分離される** (*separated by a continuous function*) とは, $`X`$ 上の実数値連続写像 $`f`$ として $`f(A)=\{0\}`$ かつ $`f(B)=\{1\}`$ を満たすものが存在するときいう.
     6. $`A,B`$ が **函数でちょうど分離される** (*precisely separated by a continuous function*) とは, $`X`$ 上の実数値連続写像 $`f`$ として $`f^{-1}(\{0\})=A`$ かつ $`f^{-1}(\{1\})=B`$ を満たすものが存在するときいう.
@@ -35,7 +35,7 @@ Proposition. **分離概念の含意系列**
     \Longrightarrow \text{近傍で分離される}\\
     &\Longrightarrow \text{分離される}
     \Longrightarrow \text{位相的に識別可能}
-    \Longrightarrow A\cap B=\emptyset.
+    \Longrightarrow \text{互いに素}.
     \end{aligned}
     ```
 
@@ -154,16 +154,16 @@ Corollary.
     一般の実数値関数についても, 同じ近似を各段階の残差の大きさに応じて行う Tietze の逐次近似法により連続延長を得る.
     すなわち有界性は各近似項にのみ必要であり, 元の $`f`$ の有界性は仮定しない.
 
-###  $`1`$ の分割
+### $`1`$ の分割
 
 Definition. **$`1`$ の分割**
-:   位相空間 $`X`$ の開被覆 $`\mathcal{U}`$ に **従属する $`1`$ の分割** (*partition of unity subordinate to $`\mathcal{U}`$*) とは, 連続写像の族
+:   位相空間 $`X`$ の開被覆 $`\mathcal{N}_X`$ に **従属する $`1`$ の分割** (*partition of unity subordinate to $`\mathcal{N}_X`$*) とは, 連続写像の族
     ```math
     (\varphi_i:X\to[0,1]\mid i\in I)
     ```
     であって, 次を満たすものをいう.
     - 族 $`(\operatorname{supp}\varphi_i\mid i\in I)`$ は局所有限である.
-    - 各 $`i\in I`$ に対して, $`\operatorname{supp}\varphi_i\subseteq U_i`$ となる $`U_i\in\mathcal{U}`$ が存在する.
+    - 各 $`i\in I`$ に対して, $`\operatorname{supp}\varphi_i\subseteq U_i`$ となる $`U_i\in\mathcal{N}_X`$ が存在する.
     - 各 $`x\in X`$ に対して,
         ```math
         \sum_{i\in I}\varphi_i(x)=1
@@ -176,9 +176,9 @@ Theorem. **$`1`$ の分割の存在定理**
 :   パラコンパクト Hausdorff 空間の任意の開被覆には従属する $`1`$ の分割が存在する.
 
 <u>proof.</u>
-:   開被覆 $`\mathcal{U}`$ をとる.
+:   開被覆 $`\mathcal{N}_X`$ をとる.
     パラコンパクト Hausdorff 空間は正規である.
-    縮小補題を二度適用し, $`X`$ を被覆する局所有限な開族 $`(W_i)_{i\in I}`$ と開族 $`(V_i)_{i\in I}`$ および $`U_i\in\mathcal{U}`$ を
+    縮小補題を二度適用し, $`X`$ を被覆する局所有限な開族 $`(W_i)_{i\in I}`$ と開族 $`(V_i)_{i\in I}`$ および $`U_i\in\mathcal{N}_X`$ を
     ```math
     \overline{W_i}\subseteq V_i,\qquad \overline{V_i}\subseteq U_i
     ```
@@ -199,7 +199,7 @@ Theorem. **$`1`$ の分割の存在定理**
     $`\varphi_i(x)=\psi_i(x)/\psi(x)`$ とおく.
     この族は局所有限であり, 各 $`\operatorname{supp}\varphi_i`$ は $`U_i`$ に含まれる.
     さらに各点で $`\sum_i\varphi_i(x)=1`$ である.
-    よって $`(\varphi_i)_{i\in I}`$ は $`\mathcal{U}`$ に従属する $`1`$ の分割である.
+    よって $`(\varphi_i)_{i\in I}`$ は $`\mathcal{N}_X`$ に従属する $`1`$ の分割である.
 
 Remark.
 :   局所有限性により, 各点の近傍では上の和の非零項が有限個しかない.
