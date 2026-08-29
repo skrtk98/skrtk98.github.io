@@ -50,7 +50,7 @@ Definition. **冪集合、直積集合、タグ付き和**
     X\times Y\coloneqq\{(x,y)\mid x\in X,\ y\in Y\}
     ```
     を $`X`$ と $`Y`$ の **直積集合** という.
-    集合族 $`(X_\lambda\mid\lambda\in\Lambda)`$ の **直積集合** を
+    集合族 $`\{X_\lambda\mid\lambda\in\Lambda\}`$ の **直積集合** を
     ```math
     \prod_{\lambda\in\Lambda}X_\lambda
     \coloneqq
@@ -80,7 +80,7 @@ Definition. **像と逆像**
     をそれぞれ $`A`$ の **像** と $`B`$ の **逆像** という.
 
 Proposition. **像、逆像と集合演算**
-:   写像 $`f:X\to Y`$, $`X`$ の部分集合族 $`(A_\lambda\mid\lambda\in\Lambda)`$, および $`Y`$ の部分集合族 $`(B_\lambda\mid\lambda\in\Lambda)`$ に対して,
+:   写像 $`f:X\to Y`$, $`X`$ の部分集合族 $`\{A_\lambda\mid\lambda\in\Lambda\}`$, および $`Y`$ の部分集合族 $`\{B_\mu\mid\mu\in M\}`$ と $`Y`$ の部分集合 $`B`$ に対して,
     ```math
     f\left(\bigcup_{\lambda\in\Lambda}A_\lambda\right)
     =\bigcup_{\lambda\in\Lambda}f(A_\lambda),\qquad
@@ -88,10 +88,10 @@ Proposition. **像、逆像と集合演算**
     \subseteq\bigcap_{\lambda\in\Lambda}f(A_\lambda),
     ```
     ```math
-    f^{-1}\left(\bigcup_{\lambda\in\Lambda}B_\lambda\right)
-    =\bigcup_{\lambda\in\Lambda}f^{-1}(B_\lambda),\qquad
-    f^{-1}\left(\bigcap_{\lambda\in\Lambda}B_\lambda\right)
-    =\bigcap_{\lambda\in\Lambda}f^{-1}(B_\lambda),
+    f^{-1}\left(\bigcup_{\mu\in M}B_\mu\right)
+    =\bigcup_{\mu\in M}f^{-1}(B_\mu),\qquad
+    f^{-1}\left(\bigcap_{\mu\in M}B_\mu\right)
+    =\bigcap_{\mu\in M}f^{-1}(B_\mu),
     ```
     ```math
     f^{-1}(B^\complement)=f^{-1}(B)^\complement
@@ -103,7 +103,7 @@ Proposition. **像、逆像と集合演算**
 Proof.
 :   像の和集合に関する等式は, 左辺の元がある $`A_\lambda`$ に属する元の像であることと同値である.
     共通部分については, $`x`$ がすべての $`A_\lambda`$ に属すれば $`f(x)`$ がすべての $`f(A_\lambda)`$ に属すため, 包含関係を得る.
-    逆像については, $`x\in X`$ が各辺に属することを $`f(x)`$ が対応する $`B_\lambda`$ に属することへ書き直せばよい.
+    逆像については, $`x\in X`$ が各辺に属することを $`f(x)`$ が対応する $`B_\mu`$ に属することへ書き直せばよい.
     和集合, 共通部分, 補集合の定義から, 表示した三つの等式が従う.
 
 Definition. **同値関係と商集合**
