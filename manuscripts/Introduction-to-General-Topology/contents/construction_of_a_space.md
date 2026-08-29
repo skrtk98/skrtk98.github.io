@@ -268,6 +268,7 @@ Proposition. **等化空間と飽和集合**
 :   $`A\subseteq X`$ に対して, 次は同値である.
     1. $`A`$ は同値関係 $`\sim`$ の各同値類を含むか, まったく含まない.
     2. $`A=\pi^{-1}(\pi(A))`$ である.
+
     さらに, $`X/\sim`$ の部分集合 $`B`$ と飽和集合 $`A`$ の対応
     ```math
     B\longmapsto\pi^{-1}(B),\qquad A\longmapsto\pi(A)

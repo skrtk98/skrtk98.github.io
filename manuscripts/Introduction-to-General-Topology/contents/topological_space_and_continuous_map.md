@@ -19,6 +19,7 @@ Definition. **近傍系**
         ```math
         \mathcal{N}^{-1}(U)=\{y\in X\mid U\in\mathcal{N}(y)\}\in\mathcal{N}(x)
         ```
+
     ただし $`\operatorname{Fil}(X)`$ は $`X`$ 上のフィルター全体の集合を表す.
 
 集合 $`X`$ とその上の近傍系 $`\mathcal{N}`$ の組
