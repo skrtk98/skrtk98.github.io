@@ -3,55 +3,158 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Personal Mathematical Documents</title>
-<style>@font-face{font-display:block;font-family:KaTeX_AMS;font-style:normal;font-weight:400;src:url(fonts/KaTeX_AMS-Regular.woff2) format("woff2"),url(fonts/KaTeX_AMS-Regular.woff) format("woff"),url(fonts/KaTeX_AMS-Regular.ttf) format("truetype")}@font-face{font-display:block;font-family:KaTeX_Caligraphic;font-style:normal;font-weight:700;src:url(fonts/KaTeX_Caligraphic-Bold.woff2) format("woff2"),url(fonts/KaTeX_Caligraphic-Bold.woff) format("woff"),url(fonts/KaTeX_Caligraphic-Bold.ttf) format("truetype")}@font-face{font-display:block;font-family:KaTeX_Caligraphic;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Caligraphic-Regular.woff2) format("woff2"),url(fonts/KaTeX_Caligraphic-Regular.woff) format("woff"),url(fonts/KaTeX_Caligraphic-Regular.ttf) format("truetype")}@font-face{font-display:block;font-family:KaTeX_Fraktur;font-style:normal;font-weight:700;src:url(fonts/KaTeX_Fraktur-Bold.woff2) format("woff2"),url(fonts/KaTeX_Fraktur-Bold.woff) format("woff"),url(fonts/KaTeX_Fraktur-Bold.ttf) format("truetype")}@font-face{font-display:block;font-family:KaTeX_Fraktur;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Fraktur-Regular.woff2) format("woff2"),url(fonts/KaTeX_Fraktur-Regular.woff) format("woff"),url(fonts/KaTeX_Fraktur-Regular.ttf) format("truetype")}@font-face{font-display:block;font-family:KaTeX_Main;font-style:normal;font-weight:700;src:url(fonts/KaTeX_Main-Bold.woff2) format("woff2"),url(fonts/KaTeX_Main-Bold.woff) format("woff"),url(fonts/KaTeX_Main-Bold.ttf) format("truetype")}@font-face{font-display:block;font-family:KaTeX_Main;font-style:italic;font-weight:700;src:url(fonts/KaTeX_Main-BoldItalic.woff2) format("woff2"),url(fonts/KaTeX_Main-BoldItalic.woff) format("woff"),url(fonts/KaTeX_Main-BoldItalic.ttf) format("truetype")}@font-face{font-display:block;font-family:KaTeX_Main;font-style:italic;font-weight:400;src:url(fonts/KaTeX_Main-Italic.woff2) format("woff2"),url(fonts/KaTeX_Main-Italic.woff) format("woff"),url(fonts/KaTeX_Main-Italic.ttf) format("truetype")}@font-face{font-display:block;font-family:KaTeX_Main;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Main-Regular.woff2) format("woff2"),url(fonts/KaTeX_Main-Regular.woff) format("woff"),url(fonts/KaTeX_Main-Regular.ttf) format("truetype")}@font-face{font-display:block;font-family:KaTeX_Math;font-style:italic;font-weight:700;src:url(fonts/KaTeX_Math-BoldItalic.woff2) format("woff2"),url(fonts/KaTeX_Math-BoldItalic.woff) format("woff"),url(fonts/KaTeX_Math-BoldItalic.ttf) format("truetype")}@font-face{font-display:block;font-family:KaTeX_Math;font-style:italic;font-weight:400;src:url(fonts/KaTeX_Math-Italic.woff2) format("woff2"),url(fonts/KaTeX_Math-Italic.woff) format("woff"),url(fonts/KaTeX_Math-Italic.ttf) format("truetype")}@font-face{font-display:block;font-family:"KaTeX_SansSerif";font-style:normal;font-weight:700;src:url(fonts/KaTeX_SansSerif-Bold.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Bold.woff) format("woff"),url(fonts/KaTeX_SansSerif-Bold.ttf) format("truetype")}@font-face{font-display:block;font-family:"KaTeX_SansSerif";font-style:italic;font-weight:400;src:url(fonts/KaTeX_SansSerif-Italic.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Italic.woff) format("woff"),url(fonts/KaTeX_SansSerif-Italic.ttf) format("truetype")}@font-face{font-display:block;font-family:"KaTeX_SansSerif";font-style:normal;font-weight:400;src:url(fonts/KaTeX_SansSerif-Regular.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Regular.woff) format("woff"),url(fonts/KaTeX_SansSerif-Regular.ttf) format("truetype")}@font-face{font-display:block;font-family:KaTeX_Script;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Script-Regular.woff2) format("woff2"),url(fonts/KaTeX_Script-Regular.woff) format("woff"),url(fonts/KaTeX_Script-Regular.ttf) format("truetype")}@font-face{font-display:block;font-family:KaTeX_Size1;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size1-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size1-Regular.woff) format("woff"),url(fonts/KaTeX_Size1-Regular.ttf) format("truetype")}@font-face{font-display:block;font-family:KaTeX_Size2;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size2-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size2-Regular.woff) format("woff"),url(fonts/KaTeX_Size2-Regular.ttf) format("truetype")}@font-face{font-display:block;font-family:KaTeX_Size3;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size3-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size3-Regular.woff) format("woff"),url(fonts/KaTeX_Size3-Regular.ttf) format("truetype")}@font-face{font-display:block;font-family:KaTeX_Size4;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size4-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size4-Regular.woff) format("woff"),url(fonts/KaTeX_Size4-Regular.ttf) format("truetype")}@font-face{font-display:block;font-family:KaTeX_Typewriter;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Typewriter-Regular.woff2) format("woff2"),url(fonts/KaTeX_Typewriter-Regular.woff) format("woff"),url(fonts/KaTeX_Typewriter-Regular.ttf) format("truetype")}.katex{font:normal 1.21em KaTeX_Main,Times New Roman,serif;line-height:1.2;position:relative;text-indent:0;text-rendering:auto}.katex *{-ms-high-contrast-adjust:none!important;border-color:currentColor}.katex .katex-version:after{content:"0.16.47"}.katex .katex-mathml{border:0;-webkit-clip-path:inset(50%);clip-path:inset(50%);height:1px;overflow:hidden;padding:0;position:absolute;width:1px}.katex .katex-html>.newline{display:block}.katex .base{position:relative;white-space:nowrap;width:-webkit-min-content;width:-moz-min-content;width:min-content}.katex .base,.katex .strut{display:inline-block}.katex .textbf{font-weight:700}.katex .textit{font-style:italic}.katex .textrm{font-family:KaTeX_Main}.katex .textsf{font-family:KaTeX_SansSerif}.katex .texttt{font-family:KaTeX_Typewriter}.katex .mathnormal{font-family:KaTeX_Math;font-style:italic}.katex .mathit{font-family:KaTeX_Main;font-style:italic}.katex .mathrm{font-style:normal}.katex .mathbf{font-family:KaTeX_Main;font-weight:700}.katex .boldsymbol{font-family:KaTeX_Math;font-style:italic;font-weight:700}.katex .amsrm,.katex .mathbb,.katex .textbb{font-family:KaTeX_AMS}.katex .mathcal{font-family:KaTeX_Caligraphic}.katex .mathfrak,.katex .textfrak{font-family:KaTeX_Fraktur}.katex .mathboldfrak,.katex .textboldfrak{font-family:KaTeX_Fraktur;font-weight:700}.katex .mathtt{font-family:KaTeX_Typewriter}.katex .mathscr,.katex .textscr{font-family:KaTeX_Script}.katex .mathsf,.katex .textsf{font-family:KaTeX_SansSerif}.katex .mathboldsf,.katex .textboldsf{font-family:KaTeX_SansSerif;font-weight:700}.katex .mathitsf,.katex .mathsfit,.katex .textitsf{font-family:KaTeX_SansSerif;font-style:italic}.katex .mainrm{font-family:KaTeX_Main;font-style:normal}.katex .vlist-t{border-collapse:collapse;display:inline-table;table-layout:fixed}.katex .vlist-r{display:table-row}.katex .vlist{display:table-cell;position:relative;vertical-align:bottom}.katex .vlist>span{display:block;height:0;position:relative}.katex .vlist>span>span{display:inline-block}.katex .vlist>span>.pstrut{overflow:hidden;width:0}.katex .vlist-t2{margin-right:-2px}.katex .vlist-s{display:table-cell;font-size:1px;min-width:2px;vertical-align:bottom;width:2px}.katex .vbox{align-items:baseline;display:inline-flex;flex-direction:column}.katex .hbox{width:100%}.katex .hbox,.katex .thinbox{display:inline-flex;flex-direction:row}.katex .thinbox{max-width:0;width:0}.katex .msupsub{text-align:left}.katex .mfrac>span>span{text-align:center}.katex .mfrac .frac-line{border-bottom-style:solid;display:inline-block;width:100%}.katex .hdashline,.katex .hline,.katex .mfrac .frac-line,.katex .overline .overline-line,.katex .rule,.katex .underline .underline-line{min-height:1px}.katex .mspace{display:inline-block}.katex .smash{display:inline;line-height:0}.katex .clap,.katex .llap,.katex .rlap{position:relative;width:0}.katex .clap>.inner,.katex .llap>.inner,.katex .rlap>.inner{position:absolute}.katex .clap>.fix,.katex .llap>.fix,.katex .rlap>.fix{display:inline-block}.katex .llap>.inner{right:0}.katex .clap>.inner,.katex .rlap>.inner{left:0}.katex .clap>.inner>span{margin-left:-50%;margin-right:50%}.katex .rule{border:0 solid;display:inline-block;position:relative}.katex .hline,.katex .overline .overline-line,.katex .underline .underline-line{border-bottom-style:solid;display:inline-block;width:100%}.katex .hdashline{border-bottom-style:dashed;display:inline-block;width:100%}.katex .sqrt>.root{margin-left:.2777777778em;margin-right:-.5555555556em}.katex .fontsize-ensurer.reset-size1.size1,.katex .sizing.reset-size1.size1{font-size:1em}.katex .fontsize-ensurer.reset-size1.size2,.katex .sizing.reset-size1.size2{font-size:1.2em}.katex .fontsize-ensurer.reset-size1.size3,.katex .sizing.reset-size1.size3{font-size:1.4em}.katex .fontsize-ensurer.reset-size1.size4,.katex .sizing.reset-size1.size4{font-size:1.6em}.katex .fontsize-ensurer.reset-size1.size5,.katex .sizing.reset-size1.size5{font-size:1.8em}.katex .fontsize-ensurer.reset-size1.size6,.katex .sizing.reset-size1.size6{font-size:2em}.katex .fontsize-ensurer.reset-size1.size7,.katex .sizing.reset-size1.size7{font-size:2.4em}.katex .fontsize-ensurer.reset-size1.size8,.katex .sizing.reset-size1.size8{font-size:2.88em}.katex .fontsize-ensurer.reset-size1.size9,.katex .sizing.reset-size1.size9{font-size:3.456em}.katex .fontsize-ensurer.reset-size1.size10,.katex .sizing.reset-size1.size10{font-size:4.148em}.katex .fontsize-ensurer.reset-size1.size11,.katex .sizing.reset-size1.size11{font-size:4.976em}.katex .fontsize-ensurer.reset-size2.size1,.katex .sizing.reset-size2.size1{font-size:.8333333333em}.katex .fontsize-ensurer.reset-size2.size2,.katex .sizing.reset-size2.size2{font-size:1em}.katex .fontsize-ensurer.reset-size2.size3,.katex .sizing.reset-size2.size3{font-size:1.1666666667em}.katex .fontsize-ensurer.reset-size2.size4,.katex .sizing.reset-size2.size4{font-size:1.3333333333em}.katex .fontsize-ensurer.reset-size2.size5,.katex .sizing.reset-size2.size5{font-size:1.5em}.katex .fontsize-ensurer.reset-size2.size6,.katex .sizing.reset-size2.size6{font-size:1.6666666667em}.katex .fontsize-ensurer.reset-size2.size7,.katex .sizing.reset-size2.size7{font-size:2em}.katex .fontsize-ensurer.reset-size2.size8,.katex .sizing.reset-size2.size8{font-size:2.4em}.katex .fontsize-ensurer.reset-size2.size9,.katex .sizing.reset-size2.size9{font-size:2.88em}.katex .fontsize-ensurer.reset-size2.size10,.katex .sizing.reset-size2.size10{font-size:3.4566666667em}.katex .fontsize-ensurer.reset-size2.size11,.katex .sizing.reset-size2.size11{font-size:4.1466666667em}.katex .fontsize-ensurer.reset-size3.size1,.katex .sizing.reset-size3.size1{font-size:.7142857143em}.katex .fontsize-ensurer.reset-size3.size2,.katex .sizing.reset-size3.size2{font-size:.8571428571em}.katex .fontsize-ensurer.reset-size3.size3,.katex .sizing.reset-size3.size3{font-size:1em}.katex .fontsize-ensurer.reset-size3.size4,.katex .sizing.reset-size3.size4{font-size:1.1428571429em}.katex .fontsize-ensurer.reset-size3.size5,.katex .sizing.reset-size3.size5{font-size:1.2857142857em}.katex .fontsize-ensurer.reset-size3.size6,.katex .sizing.reset-size3.size6{font-size:1.4285714286em}.katex .fontsize-ensurer.reset-size3.size7,.katex .sizing.reset-size3.size7{font-size:1.7142857143em}.katex .fontsize-ensurer.reset-size3.size8,.katex .sizing.reset-size3.size8{font-size:2.0571428571em}.katex .fontsize-ensurer.reset-size3.size9,.katex .sizing.reset-size3.size9{font-size:2.4685714286em}.katex .fontsize-ensurer.reset-size3.size10,.katex .sizing.reset-size3.size10{font-size:2.9628571429em}.katex .fontsize-ensurer.reset-size3.size11,.katex .sizing.reset-size3.size11{font-size:3.5542857143em}.katex .fontsize-ensurer.reset-size4.size1,.katex .sizing.reset-size4.size1{font-size:.625em}.katex .fontsize-ensurer.reset-size4.size2,.katex .sizing.reset-size4.size2{font-size:.75em}.katex .fontsize-ensurer.reset-size4.size3,.katex .sizing.reset-size4.size3{font-size:.875em}.katex .fontsize-ensurer.reset-size4.size4,.katex .sizing.reset-size4.size4{font-size:1em}.katex .fontsize-ensurer.reset-size4.size5,.katex .sizing.reset-size4.size5{font-size:1.125em}.katex .fontsize-ensurer.reset-size4.size6,.katex .sizing.reset-size4.size6{font-size:1.25em}.katex .fontsize-ensurer.reset-size4.size7,.katex .sizing.reset-size4.size7{font-size:1.5em}.katex .fontsize-ensurer.reset-size4.size8,.katex .sizing.reset-size4.size8{font-size:1.8em}.katex .fontsize-ensurer.reset-size4.size9,.katex .sizing.reset-size4.size9{font-size:2.16em}.katex .fontsize-ensurer.reset-size4.size10,.katex .sizing.reset-size4.size10{font-size:2.5925em}.katex .fontsize-ensurer.reset-size4.size11,.katex .sizing.reset-size4.size11{font-size:3.11em}.katex .fontsize-ensurer.reset-size5.size1,.katex .sizing.reset-size5.size1{font-size:.5555555556em}.katex .fontsize-ensurer.reset-size5.size2,.katex .sizing.reset-size5.size2{font-size:.6666666667em}.katex .fontsize-ensurer.reset-size5.size3,.katex .sizing.reset-size5.size3{font-size:.7777777778em}.katex .fontsize-ensurer.reset-size5.size4,.katex .sizing.reset-size5.size4{font-size:.8888888889em}.katex .fontsize-ensurer.reset-size5.size5,.katex .sizing.reset-size5.size5{font-size:1em}.katex .fontsize-ensurer.reset-size5.size6,.katex .sizing.reset-size5.size6{font-size:1.1111111111em}.katex .fontsize-ensurer.reset-size5.size7,.katex .sizing.reset-size5.size7{font-size:1.3333333333em}.katex .fontsize-ensurer.reset-size5.size8,.katex .sizing.reset-size5.size8{font-size:1.6em}.katex .fontsize-ensurer.reset-size5.size9,.katex .sizing.reset-size5.size9{font-size:1.92em}.katex .fontsize-ensurer.reset-size5.size10,.katex .sizing.reset-size5.size10{font-size:2.3044444444em}.katex .fontsize-ensurer.reset-size5.size11,.katex .sizing.reset-size5.size11{font-size:2.7644444444em}.katex .fontsize-ensurer.reset-size6.size1,.katex .sizing.reset-size6.size1{font-size:.5em}.katex .fontsize-ensurer.reset-size6.size2,.katex .sizing.reset-size6.size2{font-size:.6em}.katex .fontsize-ensurer.reset-size6.size3,.katex .sizing.reset-size6.size3{font-size:.7em}.katex .fontsize-ensurer.reset-size6.size4,.katex .sizing.reset-size6.size4{font-size:.8em}.katex .fontsize-ensurer.reset-size6.size5,.katex .sizing.reset-size6.size5{font-size:.9em}.katex .fontsize-ensurer.reset-size6.size6,.katex .sizing.reset-size6.size6{font-size:1em}.katex .fontsize-ensurer.reset-size6.size7,.katex .sizing.reset-size6.size7{font-size:1.2em}.katex .fontsize-ensurer.reset-size6.size8,.katex .sizing.reset-size6.size8{font-size:1.44em}.katex .fontsize-ensurer.reset-size6.size9,.katex .sizing.reset-size6.size9{font-size:1.728em}.katex .fontsize-ensurer.reset-size6.size10,.katex .sizing.reset-size6.size10{font-size:2.074em}.katex .fontsize-ensurer.reset-size6.size11,.katex .sizing.reset-size6.size11{font-size:2.488em}.katex .fontsize-ensurer.reset-size7.size1,.katex .sizing.reset-size7.size1{font-size:.4166666667em}.katex .fontsize-ensurer.reset-size7.size2,.katex .sizing.reset-size7.size2{font-size:.5em}.katex .fontsize-ensurer.reset-size7.size3,.katex .sizing.reset-size7.size3{font-size:.5833333333em}.katex .fontsize-ensurer.reset-size7.size4,.katex .sizing.reset-size7.size4{font-size:.6666666667em}.katex .fontsize-ensurer.reset-size7.size5,.katex .sizing.reset-size7.size5{font-size:.75em}.katex .fontsize-ensurer.reset-size7.size6,.katex .sizing.reset-size7.size6{font-size:.8333333333em}.katex .fontsize-ensurer.reset-size7.size7,.katex .sizing.reset-size7.size7{font-size:1em}.katex .fontsize-ensurer.reset-size7.size8,.katex .sizing.reset-size7.size8{font-size:1.2em}.katex .fontsize-ensurer.reset-size7.size9,.katex .sizing.reset-size7.size9{font-size:1.44em}.katex .fontsize-ensurer.reset-size7.size10,.katex .sizing.reset-size7.size10{font-size:1.7283333333em}.katex .fontsize-ensurer.reset-size7.size11,.katex .sizing.reset-size7.size11{font-size:2.0733333333em}.katex .fontsize-ensurer.reset-size8.size1,.katex .sizing.reset-size8.size1{font-size:.3472222222em}.katex .fontsize-ensurer.reset-size8.size2,.katex .sizing.reset-size8.size2{font-size:.4166666667em}.katex .fontsize-ensurer.reset-size8.size3,.katex .sizing.reset-size8.size3{font-size:.4861111111em}.katex .fontsize-ensurer.reset-size8.size4,.katex .sizing.reset-size8.size4{font-size:.5555555556em}.katex .fontsize-ensurer.reset-size8.size5,.katex .sizing.reset-size8.size5{font-size:.625em}.katex .fontsize-ensurer.reset-size8.size6,.katex .sizing.reset-size8.size6{font-size:.6944444444em}.katex .fontsize-ensurer.reset-size8.size7,.katex .sizing.reset-size8.size7{font-size:.8333333333em}.katex .fontsize-ensurer.reset-size8.size8,.katex .sizing.reset-size8.size8{font-size:1em}.katex .fontsize-ensurer.reset-size8.size9,.katex .sizing.reset-size8.size9{font-size:1.2em}.katex .fontsize-ensurer.reset-size8.size10,.katex .sizing.reset-size8.size10{font-size:1.4402777778em}.katex .fontsize-ensurer.reset-size8.size11,.katex .sizing.reset-size8.size11{font-size:1.7277777778em}.katex .fontsize-ensurer.reset-size9.size1,.katex .sizing.reset-size9.size1{font-size:.2893518519em}.katex .fontsize-ensurer.reset-size9.size2,.katex .sizing.reset-size9.size2{font-size:.3472222222em}.katex .fontsize-ensurer.reset-size9.size3,.katex .sizing.reset-size9.size3{font-size:.4050925926em}.katex .fontsize-ensurer.reset-size9.size4,.katex .sizing.reset-size9.size4{font-size:.462962963em}.katex .fontsize-ensurer.reset-size9.size5,.katex .sizing.reset-size9.size5{font-size:.5208333333em}.katex .fontsize-ensurer.reset-size9.size6,.katex .sizing.reset-size9.size6{font-size:.5787037037em}.katex .fontsize-ensurer.reset-size9.size7,.katex .sizing.reset-size9.size7{font-size:.6944444444em}.katex .fontsize-ensurer.reset-size9.size8,.katex .sizing.reset-size9.size8{font-size:.8333333333em}.katex .fontsize-ensurer.reset-size9.size9,.katex .sizing.reset-size9.size9{font-size:1em}.katex .fontsize-ensurer.reset-size9.size10,.katex .sizing.reset-size9.size10{font-size:1.2002314815em}.katex .fontsize-ensurer.reset-size9.size11,.katex .sizing.reset-size9.size11{font-size:1.4398148148em}.katex .fontsize-ensurer.reset-size10.size1,.katex .sizing.reset-size10.size1{font-size:.2410800386em}.katex .fontsize-ensurer.reset-size10.size2,.katex .sizing.reset-size10.size2{font-size:.2892960463em}.katex .fontsize-ensurer.reset-size10.size3,.katex .sizing.reset-size10.size3{font-size:.337512054em}.katex .fontsize-ensurer.reset-size10.size4,.katex .sizing.reset-size10.size4{font-size:.3857280617em}.katex .fontsize-ensurer.reset-size10.size5,.katex .sizing.reset-size10.size5{font-size:.4339440694em}.katex .fontsize-ensurer.reset-size10.size6,.katex .sizing.reset-size10.size6{font-size:.4821600771em}.katex .fontsize-ensurer.reset-size10.size7,.katex .sizing.reset-size10.size7{font-size:.5785920926em}.katex .fontsize-ensurer.reset-size10.size8,.katex .sizing.reset-size10.size8{font-size:.6943105111em}.katex .fontsize-ensurer.reset-size10.size9,.katex .sizing.reset-size10.size9{font-size:.8331726133em}.katex .fontsize-ensurer.reset-size10.size10,.katex .sizing.reset-size10.size10{font-size:1em}.katex .fontsize-ensurer.reset-size10.size11,.katex .sizing.reset-size10.size11{font-size:1.1996142719em}.katex .fontsize-ensurer.reset-size11.size1,.katex .sizing.reset-size11.size1{font-size:.2009646302em}.katex .fontsize-ensurer.reset-size11.size2,.katex .sizing.reset-size11.size2{font-size:.2411575563em}.katex .fontsize-ensurer.reset-size11.size3,.katex .sizing.reset-size11.size3{font-size:.2813504823em}.katex .fontsize-ensurer.reset-size11.size4,.katex .sizing.reset-size11.size4{font-size:.3215434084em}.katex .fontsize-ensurer.reset-size11.size5,.katex .sizing.reset-size11.size5{font-size:.3617363344em}.katex .fontsize-ensurer.reset-size11.size6,.katex .sizing.reset-size11.size6{font-size:.4019292605em}.katex .fontsize-ensurer.reset-size11.size7,.katex .sizing.reset-size11.size7{font-size:.4823151125em}.katex .fontsize-ensurer.reset-size11.size8,.katex .sizing.reset-size11.size8{font-size:.578778135em}.katex .fontsize-ensurer.reset-size11.size9,.katex .sizing.reset-size11.size9{font-size:.6945337621em}.katex .fontsize-ensurer.reset-size11.size10,.katex .sizing.reset-size11.size10{font-size:.8336012862em}.katex .fontsize-ensurer.reset-size11.size11,.katex .sizing.reset-size11.size11{font-size:1em}.katex .delimsizing.size1{font-family:KaTeX_Size1}.katex .delimsizing.size2{font-family:KaTeX_Size2}.katex .delimsizing.size3{font-family:KaTeX_Size3}.katex .delimsizing.size4{font-family:KaTeX_Size4}.katex .delimsizing.mult .delim-size1>span{font-family:KaTeX_Size1}.katex .delimsizing.mult .delim-size4>span{font-family:KaTeX_Size4}.katex .nulldelimiter{display:inline-block;width:.12em}.katex .delimcenter,.katex .op-symbol{position:relative}.katex .op-symbol.small-op{font-family:KaTeX_Size1}.katex .op-symbol.large-op{font-family:KaTeX_Size2}.katex .accent>.vlist-t,.katex .op-limits>.vlist-t{text-align:center}.katex .accent .accent-body{position:relative}.katex .accent .accent-body:not(.accent-full){width:0}.katex .overlay{display:block}.katex .mtable .vertical-separator{display:inline-block;min-width:1px}.katex .mtable .arraycolsep{display:inline-block}.katex .mtable .col-align-c>.vlist-t{text-align:center}.katex .mtable .col-align-l>.vlist-t{text-align:left}.katex .mtable .col-align-r>.vlist-t{text-align:right}.katex .svg-align{text-align:left}.katex svg{fill:currentColor;stroke:currentColor;display:block;height:inherit;position:absolute;width:100%}.katex svg path{stroke:none}.katex svg{fill-rule:nonzero;fill-opacity:1;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1}.katex img{border-style:none;max-height:none;max-width:none;min-height:0;min-width:0}.katex .stretchy{display:block;overflow:hidden;position:relative;width:100%}.katex .stretchy:after,.katex .stretchy:before{content:""}.katex .hide-tail{overflow:hidden;position:relative;width:100%}.katex .halfarrow-left{left:0;overflow:hidden;position:absolute;width:50.2%}.katex .halfarrow-right{overflow:hidden;position:absolute;right:0;width:50.2%}.katex .brace-left{left:0;overflow:hidden;position:absolute;width:25.1%}.katex .brace-center{left:25%;overflow:hidden;position:absolute;width:50%}.katex .brace-right{overflow:hidden;position:absolute;right:0;width:25.1%}.katex .x-arrow-pad{padding:0 .5em}.katex .cd-arrow-pad{padding:0 .55556em 0 .27778em}.katex .mover,.katex .munder,.katex .x-arrow{text-align:center}.katex .boxpad{padding:0 .3em}.katex .fbox,.katex .fcolorbox{border:.04em solid;box-sizing:border-box}.katex .cancel-pad{padding:0 .2em}.katex .cancel-lap{margin-left:-.2em;margin-right:-.2em}.katex .sout{border-bottom-style:solid;border-bottom-width:.08em}.katex .angl{border-right:.049em solid;border-top:.049em solid;box-sizing:border-box;margin-right:.03889em}.katex .anglpad{padding:0 .03889em}.katex .eqn-num:before{content:"(" counter(katexEqnNo) ")";counter-increment:katexEqnNo}.katex .mml-eqn-num:before{content:"(" counter(mmlEqnNo) ")";counter-increment:mmlEqnNo}.katex .mtr-glue{width:50%}.katex .cd-vert-arrow{display:inline-block;position:relative}.katex .cd-label-left{display:inline-block;position:absolute;right:calc(50% + .3em);text-align:left}.katex .cd-label-right{display:inline-block;left:calc(50% + .3em);position:absolute;text-align:right}.katex-display{display:block;margin:1em 0;text-align:center}.katex-display>.katex{display:block;text-align:center;white-space:nowrap}.katex-display>.katex>.katex-html{display:block;position:relative}.katex-display>.katex>.katex-html>.tag{position:absolute;right:0}.katex-display.leqno>.katex>.katex-html>.tag{left:0;right:auto}.katex-display.fleqn>.katex{padding-left:2em;text-align:left}body{counter-reset:katexEqnNo mmlEqnNo}
-
-html body { font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 16px; line-height: 1.6; color: #333; background: #fff; overflow: initial; box-sizing: border-box; word-wrap: break-word; }
-body { margin: 0; }
-html body h1, html body h2, html body h3, html body h4, html body h5, html body h6 { line-height: 1.2; margin-top: 1em; margin-bottom: 16px; color: #000; }
-html body h1 { font-size: 2.25em; font-weight: 300; padding-bottom: .3em; }
-html body h2 { font-size: 1.75em; font-weight: 400; padding-bottom: .3em; }
-html body h3 { font-size: 1.5em; font-weight: 500; } html body h4 { font-size: 1.25em; font-weight: 600; }
-html body h1, html body h2, html body h3, html body h4, html body h5 { font-weight: 600; }
-html body h5 { font-size: 1em; } html body h6 { color: #5c5c5c; }
-html body strong { color: #000; } html body a { color: #08c; text-decoration: none; } html body a:hover { color: #00a3f5; }
-html body img { max-width: 100%; } html body > p { margin-top: 0; margin-bottom: 16px; word-wrap: break-word; }
-html body ol, html body ul { padding-left: 2em; } html body li { margin-bottom: 0; }
-html body blockquote { margin: 16px 0; padding: 0 15px; color: #5c5c5c; background: #f0f0f0; border-left: 4px solid #d6d6d6; }
-html body hr { height: 4px; margin: 32px 0; background: #d6d6d6; border: 0; }
-html body table { margin: 10px 0 15px; border-collapse: collapse; display: block; width: 100%; overflow: auto; }
-html body table td, html body table th { border: 1px solid #d6d6d6; padding: 6px 13px; }
-html body dl { padding: 0; } html body dl dt { padding: 0; margin-top: 16px; font-weight: 700; } html body dl dd { padding: 0 16px; margin-bottom: 16px; }
-html body code { font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: .85em; color: #000; background: #f0f0f0; border-radius: 3px; padding: .2em 0; }
-html body pre { padding: 1em; overflow: auto; line-height: 1.45; border-radius: 3px; } html body pre code { padding: 0; background: transparent; }
-html body[for="html-export"]:not([data-presentation-mode]) { position: relative; width: 100%; height: 100%; top: 0; left: 0; margin: 0; padding: 0; overflow: auto; }
-html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview { position: relative; top: 0; min-height: 100vh; }
-@media screen and (min-width: 914px) { html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview { padding: 2em calc(50% - 457px + 2em); } }
-@media screen and (max-width: 914px) { html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview { padding: 2em; } }
-@media screen and (max-width: 450px) { html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview { font-size: 14px !important; padding: 1em; } }
-@media print { html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn { display: none; } }
-html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn { position: fixed; bottom: 8px; left: 8px; font-size: 28px; cursor: pointer; color: inherit; z-index: 99; width: 32px; text-align: center; opacity: .4; }
-html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn { opacity: 1; }
-html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc { position: fixed; top: 0; left: 0; width: 300px; height: 100%; padding: 32px 0 48px 0; font-size: 14px; box-shadow: 0 0 4px rgba(150,150,150,.33); box-sizing: border-box; overflow: auto; background-color: inherit; z-index: 98; }
-html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a { text-decoration: none; }
-html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc { padding: 0 16px; }
-html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-details { margin: 0; padding: 0; border: none; }
-html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link { display: inline; padding: .25rem 0; }
-html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div { display: inline; }
-html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper[data-level="0"] { padding-left: 0; }
-html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper[data-level="1"] { padding-left: 16px; }
-html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper[data-level="2"] { padding-left: 32px; }
-html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper[data-level="3"] { padding-left: 48px; }
-html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper[data-level="4"] { padding-left: 64px; }
-html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper[data-level="5"] { padding-left: 80px; }
-html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview { left: 300px; width: calc(100% - 300px); padding: 2em calc(50% - 457px - 150px); margin: 0; box-sizing: border-box; }
-html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview { left: 50%; transform: translateX(-50%); }
-html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc { display: none; }
-.diagram { margin: 1.5rem auto; text-align: center; overflow-x: auto; } .diagram svg { max-height: 28rem; }
-@media screen and (max-width: 1274px) { html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview { padding: 2em; } }
-@media screen and (max-width: 450px) { html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview { width: 100%; } }
-@media print { html body[for="html-export"]:not([data-presentation-mode]) .md-sidebar-toc { display: none; } }
+<meta name="description" content="圏論と位相空間論を中心とした、個人の数学学習ノート。定義、命題、例をまとめた原稿を公開しています。">
+<title>数学の学習ノート | Personal Mathematical Documents</title>
+<style>/* DADS-inspired typography, links and focus indicators. See THIRD_PARTY_LICENSES.md. */
+:root {
+  color-scheme: light;
+  --ink: #1a1a1a;
+  --muted: #595959;
+  --blue: #0017c1;
+  --blue-hover: #000082;
+  --line: #d9d9d9;
+  --surface: #f5f8ff;
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 24px; }
+body { margin: 0; color: var(--ink); background: #fff; font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", Meiryo, sans-serif; font-size: 16px; line-height: 1.75; overflow-wrap: anywhere; }
+h1, h2, h3, h4, p { margin: 0; }
+a { color: var(--blue); text-decoration: underline; text-underline-offset: .2em; }
+a:visited { color: #8b008b; }
+a:hover { color: var(--blue-hover); text-decoration-thickness: 3px; }
+a:focus-visible { border-radius: 4px; outline: 4px solid #000; outline-offset: 2px; background: #ffd43d; color: var(--blue); box-shadow: 0 0 0 2px #ffd43d; }
+.container { width: min(100% - 96px, 1120px); margin-inline: auto; }
+.skip-link { position: absolute; top: 12px; left: 16px; z-index: 2; padding: 12px 20px; background: #fff; transform: translateY(-180%); }
+.skip-link:focus { transform: translateY(0); }
+.site-header { border-top: 6px solid var(--blue); border-bottom: 1px solid var(--line); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 88px; }
+.site-name { display: inline-flex; align-items: center; gap: 12px; padding-block: 8px; font-size: 20px; font-weight: 700; text-decoration: none; }
+.site-name, .site-name:visited { color: var(--ink); }
+.site-mark { display: grid; place-items: center; width: 36px; height: 36px; background: var(--blue); color: #fff; font-size: 28px; line-height: 1; }
+nav { display: flex; flex-wrap: wrap; gap: 8px 32px; }
+nav a { display: inline-flex; align-items: center; min-height: 44px; }
+.hero { background: var(--surface); border-bottom: 1px solid #dce3f3; }
+.hero-inner { padding-block: 56px 48px; }
+.eyebrow { color: var(--blue); font-size: 12px; font-weight: 700; letter-spacing: .12em; }
+h1 { margin-top: 16px; font-size: clamp(32px, 4vw, 48px); font-weight: 700; line-height: 1.4; letter-spacing: .02em; }
+.hero-description { margin-top: 20px; font-size: 18px; line-height: 1.8; }
+.hero-link { display: inline-flex; align-items: center; gap: 32px; min-height: 48px; margin-top: 24px; font-weight: 700; }
+.content { padding-block: 56px 64px; }
+.section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 20px; border-bottom: 2px solid var(--ink); }
+h2 { font-size: 28px; line-height: 1.5; font-weight: 700; }
+.section-heading p { color: var(--muted); font-size: 16px; }
+.document-group { margin-top: 32px; }
+.group-heading { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 20px; }
+.group-number { color: var(--blue); font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums; }
+h3 { font-size: 22px; line-height: 1.5; }
+.group-heading p { color: var(--muted); font-size: 14px; }
+.document-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 0; padding: 0; list-style: none; }
+.document-card { position: relative; display: flex; flex-direction: column; padding: 24px 24px 52px; border: 1px solid #b3b3b3; border-radius: 8px; background: #fff; }
+h4 { font-size: 20px; line-height: 1.6; }
+.document-card a::after { position: absolute; inset: 0; border-radius: 8px; content: ""; }
+.document-card p { margin-top: 12px; color: var(--muted); line-height: 1.75; }
+.card-arrow { position: absolute; right: 24px; bottom: 16px; color: var(--blue); font-size: 24px; line-height: 1; }
+.document-card:hover { border-color: var(--blue); background: #f8faff; }
+.document-card:focus-within { outline: 4px solid #000; outline-offset: 2px; box-shadow: 0 0 0 2px #ffd43d; }
+.about { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--line); }
+.about h2 { font-size: 22px; }
+.about p { margin-bottom: 16px; }
+.about a { display: inline-flex; align-items: center; min-height: 44px; }
+.site-footer { border-top: 1px solid var(--line); background: #f5f5f5; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 24px; font-size: 14px; }
+.footer-inner p { color: var(--muted); }
+.footer-inner a { display: inline-flex; align-items: center; min-height: 44px; }
+@media (max-width: 1000px) {
+  .document-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .header-inner { flex-wrap: wrap; gap: 4px 24px; padding-block: 16px; }
+}
+@media (max-width: 600px) {
+  .container { width: calc(100% - 40px); }
+  .header-inner { align-items: flex-start; }
+  .site-name { font-size: 18px; }
+  nav { gap: 24px; font-size: 14px; }
+  .hero-inner { padding-block: 40px 32px; }
+  .eyebrow { font-size: 10px; letter-spacing: .08em; }
+  .hero-description { font-size: 16px; }
+  .content { padding-block: 40px; }
+  h2 { font-size: 24px; }
+  .document-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .document-card { padding: 24px 24px 48px; }
+  .about { grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 40px; }
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+@media (forced-colors: active) {
+  .document-card:focus-within { outline-color: Highlight; }
+  .site-mark { border: 1px solid CanvasText; }
+}
+@media print {
+  .skip-link, nav, .hero-link, .card-arrow, .footer-inner a { display: none; }
+  .container { width: 100%; }
+  .document-card { break-inside: avoid; }
+  .hero-inner, .content { padding-block: 24px; }
+}
 </style>
 </head>
-<body for="html-export"><div class="crossnote markdown-preview"><h1>Personal Mathematical Documents</h1><p>個人的な数学の教科書的資料を含む静的ドキュメント群。</p><ul><li><a href="Counterexamples-in-Separation-Axioms/">分離公理の反例</a></li><li><a href="Introduction-to-Category-Theory/">速習圏論</a></li><li><a href="Introduction-to-Enriched-Categor-over-Monoidal-base-Theory/">速習モノイダル基底上の豊穣圏論</a></li><li><a href="Introduction-to-Functional-Analysis/">関数解析学</a></li><li><a href="Introduction-to-General-Topology/">位相空間論</a></li><li><a href="Introduction-to-Monoidal-Category-Theory/">速習モノイダル圏論</a></li></ul><div class="md-sidebar-toc"></div></div><a id="sidebar-toc-btn">≡</a><script>(function(){var sidebarTOCBtn=document.getElementById("sidebar-toc-btn");function scrollAnchor(){var target=location.hash?document.getElementById(decodeURIComponent(location.hash.slice(1))):null;if(!target){var headings=document.querySelectorAll(".markdown-preview h1,.markdown-preview h2,.markdown-preview h3,.markdown-preview h4,.markdown-preview h5,.markdown-preview h6");target=[...headings].sort(function(a,b){return Math.abs(a.getBoundingClientRect().top)-Math.abs(b.getBoundingClientRect().top);})[0];}if(!target)return null;return {element:target,top:target.getBoundingClientRect().top};}sidebarTOCBtn.addEventListener("click",function(event){event.stopPropagation();var anchor=scrollAnchor();if(document.body.hasAttribute("html-show-sidebar-toc")){document.body.removeAttribute("html-show-sidebar-toc");}else{document.body.setAttribute("html-show-sidebar-toc",true);}if(anchor){requestAnimationFrame(function(){var delta=anchor.element.getBoundingClientRect().top-anchor.top;if(delta)window.scrollTo(0,window.scrollY+delta);});}});})();</script></body>
+<body>
+<a class="skip-link" href="#main">本文へ移動</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="site-name" href="./" aria-label="数学の学習ノート トップページ"><span class="site-mark" aria-hidden="true">∴</span>数学の学習ノート</a>
+    <nav aria-label="サイト内ナビゲーション"><a href="#documents">原稿一覧</a><a href="#about">このサイトについて</a></nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+  <section class="hero" aria-labelledby="page-title">
+    <div class="container hero-inner">
+      <p class="eyebrow">PERSONAL MATHEMATICAL DOCUMENTS</p>
+      <h1 id="page-title">数学の学習ノート</h1>
+      <p class="hero-description">定義から、構造と関係をたどる。<br>圏論と位相空間論を中心にまとめた、個人の学習記録。</p>
+      <a class="hero-link" href="#documents">原稿を読む<span aria-hidden="true">↓</span></a>
+    </div>
+  </section>
+  <div class="container content">
+    <section id="documents" aria-labelledby="documents-heading">
+      <div class="section-heading"><h2 id="documents-heading">原稿一覧</h2><p>全5編</p></div>
+      <section class="document-group" aria-labelledby="category-heading">
+      <div class="group-heading"><span class="group-number" aria-hidden="true">01</span><h3 id="category-heading">圏論</h3><p>構造と関係を記述する</p></div>
+      <ul class="document-grid"><li class="document-card">
+      <h4><a href="Introduction-to-Category-Theory/">速習圏論</a></h4>
+      <p>対象と射、関手、自然変換、普遍性から圏論の基礎をたどる。</p>
+      <span class="card-arrow" aria-hidden="true">→</span>
+    </li>
+<li class="document-card">
+      <h4><a href="Introduction-to-Monoidal-Category-Theory/">速習モノイダル圏論</a></h4>
+      <p>モノイダル構造と、その上で展開される圏論を学ぶ。</p>
+      <span class="card-arrow" aria-hidden="true">→</span>
+    </li>
+<li class="document-card">
+      <h4><a href="Introduction-to-Enriched-Categor-over-Monoidal-base-Theory/">速習モノイダル基底上の豊穣圏論</a></h4>
+      <p>モノイダル圏を基底とする豊穣圏の基本概念を整理する。</p>
+      <span class="card-arrow" aria-hidden="true">→</span>
+    </li></ul>
+    </section>
+<section class="document-group" aria-labelledby="topology-heading">
+      <div class="group-heading"><span class="group-number" aria-hidden="true">02</span><h3 id="topology-heading">位相空間論</h3><p>空間の性質を捉える</p></div>
+      <ul class="document-grid"><li class="document-card">
+      <h4><a href="Introduction-to-General-Topology/">位相空間論</a></h4>
+      <p>位相空間と連続写像から、収束、コンパクト性、距離化へ。</p>
+      <span class="card-arrow" aria-hidden="true">→</span>
+    </li>
+<li class="document-card">
+      <h4><a href="Counterexamples-in-Separation-Axioms/">分離公理の反例</a></h4>
+      <p>具体的な反例を通して、分離公理の条件と関係を考える。</p>
+      <span class="card-arrow" aria-hidden="true">→</span>
+    </li></ul>
+    </section>
+
+    </section>
+    <section id="about" class="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">このサイトについて</h2>
+      <div><p>数学を学ぶ過程で整理した、教科書的な資料を公開している。<br>定義、命題、例を参照しながら、各分野の概念をたどるためのノートである。</p>
+      <a href="https://github.com/skrtk98/skrtk98.github.io">原稿とソースコードを見る（GitHub）<span aria-hidden="true"> ↗</span></a></div>
+    </section>
+  </div>
+</main>
+<footer class="site-footer"><div class="container footer-inner"><p>Personal Mathematical Documents</p><a href="#page-title">ページの先頭へ<span aria-hidden="true"> ↑</span></a></div></footer>
+</body>
 </html>
