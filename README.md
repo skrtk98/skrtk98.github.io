@@ -1,121 +1,44 @@
 # Personal Mathematical Documents
 
-このリポジトリは、個人的な数学の教科書的資料を含む静的ドキュメントを Markdown 原稿として管理し、GitHub Pages で公開する。
+<https://skrtk98.github.io/> のトップページを管理する。
+
+原稿は原稿ごとのリポジトリで管理し、各リポジトリが `https://skrtk98.github.io/<リポジトリ名>/` に GitHub Pages として公開する。
+このリポジトリは、それらへのリンク一覧と、旧 URL からの転送ページだけを公開する。
+
+## 原稿のリポジトリ
+
+| リポジトリ | 公開 URL | 内容 |
+|---|---|---|
+| [Category-Theory](https://github.com/skrtk98/Category-Theory) | `/Category-Theory/` | 速習圏論、速習モノイダル圏論、速習モノイダル基底上の豊穣圏論 |
+| [Introduction-to-General-Topology](https://github.com/skrtk98/Introduction-to-General-Topology) | `/Introduction-to-General-Topology/` | 位相空間論、分離公理の反例、Lean 4 による検証 |
+| [Introduction-to-Linear-Algebra](https://github.com/skrtk98/Introduction-to-Linear-Algebra) | `/Introduction-to-Linear-Algebra/` | 線形代数学入門 |
+| [Introduction-to-Functional-Analysis](https://github.com/skrtk98/Introduction-to-Functional-Analysis) | `/Introduction-to-Functional-Analysis/` | 関数解析学 |
+| [math-notes-previewer](https://github.com/skrtk98/math-notes-previewer) | なし | 原稿を HTML に変換する CLI とプレビューワー |
+
+2026-10-23 までは、すべての原稿をこのリポジトリで管理していた。
+分割前の履歴はこのリポジトリの履歴に残っており、各原稿のリポジトリにも該当するファイルの履歴を引き継いでいる。
 
 ## 構成
 
-- `manuscripts/`：公開する Markdown 原稿と、原稿から参照する共通章。
-- `previewer/`：Markdown、KaTeX、TikZ を HTML に変換する CLI とブラウザプレビューワー。
-- `previewer/THIRD_PARTY_LICENSES.md`：Markdown Preview Enhanced から移植したレイアウト規則の出典とライセンス。
-- `site/`：`npm run build` が生成する GitHub Pages 用 HTML。直接編集しない。
-- `build/preview-site/`：`npm run preview` が生成するローカルプレビュー用 HTML。公開対象ではない。
-- `TopologyFormalization/`：位相空間論の Lean 4 検証プロジェクト。
+- `homepage/documents.js`：トップページに載せる原稿の一覧と、旧 URL から新 URL への転送先。
+- `homepage/homepage.js`、`homepage/homepage.css`：トップページの HTML と CSS。
+- `homepage/build.js`：トップページと転送ページを `site/` に生成する。
+- `homepage/THIRD_PARTY_LICENSES.md`：トップページが参考にしたデジタル庁デザインシステムの出典とライセンス。
 
-## 使い方
+## 原稿を追加する
 
-### 初回セットアップ
+1. 原稿のリポジトリを作り、`math-notes-previewer` の README に従って GitHub Pages に公開する。
+2. `homepage/documents.js` に、表示名、公開 URL、説明を追加する。
+3. `npm run build` を実行し、`site/index.html` を確認する。
+4. `main` に push すると、GitHub Actions が `site/` を生成して公開する。`site/` はコミットしない。
 
-Node.js 20 以上と、TikZ の変換に使う `latex` および `dvisvgm` を用意する。
+## 旧 URL
 
-Ubuntu では次のコマンドで導入できる。
+次の URL は、分割後の公開先へ転送する。
 
-```bash
-sudo apt-get update
-sudo apt-get install -y dvisvgm texlive-latex-extra texlive-pictures
-```
+- `/Introduction-to-Category-Theory/` → `/Category-Theory/Introduction-to-Category-Theory/`
+- `/Introduction-to-Monoidal-Category-Theory/` → `/Category-Theory/Introduction-to-Monoidal-Category-Theory/`
+- `/Introduction-to-Enriched-Categor-over-Monoidal-base-Theory/` → `/Category-Theory/Introduction-to-Enriched-Categor-over-Monoidal-base-Theory/`
+- `/Counterexamples-in-Separation-Axioms/` → `/Introduction-to-General-Topology/Counterexamples-in-Separation-Axioms/`
 
-依存関係をインストールする。
-
-```bash
-npm ci
-```
-
-### ブラウザプレビュー
-
-原稿を編集しながら確認する場合は、リポジトリのルートで次を実行する。
-
-```bash
-npm run preview
-```
-
-ブラウザで `http://localhost:4173/` を開く。
-
-トップページには `manuscripts/` 以下のすべての Markdown ファイルが一覧表示される。
-
-プレビューワーは `manuscripts/` 以下を再帰的に走査し、すべての Markdown ファイルをトップページに一覧表示する。
-
-各項目には、先頭にあるレベル1見出しを表示名として使う。
-
-レベル1見出しがないファイルは、相対パスを表示名として使う。
-
-`manuscripts/` に新しい Markdown ファイルを追加して保存すると、そのファイルも一覧とプレビュー対象に自動的に追加される。
-
-プレビュー用 HTML は `build/preview-site/` に生成するため、公開用の `site/` には影響しない。
-
-プレビューワーはブラウザで現在開いているページを SSE で監視する。
-原稿を保存すると、そのページに対応する HTML だけを再生成し、ブラウザを自動的に再読み込みする。
-`manuscripts/contents/` の共通原稿を変更した場合は、その原稿を `@import` している表示中のページだけを再生成する。
-
-ポート番号を変更する場合は `PORT` 環境変数を指定する。
-
-```bash
-PORT=8080 npm run preview
-```
-
-### HTML の生成
-
-`manuscripts/` 直下の Markdown と, 各ディレクトリの `index.md` を公開用 HTML に変換して `site/` を更新する場合は、次を実行する。
-
-```bash
-npm run build
-```
-
-`site/` 以下の HTML は公開用の生成物であるため、直接編集しない。
-
-原稿の `@import` は変換時に再帰的に展開される。
-
-`latex` の属性付きコードフェンス（`cmd=true` を含む）内の TikZ は LaTeX でコンパイルされ、SVG として HTML に埋め込まれる。
-
-各ドキュメントの見出しから目次を自動生成し、本文の冒頭に表示する。
-
-目次の開閉、本文幅、余白、見出し、コード、表のレイアウトは Markdown Preview Enhanced の HTML export 用実装に合わせている。
-
-### 変換結果の検査
-
-原稿を変換できることだけを確認する場合は、次を実行する。
-
-```bash
-npm run check
-```
-
-このコマンドは公開対象の Markdown を変換し、TikZ、数式、`@import` の処理に失敗した場合に終了コード1を返す。
-
-### 旧コマンドとの対応
-
-従来のコマンドを残した環境では、次のスクリプトも利用できる。
-
-```bash
-./scripts/sync-site.sh
-```
-
-このスクリプトは、外部の Crossnote 出力をコピーせず、`npm run build` を呼び出す。
-
-## 公開手順
-
-1. `manuscripts/` 直下または原稿ディレクトリ内の `index.md` を追加または編集する。
-2. `npm run check` を実行し、公開対象の変換が成功することを確認する。
-3. `npm run build` を実行し、`site/` の差分が原稿の変更に対応していることを確認する。
-4. `manuscripts/`、`previewer/`、`package.json`、`package-lock.json`、`site/` の意味のある変更をコミットして `main` に push する。
-5. GitHub Actions が `npm ci` と `npm run build` を実行し、生成した `site/` を GitHub Pages にデプロイする。
-
-初回のみ、リポジトリの **Settings → Pages → Build and deployment** で **GitHub Actions** を選択する。
-
-## 公開 URL
-
-GitHub Pages のトップページから、`manuscripts/` 直下の各 Markdown 原稿を開く。
-
-公開 URL は、直下の原稿ではファイル名から `.md` を除いた名前を使い、ディレクトリ内の `index.md` ではディレクトリ名を使う。
-
-- `/Introduction-to-Category-Theory/`
-- `/Introduction-to-Monoidal-Category-Theory/`
-- `/Introduction-to-Enriched-Categor-over-Monoidal-base-Theory/`
+`/Introduction-to-General-Topology/` は URL を変えずに、同名のリポジトリから公開する。

@@ -1,17 +1,8 @@
 {
-  "name": "category-theory-notes-site",
+  "name": "skrtk98-github-io",
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node previewer/cli.js build",
-    "preview": "node previewer/cli.js preview",
-    "check": "node previewer/cli.js check"
-  },
-  "dependencies": {
-    "katex": "^0.16.22",
-    "markdown-it": "^14.1.0",
-    "markdown-it-deflist": "^3.0.0",
-    "markdown-it-footnote": "^4.0.0",
-    "markdown-it-texmath": "^1.0.0"
+    "build": "node homepage/build.js"
   }
 }
